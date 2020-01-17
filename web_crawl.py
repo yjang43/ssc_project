@@ -7,7 +7,7 @@ import collections as col
 
 cur_url = input("put url: ")
 
-cur_url = 'https://ssc.wisc.edu/sscc/pubs/stat.htm'
+cur_url = 'https://ssc.wisc.edu'
 req = requests.get(cur_url)
 
 dom = BeautifulSoup(req.text, 'html.parser')
@@ -15,12 +15,13 @@ hrefs = dom.find_all('a', href=True)
 links = [urljoin(cur_url, a['href']) for a in hrefs]
 #print((links))
 
-filter_url = 'https://ssc.wisc.edu/sscc/pubs'
+filter_url = 'https://ssc.wisc.edu'
 filter_url2 = '.htm'
 filter_url3 = '.zip'
 filter_url4 = '.pdf'
 filter_url5 = '/DWE/'
 filter_url6 = '/book/'
+filter_url7 = '.exe'
 whole_links = set()
 # queue that feeds until recursively called links are already there
 links_feeder = col.deque([])
@@ -43,11 +44,12 @@ def url_feed(url:str):
                 # filter outside initial cur_url, such as www.wisc.edu
                 if (l.find(filter_url) != -1
                         and not whole_links.__contains__(l)
-                        and l.find(filter_url2, -5) != -1
-                        and l.find(filter_url4, -5) == -1
-                        and l.find(filter_url5) == -1
-                        and l.find(filter_url6) == -1
-                        and l.find(filter_url3, -5) == -1):
+                        # and l.find(filter_url2, -5) != -1
+                        # and l.find(filter_url4, -5) == -1
+                        # and l.find(filter_url5) == -1
+                        # and l.find(filter_url6) == -1
+                        and l.find(filter_url7) == -1
+                        and l.find(filter_url3) == -1):
                     print("url: " + l)
                     links_feeder.append(l)
                     print("ADDED feeder length: " + str(links_feeder.__len__()))
@@ -60,16 +62,24 @@ def url_feed(url:str):
         url_feed(next_url)
     return
 def url_get_title(urls):
-    url_list = list(urls)
     title_list = []
 
-    for url in url_list:
+    for url in urls:
         try:
             req = requests.get(url)
             dom = BeautifulSoup(req.text, 'html.parser')
-            title_list.append(dom.title)
+            title = dom.title.get_text()
+            while (title.__contains__('  ')
+                    or title.__contains__('\t')
+                    or title.__contains__('\r')
+                    or title.__contains__('\n')):
+                title = title.replace('  ', ' ')
+                title = title.replace('\t', '')
+                title = title.replace('\r', '')
+                title = title.replace('\n', ' ')
+            title_list.append(title)
             print("url: " + url)
-            print(dom.title)
+            print(title)
 
         except TimeoutError:
             print("Timeout Error but continu")
@@ -80,8 +90,9 @@ def url_get_title(urls):
 
 # execution
 url_feed(cur_url)
-title_list = url_get_title(whole_links)
-
-a = np.array([list(whole_links), title_list])
+url_list = list(whole_links)
+url_list.sort()
+title_list = url_get_title(url_list)
+a = np.array([url_list, title_list])
 a = a.transpose()
 np.savetxt('links.csv', a, '%s', delimiter=',')
