@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Using SFTP </kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<body>
+<div id="OuterWrapper"><!-- #BeginLibraryItem "/Library/Header.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/><div id="Header">
+<div id="HeaderImage"> <a href="#table"><img alt="SSCC - Social Science Computing Cooperative" border="0" height="130" src="/sscc/assets/main_header.jpg" title="SSCC - Social Science Computing Cooperative" usemap="#Map" width="800"/></a>
+<map name="Map">
+<area alt="SSCC Home Page" coords="5,24,298,120" href="/sscc/" shape="rect"/>
+</map>
+</div>
+<div id="HeaderNav">
+ • <a href="/sscc/" id="lnkHome" title="HOME">HOME</a> • <a href="/sscc/pubs/winstat.htm" title="Learn How to Log In to Winstat">WINSTAT</a> •  <a href="/sscc/helpdesk.htm" title="Contact the SSCC Help Desk">HELP DESK</a> • <a href="/sscc/statconsult.htm" title="SSCC Statistical Consulting">STAT CONSULTING</a> • <a href="/sscc/pubs" title="Articles on statistical computing and using SSCC resources">KNOWLEDGE BASE</a> •
+<span style="visibility:hidden">&lt;%@ include file="/authenticate/logoutlink.jsp" %&gt;</span></div>
+<div id="HeaderSearch"><form action="/sscc/results.html" id="cse-search-box">
+<div>
+<input name="cx" type="hidden" value="009976823638626595604:fyieafx208s"/>
+<input name="cof" type="hidden" value="FORID:11"/>
+<input name="ie" type="hidden" value="UTF-8"/>
+<input class="SearchBox" id="SearchInput" name="q" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" size="31" title="Search" type="text" value="Search"/>
+</div>
+</form></div>
+</div><!-- #EndLibraryItem --><div id="MainWrapper">
+<div id="RightWrapper">
+<div id="RightInnerWrapper">
+<div id="RightHeader">
+<div id="RightHeaderContent"><a href="home.htm">SSCC Knowledge Base</a></div>
+</div>
+<div class="Clear"></div>
+<div id="RightContent">
+<h1><a id="content" name="content"></a><!-- #BeginEditable "Title" -->Using 
+              SFTP <!-- #EndEditable --></h1>
+<!-- #BeginEditable "Text" -->
+<p>FTP, or File Transfer Protocol, has been moving files from computer 
+              to computer since the earliest days of the Internet. To cope with 
+              today's more dangerous Internet FTP has added encryption, becoming 
+              Secure FTP or SFTP. But the commands remain the same.</p>
+<p>There are a wide variety of SFTP clients that will take care of 
+              all the actual commands for you, giving you a drag-and-drop interface 
+              similar to Windows. For Windows we suggest <a href="5-35.htm">SecureFX</a>. 
+              But SFTP is not difficult to use. In fact, if you're comfortable 
+              with Linux you'll find that you only need to learn a few extra commands.</p>
+<p>To run SFTP from one of the SSCC Linux servers, type</p>
+<p class="InputCode">&gt; sftp <span class="Parameter">server</span></p>
+<p>Where <span class="Parameter"><span class="InputCode">server</span></span> 
+              should be replace by the name of the server you wish to connect 
+              to.</p>
+<p>The SSCC maintains two FTP servers: <span class="InputCode">ftp.ssc.wisc.edu</span> 
+              connects to the Linux file system; <span class="InputCode">ntftp.ssc.wisc.edu</span> 
+              connects to the Windows network. In both cases once you log in your 
+              remote directory will start out as your home directory.</p>
+<table align="center" border="1" summary="SSCC FTP Server Addresses" width="50%">
+<caption align="top">
+              SSCC FTP Server Addresses 
+              </caption>
+<tr>
+<th scope="row" width="40%">Linux</th>
+<td align="center" class="InputCode">ftp.ssc.wisc.edu</td>
+</tr>
+<tr>
+<th scope="row">Windows</th>
+<td align="center" class="InputCode">ntftp.ssc.wisc.edu</td>
+</tr>
+</table>
+<p>Note that Linstat does not 
+              accept FTP connections. Use <span class="InputCode">ftp.ssc.wisc.edu</span> 
+              instead.</p>
+<h2><a id="FTPCommands" name="FTPCommands"></a>FTP Commands</h2>
+<p>The following basic commands are probably all you'll need to use 
+              SFTP. </p>
+<dl>
+<p class="InputCode"> <span class="InputCode">cd <span class="Parameter">directory</span></span></p>
+<p>Changes the remote directory to the the directory you enter. 
+                Note that Windows servers will generally allow you to use the 
+                Linux style slash in path names (<span class="InputCode">directory/subdirectory</span>), 
+                but Linux servers will not allow you to use the Windows style 
+                backslash (<span class="InputCode">directory\subdirectory</span>).</p>
+<p class="InputCode"><span class="InputCode">lcd <span class="Parameter">directory</span></span></p>
+<p>Changes the local directory to the directory you enter.</p>
+<p class="InputCode"><span class="InputCode">ls</span></p>
+<p>Lists the tables of the remote directory</p>
+<p class="InputCode"><span class="InputCode">binary</span></p>
+<p>Changes the transfer mode to binary. In these days of proprietary 
+                formats for essentially everything, you almost always want to 
+                be in binary mode. Many FTP implementations now default to binary 
+                mode, but some don't. If you're not in binary mode most files 
+                will be garbled in transit, so always check.</p>
+<p class="InputCode"><span class="InputCode">get <span class="Parameter">filename</span></span></p>
+<p>Copies a file from the remote directory to the local directory. 
+                Along with <span class="InputCode">put</span>, this is FTP's <span class="italic" lang="fr" xml:lang="fr">raison 
+                d'etre</span>. Note that if you already have a file with the same 
+                name it will be overwritten without warning, so be careful!</p>
+<p class="InputCode"><span class="InputCode">put <span class="Parameter">filename</span></span></p>
+<p>Copies a file from the local directory to the remote directory. 
+                The same warning applies.</p>
+<p class="InputCode"><span class="InputCode">mget <span class="Parameter">filename</span></span></p>
+<p>Works like <span class="InputCode">get</span>, except that you 
+                can use wildcards (*, etc.) to specify multiple files.</p>
+<p class="InputCode"><span class="InputCode">mput <span class="Parameter">filename</span></span></p>
+<p>Works like <span class="InputCode">put</span>, except that you 
+                can use wildcards (*, etc.) to specify multiple files.</p>
+<p class="InputCode"><span class="InputCode"></span>help</p>
+<p>Lists all the commands available in FTP, but doesn't explain 
+                them. Thus it's mostly useful as a reminder.</p>
+<p class="InputCode"><span class="InputCode">quit</span></p>
+<p>Quits FTP (<span class="InputCode">exit</span> or <span class="InputCode">logout</span> 
+                won't work).</p>
+</dl>
+<h2><a id="AnonymousFTP" name="AnonymousFTP"></a>Anonymous FTP</h2>
+<p>Anonymous FTP allows anyone to use an FTP server, but with many 
+              restrictions. It is commonly used for distributing files. When you 
+              are asked for a login name just enter <span class="InputCode">anonymous</span>. 
+              You will be asked to give your email address as a password, though 
+              this is not always enforced.</p>
+<p>You can use anonymous FTP to transfer files back and forth between 
+              yourself and people who do not have SSCC accounts. However, it is 
+              insecure by definition since anyone can use it. Realistically it's 
+              unlikely anyone will be prowling our FTP site just to see if anything 
+              looks interesting, nevertheless, anonymous FTP should never be used 
+              for confidential data.</p>
+<h3><a id="MakingaFileAvailablebyAnonymousFTP" name="MakingaFileAvailablebyAnonymousFTP"></a>Making a File Available by Anonymous FTP</h3>
+<p>The SSCC allows anonymous FTP only to our Linux FTP server (<span class="InputCode">ftp.ssc.wisc.edu</span>). 
+              To give someone access to a file by anonymous FTP, log in to Linux, 
+              create a directory for yourself under <span class="InputCode">/usr/ftp/pub</span> 
+              (for example <span class="InputCode">/usr/ftp/pub/rdimond</span>) 
+              and place the file in that directory. The permissions must be set 
+              such that others can read the file and both read and execute the 
+              directory. The following Linux commands will make a file currently 
+              stored in your home directory accessible by anonymous FTP:</p>
+<p class="InputCode">&gt; cd /usr/ftp/pub<br/>
+              &gt; mkdir <span class="Parameter">username</span><br/>
+              &gt; cp ~/<span class="Parameter">filename</span> ./<span class="Parameter">username</span><br/>
+              &gt; chmod -R o+r <span class="Parameter">username</span><br/>
+              &gt; chmod o+x <span class="Parameter">username</span></p>
+<p>To get the file, after starting FTP and logging in as <span class="InputCode">anonymous</span>, 
+              one would type at the <span class="InputCode">ftp&gt;</span> prompt:</p>
+<p class="InputCode">ftp&gt; binary<br/>
+              ftp&gt; cd pub/<span class="Parameter">username</span><br/>
+              ftp&gt; get <span class="Parameter">filename</span></p>
+<p>Note that literally anyone could get the file in this way; you 
+              cannot limit access to anonymous FTP.</p>
+<h3><a id="ReceivingFilesbyAnonymousFTP" name="ReceivingFilesbyAnonymousFTP"></a>Receiving Files by Anonymous FTP</h3>
+<p>You can also have people outside the SSCC log in as <span class="InputCode">anonymous</span> 
+              in order to send you files. Once logged in they need to do the following:</p>
+<p class="InputCode">ftp&gt; binary<br/>
+              ftp&gt; cd incoming<br/>
+              ftp&gt; put <span class="Parameter">filename</span></p>
+<p>The file will be stored in <span class="InputCode">/usr/ftp/incoming</span>. 
+              Note that all files in the incoming directory are deleted every 
+              few days to prevent abuse. You can copy the file to your home directory 
+              by typing the following at the Linuxprompt:</p>
+<p class="InputCode">&gt; cp /usr/ftp/incoming/<span class="Parameter">filename</span> 
+              ~ </p>
+<p> Of course anyone with an SSCC account could do the same. You cannot 
+              delete the original file after you have copied it, but it will be 
+              deleted in the course of normal maintenance.</p>
+<!-- #EndEditable -->
+<p class="reviseDate">Last Revised: <!-- #BeginEditable "Date" -->5/17/2006<!-- #EndEditable --></p>
+</div>
+</div>
+</div>
+</div>
+<div class="Clear"></div><!-- #BeginLibraryItem "/Library/footer.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/>
+<div id="Footer">
+<div id="UWLogo">
+<div id="UWPic"><a href="http://www.wisc.edu" title="University of Wisconsin - Madison"><img alt="University of Wisconsin - Madison" src="/sscc/assets/UWLogo.jpg" title="University of Wisconsin - Madison"/></a></div>
+</div>
+<div id="BlueCurve">
+<div id="FooterCopy">©2009-2019 UW Board of Regents, <a href="http://www.wisc.edu">University of Wisconsin - Madison</a></div>
+<div id="FooterNav">| <a href="/sscc/helpdesk.htm">Contact Us</a> | <a href="/sscc/wp/?feed=rss2"><img alt="RSS Feed Icon" class="RSSicon" height="14" src="/sscc/assets/feed-icon-14x14.png" width="14"/>RSS</a> |</div>
+</div>
+</div>
+<!-- #EndLibraryItem --></div>
+<div id="PrintLogo">
+<img alt="Social Science Computing Cooperative" height="85" src="../assets/SSCC_logoBW3.gif" width="350"/></div>
+</body>
+</kb_body>
+<kb_int_notes>.</kb_int_notes>
+<img_base_url>.</img_base_url>
+<kb_document>
+<kb_title>Connecting to SSCC Computers Using a WinTerm</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<body>
+<div id="OuterWrapper"><!-- #BeginLibraryItem "/Library/Header.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/><div id="Header">
+<div id="HeaderImage"> <a href="#table"><img alt="SSCC - Social Science Computing Cooperative" border="0" height="130" src="/sscc/assets/main_header.jpg" title="SSCC - Social Science Computing Cooperative" usemap="#Map" width="800"/></a>
+<map name="Map">
+<area alt="SSCC Home Page" coords="5,24,298,120" href="/sscc/" shape="rect"/>
+</map>
+</div>
+<div id="HeaderNav">
+ • <a href="/sscc/" id="lnkHome" title="HOME">HOME</a> • <a href="/sscc/pubs/winstat.htm" title="Learn How to Log In to Winstat">WINSTAT</a> •  <a href="/sscc/helpdesk.htm" title="Contact the SSCC Help Desk">HELP DESK</a> • <a href="/sscc/statconsult.htm" title="SSCC Statistical Consulting">STAT CONSULTING</a> • <a href="/sscc/pubs" title="Articles on statistical computing and using SSCC resources">KNOWLEDGE BASE</a> •
+<span style="visibility:hidden">&lt;%@ include file="/authenticate/logoutlink.jsp" %&gt;</span></div>
+<div id="HeaderSearch"><form action="/sscc/results.html" id="cse-search-box">
+<div>
+<input name="cx" type="hidden" value="009976823638626595604:fyieafx208s"/>
+<input name="cof" type="hidden" value="FORID:11"/>
+<input name="ie" type="hidden" value="UTF-8"/>
+<input class="SearchBox" id="SearchInput" name="q" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" size="31" title="Search" type="text" value="Search"/>
+</div>
+</form></div>
+</div><!-- #EndLibraryItem --><div id="MainWrapper">
+<div id="RightWrapper">
+<div id="RightInnerWrapper">
+<div id="RightHeader">
+<div id="RightHeaderContent"><a href="home.htm">SSCC Knowledge Base</a></div>
+</div>
+<div class="Clear"></div>
+<div id="RightContent">
+<h1><a id="content" name="content"></a><!-- #BeginEditable "Title" -->Connecting to SSCC Computers Using a 
+        WinTerm<!-- #EndEditable --></h1>
+<!-- #BeginEditable "Text" -->
+<p>WinTerms provide easy access to all of the SSCC's servers. To log on to a
+  server,  double click on the server's name in the Neoware Connection Manager
+  dialog box.</p>
+<p>Note that the telnet client used to connect to Linux servers does not have
+	the ability to display graphics. If you need to display Linux graphics, connect
+	to Winstat and then use <a href="5-2.htm">X-Win32</a>  to
+	connect to a Linux server.</p>
+<h2>Managing Connections</h2>
+<p>Once you have made a connection to a server, that connection will fill the 
+	entire screen and it will not be obvious how to work with anything else. However, 
+	you can make new connections or switch between existing connections using 
+	the keyboard.</p>
+<p>To switch to the<span class="MenuOutput"> Connection Manager</span>, press 
+	<span class="InputCode">CTRL-ALT-END</span>. This will allow you to connect 
+	to additional servers.</p>
+<p>To cycle between existing connections, press <span class="InputCode">CTRL-ALT-&lt;Up 
+	Arrow&gt;</span> or <span class="InputCode">CTRL-ALT-&lt;Down Arrow&gt;</span>. 
+</p>
+<h2>Copy and Paste Between Connections</h2>
+<p>You can easily copy and paste information between different connections, even 
+  between Windows and Linux. In Windows, just use the normal copy and paste commands. 
+  In Linux, select text by clicking the left mouse button and dragging over the 
+  text you want. Then click the right button to copy it. To paste, hold down the 
+  <span class="InputCode">SHIFT</span> key, right click, and the tables of the 
+  clipboard will be pasted at the current location of the cursor (not the mouse 
+  pointer).</p>
+<!-- #EndEditable -->
+<p class="reviseDate">Last Revised: <!-- #BeginEditable "Date" -->7/5/2007<!-- #EndEditable --></p>
+</div>
+</div>
+</div>
+</div>
+<div class="Clear"></div><!-- #BeginLibraryItem "/Library/footer.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/>
+<div id="Footer">
+<div id="UWLogo">
+<div id="UWPic"><a href="http://www.wisc.edu" title="University of Wisconsin - Madison"><img alt="University of Wisconsin - Madison" src="/sscc/assets/UWLogo.jpg" title="University of Wisconsin - Madison"/></a></div>
+</div>
+<div id="BlueCurve">
+<div id="FooterCopy">©2009-2019 UW Board of Regents, <a href="http://www.wisc.edu">University of Wisconsin - Madison</a></div>
+<div id="FooterNav">| <a href="/sscc/helpdesk.htm">Contact Us</a> | <a href="/sscc/wp/?feed=rss2"><img alt="RSS Feed Icon" class="RSSicon" height="14" src="/sscc/assets/feed-icon-14x14.png" width="14"/>RSS</a> |</div>
+</div>
+</div>
+<!-- #EndLibraryItem --></div>
+<div id="PrintLogo">
+<img alt="Social Science Computing Cooperative" height="85" src="../assets/SSCC_logoBW3.gif" width="350"/></div>
+</body>
+</kb_body>
+<kb_int_notes>.</kb_int_notes>
+<img_base_url>.</img_base_url>
+</kb_documents>
