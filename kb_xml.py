@@ -26,7 +26,7 @@ def set_xml_document(kb_title='.', kb_keywords='.',
 
 
 
-links_df = pd.read_csv('~/Desktop/python/sscc_project/links_pub.csv')
+links_df = pd.read_csv('links_pub.csv')
 
 links = links_df['Current URL']
 links = links.to_list()
@@ -45,16 +45,20 @@ xml_documents = '<?xml version="1.0"?>\n<kb_documents>\n'
 links_from = int(input("from what index to start: "))
 links_num = int(input("how many links to batch: "))
 batch_id = input("batch id: ")
-
-
+log_text = ''
 
 for i in range(links_from, links_from + links_num):
     req = requests.get(links[i])
     dom = BeautifulSoup(req.text, 'html.parser')
-    kb_body = dom.find('body')
+    kb_body = dom.select('#RightContent')[0]
     # this kb_body will still contain tag for html <body></body>
     # let me know if this needs to be deleted
     kb_title = titles[i]
+    if kb_title:
+        log_text += str(i) + ': ' + links[i] + '\tsuccess\r'
+    else:
+        log_text += 'ERROR - ' + str(i) + ': ' + links[i] + '\tfail\r'
+
     xml_document = set_xml_document(kb_title=kb_title, kb_body=kb_body)
     xml_documents = xml_documents + xml_document
 
@@ -65,10 +69,14 @@ for i in range(links_from, links_from + links_num):
 # end xml_documents
 xml_documents = xml_documents + '</kb_documents>'
 
+log_file = open('log.txt', 'a')
+log_file.write(log_text)
+log_file.close()
+
 print(xml_documents)
 file = open(batch_id, 'w')
 file.write(xml_documents)
 file.close()
 
 
-links_df.to_csv('~/Desktop/python/sscc_project/links_pub.csv')
+links_df.to_csv('links_pub.csv')
