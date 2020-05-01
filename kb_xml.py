@@ -36,10 +36,7 @@ titles = titles.to_list()
 # start xml_documents
 xml_documents = '<?xml version="1.0"?>\n<kb_documents>\n'
 
-#
-#
 # inputs here, batch length, batch id
-#
 links_from = int(input("from what index to start: "))
 links_num = int(input("how many links to batch: "))
 batch_id = input("batch id: ")
@@ -73,7 +70,6 @@ for i in range(links_from, links_from + links_num):
                 image['src'] = url.urljoin(link, image['src'])
                 images_base_url.append(image['src'])
 
-
         # update links -> absolute link
         hrefs = kb_body.find_all(href=True)
         if len(hrefs):
@@ -89,7 +85,6 @@ for i in range(links_from, links_from + links_num):
         kb_body.find('div').unwrap()
         kb_body.smooth()
         kb_body = str(kb_body)
-
 
         # this kb_body will still contain tag for html <body></body>
         # let me know if this needs to be deleted
