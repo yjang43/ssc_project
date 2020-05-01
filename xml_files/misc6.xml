@@ -1,0 +1,568 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Articles on Using Winstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- InstanceBeginEditable name="Content" -->
+<p>This page lists articles on connecting to
+                              	 and using Winstat and Silo, the SSCC's Windows Remote Desktop Services Farms.</p>
+<h2>Connecting</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/silo.htm">Using the Silo Environment</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/winstat_fonts.htm">Changing Font Sizes on Winstat</a><br/>
+</p>
+<h2>Interacting with Linux</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a></p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Connecting to the SSCC Network via VPN</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>VPN (Virtual Private Networking) allows a computer to connect to the SSCC network as if it were in the building regardless of its physical location. This gives you access to SSCC network drives and printers. It gives you a UW IP address, which allows you to use services like the many library databases which are restricted to UW IP addresses. It also encrypts all of your network traffic, protecting your privacy on public wireless networks. UW-Madison uses Palo Alto GlobalProtect for its VPN solution.</p>
+<p>Please note: Per <a href="https://kb.wisc.edu/itpolicy/it-electronic-devices-policy" target="new" title="Campus Electronic Device Policy ">campus policy for electronic devices</a>, to connect to the SSCC VPN you must be using a supported, up to date operating system. </p>
+<h2>Installing  GlobalProtect</h2>
+<p>To connect to the campus VPN service, you'll need to download and install the  GlobalProtect client for your computer. If you're using an SSCC-managed machine (i.e. one where you can only install new software using <a href="https://ssc.wisc.edu/sscc/pubs/softwarecenter.htm">Software Center</a>), <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">contact the Help Desk</a> and we'll install GlobalProtect for you.</p>
+<p>Download the GlobalProtect  for:</p>
+<ul>
+<li><a href="https://uwmadison.vpn.wisc.edu/global-protect/getmsi.esp?version=64&amp;platform=windows">Windows</a></li>
+<li><a href="https://uwmadison.vpn.wisc.edu/global-protect/getmsi.esp?version=none&amp;platform=mac">macOS</a></li>
+</ul>
+<p>Clients for iOS and Android can be found in the appropriate app store. Contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> if you need a client for a different operating system, like Linux.</p>
+<p>Once the installer has finished downloading (GlobalProtect64.msi on Windows or GlobalProtect.pkg on Mac) run the installer, keeping all the default settings. Once it is installed you are ready to <a href="#using">connect to the VPN</a>.</p>
+<p>macOS may try to block the GlobalProtect client from installing due to security requirements: </p>
+<img alt="macOS refusing to install client" height="284" src="https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/GPMacBlocked.png" style="display: block; margin-left: auto; margin-right: auto;" width="689"/>
+<p>If you see this message, click <span class="MenuOutput">Open Security Preferences</span>. Then click the <span class="MenuOutput">Allow</span> button in the bottom right, check the box next to <span class="MenuOutput">Palo Alto Networks</span>, click <span class="MenuOutput">OK</span>, then restart your computer to apply the changes.</p>
+<img alt="Changing security settings" height="619" src="https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/GPMacSecurity.png" style="display: block; margin-left: auto; margin-right: auto;" width="720"/>
+<h2 id="using">Using  GlobalProtect</h2>
+<p>To open GlobalProtect in Windows, click on the up-arrow in the bottom right of your task bar, then right-click on its icon (<img alt="GlobalProtect icon" height="16" src="https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/GPIcon.jpg" width="16"/>) and choose <span class="MenuOutput">Show Panel</span>.</p>
+<p>To open GlobalProtect in macOS, click on its icon (<img alt="GlobalProtect icon" height="16" src="https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/GPIcon.jpg" width="16"/>) in the menu bar at the top right and choose  <span class="MenuOutput">Show Panel</span>.</p>
+<p>Enter <span class="InputCode">sscc.vpn.wisc.edu</span> in <span class="MenuOutput">Portal</span> (note that it must be <span class="InputCode">sscc</span> and not <span class="InputCode">ssc</span>),  give your SSCC username and password, then click <span class="MenuOutput">Connect</span>. </p>
+<img alt="" class="CenterImage" height="328" src="https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/PAGP_connect.jpg" width="272"/>
+<p>If it succeeds, you'll see <strong>Status: Connected</strong>.</p>
+<img alt="" class="CenterImage" height="291" src="https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/PAGP_success.jpg" width="273"/><!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/GPMacBlocked.png, https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/GPMacSecurity.png, https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/GPIcon.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/GPIcon.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/PAGP_connect.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/GlobalProtect/PAGP_success.jpg</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Publications about the Web</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>This page lists articles dealing with using the SSCC web server.</p>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/1-4.htm">Publishing
+          			 to the SSCC's Web Server</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/wordpress.htm">Creating a Web Site using WordPress</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-20.htm">Limiting	Access to a Web Page</a><br/>
+</p>
+<p>Those who wish to place material on the web should also be aware 
+				of the University's <a href="http://www.wisc.edu/wiscinfo/policy/wwwap.html">Policy 
+				Governing World Wide Web Accessibility</a> which applies to any 
+				web pages you may create.</p>
+<p>The SSCC also has a brief <a href="https://ssc.wisc.edu/sscc/policies/webpublish.htm">Web 
+				Publishing Policy</a>.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Welcome to the SSCC!</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>Welcome to the SSCC! The Social Science Computing Cooperative supports researchers at UW-Madison who use statistical analysis in their work. We provide a complete research computing environment focused on statistics plus the expert help you need to use it. This includes:</p>
+<ul>
+<li><a href="https://www.ssc.wisc.edu/sscc/statconsult.htm">Statistical consultants</a> who are experts on the most popular statistical software and can answer many methodological questions</li>
+<li>Training on statistical computing, including <a href="https://www.ssc.wisc.edu/sscc_jsp/training/">workshops</a> and an extensive <a href="https://www.ssc.wisc.edu/sscc/pubs/stat.htm">Statistical Computing Knowledge Base</a>.</li>
+<li>Powerful and easy-to-use <a href="https://www.ssc.wisc.edu/sscc/pubs/winstat.htm">Windows</a> and <a href="https://www.ssc.wisc.edu/sscc/pubs/linstat.htm">Linux</a> based servers with the most popular statistical <a href="https://www.ssc.wisc.edu/sscc_jsp/software/">software</a> installed and ready for use, plus many specialized packages</li>
+<li>Secure data storage suitable for most sensitive research data</li>
+<li>A dedicated <a href="https://www.ssc.wisc.edu/sscc/helpdesk.htm">help desk</a> staffed by IT professionals, with immediate access to the system administrators who run the servers</li>
+</ul>
+<p>If you have questions or run into  problems, the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a> is available to
+  help you 
+  from 9AM to 12PM and 1PM to 4PM.
+  There	are	several ways to get in touch with the Help Desk: you can
+  call 262-9917	(2-9917	if	you're 
+  using a campus phone), you can email <a href="mailto:helpdesk@ssc.wisc.edu">helpdesk@ssc.wisc.edu</a>,
+  or you can  stop by the SSCC staff offices in 4226 Sewell Social
+  Sciences Building. Look
+  for the white sign that says <span class="MenuOutput">Help Desk </span> or the red sign that says <strong>Stat Consultant</strong> so you know who's "on duty."</p>
+<h2><a id="Accounts" name="Accounts"></a>Accounts</h2>
+<p>An SSCC Member is someone who has been sponsored for an SSCC account by one or more of our <a href="https://ssc.wisc.edu/sscc/agencies.htm">member agencies and departments</a>. This means you have full access to all the SSCC's resources without charge. The costs of your membership are paid by your sponsor(s).</p>
+<p>If you're reading this you've probably already activated your SSCC account. In the process you should have set your password and security questions, decided whether to request an SSCC orientation, and set an email address we can use to contact you. Some important reminders:</p>
+<ul>
+<li>Never share your SSCC account or give anyone your password (even SSCC staff)</li>
+<li>We will send announcements to your your <a href="https://www.ssc.wisc.edu/sscc_jsp/email/pref.jsp">preferred email address</a>—including when it's time to renew your account. Make sure you it's one you'll continue to read.</li>
+</ul>
+<p> </p>
+<h2><a id="InternetAccess" name="InternetAccess"></a>Internet Access</h2>
+<p>You can access the Internet throughout the Sewell Social Sciences Building by connecting to the campus wireless network. To do so you'll need to give your DoIT NetID and password (so make sure you <a href="https://www.mynetid.wisc.edu/activate">activate</a> your NetID at <a href="http://www.doit.wisc.edu/">DoIT's web site</a>). This network is not provided by the SSCC, so if you run into  difficulties with it we may need to refer you to <a href="http://kb.wisc.edu/helpdesk/">DoIT's help desk</a> (264-HELP). The first time you use it you must open a web browser and log in to the campus wireless network before you can use other programs that need network access, such as email. Unfortunately the campus wireless network is not encrypted, so we suggest you turn on a <a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">VPN</a> connection whenever you use it so your communications are secure.</p>
+<p>The wired network in the building is provided by the SSCC, and gives direct access to SSCC resources. When you use the wired network you are behind our firewall so we ask that before you plug into it you make sure both your operating system and your antivirus software are up-to-date and update themselves automatically. For PCs running Windows, we suggest you use the free <a href="http://www.microsoft.com/en-us/security_essentials/ProductInformation.aspx">Microsoft Security Essentials</a>. For Macs, we recommend the free <a href="http://www.sophos.com/en-us/products/free-tools/sophos-antivirus-for-mac-home-edition.aspx">Sophos Anti-Virus for Mac Home Edition</a>. If you prefer, you can drop off your computer in 4226 Sewell Social Sciences Building and our PC Support group will set up everything for you.</p>
+<h2><a id="Software" name="Software"></a>Software</h2>
+<p>The SSCC provides a great deal of software—most likely everything you'll need. This includes general purpose statistical programs like Stata, SAS, SPSS and R, many special purpose statistical programs, research tools like EndNote, and common software like Microsoft Office. The programs are provided  on the SSCC's servers (especially Winstat) and/or  in the computer labs so you probably won't need to purchase them or install  them on your personal computer.</p>
+<p>For a full list of all SSCC software and where it is installed, see our <a href="https://www.ssc.wisc.edu/sscc_jsp/software/">software web page</a>.</p>
+<h2><a id="Servers" name="Servers"></a>Servers </h2>
+<p>Winstat is the SSCC's Windows Terminal Server farm. Winstat allows
+	any SSCC member to log in and run Windows on the server, with full access to the SSCC network and a tremendous amount of software. You can also use it to transfer files between your computer and the network. This makes Winstat a very useful tool whether you're in the Sewell Social Sciences Building or  anywhere else in the world.</p>
+<p>To use Winstat you'll need to download and install a small, free client program. Our Knowledge Base article <a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat</a> has instructions.</p>
+<p>Linstat is the the SSCC's Linux computing cluster and provides additional computing power for those who need it. If your statistical job is taking more than a few minutes on Winstat, it would probably run  more quickly on Linstat. Running statistical software on Linstat is  easier than you might expect; <a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a> will get you started.</p>
+<p>The SSCC also has an <a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">HTCondor</a> flock that is ideal for running large numbers of jobs at the same time, and a <a href="https://ssc.wisc.edu/sscc/pubs/flash.htm">High Performance  Computing Cluster</a> (HPCC) where you can break a job into hundreds of  pieces to be run in parallel.</p>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/computing_resources.htm">Computing Resources at the
+  SSCC</a> gives detailed descriptions of all the SSCC servers and suggestions for choosing the right server for your job.</p>
+<h2><a id="NetworkDiskSpace" name="NetworkDiskSpace"></a>Network Disk Space</h2>
+<p>The SSCC provides a very large amount of network disk space for our users. This space is secure, available from any location and backed up every night. We strongly recommend that you save all files related to your research work or other University business on the network rather than the local hard drive of your computer.</p>
+<p> The SSCC has both Windows file servers and Linux file servers, and you have space on both. A program called Samba makes the Linux space available to Windows sessions as regular network drives.</p>
+<p>Private space is provided in your two "home directories." When using Windows, your Windows home directory is the <span class="MenuOutput">U:</span> drive and your Linux home directory is <span class="MenuOutput">Z:</span> drive. This is where you should put anything you're working on individually. Shared space is provided in Project directories, which are on the <span class="MenuOutput">X:</span> drive (Windows) and the <span class="MenuOutput">V:</span> drive (Linux). Project directories allow groups working together on a common            		project to share files.</p>
+<p>The <span class="MenuOutput">Y:</span> drive is temporary space. You can use it if you need  a lot of disk space for a brief period, or to quickly share files with people who are not part of an official "project." However, you should keep in mind that <span class="bolded">files on the Y: drive are not secure, are not backed up, and are removed after 30 days.</span></p>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/disk.htm">Network Disk Space at the SSCC</a> has more information, including how to request that a file be restored from backup.</p>
+<p>Personal computers running Windows or Mac OS X can be set up to access the SSCC's network disk space, and most can also use the network printers. We will be happy to do this for you—just drop off your computer in 4226 Sewell Social Sciences Building. If you're not in the building or your computer cannot log into our domain you can easily access network drives and printers using Winstat. Alternative methods include <a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">VPN</a> and <a href="https://ssc.wisc.edu/sscc/pubs/5-35.htm">FTP</a>.</p>
+<h2><a id="Printers" name="Printers"></a>Printers</h2>
+<p>The SSCC provides general use printers in our computer labs: 4218, 3218 and 2470 Sewell Social Sciences Building. <a href="https://ssc.wisc.edu/sscc/pubs/5-24.htm">Setting
+	  			Up Network	Printers	in Windows</a> and <a href="https://ssc.wisc.edu/sscc/pubs/printfrommac.htm">Using SSCC Printers from Macs</a> will tell you how to use these printers. SSCC members are not charged for printing.</p>
+<h2><a id="RemoteAccesstoSSCCResources" name="RemoteAccesstoSSCCResources"></a>Remote Access to SSCC Resources</h2>
+<p>Winstat, Linstat, files on the network, and even your office PC can be used from home or any location with Internet access. <a href="https://ssc.wisc.edu/sscc/pubs/working_from_home.htm">Working From Home and Other Remote Locations</a> will tell you how.</p>
+<h2><a id="ComputerLabs" name="ComputerLabs"></a>Computer Labs</h2>
+<p>The SSCC provides three public computer labs in the Sewell
+  Social Science building. 4218 is the main lab, 3218 is available when not
+  in use by classes, and 2470 is a quiet place to work with your laptop (see
+  the <a href="https://ssc.wisc.edu/sscc/infrastructure/labs.htm">SSCC Computer Labs 
+    web page</a> for more details).</p>
+<h2><a id="LearningMore" name="LearningMore"></a>Learning More</h2>
+<p>The most valuable resource for learning about the SSCC is the SSCC's web site (<a href="http://ssc.wisc.edu">ssc.wisc.edu</a>). It includes our <a href="https://ssc.wisc.edu/sscc/policies">policies</a>, information <a href="https://ssc.wisc.edu/sscc/about">about the SSCC</a>, and <a href="https://ssc.wisc.edu/sscc/accounts">tools for working with your account</a>.</p>
+<p>But the most important part of the SSCC web site is the <a href="https://ssc.wisc.edu/sscc/pubs">SSCC Knowledge Base</a>, a collection of articles on SSCC resources and statistical computing in general. Topics range from basics like <a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">logging into Winstat</a> to general introductions like <a href="https://ssc.wisc.edu/sscc/pubs/sfs/">Stata for Students</a>  or Data Wrangling in <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Stata</a>, <a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/preface.html">R</a>, or <a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/preface.html">Python</a>, to to specific topics  like <a href="https://ssc.wisc.edu/sscc/pubs/stata_bar_graphs.htm">making bar graphs</a> and <a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html">mixed models</a>.</p>
+<p>We also offer  training classes each semester which are free to all SSCC members, including both introductions to statistical software and workshops on statistical topics. Visit our <a href="https://www.ssc.wisc.edu/sscc_jsp/training/index.jsp">training page</a> to see the schedule and register for classes.</p>
+<p>The SSCC has a small library of statistical software documentation in 4218 for use in that lab. A few more books can be found in the 4226 staff offices.</p>
+<h2><a id="GettingHelp" name="GettingHelp"></a>Getting Help</h2>
+<p>The <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a> is open 9AM-12PM and 1PM-4PM. You can contact the Help Desk by emailing <a href="mailto:helpdesk@ssc.wisc.edu">helpdesk@ssc.wisc.edu</a>, calling 262-9917 (2-9917 on campus) or stopping by 4226 Sewell Social Sciences Building.</p>
+<p>To get help from SSCC's <a href="https://ssc.wisc.edu/sscc/statconsult.htm">statistical consultants</a> you can email your question to <a href="mailto:helpdesk@ssc.wisc.edu">helpdesk@ssc.wisc.edu</a>, make an <a href="https://ssc.wisc.edu/sscc/statconsult.htm#appt">appointment</a>, or stop by during their<a href="https://ssc.wisc.edu/sscc/statconsult.htm#dropin"> drop-in consulting hours</a> (no appointment needed).</p>
+<p>Again, welcome to the SSCC. If there is anything we can do to make your computing 
+  more productive, please let us know.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Welcome to the SSCC!</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>Welcome to the SSCC! The Social Science Computing Cooperative provides computing
+              services for research and instruction in the social sciences. As an SSCC Lab user you'll have access to a wide variety of statistical software, powerful computers, and help in using them.</p>
+<h2>Accounts</h2>
+<p>The SSCC provides Lab Accounts to graduate students in the University's <a href="https://ssc.wisc.edu/sscc/accounts/socscidiv.htm">Social Science Division and Arts and Humanities Division,</a> plus anyone taking a class that uses the SSCC's computer labs. A Lab Account allows you to use the SSCC's computer labs and Winstat, the SSCC's Windows Remote Desktop Services farm, but does not give you access to the SSCC's Linux servers.</p>
+<p>If you have not yet received an SSCC Lab Account, you can <a href="https://www.ssc.wisc.edu/sscc_jsp/account/lab/">request an account online</a>.</p>
+<h2>Computer Labs</h2>
+<p>The SSCC has two main computer labs in the Sewell Social Sciences Building. Room 4218 is the Computer Lab where you can  work on your research or your homework. 3218 is the Computer Classroom, though it is available for general use when classes are not being held there.  Both labs have printers and scanners. Room 2470, the Group Projects Room, is 
+                            	available for drop-in use by groups of students
+           	working together.</p>
+<p>All labs are open from 9:00AM to 9:00PM Monday through Friday. Graduate students can <a href="https://www.ssc.wisc.edu/sscc_jsp/account/lab.jsp">request
+                            	after-hours access</a> to the labs, which allows them to use the labs 24/7. People who are
+                            	using the Computer Lab (4218)  when it closes may stay, though
+                            	the doors will be locked. People who are using
+                            	the Computer Classroom (3218) will be asked to move to
+           	the Computer Lab.</p>
+<h2>Winstat</h2>
+<p>Winstat is the SSCC's Windows Windows Remote Desktop Services farm. Winstat allows
+	you to log in remotely and run programs on the server, with full access to the SSCC network and the statistical software you need. You can also use it to transfer files between your computer and the network. This makes Winstat a convenient alternative to coming into the lab.</p>
+<p>To use Winstat you'll need to download and install a small, free client program. Our Knowledge Base article <a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat</a> has instructions.</p>
+<h2>Network Drives</h2>
+<p>The SSCC provides a very large amount of network disk space for our users. This space is secure, available from any location and backed up every night. We strongly recommend that you save all files related to your research work or SSCC-supported class on the network.</p>
+<p>The <span class="MenuOutput">U:</span> drive is your "home directory." This is private space where you can store your files. The <span class="MenuOutput">X:</span> drive is for project directories. If you need to share files with your class or research group, there will be a folder for that group on the <span class="MenuOutput">X:</span> drive.</p>
+<p>The <span class="MenuOutput">Y:</span> drive is temporary space. You can use it if you need  a lot of disk space for a brief period, or to quickly share files with people who are not part of an official "project." However, you should keep in mind that <span class="bolded">files on the Y: drive are not secure, are not backed up, and are removed after 30 days.</span></p>
+<h2>Printing</h2>
+<p>Both computer labs have printers which you are welcome to use. The 
+  printers use the campus wide pay-for-print system, GoPrint. You will
+  need a valid NetID to sign in to the GoPrint system. Printing is  $.07 per side of a 
+  page and is debited from your WisCard account. For more information, see <a href="https://ssc.wisc.edu/sscc/pubs/goprint.htm">Paying for Printing in the SSCC Labs</a>.</p>
+<h2>Learning More</h2>
+<p>While your instructor will be your primary source of information, you may find the <a href="https://ssc.wisc.edu/sscc/pubs/home.htm">SSCC Knowledge Base</a> useful. Article topics range from basics like <a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">logging into Winstat</a> to general introductions like <a href="https://ssc.wisc.edu/sscc/pubs/sfs/">Stata for Students</a> or Data Wrangling in <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Stata</a>, <a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/preface.html">R</a>, or <a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/preface.html">Python</a>, to specific topics  like <a href="https://ssc.wisc.edu/sscc/pubs/stata_bar_graphs.htm">making bar graphs</a> and <a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html">mixed models</a>.</p>
+<p>We also offer  training classes each semester which are free to those with SSCC lab accounts, including both introductions to statistical software and workshops on statistical topics. These classes go into much more depth than the the brief introduction to the software given in most statistical courses and could make applying what you learn in class much easier. Visit our <a href="https://www.ssc.wisc.edu/sscc_jsp/training/index.jsp">training page</a> to see the schedule and register for classes.</p>
+<p>The SSCC has a small library of statistical software documentation in 4218 for use in that lab. A few more books can be found in the 4226 staff offices.</p>
+<h2>Getting Help</h2>
+<p>If you are having trouble logging in or using your account, the  SSCC Help Desk can assist you. The Help Desk is available 9AM-12PM and 1PM-4PM. You can contact the Help Desk by emailing <a href="mailto:helpdesk@ssc.wisc.edu">helpdesk@ssc.wisc.edu</a>, calling 262-9917 (2-9917 on campus) or stopping by 4226 Sewell Social Sciences Building.</p>
+<p>Undergraduates with lab accounts can get help from the SSCC's statistical consultants for class work related to their class that uses SSCC facilities. Graduate students with lab accounts can get help with both class work and research. Visit our <a href="https://www.ssc.wisc.edu/sscc/statconsult.htm">statistical consulting page</a> for information about how to get in touch with them.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Articles on Using Windows</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>This page lists articles on using Windows 
+                                operating system and SSCC resources.</p>
+<h2>Basics</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/1-15.htm">How to Change Your SSCC Passwords</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/computing_resources.htm">Computing Resources at the
+                              				SSCC<br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/disk.htm">Network Disk Space at the SSCC</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/5-24.htm">Setting Up Network Printers	
+                                in Windows<br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/working_from_home.htm">Working From Home and Other Remote Locations</a><a href="https://ssc.wisc.edu/sscc/pubs/5-24.htm"> <br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">Mapping a Drive to a Network Share in Windows</a><br/>
+</p>
+<h2>Connecting</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat </a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/1-13.htm">Connecting to SSCC Computers 
+                                Using a WinTerm</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">Connecting to the SSCC Network 
+                                via VPN</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/remote_desktop.htm">Connecting to Your Office Computer Using Remote Desktop (Windows)</a></p>
+<h2> Interacting with Linux</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a></p>
+<h2> Tools</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/softwarecenter.htm">Installing New Software using Software Center</a><a href="https://ssc.wisc.edu/sscc/pubs/office2013.htm"><br/>
+                              Upgrading to Office 2013 using SSCC's Software Center</a><a href="https://ssc.wisc.edu/sscc/pubs/5-35.htm"><br/>
+                              Transferring Files Using SecureFX</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/5-13.htm">Writing a CD Using Ahead Nero</a> </p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using Winstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Winstat is the SSCC's Windows Remote Desktop Server cluster. Winstat allows many people to share a pool of powerful servers, but each user gets a session that looks and acts just like Windows on any other computer. While using Winstat you'll have access to SSCC software, network drives and printers. You can connect to Winstat from anywhere and use it to transfer files between your computer and the SSCC network.</p>
+<h2><a id="InstallingtheCitrixReceiver" name="InstallingtheCitrixReceiver"></a>Installing Citrix Workspace</h2>
+<p>In order to use Winstat you'll need to download and install Citrix Workspace on each computer you use. </p>
+<ul>
+<li><a href="https://ssc.wisc.edu/sscc/receiver/SSCC_Citrix_Workspace.msi">Citrix Workspace for Windows</a> (Windows 7 and above)</li>
+<!--	<ul><li><a href="/sscc/receiver/receiverconfig.cr">Winstat activation</a></li></ul> -->
+<li><a href="https://ssc.wisc.edu/sscc/receiver/CitrixWorkspaceApp.dmg">Citrix Workspace for Mac</a> (MacOS 10.12 and above)</li>
+</ul>
+<p>Versions of Citrix Workspace are also available for Linux and mobile platforms; contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> for assistance if you need them.</p>
+<h2><a id="StartingWinstat" name="StartingWinstat"></a>Starting Your Winstat Session</h2>
+<p>After activating Citrix Workspace, you can start the program for the first time, and log in at the prompt using your SSCC user name and password and click the <b>Winstat</b> icon.</p>
+<p><img alt="" height="479" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat/Citrix.PNG" width="650"/></p>
+<p>While your Winstat sessions launches you may receive a <span class="MenuOutput">Security Warning</span> saying that <span class="MenuOutput">An online application is attempting to access information on a device attached to your computer</span>. This is Citrix Workspace attempting to make the files on your computer's hard drive available from within your Winstat session. This is a very useful capability (see <a href="#TransferringFilesUsingWinstat">Transferring Files using Winstat</a> below) so we suggest you choose <span class="MenuOutput">Permit use</span> and check the box <span class="MenuOutput">Do not ask me again for this site</span>.</p>
+<h2>Restarting Your Winstat Session</h2>
+<p>If you are having trouble connecting to Winstat, the first thing you should try is to restart your session. To do so, in Citrix Workspace click <strong>Details</strong> and select <strong>Restart</strong>. Confirm the restart if prompted. </p>
+<p><img alt="" height="454" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat/Winstat restart.png" width="650"/><br/>
+</p>
+<h2>Winstat on Mobile Devices </h2>
+<p>You can also connect to Winstat via mobile devices and tablets, including iPads, Chromebooks, and Android tablets.  A Citrix Workspace app is available for download from your device's App Store.  Once you have installed the app, you will be prompted for a server name or address.  Enter <strong>https://storefront.ssc.wisc.edu/Citrix/SSCCWeb/</strong> and your SSCC credentials when prompted and the app will be configured to connect to Winstat. </p>
+<h2><a id="ActivatingCitrixWorkspace" name="ActivatingCitrixWorkspace"></a>Activating Citrix Workspace</h2>
+<p>If you install Citrix Workspace from a location other than the SSCC website, you will need to activate the software before you can use it. You can do this using the <b>receiverconfig.cr</b> file available here (right click, "save link as"): </p>
+<ul>
+<li><a href="https://ssc.wisc.edu/sscc/receiver/receiverconfig.cr">Citrix Activation File</a></li>
+</ul>
+<p>Once downloaded, double click the file to run the script - it will automatically register your installation of Workspace.                </p>
+<h2><a id="GuidelinesforUsingWinstat" name="GuidelinesforUsingWinstat"></a>Guidelines
+                  for Using Winstat</h2>
+<p>There are a few rules you must follow when using Winstat:</p>
+<ol>
+<li>Do not attempt to install or run your own software on the server. Unlike a regular Windows PC, Winstat consists of shared server that many users can access simultaneously, and the software installed there is selected specifically for such use. This includes the "codebook"programs that come with some data sets - you'll need to find another place to install and run them.</li>
+<li>Do not  save files on the server's hard drive, <span class="MenuOutput">Local Disk (C:)</span>. Save files in <span class="MenuOutput">Documents</span>, on the <span class="MenuOutput">Desktop</span>, or on network drives. (On Winstat the <span class="MenuOutput">Desktop</span> and <span class="MenuOutput">Documents</span> folders are  saved on your <span class="MenuOutput">U:</span> drive.) Files saved elsewhere will be permanantly deleted at the end of your session and <b>cannot be recovered</b>.</li>
+<li>When you're done using Winstat, log off.
+                    Do not just close Citrix Workspace, or your session will continue to run in a disconnected state. If you then try to log in again, Winstat may fail to reconnect to the existing session and you won't be able to create a new one until the disconnected session is shut down automatically three hours later.</li>
+</ol>
+<h2><a id="ControllingtheWinstatWindow" name="ControllingtheWinstatWindow"></a>Controlling the Winstat
+          		Window</h2>
+<p>Once  you are logged in to your Winstat session, you can control your Winstat window  using the Receiver Control Bar at the top of your screen.</p>
+<p><img alt="" height="100" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat/winstat1.png" width="507"/></p>
+<p><span class="MenuOutput">Home</span> – Returns you to the Desktop of your  computer </p>
+<p><span class="MenuOutput">Ctrl+Alt+Del</span> –Allows you to open the Task Manager on the Winstat server so that you can end programs that are giving you trouble </p>
+<p><span class="MenuOutput">Preferences</span> – Sets options for the Desktop Viewer, including display options and controlling access to local files.</p>
+<p><span class="MenuOutput">Full-screen/Window</span> – Lets Winstat use your entire screen, or returns your Winstat session to a smaller window which also gives you access to your  computer's desktop and programs.  </p>
+<p><span class="MenuOutput">Disconnect</span> – Closes the Desktop Viewer but keeps your Winstat session running, so that  when you connect again you will return to what you were doing when you  left.  You should save all work before  disconnecting if possible in case you encounter any problems returning to the  session.</p>
+<p>If you have more than one monitor and want to use them in Winstat, put Winstat in Windowed mode, then drag the edges of the Winstat window such that the Window covers at least 50% of each of the monitors you want to use. Then switch to Full-screen and Winstat will use the full screen of all the monitors you put it on.</p>
+<h2><a id="TransferringFilesUsingWinstat" name="TransferringFilesUsingWinstat"></a>Transferring
+                  Files Using Winstat</h2>
+<p>When you log in to Winstat using Citrix Workspace, it will
+                  automatically create network drives that connect to the local
+                  drives of your computer. They will appear at the bottom of the list of drives, with names like <span class="MenuOutput">Local Disk (C: on ...)</span> and <span class="MenuOutput">CD/DVD Drive (D: on ...)</span>. The last part of the name will be the name of your local computer. Be sure not to confuse them with the local hard drive of the server itself, <span class="MenuOutput">Local Disk (C:)</span>, which you should never use. On a Mac, <span class="MenuOutput">Local Disk (C: on ...)</span> is actually your home directory on your Mac's hard drive.</p>
+<p>These drives give you a very easy way to transfer files between your computer
+                  and the SSCC network. Simply open <span class="MenuOutput">Local Disk (C: on ...)</span>, locate
+                  the file you want to transfer, and drag it to a network drive
+                  like <span class="MenuOutput">U:</span> (your Windows home directory).
+                  The process also works in reverse. Keep in mind that the file
+                  must  be sent over your Internet connection, so if you have
+                  a large file or a slow connection it may take a while. We do not suggest that you try to analyze data sets stored on your local hard drive: better to move them to the SSCC network and then analyze them there.</p>
+<p>One warning: Winstat sees the hard drive of your computer as a network drive, and when you delete a file from a network drive it is permanently deleted rather than being sent to the Recycle Bin. Please be careful about deleting files.</p>
+<h2>Printing from Winstat</h2>
+<p>SSCC networked lab printers will automatically be configured and available in Winstat. Citrix Workspace also allows Winstat to print to your local default printer. Make sure the printer you want to print to is the default before connecting to Winstat.</p>
+<h2>Connecting to  Winstat via the Web</h2>
+<p>It is also possible to open a Winstat session directly in a web browser, though you will not be able to access files and printers using this method. We  strongly recommend using the Citrix Workspace Desktop Viewer whenever possible for its increased functionality and stability, but the web interface may be useful if you cannot install software on the computer you are using.  To access Winstat via the web go to <a href="https://winstat.ssc.wisc.edu/">winstat.ssc.wisc.edu</a>, log in, and click on the Winstat  icon. A Winstat session will open in a  new browser tab.</p>
+<p>The  web client does not have the flexibility of the Desktop Viewer, but there  are buttons on the right side of the session window which allow you to copy  and paste text between your  computer and your Winstat session (the Desktop Viewer allows this automatically) and end programs running in your Winstat session.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/winstat/Citrix.PNG, https://ssc.wisc.edu/sscc/pubs/screenshots/winstat/Winstat restart.png, https://ssc.wisc.edu/sscc/pubs/screenshots/winstat/winstat1.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Connecting to Winstat using Chrome</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Chrome will not always allow the Citrix Receiver to start automatically when you connect to Winstat unless you explicitly allow it to do so. Fortunately it's a very easy change to make.</p>
+<p>Start Chrome and type <span class="InputCode">chrome://plugins</span> in the address bar.</p>
+<p><img alt="chrome://plugins in the address bar" height="37" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_chrome/winstat_chrome1.png" width="637"/></p>
+<p>Find <span class="MenuOutput">Citrix ICA Client</span> in the list, and check the box for <span class="MenuOutput">Always Allowed</span>.</p>
+<p><img alt="Entry for Citri ICA Client with Always Allowed checked" height="77" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_chrome/winstat_chrome2.png" width="474"/></p>
+<p>Log into Winstat as usual and it will now work.</p>
+<p>Note that Chrome cannot dected the presence of the Citrix Receiver on your computer, and will suggest you install it every time you log in. You do not need to do so;  click <span class="MenuOutput">Skip to Log on</span> to proceed.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_chrome/winstat_chrome1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_chrome/winstat_chrome2.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Winstat Solutions: Connecting Using Firefox</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p> Firefox will not allow the Citrix Receiver to start automatically when you connect to Winstat unless you explicitly allow it to do so. Fortunately it's a very easy change to make.</p>
+<p>Start Firefox and type <span class="InputCode">about:addons</span> in the address bar.</p>
+<p><img alt="Type about: addons in the address bar" height="478" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_firefox/winstat_firefox_1.png" width="672"/></p>
+<p>On the left side of the page, choose the <span class="MenuOutput">Plugins</span> section.</p>
+<p><img alt="Choose Plugins" height="478" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_firefox/winstat_firefox_2.png" width="672"/></p>
+<p>Find <span class="MenuOutput">Citrix ICA Client</span> in the list, and change it from <span class="MenuOutput">Ask to Activate</span> to <span class="MenuOutput">Always Activate</span>.</p>
+<p><img alt="Find Citrix ICA client, set it to Always Activate" height="478" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_firefox/winstat_firefox_3.png" width="672"/></p>
+<p>Log into Winstat as usual and it will now work.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_firefox/winstat_firefox_1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_firefox/winstat_firefox_2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_firefox/winstat_firefox_3.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>SSCC - Social Science Computing Cooperative</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>You can change the size of the fonts used by Windows on Winstat using the <span class="MenuOutput">ChangeFontSize</span> program. Note that <span class="MenuOutput">ChangeFontSize</span> does not control font sizes in documents, or in the windows used by many programs. Often these programs have their own tools for setting font sizes (most browsers will increase the font size if you press Control-+, for example). However, many programs use the Windows fonts and are affected by <span class="MenuOutput">ChangeFontSize</span>.</p>
+<p>To start <span class="MenuOutput">ChangeFontSize</span>, click <span class="MenuOutput">Start</span>, <span class="MenuOutput">All Programs</span>, and then <span class="MenuOutput">ChangeFontSize</span> (it is not inside a folder). You'll get the following window:</p>
+<table align="center" border="0" cellpadding="3" class="noBorder">
+<tr>
+<td><img alt="ChangeFontSize program window" height="326" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_fonts/winstat_fonts1.png" width="416"/></td>
+</tr>
+</table>
+<p>Move the slider side-to-side to preview sizes; clicking one of the size buttons will close the program and apply the new setting. It will be applied in programs immediately, but you'll have to log out and log back on for it to be applied in some places.</p>
+<table align="center" border="0" cellpadding="3" class="noBorder">
+<tr>
+<th>TextPad with Normal Fonts</th>
+</tr>
+<tr>
+<td align="center"><img alt="TextPad with normal fonts" height="241" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_fonts/winstat_fonts2.png" width="424"/></td>
+</tr>
+<tr>
+<th>TextPad with Large Fonts</th>
+</tr>
+<tr>
+<td align="center"><img alt="TextPad with large fonts" height="275" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_fonts/winstat_fonts3.png" width="561"/></td>
+</tr>
+</table>
+<p>If you change your mind, start ChangeFontSize again and click the Normal button.                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_fonts/winstat_fonts1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_fonts/winstat_fonts2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/winstat_fonts/winstat_fonts3.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using WiscList</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>WiscList is a free email distribution service for the UW Madison community. It is self serviced and administrated via the <a href="https://admin.lists.wisc.edu" title="WiscList Admin page">WiscList Admin </a>web interface. You will need your NetID credentials to access the admin site.</p>
+<p>
+WiscList has a 5mb message size limit. We suggest <a href="https://kb.wisc.edu/helpdesk/page.php?id=42214  " title="using Box or Google Drive">using Box or Google Drive</a> to share larger files with a list. </p>
+<h2>Belonging to a WiscList </h2>
+<ul>
+<li><a href="https://kb.wisc.edu/page.php?id=5683" title="subscribe to WiscList">Subscribing to a WiscList</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=16188" title="Managing Your WiscList Subscriptions">Managing Your WiscList Subscriptions</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=7584" title="Problems Sending to a WiscList">Problems Sending to a WiscList</a> <br/>
+</li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=5684" title="Unsubscribing from a WiscList">Unsubscribing from a WiscList</a></li>
+</ul>
+<h2>Administering WiscLists</h2>
+<ul>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=16150">Creating a New WiscList</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=5686" title="Adding Members to a WiscList">Adding Members to a WiscList</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=22034" title="Sending to a WiscList">Sending to a WiscList</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/ https:/kb.wisc.edu/helpdesk/page.php?id=31874" title="Administering a WiscList">Administering a WiscList</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=5666" title="Sending the Same Message to Multiple WiscLists (Crossposting)">Sending the Same Message to Multiple WiscLists (Crossposting)</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=31874" title="WiscList Security">WiscList Security</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=17089">Searching Your WiscLists</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=19185">Bulk Removing Members from a WiscList</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=22004" title="Deleting a WiscList">Deleting a WiscList</a></li>
+<li><a href="https://kb.wisc.edu/helpdesk/page.php?id=5591">Known Issues with WiscList</a></li>
+</ul>
+<p>For more information, please see the <a href="https://kb.wisc.edu/wisclist/ " title="WiscList Knowledgebase">WiscList KnowledgeBase</a></p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Getting Started with WordPress</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>WordPress is open source, free blogging and website creation  software that allows users to easily create professional looking and highly  customizable websites without needing any web coding or HTML knowledge. Site creation and management is done entirely  via a web interface so no special software is needed to create a site, and it  can be edited from any computer with an internet connection. For more information on the features of  WordPress, please see <a href="http://codex.wordpress.org/WordPress_Features">http://codex.wordpress.org/WordPress_Features</a>.</p>
+<p>If you are an SSCC member who is interested in using WordPress, SSCC staff would be happy to meet with you one-on-one and give you an introduction to the program. Just contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>.</p>
+<h2>Getting a WordPress site</h2>
+<p>SSCC Members can request a WordPress site here:   <a href="https://www.ssc.wisc.edu/sscc_jsp/account/wordpress/">https://www.ssc.wisc.edu/sscc_jsp/account/wordpress/</a>. Your site  URL will be <span class="InputCode">http://ssc.wisc.edu/~</span><span class="Parameter">username</span> (you can also customize this location).</p>
+<p>WordPress uses a separate account from your regular SSCC account. Once your site has been set up, you will receive an email with  login information. You will be prompted  to reset your password on first login.</p>
+<p>The files for your site will be stored in <span class="InputCode">Z:\PUBLIC_web\ </span>(unless you chose a custom location).</p>
+<h2>Setting up your  WordPress site</h2>
+<p>You can access the WP site administration Dashboard at <span class="InputCode">http://ssc.wisc.edu/~</span><span class="Parameter">username</span><span class="InputCode">/wp-admin</span>. The Dashboard is where you create table and  manage your site. For more information  on the administration options for your site, please see <a href="http://codex.wordpress.org/Administration_Panels">http://codex.wordpress.org/Administration_Panels</a>.</p>
+<p><img alt="WordPress Admin Dashboard" height="357" src="https://ssc.wisc.edu/sscc/pubs/screenshots/wordpress/wp1.jpg" width="648"/></p>
+<p>By default your site title is set to your full name, with  “My SSCC Homepage” as the tagline. This  can be changed by going to <span class="MenuOutput">Settings</span> -&gt; <span class="MenuOutput">General</span>.</p>
+<h2>Updating WordPress</h2>
+<p>It is your responsibility to keep your WordPress site up to date. Outdated   versions of the WordPress software may have security problems that put your site content and the SSCC web server at risk. When a new version of WordPress is available,  a link will appear at the top of your Dashboard as in the image above. You can also check for updates by clicking <span class="MenuOutput">Dashboard</span> -&gt;   <span class="MenuOutput">Updates</span> on the navigation panel to the left.</p>
+<p>A word of caution about updating: �If you use plugins or custom themes, check that they will work   with the new release before updating or you may lose their   functionality. You can check compatibility by searching for your   individual plugins at�<a href="http://wordpress.org/extend/plugins/">http://wordpress.org/extend/plugins/</a>.                </p>
+<h2>Choosing a Theme</h2>
+<p>The look and feel of your WordPress site is determined by the Theme you   choose. As this will effect how your site content is displayed, it is   generally recommended to choose a theme first before you add content. Your SSCC site will have a UW-Madison theme set as default. If you do   not want your site to be UW-branded, you are welcome to change your   theme to any of the included default WordPress themes or to install your   own theme from the thousands of options in WordPress’s theme library.   You can change and install themes by going to <span class="MenuOutput">Appearance -&gt; Themes</span>.  </p>
+<p>For more information on choosing and working with Themes, please see <a href="http://codex.wordpress.org/Using_Themes">http://codex.wordpress.org/Using_Themes</a>.</p>
+<h2>Adding your Content</h2>
+<p>Your SSCC WP site will have a Home page created by default;  to create additional pages go to <span class="MenuOutput">Pages</span> -&gt; <span class="MenuOutput">Add New</span>.</p>
+<p>Content (including text, media, pictures, PDFs, Word  Documents, etc.) can be added to your Pages via the “What You See Is What You  Get” editor or via HTML coding.</p>
+<img alt="The WYSISWYG Editor" height="277" src="https://ssc.wisc.edu/sscc/pubs/screenshots/wordpress/wp2.jpg" width="787"/>
+<h2>Using Plugins</h2>
+<p>WordPress  plugins can be installed  to extend the functionality of your site to meet your needs.  Plugins can include spam filters, photo  galleries, weather reports, Twitter/RSS feeds, site counters, calendars,  etc.  For more information on using  plugins and to access the official WordPress plugin repository, please see <a href="http://codex.wordpress.org/Plugins">http://codex.wordpress.org/Plugins</a>.</p>
+<p>WordPress.org has excellent documentation on WP and all of  its functions, from basic to advanced, which can be found here: <a href="http://codex.wordpress.org/">http://codex.wordpress.org/</a> </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/wordpress/wp1.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/wordpress/wp2.jpg</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Working From Home or Elsewhere Off-Campus</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Most of the SSCC's resources can be used from any location, so working from home or another remote location is very practical. This article will introduce you to the available tools and point you to Knowledge Base articles that will show you how to use them. Note that for our purposes you are at a "remote location" if your computer is not plugged into the Sewell Social Sciences Building wired network. Thus this article would apply even if you're using the wireless network in the building. Topics to be covered are:</p>
+<ul>
+<li><a href="#UsingWinstat">Using Winstat</a></li>
+<li><a href="#UsingLinstat">Using Linstat</a></li>
+<li><a href="#UsingYourOfficeComputer">Using Your Office Computer</a></li>
+<li><a href="#UsingFilesontheSSCCNetwork">Using Files on the SSCC Network</a></li>
+</ul>
+<p> </p>
+<h2><a id="UsingWinstat" name="UsingWinstat"></a>Using Winstat</h2>
+<p>Logging in to Winstat gives you access to almost all the statistical software available at the SSCC and all the files on the SSCC network. You can also use it to transfer files between the SSCC network and your own computer. This makes it the obvious choice for working from home.</p>
+<ul>
+<li><a href="https://www.ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat</a></li>
+</ul>
+<p><em>Winstat is a highly convenient tool for working from home, but in the event of a pandemic, extreme weather, or other situation that prompts a large fraction of SSCC members to work from home it's possible Winstat would be overwhelmed. We suggest having a backup plan in case you can't use Winstat.</em></p>
+<ul>
+<li><em>If your <a href="#UsingYourOfficeComputer">office computer</a> has the software you need, you can log into it remotely. Note that this needs to be set up ahead of time—we'd suggest doing it now!</em></li>
+<li><em>If you need to work with <a href="#UsingFilesontheSSCCNetwork">files on the network</a> but have the software you need on your home computer (in some cases just Word), you can get access to your files from your home computer.</em></li>
+<li><em>If you need to use statistical software and are comfortable using Linux, you can connect directly to <a href="#UsingLinstat">Linstat</a> and run programs there</em></li>
+</ul>
+<h2><a id="UsingLinstat" name="UsingLinstat"></a>Using Linstat</h2>
+<p>You can log into Linstat from home either by logging in to Winstat and running X-Win32 there, or by connecting directly from your home computer. <a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a> has instructions for Windows, Mac and Linux.</p>
+<ul>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a></li>
+</ul>
+<h2><a id="UsingYourOfficeComputer" name="UsingYourOfficeComputer"></a>Using Your Office Computer</h2>
+<p>It's possible to log in to your office computer from home and use it via "Remote Desktop" or "Screen Sharing." The result is similar to logging in to Winstat, though Winstat will generally give you better performance and stability. However, if you have software on your office computer that is not available on Winstat, connecting to it will allow you to use that software from home. In order to use Remote Desktop, you will need to request that SSCC Staff configure your desktop for remote access.</p>
+<p>If your computer is not in the Sewell Social Sciences Building it may still be possible to connect to it remotely, but check with your local IT staff.</p>
+<ul>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">Connecting to the SSCC Network via VPN</a> (Windows and Mac)</li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/remote_desktop.htm">Connecting to Your Office Computer Using Remote Desktop (Windows)</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/screen_sharing.htm">Connecting to Your Office Computer Using Screen Sharing (Mac)</a></li>
+</ul>
+<h2><a id="UsingFilesontheSSCCNetwork" name="UsingFilesontheSSCCNetwork"></a>Using Files on the SSCC Network</h2>
+<p>You can use files on the SSCC network from any location by first connecting to the SSCC network using Virtual Private Networking (VPN) and then connecting to the usual network drives.             </p>
+<p>Secure File Transfer Protocol (SFTP) is an alternative method for accessing files, with SecureFX being our suggested SFTP client for Windows.</p>
+<ul>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">Connecting to the SSCC Network via VPN</a> (Windows and Mac)</li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">Mapping a Drive to a Network Share in Windows</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm">Using SSCC Network Disk Space from Macs</a></li>
+<li><a href="https://www.ssc.wisc.edu/sscc/pubs/5-35.htm">Transferring Files Using SecureFX</a></li>
+<li><a href="https://www.ssc.wisc.edu/sscc/pubs/1-11.htm">Using SFTP</a></li>
+</ul>
+<h2><a id="LearningMore" name="LearningMore"></a>Learning More</h2>
+<p>For more information about working from home see the <a href="https://ssc.wisc.edu/sscc/pubs/remote.htm">Remote Computing</a> section of our Knowledge Base, or contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>. Campus resources include:</p>
+<ul>
+<li><a href="http://kb.wisc.edu/helpdesk/page.php?id=10038">Campus Tools to Work Remotely</a></li>
+<li> <a href="http://kb.wisc.edu/library/page.php?id=4773">Library - Remote Access to Library Resources</a></li>
+<li><a href="http://kb.wisc.edu/education/page.php?id=17196">Preparing for Instruction at a Distance</a></li>
+</ul>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Opening WordPerfect Documents using Word</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Microsoft Word for Windows can be used to open  Wordperfect documents even if you don't have WordPerfect installed on your computer. Unfortunately any changes you make can only be saved in Word format, so if you're collaborating with someone who uses WordPerfect you'll probably want to use the actual WordPerfect program instead. (WordPerfect is available on Winstat.) However, if you just need to read WordPerfect documents then this solution allows you to do so on your own computer.</p>
+<p>Mac Users: The Mac version of Microsoft Word cannot open WordPerfect documents. You can use WordPerfect on Winstat to open WordPerfect documents and then save them in Word format for later use on your Mac.</p>
+<p>To make all WordPefect documents open in Microsoft Word on your computer:</p>
+<ol>
+<li>Locate any WordPerfect document. If you do not have Wordperfect installed on your computer, the file icon will probably look like a white rectangle and you will be able to see the <span class="InputCode">.wpd</span> extension at the end of the file name. Right click on the document and choose <span class="MenuOutput">Properties</span>.</li>
+<li>In the <span class="MenuOutput">Properties</span> window, make sure you're on the <span class="MenuOutput">General</span> tab and click the <span class="MenuOutput">Change</span> button next to <span class="MenuOutput">Opens with</span>. A new window will open with a list of programs on your computer.</li>
+<li>Select <span class="MenuOutput">Microsoft Word</span>. Make sure <span class="MenuOutput">Always use the selected program to open this kind of file</span> is checked. Optionally type a short description, like <span class="InputCode">WordPerfect Document</span>. When you're done, click <span class="MenuOutput">OK</span>.</li>
+</ol>
+<table border="0" cellpadding="3" class="noBorder" width="100%">
+<tr>
+<td align="center"><img alt="Open with Microsoft Word" height="478" src="https://ssc.wisc.edu/sscc/pubs/screenshots/wp_word_1.png" width="579"/></td>
+</tr>
+</table>
+<p> </p>
+<p>You'll know it worked when the icon for the document changes to the Word icon. From now on, any WordPerfect documents you double-click on will open in Word automatically.</p>
+<p>If Microsoft Word does not appear in the list, click <span class="MenuOutput">Browse</span> to be taken to the default location where programs are installed on your computer, usually <span class="InputCode">C:\Program Files</span>. Open
+<span class="InputCode">C:\Program Files\Microsoft Office\Office</span><span class="Parameter">XX</span> (where <span class="Parameter">XX</span> is the version number of Office you have installed) and choose <span class="InputCode">WINWORD.EXE</span>. If it's not there, look under <span class="InputCode">C:\Program Files (x86)</span>. If you still can't find it (and you know Word is installed on your computer) contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> for assistance.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/wp_word_1.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>SSCC - Social Science Computing Cooperative</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>The Refworks Write-N-Cite plugin for Microsoft Word is available on Winstat, but you'll need to install it before using it. To do so, first completely close Word. Then click <span class="MenuOutput">Start</span>, <span class="MenuOutput">Programs</span>, <span class="MenuOutput">Refworks</span>, <span class="MenuOutput">Install Write-N-Cite Plugin for Word</span>. Click <span class="MenuOutput">OK</span> in the two dialog boxes that come up, and the plugin will be ready for use.                </p>
+<p>You can verify that it is installed by starting Word and then clicking the <span class="MenuOutput">Add-Ins</span> tab. You should see a box for <span class="MenuOutput">Refworks Write-N-Cite Menu Commands</span> and <span class="MenuOutput">Write-N-Cite Custom Toolbars</span>.</p>
+<p><img alt="Add-Ins Tab in Word" height="259" src="https://ssc.wisc.edu/sscc/pubs/screenshots/writencite/writencite_4.png" width="564"/></p>
+<p>Keep in mind that SSCC staff do not have any expertise with the Write-N-Cite Plugin or Refworks in general and can't answer questions about it.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/writencite/writencite_4.png</img_base_url>
+</kb_document>
+</kb_documents>

@@ -1,0 +1,1772 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>An Introduction to Condor</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>The SSCC's HTCondor flock, Condor, makes a tremendous amount of computing
+            	 power available to SSCC users. Condor can be used to run Stata, Matlab, R, C/C++, and Fortran jobs.</p>
+<p><a href="http://research.cs.wisc.edu/htcondor/manual/">Complete documentation 
+              on HTCondor</a> is available from the UW Computer Science Department. 
+              This article will give you specific information about our cluster, 
+              easy ways we've created to use Condor (including the ability to <a href="https://www.ssc.wisc.edu/sscc_jsp/condor/">submit Stata jobs to Condor via the web</a>), and an introduction to some 
+              of the basic Condor functions.</p>
+<h2><a id="TheHardware" name="TheHardware"></a>The Hardware</h2>
+<p>SSCC's HTCondor flock  is currently made up of 
+              the five Linstat servers plus four additional servers dedicated to running jobs submitted to Condor. For details about the flock's specifications, please see <a href="computing_resources.htm">Computing Resources at the SSCC</a>. The Condor machines have 
+              access to Linux home and project directories just like Linstat. Most Linux programs do not have to be changed at all to run on 
+              Condor, though programs written to use Windows Stata, SAS, Matlab, or R will probably require modifications.</p>
+<h2><a id="TheCondorSoftware" name="TheCondorSoftware"></a>The Condor Software</h2>
+<p><a href="http://www.cs.wisc.edu/condor">HTCondor</a> is an open source 
+              project at the University of Wisconsin's Computer Science Department. HTCondor groups computers into "flocks" and when you submit a job to HTCondor it finds an available computer in the flock to run your job. Thus you don't need to try to identify which computers are busy and which are not.</p>
+<p>In a standard HTCondor flock, high priority jobs can preempt low priority jobs, with the progress of the low priority jobs being "checkpointed" (i.e. their progress is saved). Users who are running lots of jobs have their priority temporarily lowered, ensuring others have a chance to run jobs as well.</p>
+<p>Unfortunately, checkpointing does not work with the statistical software used at the SSCC, so we've turned off the entire preemption mechanism. Thus the SSCC's HTCondor flock is not a scheduling system that decides when jobs should run and makes sure everyone can run jobs, but  a matchmaking system that matches jobs with available computers. Because preemption is turned off, we must ask users to comply with our <a href="../policies/server_usage.htm">Server Usage policy</a> for Condor:</p>
+<p>You may submit up to 15 jobs to the SSCC HTCondor flock at any time. You may be able to submit additional jobs depending on  how long your jobs will take to run and how many slots are unclaimed at the time you submit them. Use <span class="InputCode">condor_status</span> to find out how many slots are unclaimed. </p>
+<table border="1" cellpadding="5">
+<tr>
+<th>Time your jobs will take to run</th>
+<th>Total Number of  jobs you may submit<br/>
+                  is the maximum of 15 or... </th>
+</tr>
+<tr>
+<td>&lt; 3 hours</td>
+<td>The number of unclaimed slots</td>
+</tr>
+<tr>
+<td>&lt; 1 day</td>
+<td>3/4 of the number  of unclaimed slots</td>
+</tr>
+<tr>
+<td>&gt; 1 day</td>
+<td>1/2 of the number of unclaimed slots</td>
+</tr>
+</table>
+<h2>Jobs that Use Multiple Processors</h2>
+<p>In order to assign jobs to servers efficiently, Condor distinguishes between jobs that use just one processor and thus can share a server with other similar jobs, and jobs that use multiple processors and thus run fastest if they can use all the processors a server has. Jobs submitted using a 'condor' command (as described below) are treated as single-processor jobs, and jobs submitted using a 'condormp' command are treated as multi-processor jobs. This only affects how jobs are allocated: a job submitted using a 'condor' command can still use multiple processors, it just might have to share them with other jobs. (If you had a job that uses multiple processors briefly but spends most of its time using one processor, submitting it using 'condor' might be ideal.)</p>
+<p>SSCC's Linux servers have Stata/MP installed, so Stata will always use multiple processors. For other programs, you usually have to explicitly tell them to use multiple processors, but it's possible something like an R package might do that for you. If you're not sure if your job uses multiple processors or not, start it on Linstat in background mode and type <span class="InputCode">top</span> to monitor it. If your job has multiple entries in the <span class="InputCode">top</span> output or a single entry that uses more than 100% CPU time, it uses multiple processors.</p>
+<h2><a id="EasyWaystoSubmitJobstoCondor" name="EasyWaystoSubmitJobstoCondor"></a>Easy Ways to Submit 
+              Jobs to Condor</h2>
+<p>You can submit Condor jobs from any Linstat server.</p>
+<h3><a id="Stata" name="Stata"></a>Stata</h3>
+<p>To submit a Stata job to Condor, type:</p>
+<p class="InputCode">condor_stata  <span class="Parameter">dofile</span></p>
+<p>where <span class="InputCode"><span class="Parameter">dofile</span></span> should be replaced by the name of Stata do file you want to run. (You can also use the same syntax as running a batch job on the server you're using: <span class="InputCode">condor_stata -b do dofile</span>. The result will be the same.) Stata jobs submitted to Condor will use Stata/MP, the multiprocessor version of Stata.</p>
+<p>Note that you can also <a href="https://www.ssc.wisc.edu/sscc_jsp/condor/">submit Stata jobs to Condor via the web</a>, completely avoiding the need to log into Linstat.</p>
+<h3><a id="Matlab" name="Matlab"></a>Matlab</h3>
+<p>To submit a Matlab job to Condor, type:</p>
+<p class="InputCode">condor_matlab <span class="Parameter">program</span>.m <span class="Parameter">program</span>.log &amp;</p>
+<p>where <span class="InputCode"><span class="Parameter">program</span></span> should be replaced by the name of the  Matlab
+            	program you want to run. (The command submitted to the server
+            	is actually <span class="InputCode">/software/matlab/bin/matlab
+            	-nojvm -nodisplay &lt; <span class="Parameter">program</span>.m &gt; <span class="Parameter">program</span>.log</span>)            </p>
+<h3><a id="R" name="R"></a>R</h3>
+<p>To submit an R job to Condor, type:</p>
+<p class="InputCode">condor_R program.R program.log &amp;</p>
+<p>where <span class="InputCode"><span class="Parameter">program</span></span> should be replaced by the name of the  R
+            	program you want to run. (The command submitted to the server
+            	is actually <span class="InputCode">R &lt; <span class="Parameter">program</span>.R &gt; <span class="Parameter">program</span>.log</span><span class="InputCode"> --no-save</span>)            </p>
+<p>If your job uses multiple processors, type:</p>
+<p class="InputCode">condormp_R program.R program.log &amp;</p>
+<h3><a id="OtherJobs" name="OtherJobs"></a>Other Jobs</h3>
+<p>Use <span class="InputCode"><strong>condor_do</strong></span> to 
+              run any other simple Linux job. The syntax is simply:</p>
+<p class="InputCode">condor_do "<span class="Parameter">command</span>"<span class="InputCode"> 
+              &amp; </span></p>
+<p>where <span class="Parameter"><span class="InputCode">command</span></span> 
+              is any command you could type at the Linux prompt, including arguments.
+           	    For example, if you wanted to run an R program called <span class="InputCode">program.R</span>  with different arguments than <span class="InputCode">condor_R</span> uses you could type:</p>
+<p class="InputCode">condor_do "R &lt; program.R &gt; program.log
+            	 --vanilla" &amp;</p>
+<p>If your job uses multiple processors, type:</p>
+<p class="InputCode">condormp_do "<span class="Parameter">command</span>" 
+              &amp; </p>
+<h2><a id="MonitoringtheStatusofCondorJobs" name="MonitoringtheStatusofCondorJobs"></a>Monitoring the Status 
+              of Condor Jobs</h2>
+<p>Condor will send you a message to your <a href="https://www.ssc.wisc.edu/sscc_jsp/email/pref.jsp">preferred email address</a> when your job is complete. There are also two commands that can tell you the status of the Condor 
+              flock or your job.</p>
+<p><span class="InputCode">condor_status</span> tells you the state 
+              of all the Condor machines, including whether they are available 
+              for new jobs.</p>
+<p><span class="InputCode">condor_q</span> tells you the status of 
+              all the jobs currently running or waiting to be run, including yours.</p>
+<h2><a id="ManagingCondorJobs" name="ManagingCondorJobs"></a>Managing Condor Jobs</h2>
+<p>If you change your mind, <span class="InputCode">condor_rm</span> 
+            can remove jobs from the Condor queue. You must be logged into the same Linstat server you used to submit the job in order to remove it.</p>
+<p class="InputCode">condor_rm <span class="Parameter">ID</span></p>
+<p>will remove the job with the specified ID. Use <span class="InputCode">condor_q</span> 
+              to find the ID of your job. </p>
+<p class="InputCode">condor_rm <span class="Parameter">username</span></p>
+<p>will remove all jobs belonging to you. For example, type:</p>
+<p class="InputCode">condor_rm 151</p>
+<p>to remove job 151, or</p>
+<p class="InputCode">condor_rm rdimond</p>
+<p>to remove all  jobs belonging to <span class="InputCode">rdimond</span>. You cannot remove other peoples' 
+              jobs, for obvious reasons. Note that jobs are marked for removal
+            	 immediately, but it may be a few minutes before they are actually
+            	 removed.          </p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using Emacs</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>Emacs is a very popular and extremely powerful text editor. Emacs is installed
+  on  SSCC  Linux servers, Windows Terminal Servers, and the lab PCs in Social
+  Science 3218 and 4218. Emacs
+  has too many specialized commands and features to cover completely here. This
+  article serves only as an introduction, helping you get started using Emacs.
+  A GNU Emacs Reference Card is attached to the end of this article which
+  lists many of the most frequently used Emacs commands along with a short description
+  of what each command does. If you find you need to learn more, Emacs has a
+  comprehensive online help facility where you can get more information. The
+  <a href="/sscc/helpdesk.htm">Help Desk</a> also has manuals you can check out on a short-term basis.</p>
+<p>There are actually two versions of Emacs available, and each can run in two
+	 different modes. Originally Emacs was text-only and XEmacs used Xwindows graphics.
+	 However, Emacs is now graphical as well. Both versions have the option 
+  to use a text-only mode, which is useful if you do not have the ability to
+	display  Xwindows graphics. The differences between the two are either cosmetic
+	or subtle  enough to be beyond the scope of this article. In this article
+	we'll  use Emacs to refer to both Emacs and XEmacs, unless the difference is
+	important.</p>
+<p>Emacs is not hard to learn. However, it does not follow the conventions for 
+  Windows programs. If you're more comfortable in a Windows environment, keep 
+  in mind you can use a Windows text editor, such as TextPad, and then save your 
+  files on the Linux file system where Linux programs can access them. This is 
+  a very popular way to run programs like Stata or SAS on Linux without spending 
+  the time to learn Linux or Linux tools like Emacs. <a href="linstat.htm">Using Linstat</a> covers what you need to know to work this way.</p>
+<h2>Emacs Commands</h2>
+<p>All Emacs commands involve key combinations. But the Emacs documentation has
+   its own way of describing them. For exanple, <span class="MenuOutput">C-<span class="Parameter">key</span></span>,
+    means hold down CTRL and press <span class="Parameter"><span class="MenuOutput">key</span></span> 
+  (<span class="MenuOutput">so C-x</span> means <span class="InputCode">Ctrl-x</span> 
+  in the way you're probably used to these combinations being described). In
+  addition,  the documentation refers to the Meta key (<span class="MenuOutput">M-<span class="Parameter">key</span></span>).
+   Some keyboards have a Meta key, though none of SSCC's do.  On a PC, it depends
+  on the terminal program you're using and how it is configured. SecureCRT has
+  an option to use <span class="InputCode">Alt</span> 
+  as the Meta key, but if you do so you can't use <span class="InputCode">Alt</span> 
+  to send commands to SecureCRT itself. The alternative is to use Escape (<span class="InputCode">Esc</span>),
+   but in this case it works a bit differently. Rather than holding down <span class="InputCode">Esc</span>,
+    you press it once and then press the key you want. So to execute a command
+   described  as <span class="MenuOutput">M-x</span>, press <span class="InputCode">Esc</span> 
+  (and let go), then press <span class="InputCode">x</span>.</p>
+<p>The most commonly used commands involve the Control key. Slightly less common 
+  commands are assigned to Meta. Other commands are executed by typing <span class="MenuOutput">C-x</span> 
+  and then the command (for example, to quit the program you type <span class="MenuOutput">C-x 
+  C-c</span>). Any command can be executed by typing <span class="MenuOutput">M-x</span> 
+  and then the full name of the command, and some commands can only be executed 
+  in this way.</p>
+<p>Emacs has a very helpful feature known as completion. For example, if you are 
+  typing the name of a file after issuing a command such as find-file (<span class="MenuOutput">C-f</span>), 
+  you need only type the first few letters of the name, enough to make a unique 
+  filename. Then press the <span class="InputCode">Tab</span> key and Emacs will 
+  complete the filename for you.</p>
+<h2>Starting and Stopping Emacs</h2>
+<p>To enter Emacs, simply type</p>
+<p> <span class="InputCode">&gt; emacs <span class="Parameter">file</span></span></p>
+<p> where <span class="Parameter"><span class="InputCode">file</span></span> is 
+  the name of the file you want to edit. If you use a filename that does not exist, 
+  Emacs creates a new file. If you type emacs with no file, you'll get a window 
+  with copyright information. This will go away as soon you press a key. Emacs 
+  then puts you in an empty buffer (a buffer is a temporary workspace that may 
+  be saved later as a file) called <span class="MenuOutput">*scratch*</span>. 
+  Note: <span class="MenuOutput">*scratch*</span> buffers are not saved when you 
+  exit Emacs. Type <span class="MenuOutput">C-x C–w</span> to write this 
+  temporary buffer to a permanent file.</p>
+<p><br/>
+<img alt="Emacs" height="582" src="https://ssc.wisc.edu/sscc/pubs/screenshots/7-10/7-10_1.png" width="612"/></p>
+<p>The Emacs window contains three major areas: the largest area which takes up 
+  most of the window is where you enter your text. A cursor marks your position 
+  in the file. The cursor is also called "point" or "dot". 
+</p>
+<p>The grey area at the bottom of the window is called the mode line and provides 
+  information about the editing session: the name of the buffer being edited, 
+  the mode you are in (Emacs has many different modes, each of which customizes 
+  Emacs for editing text of a particular sort), and where you are in the file. 
+  If you are at the beginning of the file, Emacs prints the word <span class="MenuOutput">Top</span>; 
+  if you're at the end, it prints <span class="MenuOutput">Bot</span>; if you 
+  are somewhere in the middle, it shows you a percentage; and if the entire file 
+  is visible on the screen, Emacs prints the word <span class="MenuOutput">All</span>. 
+  At the left edge of this line, you may see two asterisks (<span class="MenuOutput">**</span>). 
+  If the asterisks are there, this means that whatever you are editing has been 
+  modified since the last time you saved it.</p>
+<p>At the bottom of the window, below the mode line is the minibuffer. This is 
+  the area where Emacs echoes the commands you enter and where you specify filenames 
+  for Emacs to find, values for search and replace, and so on.</p>
+<p>Note the colors. The file shown is a Stata .do file. If it is configured correctly, 
+  Emacs will recognize this and color various words accordingly. See <a href="4-13.htm">Programming 
+  in Color</a> for details.</p>
+<p>If you type <span class="InputCode">xemacs</span> instead of <span class="InputCode">emacs</span>, 
+  you'll get the following:</p>
+<p><img alt="Xemacs" height="633" src="https://ssc.wisc.edu/sscc/pubs/screenshots/7-10/7-10_2.png" width="592"/></p>
+<p>Pick according to taste.</p>
+<p>If you do not have Linux graphics available  you can still use Emacs. You just have to use the <span class="InputCode">-nw</span> 
+  option (think no window) to tell it to run in text mode. Xemacs has the advantaget
+   hat it will do some syntax highlighting even in text mode (assuming you set
+   up syntax highlighting). To run it, type</p>
+<p class="InputCode">&gt; xemacs -nw <span class="Parameter">file</span></p>
+<p><img alt="Text-only XEmacs" height="453" src="https://ssc.wisc.edu/sscc/pubs/screenshots/7-10/7-10_3.png" width="640"/></p>
+<p>To exit Emacs at any time, type <span class="MenuOutput">C-x</span> <span class="MenuOutput">C-c</span>. 
+  If you have made any changes that have not been saved, Emacs will prompt you, 
+  asking you if you want to save your changes.</p>
+<h2>Getting Help</h2>
+<p>Emacs has an extensive help facility, though it is quite different from Windows-style 
+  help. If you are just starting out, the tutorial can be handy. There are also 
+  tools that can tell you more about a given command, or try to identify the command 
+  you need to perform a specific task.</p>
+<p>To start the tutorial, in Emacs click on <span class="MenuOutput">Help</span> 
+  and you'll see the the <span class="MenuOutput">Emacs Tutorial</span> at the 
+  top of the menu. In XEmacs, under <span class="MenuOutput">Help</span> there 
+  is a <span class="MenuOutput">Tutorials</span> sub-menu, allowing you to choose 
+  the language for the tutorial. If you are running either version in text mode, 
+  type <span class="MenuOutput">C-h t</span>. The tutorial provides an excellent 
+  guided tour of most of the important Emacs features and concepts. However, do 
+  not use it for retrieving information on how to do something in particular. 
+  There are better ways of doing this.</p>
+<p>If you want to learn more about a command, in Emacs click on <span class="MenuOutput">Help</span>, 
+  put the mouse over <span class="MenuOutput">Describe</span> (but do not click), 
+  click on <span class="MenuOutput">Describe Key</span>, and then type the command. 
+  In XEmacs, click on <span class="MenuOutput">Help</span>, <span class="MenuOutput">Commands 
+  and Keys</span>, <span class="MenuOutput">Key</span>, and then type the command. 
+  In text mode, type <span class="MenuOutput">C-h k</span> and then the command.</p>
+<p>If you want to do something and don't know which command to use, in Emacs click 
+  Help, put the mouse over <span class="MenuOutput">Describe</span>, click on 
+  <span class="MenuOutput">Apropos Command</span>s, and type a key word related 
+  to what you want to do. In XEmacs, click on <span class="MenuOutput">Help</span>, 
+  <span class="MenuOutput">Commands and Keys</span>, <span class="MenuOutput">Apropos</span>, 
+  and then type the key word. In text mode, type <span class="MenuOutput">C-h 
+  a</span> and then the key word. Emacs will then give you a list of commands 
+  that include the key word you chose in their titles. This is generally much 
+  less useful than the kind of search you may be used to, which searches the descriptions 
+  of what a command does.</p>
+<p> No matter how you get help the resulting windows can be confusing if you aren't 
+  familiar with the keystrokes that control them. The following commands provide 
+  the window operations you will need in order to use the help system and exit 
+  from it when you are done:</p>
+<ul>
+<li> To switch windows when the screen contains more than one window, type <span class="MenuOutput">C-x 
+	o</span>.</li>
+<li> To scroll the selected window forward, type <span class="MenuOutput">C-v</span>.</li>
+<li> To scroll the selected window backward, type <span class="MenuOutput">M-v</span>.</li>
+<li> To scroll the other window forward, type <span class="MenuOutput">M-C-v</span>.</li>
+<li> To make all windows disappear except for the selected window, type <span class="MenuOutput">C-x 
+	1</span>.</li>
+<li> To remove help information from the selected window, type <span class="MenuOutput">C-x 
+	k</span>.</li>
+</ul>
+<h2>Editing Files</h2>
+<p>Emacs achieves some of its famed versatility by having various editing modes 
+  in which it behaves slightly differently. Mode in Emacs simply means being sensitive 
+  to the task at hand. When you are writing, you often want features like word 
+  wrap so you do not have to press Return at the end of every line. When you are 
+  programming, the code must be formatted correctly depending on the language. 
+  For writing, Emacs has a text mode; for programming, Emacs has modes for different 
+  languages. Whenever you edit a file, Emacs attempts to put you in the correct 
+  mode for what you are going to edit. </p>
+<h3>Fill Mode and Text Mode</h3>
+<p>Before you start typing, look at the mode line at the bottom of the Emacs window. 
+  If the word <span class="MenuOutput">Fill</span> appears, you are in fill mode. 
+  In fill mode, when you type past the end of a line, Emacs automatically starts 
+  a new line for you. If Emacs is not in fill mode, you have to press <span class="InputCode">Enter</span> 
+  at the end of every line. You can turn on fill mode for a session by typing 
+  <span class="MenuOutput">M-x auto-fill-mode</span>. This command is a toggle 
+  command so if you want to turn fill mode off, just type the command again. </p>
+<h3>Moving the Cursor</h3>
+<p>Most of the time you can use the arrow keys on your keyboard (or the mouse 
+  in graphical Emacs) to move the cursor. Occasionally these aren't set up properly 
+  in your terminal program, so there are alternatives. To move the cursor forward 
+  one space, type <span class="MenuOutput">C-f</span> (f for forward). <span class="MenuOutput">C-b</span> 
+  moves the cursor backwards one space (b for backwards). To move up, type <span class="MenuOutput">C-p</span> 
+  (p for previous) and to move down, type <span class="MenuOutput">C-n</span> 
+  (n for next). </p>
+<p>In Emacs you can also move to the beginning or end of a line. <span class="MenuOutput">C-a</span> 
+  moves you to the beginning of the line (just like a is the beginning of the 
+  alphabet). <span class="MenuOutput">C-e</span> (e for end) moves you to the 
+  end of the line. Using Emacs commands not discussed here, you can also move 
+  the cursor by words, sentences, and paragraphs--see the help..</p>
+<p>Use <span class="MenuOutput">C-v</span> to scroll through your document one 
+  page at a time. Emacs leaves a couple of lines from the previous screen at the 
+  top to give you continuity. Likewise, <span class="MenuOutput">M-v</span> shows 
+  you the previous screen. </p>
+<p>You often want to move all the way to the beginning or end of a file. To go 
+  to the end, type <span class="MenuOutput">M-&gt;</span>. To go to the beginning, 
+  type <span class="MenuOutput">M-&lt;</span>.</p>
+<p>Sometimes you may want to go to the n-th line or to the n-th character in the 
+  file. <span class="MenuOutput">M-x goto-line <span class="Parameter">n</span></span> 
+  moves the cursor to the beginning of line <span class="Parameter"><span class="MenuOutput">n</span></span> 
+  of the file. Likewise, <span class="MenuOutput">M-x goto-char <span class="Parameter">n</span></span> 
+  goes to character <span class="Parameter"><span class="Parameter"><span class="MenuOutput">n</span></span></span> 
+  of the file.</p>
+<p>The command <span class="MenuOutput">C-l</span> redraws the entire Emacs display 
+  and puts the line that has the cursor in the center of the screen.</p>
+<h3>Deleting Text</h3>
+<p>Emacs provides many ways to delete text. The simplest way to delete text is 
+  to press the <span class="InputCode">Backspace</span> or <span class="InputCode">Delete</span> 
+  key; this deletes the character immediately to the left of the cursor (note 
+  that this is different from what you're probably used to <span class="InputCode">Delete</span> 
+  doing). Sometimes, particularly in text Emacs, <span class="InputCode">Backspace</span> 
+  is not set to <span class="InputCode">Delete</span>, but rather sends <span class="MenuOutput">C-h</span>, 
+  putting you in help mode. Another way to delete a single character is with the 
+  <span class="MenuOutput">C-d</span> command. <span class="MenuOutput">C-d</span> 
+  deletes the character under the cursor.</p>
+<p>If you want to delete an entire line, or part of a line, use the command <span class="MenuOutput">C-k</span> 
+  (for kill-line). This deletes everything from the cursor to the end of the line. 
+  Typing <span class="MenuOutput">C-k</span> on a blank line deletes the line 
+  itself. As a result, it usually takes two <span class="MenuOutput">C-k</span>s 
+  to delete a line; one to delete the text, and one to delete the resulting the 
+  resulting blank line.</p>
+<p>When you use <span class="MenuOutput">C-k</span>, the material you delete does 
+  not just disappear. Emacs hides it away in a special place called the "kill 
+  ring". You can get back what you have killed with <span class="MenuOutput">C-k</span> 
+  by typing <span class="MenuOutput">C-y</span> (y for yank). Conveniently, if 
+  you kill several lines in succession, Emacs collects them all in a single item 
+  and places the whole unit into the kill ring; a single <span class="MenuOutput">C-y</span> 
+  will bring back everything.</p>
+<h3>Marking Regions to Delete, Move, or Copy</h3>
+<p>You can mark areas of text called regions which you can then delete, move, 
+  or copy. To define a region, you use the primary pointer (your cursor) along 
+  with a secondary pointer called a mark. Unfortunately, the mark is invisible 
+  so you have to remember where it is. To mark a region, you set the mark at one 
+  end of the region by pressing <span class="MenuOutput">C-&lt;Space Bar</span>&gt;, 
+  then move the cursor (the point) to the other end of the region. Deleting text 
+  requires the following four steps:</p>
+<ol>
+<li> Move the cursor to the beginning of the area you want to delete.</li>
+<li> Press <span class="MenuOutput">C-&lt;Space Bar&gt;</span>. Emacs displays 
+	the message <span class="MenuOutput">Mark Set</span>.</li>
+<li> Move the cursor to the end of the region you want to delete.</li>
+<li> Press <span class="MenuOutput">C-w</span> to delete the region.</li>
+</ol>
+<p>Remember, you can retrieve whatever you have deleted with <span class="MenuOutput">C-y</span>. 
+  <span class="MenuOutput">C-y</span> also gives you an easy way to move text 
+  from one part of the file to another. Follow these steps to move text:</p>
+<ol>
+<li> Delete the text you want to move following the four steps above.</li>
+<li> Move the cursor to the point where you want to insert the text.</li>
+<li> Press <span class="MenuOutput">C-y</span> and Emacs will insert the text 
+	at the location of the cursor.</li>
+</ol>
+<p>To copy text, follow these steps:</p>
+<ol>
+<li> Move the cursor to the beginning of the area you want to copy.</li>
+<li> Press <span class="MenuOutput">C-&lt;Space Bar&gt;</span>. Emacs displays 
+	the message Mark Set.</li>
+<li> Move the cursor to the end of the region you want to copy.</li>
+<li> Press <span class="MenuOutput">M-w</span> to copy the region.</li>
+<li>  Move the cursor to the place you want to insert the copied text.</li>
+<li> Press <span class="MenuOutput">C-y</span> and Emacs will insert the copied 
+	text at the location of the cursor.</li>
+</ol>
+<title></title>
+<h1> </h1>
+<h1>GNU Emacs Reference Card</h1>
+<em>(for version 19)</em>
+<h2>Starting Emacs</h2>
+<p>To enter GNU Emacs 19, just type its name: <tt><i>emacs</i></tt> </p>
+<p> To read in a file to edit, see <a href="#files">Files</a>, below.</p>
+<h2>Leaving Emacs</h2>
+<pre>
+suspend Emacs (or iconify it under X)              C-z
+exit Emacs permanently                             C-x C-c
+</pre>
+<h2><a id="files" name="files"></a>Files</h2>
+<pre>
+read a file into Emacs                             C-x C-f
+save a file back to disk                           C-x C-s
+save all files                                     C-x s
+insert tables of another file into this buffer   C-x i
+replace this file with the file you really want    C-x C-v
+write buffer to a specified file                   C-x C-w
+</pre>
+<h2>Getting Help</h2>
+<p>The Help system is simple. Type <tt>C-h</tt> and follow the directions. If 
+  you are a first-time user, type <tt>C-h t</tt> for a tutorial. </p>
+<pre>
+remove Help window                                 C-x 1
+scroll Help window                                 ESC C-v
+
+apropos: show commands matching a string           C-h a
+show the function a key runs                       C-h c
+describe a function                                C-h f
+get mode-specific information                      C-h m
+</pre>
+<h2>Error Recovery</h2>
+<pre>
+abort partially typed or executing command         C-g
+recover a file lost by a system crash              M-x recover-file
+undo an unwanted change                            C-x u or C-`
+restore a buffer to its original tables          M-x revert-buffer
+redraw garbaged screen                             C-l
+</pre>
+<h2>Incremental Search</h2>
+<pre>
+search forward                                     C-s
+search backward                                    C-r
+regular expression search                          C-M-s
+reverse regular expression search                  C-M-r
+
+select previous search string                      M-p
+select next later search string                    M-n
+exit incremental search                            RET
+undo effect of last character                      DEL
+abort current search                               C-g
+</pre>
+<p>Use <tt>C-s</tt> or <tt>C-r</tt> again to repeat the search in either direction. 
+  If Emacs is still searching, <tt>C-g</tt> cancels only the part not done. </p>
+<h2>Motion</h2>
+<pre>
+entity to move over                        backward      forward
+
+character                                  C-b           C-f
+word                                       M-b           M-f
+line                                       C-p           C-n
+go to line beginning (or end)              C-a           C-e
+sentence                                   M-a           M-e
+paragraph                                  M--           M-"
+page                                       C-x [         C-x ]
+sexp                                       C-M-b         C-M-f
+function                                   C-M-a         C-M-e
+go to buffer beginning (or end)            M-&lt;           M-&gt;
+
+scroll to next screen                              C-v
+scroll to previous screen                          M-v
+scroll left                                        C-x &lt;
+scroll right                                       C-x &gt;
+scroll current line to center of screen            C-u C-l
+</pre>
+<h2>Killing and Deleting</h2>
+<pre>
+entity to kill                             backward      forward
+character (delete, not kill)               DEL           C-d
+word                                       M-DEL         M-d
+line (to end of)                           M-0 C-k       C-k
+sentence                                   C-x DEL       M-k
+sexp                                       M-- C-M-k     C-M-k
+
+kill region                                        C-w
+copy region to kill ring                           M-w
+kill through next occurrence of char               M-z char
+
+yank back last thing killed                        C-y
+replace last yank with previous kill               M-y
+
+</pre>
+<h2>Marking</h2>
+<pre>
+set mark here                                      C-@ or C-SPC
+exchange point and mark                            C-x C-x
+
+set mark arg words away                            M-@
+mark paragraph                                     M-h
+mark page                                          C-x C-p
+mark sexp                                          C-M-@
+mark function                                      C-M-h
+mark entire buffer                                 C-x h
+</pre>
+<h2>Query Replace</h2>
+<pre>
+interactively replace a text string                M-%
+using regular expressions             		   M-x query-replace-regexp
+</pre>
+<p>Valid responses in query-replace mode are: </p>
+<pre>
+replace this one, go on to next                    SPC
+replace this one, don't move                       ,
+skip to next without replacing                     DEL
+replace all remaining matches                      !
+back up to the previous match                      ^
+exit query-replace                                 ESC
+enter recursive edit (C-M-c to exit)               C-r
+</pre>
+<h2>Multiple Windows</h2>
+<pre>
+delete all other windows                           C-x 1
+delete this window                                 C-x 0
+split window in two vertically                     C-x 2
+
+split window in two horizontally                   C-x 3
+
+scroll other window                                C-M-v
+switch cursor to another window                    C-x o
+
+shrink window shorter                         M-x shrink-window
+grow window taller                                 C-x ^
+shrink window narrower                             C-x -
+grow window wider                                  C-x "
+
+select buffer in other window                      C-x 4 b
+display buffer in other window                     C-x 4 C-o
+find file in other window                          C-x 4 f
+find file read-only in other window                C-x 4 r
+run Dired in other window                          C-x 4 d
+find tag in other window                           C-x 4 .
+</pre>
+<h2>Formatting</h2>
+<pre>
+indent current line (mode-dependent)               TAB
+indent region (mode-dependent)                     C-M-"
+indent sexp (mode-dependent)                       C-M-q
+indent region rigidly arg columns                  C-x TAB
+
+insert newline after point                         C-o
+move rest of line vertically down                  C-M-o
+delete blank lines around point                    C-x C-o
+join line with previous (with arg, next)           M-^
+delete all white space around point                M-"
+put exactly one space at point                     M-SPC
+
+fill paragraph                                     M-q
+set fill column                                    C-x f
+set prefix each line starts with                   C-x .
+</pre>
+<h2>Case Change</h2>
+<pre>
+uppercase word                                     M-u
+lowercase word                                     M-l
+capitalize word                                    M-c
+
+uppercase region                                   C-x C-u
+lowercase region                                   C-x C-l
+capitalize region                                  M-x capitalize-region
+</pre>
+<h2>The Minibuffer</h2>
+<p>The following keys are defined in the minibuffer: </p>
+<pre>
+complete as much as possible                       TAB
+complete up to one word                            SPC
+complete and execute                               RET
+show possible completions                          ?
+fetch previous minibuffer input                    M-p
+fetch next later minibuffer input                  M-n
+regexp search backward through history             M-r
+regexp search forward through history              M-s
+abort command                                      C-g
+</pre>
+<p>Type <tt>C-x ESC ESC</tt> to edit and repeat the last command that used the 
+  minibuffer. The following keys are then defined: </p>
+<pre>
+previous minibuffer command                        M-p
+next minibuffer command                            M-n
+</pre>
+<h2>Buffers</h2>
+<pre>
+
+select another buffer                              C-x b
+list all buffers                                   C-x C-b
+kill a buffer                                      C-x k
+</pre>
+<h2>Transposing</h2>
+<pre>
+transpose characters                               C-t
+transpose words                                    M-t
+transpose lines                                    C-x C-t
+transpose sexps                                    C-M-t
+</pre>
+<h2>Spelling Check</h2>
+<pre>
+check spelling of current word                     M-$
+check spelling of all words in region              M-x ispell-region
+check spelling of entire buffer                    M-x ispell-buffer
+
+</pre>
+<h2>Tags</h2>
+<pre>
+find a tag (a definition)                          M-.
+find next occurrence of tag                        C-u M-.
+specify a new tags file                            M-x visit-tags-table
+
+regexp search on all files in tags table           M-x tags-search
+run query-replace on all the files                 M-x tags-query-replace
+continue last tags search or query-replace         M-,
+</pre>
+<h2>Shells</h2>
+<pre>
+execute a shell command                            M-!
+run a shell command on the region                  M-_
+filter region through a shell command              C-u M-_
+start a shell in window *shell*                    M-x shell
+</pre>
+<h2>Rectangles</h2>
+<pre>
+copy rectangle to register                         C-x r r
+kill rectangle                                     C-x r k
+yank rectangle                                     C-x r y
+open rectangle, shifting text right                C-x r o
+blank out rectangle                                M-x clear-rectangle
+prefix each line with a string                     M-x string-rectangle
+</pre>
+<h2>Abbrevs</h2>
+<pre>
+add global abbrev                                  C-x a g
+add mode-local abbrev                              C-x a l
+add global expansion for this abbrev               C-x a i g
+add mode-local expansion for this abbrev           C-x a i l
+explicitly expand abbrev                           C-x a e
+
+expand previous word dynamically                   M-/
+</pre>
+<h2>Regular Expressions</h2>
+<pre>
+any single character except a newline              .   (dot)
+
+zero or more repeats                               *
+one or more repeats                                +
+zero or one repeat                                 ?
+any character in the set                           [ : : :]
+any character not in the set                       [^ : : :]
+beginning of line                                  ^
+end of line                                        $
+quote a special character c                        "c
+alternative ("or")                                 "_
+grouping                                           "( : : :")
+nth group                                          "n
+beginning of buffer                                "`
+end of buffer                                      "'
+word break                                         "b
+not beginning or end of word                       "B
+beginning of word                                  "&lt;
+end of word                                        "&gt;
+any word-syntax character                          "w
+any non-word-syntax character                      "W
+character with syntax c                            "sc
+character with syntax not c                        "Sc
+</pre>
+<h2>Registers</h2>
+<pre>
+save region in register                            C-x r s
+insert register tables into buffer               C-x r i
+
+save value of point in register                    C-x r SPC
+jump to point saved in register                    C-x r j
+</pre>
+<h2>Info</h2>
+<pre>
+enter the Info documentation reader                C-h i
+</pre>
+<p>Moving within a node: </p>
+<pre>
+   scroll forward                                  SPC
+   scroll reverse                                  DEL
+   beginning of node                               .   (dot)
+</pre>
+<p>Moving between nodes: </p>
+<pre>
+   next node                                       n
+   previous node                                   p
+   move up                                         u
+   select menu item by name                        m
+   select nth menu item by number (1-5)            n
+   follow cross reference (return with l)          f
+   return to last node you saw                     l
+   return to directory node                        d
+   go to any node by name                          g
+
+</pre>
+<p>Other: </p>
+<pre>
+   run Info tutorial                               h
+   list Info commands                              ?
+   quit Info                                       q
+   search nodes for regexp                         s
+</pre>
+<h2>Keyboard Macros</h2>
+<pre>
+start defining a keyboard macro                    C-x (
+
+end keyboard macro definition                      C-x )
+execute last-defined keyboard macro                C-x e
+append to last keyboard macro                      C-u C-x (
+name last keyboard macro                           M-x name-last-kbd-macro
+insert Lisp definition in buffer                   M-x insert-kbd-macro
+</pre>
+<h2>Commands Dealing with Emacs Lisp</h2>
+<pre>
+eval sexp before point                             C-x C-e
+eval current defun                                 C-M-x
+eval region                                        M-x eval-region
+eval entire buffer                                 M-x eval-current-buffer
+read and eval minibuffer                           M-ESC
+re-execute last minibuffer command                 C-x ESC ESC
+read and eval Emacs Lisp file                      M-x load-file
+load from standard system directory                M-x load-library
+</pre>
+<h2>Simple Customization</h2>
+<p>Here are some examples of binding global keys in Emacs Lisp. Note that you 
+  cannot say <tt>""M-#"</tt>; you must say <tt>""e#"</tt>. </p>
+<pre>
+(global-set-key ""C-cg" 'goto-line)
+(global-set-key ""C-x"C-k" 'kill-region)
+(global-set-key ""e#" 'query-replace-regexp)
+</pre>
+<p>An example of setting a variable in Emacs Lisp: </p>
+<pre>
+(setq backup-by-copying-when-linked t)
+</pre>
+<h2>Writing Commands</h2>
+<pre>
+(defun command-name  (args)
+   "documentation"
+   (interactive "template")
+   body)
+</pre>
+<p>An example: </p>
+<pre>
+(defun this-line-to-top-of-window (line)
+   "Reposition line point is on to top of window.
+With ARG, put point on line ARG.
+Negative counts from bottom."
+   (interactive "P")
+   (recenter (if (null line)
+                    0
+                 (prefix-numeric-value line))))
+</pre>
+<p>The argument to interactive is a string specifying how to get the arguments 
+  when the function is called interactively. Type <tt>C-h f</tt> interactive for 
+  more information. </p>
+<pre>
+
+
+
+           Copyright c 1993 Free Software Foundation, Inc.
+              designed by Stephen Gildea, May 1993 v2.0
+              for GNU Emacs version 19 on Unix systems
+</pre>
+<h5> Permission is granted to make and distribute copies of this card provided 
+  the copyright notice and this permission notice are preserved on all copies. 
+</h5>
+<h5> For copies of the GNU Emacs manual, write to the Free Software Foundation, 
+  Inc., 675 Massachusetts Ave, Cambridge MA 02139. </h5>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/7-10/7-10_1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/7-10/7-10_2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/7-10/7-10_3.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using Stata on Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>Stata is an interactive statistical graphics software package that contains 
+  a wide variety of statistical applications including some that are difficult 
+  (at best) to compute in other statistical software packages. These include censored 
+  normal and tobit regression, multinomial logistic regression, and ordered logit 
+  and probit estimation.</p>
+<p>The current version of Stata available on SSCC's Linux computers is 9. A Windows
+    version of Stata is also available on  the lab PCs in Social Science 3218
+  and 4218 (refer to <a href="winstat.htm">Using
+    Windows Terminal Servers</a>) and Windows Terminal Servers (Winstat1-3),</p>
+<h2> <a id="InvokingStata" name="InvokingStata"></a>Invoking Stata</h2>
+<p>You have three ways of running Stata on Linux: an interactive windowed Graphical
+  User Interface (GUI), an interactive non-windowed interface which Stata calls
+  console mode, and a noninteractive batch mode. The following examples show
+  how to invoke Stata in each of these modes.</p>
+<h3>Interactive Windowed GUI Mode </h3>
+<p>Stata can only be accessed in this mode from an X-display such as a Windows-based 
+  Terminal or a PC running software like X-Win32. Those accessing Stata interactively 
+  from a Telnet-type window (like SecureCRT) should skip ahead to the next section 
+  on <a href="#InteractiveConsoleMode">the Console mode</a>.</p>
+<p>Typing <span class="InputCode">xstata</span> at the Linux prompt from an X-display 
+  brings up Stata in an interactive windowed GUI mode. In this mode, you can use 
+  menus to do some tasks but the command line is still accessible. For example, 
+  to exit Stata, you can either type <span class="InputCode">exit</span> at the 
+  command line or choose <span class="MenuOutput">Exit</span> from the File menu. 
+  This handout only documents commands.</p>
+<h3><a id="InteractiveConsoleMode" name="InteractiveConsoleMode"></a>Interactive Console Mode</h3>
+<p>Typing <span class="InputCode">stata</span> at the Linux prompt brings up Stata 
+  in interactive console mode. The program prompts you with a period (<span class="InputCode">.</span>). 
+  At this point you can begin entering Stata commands. Type: <span class="InputCode">exit, 
+  clear</span> to terminate your Stata session and return control to the operating 
+  system.</p>
+<h3>Noninteractive Mode</h3>
+<p>To invoke Stata in noninteractive mode, use the <span class="InputCode">stata</span> 
+  command with the <span class="InputCode">-b</span> (batch) option:</p>
+<p class="InputCode">stata -b do filename </p>
+<p>For example:</p>
+<p class="InputCode">&gt; stata -b do statarun </p>
+<p>will execute the commands in the file <span class="InputCode">statarun.do</span> 
+  and write the output to <span class="InputCode">statarun.log</span>. If your 
+  command file extension is named something other than <span class="InputCode">.do</span>, 
+  you need to specify the full file name on the command line.</p>
+<p>Below is an example of a Stata program that might be contained in <span class="InputCode">statarun.do</span>. 
+  The program reads in data and computes a logistic regression:</p>
+<p class="InputCode">infile vote count race polview pold1-pold6 using ~/diss/elect.dat<br/>
+  logistic vote race polview [fweight=count]</p>
+<p>To run a noninteractive Stata program in the background, simply add an &amp; 
+  at the end of the Linux command line. The advantage of running noninteractive 
+  programs in the background is that you do not have to wait until your Stata 
+  program finishes execution before you get the Linux prompt. In other words, 
+  your shell is available for other work.</p>
+<h2> <a id="KeyboardShortcuts" name="KeyboardShortcuts"></a>Keyboard Shortcuts</h2>
+<p>Stata provides several keyboard shortcuts for entering commands quickly and 
+  fixing mistakes when working in interactive mode. For example, <span class="InputCode">CTRL-R</span> 
+  retrieves the previously typed command line. Refer to the <span class="italic">Getting 
+  Started with Stata for Linux</span> manual for a complete list of keyboard shortcuts.</p>
+<h2> <a id="KeepingaLogofyourStataSession" name="KeepingaLogofyourStataSession"></a>Keeping a Log of your Stata Session</h2>
+<p>When working in interactive mode, you may want to record a copy of your session 
+  to a file. Start a log by typing:</p>
+<p class="InputCode">log using <span class="italic">filename</span>, text</p>
+<p>The log is closed automatically when you exit Stata. Then you can use the Linux 
+  <span class="InputCode">more</span> or <span class="InputCode">lpr</span> command 
+  to list or print your log file. </p>
+<p>Note: Be sure and add the <span class="InputCode">text</span> <span class="italic">option</span> 
+  to the <span class="InputCode">log</span> command. Otherwise, the log will be 
+  formatted in Stata Markup Command Language (SMCL) which contains codes to control 
+  the format of the text. If viewed in any program other than the Stata viewer, 
+  these codes will be included in the text, making it difficult to pick out the 
+  table of the file. </p>
+<p>If you want to create a log file that contains only the command lines that 
+  you enter in a Stata session, type:</p>
+<p><span class="InputCode">cmdlog using <span class="italic">filename</span></span></p>
+<h2> <a id="UsingStatasOnLineHelpSystem" name="UsingStatasOnLineHelpSystem"></a>Using Stata's On-Line Help System</h2>
+<p>Stata provides an extensive on-line "Help" system which can be accessed 
+  from two Stata commands: <span class="InputCode">help</span> and <span class="InputCode">search</span>.</p>
+<p>To get help on a particular command, type: <span class="InputCode">help <span class="italic">commandname</span></span></p>
+<p>To get a complete list of help topics, type: <span class="InputCode">help tables</span></p>
+<p>To obtain all references to a topic, both in the on-line help and the Internet, 
+  type: <span class="InputCode">findit<span class="italic">topic</span></span></p>
+<p>For example, to obtain help on Stata's <span class="InputCode">regress</span> 
+  command, type:</p>
+<p class="InputCode">. help regress</p>
+<p> If you want Stata to tell you all the sources of information that have to 
+  do with Regression Analysis in general, type: </p>
+<p class="InputCode">. findit regress</p>
+<h2> Stata Command Syntax</h2>
+<p>With few exceptions, the basic language syntax for Stata is:</p>
+<p>[<span class="bolded">by</span><span class="italic"> varlist</span><span class="bolded">:</span>]<span class="italic"> 
+  command</span> [<span class="italic">varlist</span>] [<span class="bolded">=</span><span class="italic">expression</span>] 
+  [<span class="bolded">if</span> <span class="italic">expression</span>] [<span class="bolded">in</span>
+<span class="italic">range</span>] [<span class="italic">weights</span>] [<span class="italic">, 
+  options</span>]</p>
+<p>where square brackets denote optional qualifiers. <span class="italic">command</span> 
+  denotes a Stata command, <span class="italic">varlist</span> denotes a list 
+  of variable names. For example, typing the command </p>
+<p class="InputCode">. summarize</p>
+<p>results in summary statistics for all the variables in your data set. Typing</p>
+<p class="InputCode">. summarize vote count</p>
+<p>results in summary statistics for just the variables vote and count. To get 
+  more detailed summary statistics for the two variables specified, type:</p>
+<p class="InputCode">. summarize vote count, detail</p>
+<p>You can also prefix most Stata commands with <span class="MenuOutput">by <span class="italic">varlist</span>:</span>. 
+  This instructs Stata to process the command separately for groups of observations 
+  defined by the variable list specified. You can also restrict the scope of a 
+  command to certain subsets of observations with the qualifiers <span class="bolded">if</span> 
+  or <span class="bolded">in</span> for most Stata commands. </p>
+<p>You can write statements over more than one line. Command, variable and option 
+  names may be abbreviated to the shortest string of characters that uniquely 
+  identifies them. For other shortcut methods, refer to Chapter 13 of the <span class="italic">User's 
+  Guide</span>.<br/>
+</p>
+<h2> <a id="ReadingData" name="ReadingData"></a>Reading Data</h2>
+<p>This section describes how to read in ASCII data stored separately on your 
+  disk using the <span class="InputCode">infile</span> command. If your data is 
+  stored in a file that was created by another software package, you can use software 
+  like STAT/TRANSFER or DBMS/COPY to convert the file to a Stata system file. 
+  Stata system files are described later in this handout.</p>
+<h3><a id="FreeFormattedInput" name="FreeFormattedInput"></a>Free-Formatted Input</h3>
+<p>The simplest method of reading data is by listing variable names without column 
+  locations. This method is referred to as free-formatted input. You can use free-formatted 
+  input when the variables are recorded in the same order for each case, but not 
+  necessarily in the same locations. Values may be separated by blanks and/or 
+  commas. Numeric missing values must be indicated by single periods (.). The 
+  command for reading a file using free-formatted input is:</p>
+<p class="InputCode">infile <span class="italic">varlist</span> using <span class="italic">filename</span></p>
+<p>where <span class="italic"><span class="InputCode">varlist</span></span> is 
+  the names of the variables and <span class="italic"><span class="InputCode">filename</span></span> 
+  is the name of the file that contains the raw data. For example,</p>
+<p class="InputCode">infile age wgt1-wgt6 using ~/rawdata/weights.dat</p>
+<p>If the raw data to be read into Stata using free-formatted input contain character 
+  or string variables, you must precede the variable's name with the keyword <span class="InputCode">str</span> 
+  followed immediately by the length of the string. For example, if the above 
+  data set contained an additional variable called <span class="InputCode">lastname</span> 
+  which contained the last name of the person and the longest name was 20 characters, 
+  the following command would read in the data:</p>
+<p class="InputCode">infile age wgt1-wgt6 str20 lastname using ~/rawdata/weights.dat</p>
+<p>Note that if values for a string variable contains blanks or other special 
+  characters, the string must be enclosed in single or double quotes in the data 
+  file. Otherwise you will need to specify how many characters to read as discussed 
+  below.</p>
+<h3><a id="FixedFormattedInput" name="FixedFormattedInput"></a>Fixed-Formatted Input</h3>
+<p>The most common way data are read into Stata occurs when the data are formatted 
+  in the file according to some uniform structure and is referred to as fixed-formatted 
+  input. The command for reading a file using fixed-formatted input is:</p>
+<p class="InputCode">infile using <span class="italic">filename</span></p>
+<p>where <span class="italic"><span class="InputCode">filename</span></span> is 
+  the name of the file that contains what Stata calls a dictionary. A dictionary 
+  describes the tables of the file and will allow reading files in fixed or 
+  free format. The data may be in the same file as the dictionary or in another 
+  file. The following example instructs Stata to read the dictionary contained 
+  in the file <span class="InputCode">~/rawdata/cps.dct</span>:</p>
+<p class="InputCode">infile using ~/rawdata/cps.dct</p>
+<p>The general syntax for the tables of the dictionary file is:</p>
+<p class="InputCode">dictionary [using <span class="italic">datafile</span>] { 
+  varlist }</p>
+<p>where <span class="italic"><span class="InputCode">datafile</span></span> is 
+  the name of the file containing the data. If <span class="InputCode">using <span class="italic">datafile</span></span> 
+  is not specified, the data are assumed to start at the record following the 
+  close brace ( <span class="InputCode">}</span> ). The varlist contains both 
+  the variables and any information needed to read them.</p>
+<p><span class="InputCode">_lines(n)</span> specifies that each observation has 
+  <span class="InputCode">n</span> lines. Stata doesn't care where this statement 
+  appears, but good style suggests it should be before the variables.</p>
+<p>Other options go with a variable. <span class="InputCode">_line(x) _column(y)</span> 
+  tells Stata to read the variable from line <span class="InputCode">x</span> 
+  and column <span class="InputCode">y</span> of the current observation. If you 
+  do not specify this, Stata will simply proceed from wherever finished reading 
+  the last variable. You can also specify a format such as <span class="InputCode">int</span>, 
+  <span class="InputCode">byte</span>, or <span class="InputCode">str</span>. 
+  Finally you can specify how many characters to read into the variable using 
+  <span class="InputCode">%NumberType</span> where <span class="InputCode">Number</span> 
+  is the number of characters to read and <span class="InputCode">Type</span> 
+  is the type of variable (you'll almost always use <span class="InputCode">f</span> 
+  for numbers or <span class="InputCode">s</span> for strings). This must follow 
+  the variable name, all the other options come before it.</p>
+<p>In the following example, the data and dictionary are contained in the same 
+  file:</p>
+<p class="InputCode">dictionary<br/>
+  { <br/>
+<span class="indent3">_lines(1)</span><br/>
+<span class="indent3">_line(1) _column(1) int age %2f</span><br/>
+<span class="indent3">_line(1) _column(4) float weight %5f</span><br/>
+  }<br/>
+  12 100.5<br/>
+  13 110.0<br/>
+  15 130.5</p>
+<p>All of the formatting information is optional. In many cases, Stata's default 
+  action (read variables from left to right and top to bottom, with spaces or 
+  commas separatng them) works just fine. The dictionary</p>
+<p class="InputCode">dictionary<br/>
+  { <br/>
+<span class="indent3">age</span><br/>
+<span class="indent3">weight</span><br/>
+  }<br/>
+  12 100.5<br/>
+  13 110.0<br/>
+  15 130.5</p>
+<p>will give the same results as the previous one except that <span class="InputCode">age</span> 
+  will be read as a <span class="InputCode">float</span>, which takes a bit more 
+  memory.</p>
+<p>In the following example, the data and dictionary are contained in different 
+  files:</p>
+<p class="InputCode">dictionary using data.dat {<br/>
+<span class="indent3">name 20s</span><br/>
+<span class="indent3">weight 5f</span><br/>
+  }</p>
+<p>This is just a simple overview of reading formatted data. Refer to the Stata 
+  Reference Manual for a complete discussion of reading formatted data.</p>
+<h3><a id="RecordLengthandDictionaries" name="RecordLengthandDictionaries"></a>Record Length and Dictionaries</h3>
+<p>Sometimes Stata has trouble reading data that has been written out from other 
+  software. For instance, SPSS writes out data without inserting carriage returns 
+  at the end of each line. Stata is then unable to accurately determine record 
+  length. To solve this problem, you can use the <span class="InputCode">_lrecl(n)</span> 
+  command within the dictionary. For example,</p>
+<p class="InputCode">dictionary using data.dat {<br/>
+<span class="indent3">_lrecl(90)</span><br/>
+<span class="indent3">name 20s</span><br/>
+<span class="indent3">weight 5f </span><br/>
+  }</p>
+<p>In this case, the <span class="InputCode">_lrecl(90)</span> command specifies 
+  that the length of each record is 90.</p>
+<h3><a id="ReadingCompressedData" name="ReadingCompressedData"></a>Reading Compressed Data</h3>
+<p>You can read compressed ASCII data into Stata by writing the data to a named 
+  pipe and then using the named pipe as the filename you specify on the INFILE 
+  command. For example, to read the compressed file, <span class="InputCode">afqt48.dat.Z</span>, 
+  into an interactive Stata session, follow the steps below:</p>
+<ol>
+<li>
+<p>From Stata, send the <span class="InputCode">mknod</span> command to the 
+      operating system (by preceding the Stata command with <span class="InputCode">!</span>) 
+      to create a named pipe:</p>
+<p class="InputCode"> !mknod mypipe.pip p</p>
+</li>
+<li>
+<p> Send the <span class="InputCode">zcat</span> command to the operating 
+      system to write the data to the named pipe in the background:</p>
+<p class="InputCode"> !zcat afqt48.dat &gt; mypipe.pip &amp;</p>
+</li>
+<li>
+<p>Refer to the named pipe in your INFILE command:</p>
+<p class="InputCode"> infile wt sed fed ge22 black using mypipe.pip</p>
+</li>
+<li>
+<p>Send a command to the operating system to remove the pipe:</p>
+<p class="InputCode"> !rm mypipe.pip</p>
+</li>
+</ol>
+<p>This method will not work in Stata programs run in noninteractive mode. Instead, 
+  you must put the two Linux commands in a script. To do this, create a file with 
+  lines similar to the ones below:</p>
+<p class="InputCode">#!/bin/sh<br/>
+  fname=$1<br/>
+  rm -f mypipe.pip<br/>
+  mknod mypipe.pip p<br/>
+  zcat $fname &gt; mypipe.pip &amp;</p>
+<p>To make the file a script (an executable file), use the <span class="InputCode">chmod</span> 
+  command. For instance, if the above file is called <span class="InputCode">myprog</span>, 
+  type the following at the Linux prompt:</p>
+<p class="InputCode">chmod +x myprog</p>
+<p>Your Stata <span class="InputCode">.do</span> file then needs to include the 
+  following:</p>
+<p class="InputCode">!myprog afqt49.dat.Z &gt;&amp; /dev/null &lt; /dev/null<br/>
+  infile wt sed fed ge22 black using mypipe.pip<br/>
+  !rm mypipe.pip</p>
+<p>Stata shells out to <span class="InputCode">myprog</span>, passing it the name 
+  of the file which it wishes to uncompress. The ampersand at the end of the <span class="InputCode">zcat</span> 
+  command in <span class="InputCode">myprog</span> directs Linux to put that process 
+  in the background, allowing <span class="InputCode">myprog</span> to return 
+  immediately to Stata. While the <span class="InputCode">zcat</span> command 
+  uncompresses <span class="InputCode">afqt48.dat.Z</span> and sends the uncompressed 
+  data to the pipe (<span class="InputCode">mypipe.pip</span>) in the background, 
+  Stata's <span class="InputCode">infile</span> command reads the uncompressed 
+  data from that pipe.</p>
+<p>This method will allow you to read compressed ASCII data, but you cannot use 
+  a Stata data set without uncompressing it.</p>
+<h2><a id="SavingandUsingStataSystemFiles" name="SavingandUsingStataSystemFiles"></a>Saving and Using Stata System 
+  Files</h2>
+<p>If you plan to use a data set repeatedly with Stata, it will be more convenient 
+  to save the data as a Stata system file. System files are self-documenting and 
+  reflect transformations made to the data. The SAVE command stores the data currently 
+  read into Stata. For example,</p>
+<p class="InputCode">. save census</p>
+<p>creates a Stata system file with the name <span class="InputCode">census.dta</span>. 
+  Following is an example program that reads in raw data and creates a Stata system 
+  file:</p>
+<p class="InputCode">infile vote count race polview pold1-pold6 using~/diss/elect.dat<br/>
+  save elect</p>
+<p>The <span class="InputCode">use</span> command loads a Stata system file previously 
+  saved. For example,</p>
+<p class="InputCode">. use elect</p>
+<h2> <a id="ManagingMemory" name="ManagingMemory"></a>Managing Memory</h2>
+<p>Stata stores data in memory (RAM). As a result, Stata runs quickly, but the 
+  amount of data you can analyze is limited by the amount of memory on your computer. 
+  It is also a memory hog. Because of this, it is very important to adhere to 
+  the following restrictions with Stata:</p>
+<ul>
+<li> Use caution when requesting memory from Stata. </li>
+<li>Run large batch jobs using Condor. Refer to <a href="7-1.htm">An Introduction 
+    to Condor</a> for details, but it's just a matter of replacing the <span class="InputCode">stata</span> 
+    command with <span class="InputCode">condor_stata</span> on KITE.</li>
+<li>Never run more than one job at a time. If you submit a job and then realize 
+    you've made a mistake, kill the job before submitting another. Refer to <a href="linstat_jobs.htm#KillingaJob">Managing Jobs on Linstat</a> for a discussion on how to kill jobs.</li>
+<li>If you need to run Stata interactively HAL is ideal for large jobs, but 
+    use NORMAN or KITE for smaller ones.</li>
+</ul>
+<h3>Requesting Additional Memory</h3>
+<p>By default, Stata allocates ten megabytes of memory to its data areas when 
+  it is invoked. Use the -m command line switch to request additional memory. 
+  For example, to request 200 megabytes of memory, type:</p>
+<p class="InputCode">&gt; stata -m200</p>
+<p>Alternatively, you can request additional memory once you are in interactive 
+  Stata with the <span class="InputCode">set memory</span> command. For example, 
+  to request 100 megabytes of memory:</p>
+<p class="InputCode">. set memory 100m</p>
+<p>Determining how much additional memory you may need is often a trial-and-error 
+  exercise. Start by specifying 25mb and doubling that amount until your job will 
+  run. Specify no more than 350 mb. If your job still won't run, contact the <a href="/sscc/helpdesk.htm">Help Desk</a> for assistance.</p>
+<p>The only restriction with the SET MEMORY command is that whenever you use it, 
+  there cannot be any data in memory already. If you have a data set in memory, 
+  you need to save it, clear memory, reset the total, and then use it again:</p>
+<p class="InputCode">. save dogs, replace<br/>
+  file dogs.dta saved</p>
+<p class="InputCode">. clear</p>
+<p class="InputCode">. set memory 10m<br/>
+  (10240k)</p>
+<p class="InputCode">. use dogs</p>
+<p>Following are a few hints to follow which help conserve memory:</p>
+<ul>
+<li> When inputting data for the first time, specify appropriate storage types 
+    (refer to the <span class="InputCode">input</span> and <span class="InputCode">infile</span> 
+    commands in the Stata Reference Manual for details about storage types).</li>
+<li> When working with existing data, have Stata store the data as compactly 
+    as possible by using Stata's <span class="InputCode">compress</span> command.</li>
+<li> Store short, repeated strings as numeric variables with value labels (refer 
+    to the <span class="InputCode">labels</span> and <span class="InputCode">encode</span> 
+    commands in the Stata Reference Manual).</li>
+<li> Using the <span class="InputCode">discard</span> command will clear all 
+    automatically loaded programs from memory. This includes information Stata 
+    has stored about a previously fit model.</li>
+</ul>
+<h2> <a id="ManagaingtmpSpacewithStata" name="ManagaingtmpSpacewithStata"></a>Managing /tmp Space with Stata</h2>
+<p>By default Stata uses <span class="MenuOutput">/tmp</span> for writing scratch 
+  files. When these directories are full, you may not be able to execute commands 
+  in Stata. If this happens, it is possible to redirect these scratch files to 
+  another location by exiting Stata and setting the TMPDIR environment variable 
+  with the following Linux command:</p>
+<p class="InputCode">&gt; setenv TMPDIR directory </p>
+<p>where directory is some alternative directory where you can write. Refer to<a href="https://www.ssc.wisc.edu/sscc/pubs/30.pdf"> 
+  SSCC Pub. #30: How to Avoid Running Out of Disk Space</a> for a complete discussion 
+  on <span class="MenuOutput">/tmp</span> disks. </p>
+<h2><a id="GettingGRAPHOutput" name="GettingGRAPHOutput"></a>Getting GRAPH Output </h2>
+<p>You can display high resolution graphs only when using the interactive windowed 
+  GUI mode of Stata (invoked with the xstata command). If you are using the interactive 
+  console mode of Stata (invoked with the stata command), you can either use the 
+  <span class="InputCode"> plot</span> command to get two-way scatter plots or 
+  have the <span class="InputCode">graph</span> command write the graph directly 
+  to a file that you then print. </p>
+<h3>Displaying GRAPH Output in the Interactive Windowed GUI Mode </h3>
+<p>High resolution graphics may be generated in GUI Stata with the <span class="InputCode">graph</span> 
+  command. For example:</p>
+<p class="InputCode">. graph twoway scatter y x</p>
+<p>generates a scatter plot of the variables Y by X in a new window on your screen.</p>
+<p>You can then type <span class="InputCode">print</span> to print a copy of the 
+  graph on the printer in the fourth floor computer lab (Soc. Sci. 4218). Alternatively, 
+  you can choose <span class="MenuOutput">Print</span> from the <span class="MenuOutput">File</span> 
+  menu. If you want to print the graph on a different printer, you will need to 
+  save the graph first and then print it from Linux with the <span class="InputCode">lpr</span> 
+  command. This is described below.</p>
+<h3>Saving GRAPH Output</h3>
+<p>You can save <span class="InputCode">graph</span> output from any of Stata's 
+  three different interfaces. This is useful for two reasons:</p>
+<ol>
+<li>If you are using the interactive console mode, Stata can not display the 
+    graphs you request with the <span class="InputCode">graph</span> command. 
+    But, it can save the graphs to a file that can then be printed.</li>
+<li>Stata can convert saved graphs to Postscript and encapsulated Postscript 
+    files that can then be inserted in documents.</li>
+</ol>
+<p>To save a copy of a graph, use the <span class="InputCode">saving</span> <span class="italic">option</span>. 
+  For example:</p>
+<p class="InputCode">. graph twoway scatter y x, saving(mypic)</p>
+<p>This creates a file called <span class="InputCode">mypic.gph</span> containing 
+  the graph. </p>
+<p>Note that in interactive console mode, nothing is displayed except Stata's 
+  prompt indicating it is ready for your next command.</p>
+<p>Saved graphs can be printed from Linux using the <span class="InputCode">lpr</span> 
+  command. For example:</p>
+<p class="InputCode"> &gt; lpr -Puser7single mypic.gph</p>
+<h2> <a id="AccessingPrograms" name="AccessingPrograms"></a>Accessing Programs (ado-files) in the Stata 
+  Technical Bulletin</h2>
+<p>The <span class="italic">Stata Technical Bulletin</span> (STB) was a printed 
+  journal which was published roughly every other month. It contains articles 
+  written by Stata Corporation as well as Stata users. It has been replaced by 
+  the <span class="italic">Stata Journal</span>, which has less emphasis on technical 
+  issues and more on techniques. We have a set of these publications in the CDE 
+  Print Library in 4457 Social Science.</p>
+<p>Some STB articles include software enhancements to Stata called ado-files which 
+  can be installed into Stata. These ado-files are available for download from 
+  <a href="http://www.stata.com">Stata's web site</a>. Software additions included 
+  in the STBs come in two flavors: official updates and user-written additions.</p>
+<h3>Official Updates</h3>
+<p>SSCC staff incorporate official updates into Stata as they become available. 
+  You can use the <span class="InputCode">update query</span> command to verify 
+  that Stata is using the latest available updates:</p>
+<p class="InputCode">. update query<br/>
+<span class="MenuOutput">(contacting http://www.stata.com)</span></p>
+<p class="MenuOutput">Stata executable<br/>
+  folder: /usr/local/stata/<br/>
+  name of file: stata-se<br/>
+  currently installed: 30 Jan 2004<br/>
+  latest available: 30 Jan 2004</p>
+<p class="MenuOutput">Ado-file updates<br/>
+  folder: /usr/local/stata/ado/updates/<br/>
+  names of files: (various)<br/>
+  currently installed: 30 Jan 2004<br/>
+  latest available: 30 Jan 2004<br/>
+</p>
+<p class="MenuOutput">Recommendation<br/>
+  Do nothing; all files up-to-date.</p>
+<p>The <span class="InputCode">update query</span> command makes a connection 
+  to Stata's web site to check for all available official updates. If you discover 
+  that we have not installed all the official updates available, send email to 
+  the <a href="/sscc/helpdesk.htm">Help Desk</a> 
+  and we will update the software.</p>
+<p>Note that we download official updates to Stata about every two months. To 
+  get a list of Stata updates, type the following command:</p>
+<p class="InputCode">.help whatsnew</p>
+<h3>User-written Additions</h3>
+<p>User-written additions to Stata published in the STBs are available from Stata's 
+  web site for download just as are the official updates. Unlike the official 
+  updates though, you need to request them individually (one at a time). For this 
+  reason and also because user-written additions do not undergo quality assurance 
+  testing like official updates do, SSCC staff do not update Stata with user-written 
+  additions. If you want a user-written addition, you need to download the addition 
+  yourself to your own directory. Instructions are provided in 
+  <a href="https://www.ssc.wisc.edu/sscc/pubs/4-16.htm">Finding and Installing User-Written Stata Programs</a>.</p>
+<h2> <a id="StataDocumentation" name="StataDocumentation"></a>Stata Documentation</h2>
+<p>The following Stata manuals are available for short term loan from the CDE 
+  Print Library in 4457 Social Science:</p>
+<ul>
+<li><span class="italic">Stata Reference Manual: Version 9 </span> (four volumes)</li>
+<span class="italic">
+<li>Stata User's Guide: Version 9 </li>
+<li>Getting Started with Stata 9 for Linux</li>
+<li>Stata Graphics Manual Version 9 </li>
+</span>
+</ul>
+<p><a href="http://www.stata.com">Stata's web site</a> also has a lot of information 
+  including a support section which has a searchable database for finding answers 
+  to common questions.</p>
+<p>To subscribe to  Stata's list serv, visit <a href="http://www.stattransfer.com/lists.html">Stat/Transfer's
+     list subscription service</a>. This web site provides a subscription service
+      to all the major statistical software list servers including Stata. The
+     Stata  list serv provides a depth of information and support that is essentially
+      impossible for staff at any one institution (like ours) to duplicate. </p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Limiting Access to a Web Page</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>The Internet is a wonderful way to disseminate information broadly, but every 
+  now and then it is a bit too broad. This document will discuss how to limit 
+  access to a web page on the SSCC's web server.</p>
+<p>Please note that this process requires you to log into one of the SSCC's Linux servers. If you're not familiar with Linux, please contact the <a href="/sscc/helpdesk.htm">SSCC Help Desk</a> and we'll be happy to do it for you.</p>
+<p>Security is actually set for directories, not 
+  individual web pages. Of course you could set up a separate directory for each 
+  page if you so desired. When the web server receives a request to view a web 
+  page, the server will first see if there is a file called <span class="InputCode">.htaccess</span> 
+  in the same directory. If there is, this file determines what kind of access 
+  the server will give.</p>
+<h2><a id="SettingupaSingleUsernameandPassword" name="SettingupaSingleUsernameandPassword"></a>Setting up a Single Username 
+  and Password</h2>
+<p>In many cases it will be enough to have a single user name and password that 
+  many people can share. For example, you could give an entire class one user 
+  name and password to access the course web site.</p>
+<h3>Creating the .htaccess File</h3>
+<p> The first step is to create the <span class="InputCode">.htaccess</span> file. 
+  It must contain the following text:</p>
+<p class="InputCode">AuthUserFile {<span class="Parameter">full path name to
+		page(s) to be protected</span>}/.htpasswd<br/>
+  AuthName "{<span class="Parameter">description of the protected pages</span>}"<br/>
+  AuthType Basic<br/>&lt;Limit GET POST&gt;<br/>
+  require valid-user<br/>
+  &lt;/Limit&gt;</p>
+<p>You can <a href="files/htaccess.txt">download a template</a> of this<span class="InputCode">.htaccess 
+  </span>file (if your browser opens it rather than saving it when you click on 
+  the link, right click instead and select <span class="MenuOutput">Save Target 
+  as </span>or<span class="MenuOutput"> Save Link as</span>). Place this template 
+  in the directory you want to protect and then rename it<span class="InputCode"> 
+  .htaccess</span>. Open it in your favorite editor and replace everything in 
+  curly brackets {} with what applies to your site. For example, if I wanted to 
+  protect the pages for an Econ 101 class that were in a directory called <span class="InputCode">econ101</span> 
+  in my web site, the <span class="InputCode">.htaccess</span> file would look 
+  like this:</p>
+<p class="InputCode">AuthUserFile /home/r/rdimond/PUBLIC_web/econ101/.htpasswd<br/>
+  AuthName "Econ 101 web site"<br/>
+  AuthType Basic<br/>&lt;Limit GET POST&gt;<br/>
+  require valid-user<br/>
+  &lt;/Limit&gt;</p>
+<p>(Note that if you copy this example you need to change <span class="InputCode">/home/r/rdimond</span> to <span class="InputCode">/home/</span><span class="Parameter">{first letter of your username}</span><span class="InputCode">/</span><span class="Parameter">{your username}</span>.)</p>
+<p>Another example, if I wanted to protect the pages for an Soc 101 class that 
+  were in a directory called <span class="InputCode">soc101</span> in Sociology's 
+  web site, the <span class="InputCode">.htaccess</span> file would look like 
+  this:</p>
+<p class="InputCode">AuthUserFile /usr/global/web/soc/class/soc101/.htpasswd<br/>
+  AuthName "Soc 101 web site"<br/>
+  AuthType Basic<br/>&lt;Limit GET POST&gt;<br/>
+  require valid-user<br/>
+  &lt;/Limit&gt;</p>
+<h3>Setting the Username and Password</h3>
+<p>Once the <span class="InputCode">.htaccess</span> file is created, you need
+		 to set the username and password. Log in to Linux (if you haven't already)
+		and	make the	current directory is the one you want to protect.
+		Then type</p>
+<p class="InputCode"> /usr/bin/htpasswd -c .htpasswd <span class="Parameter">username</span></p>
+<p>Where <span class="Parameter"><span class="InputCode">username</span></span> 
+  should be replaced by the username you want to give the users of the web page. 
+  You will be prompted to enter and confirm a password. This will create a file 
+  called <span class="InputCode">.htpasswd</span>. The <span class="InputCode">.htaccess</span> 
+  file tells the server to only allow people to view the pages in this directory 
+  if they enter the username and password combination that appears in <span class="InputCode">.htpasswd</span>.</p>
+<p>Note that if you open <span class="InputCode">.htpasswd</span>, it lists the 
+  valid usernames, but the passwords are encrypted. If you forget the password 
+  you chose you will create it again.</p>
+<h2><a id="CreatingMultipleUsernames" name="CreatingMultipleUsernames"></a>Creating Multiple Usernames</h2>
+<p>If you want more than one username, there is a simple program that automates
+	 the entire process. Of course the price of automation is lack of flexibility;
+	 in particular you cannot choose the usernames and passwords. In the directory
+	 you want protected simply type</p>
+<p class="InputCode">mkhtpass n</p>
+<p>where <span class="InputCode">n </span>is the number of separate usernames 
+  you desire. The program will then prompt you to enter a description of the site. 
+  It will create the <span class="InputCode">.htaccess</span> and<span class="InputCode"> 
+  .htpasswd</span> files, along with a file called <span class="InputCode">password.txt</span>. 
+  This contains the usernames and passwords in plain text (so you will want to 
+  delete it or move it to a non-public location). Note that the usernames are 
+  simply numbers: 00001, 00002 etc., and the passwords are completely random.</p>
+<h2 class="PageBreak"><a id="LimitingAccessbyDomain" name="LimitingAccessbyDomain"></a>Limiting Access by 
+  Domain</h2>
+<p>One easy way to limit access is by domain. For example, you could allow access 
+  only to those who are currently in the <span class="InputCode">wisc.edu</span> 
+  domain. Thus anyone using a University computer or dialing in to DoIT's modem 
+  pool would be able to access your web pages. Keep in mind that anyone using 
+  a different Internet Service Provider would not be able to access them, so this 
+  may not be ideal for a course web site. As before you need to have a <span class="InputCode">.htaccess</span> 
+  file, but this time it just needs to contain:</p>
+<p class="InputCode"> allow from wisc.edu<br/>
+  deny from all</p>
+<p>No <span class="InputCode">.htpasswd</span> file is needed. You could replace 
+  <span class="InputCode">wisc.edu</span> with any other domain (even <span class="InputCode">ssc.wisc.edu</span>), 
+  but keep in mind that this kind of restriction depends on where the user is, 
+  not who they are (for example someone dialing in to DoIT's modem pool from home 
+  is not in the <span class="InputCode">ssc.wisc.edu</span> domain even if they 
+  have an SSCC account). Here is a <a href="files/htaccess2.txt">template</a> 
+  for this kind of access.</p>
+<h2><a id="Caveats" name="Caveats"></a>Caveats</h2>
+<p>The steps described here are simple and fairly effective, but not state of 
+  the art. In particular, the user names and passwords are sent in plain text, 
+  and in principle could be intercepted and read. Thus it would be wise to use 
+  a different user name and password for web pages than for your SSCC account 
+  or any other account. In addition, this would not be appropriate for highly 
+  sensitive data, which probably does not belong on the web, period.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Forwarding Your Email to Another Address</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>When you were given your SSCC account, an email address was automatically created 
+  for you (<span class="Parameter">username</span>@ssc.wisc.edu). 
+  However, you can easily instruct our mail server to automatically forward your 
+  SSCC mail to any address you choose. 	Just go to our <a href="https://www.ssc.wisc.edu/sscc_jsp/email/forward.jsp">Email
+		Forwarding</a> page.</p>
+<p>All mail is scanned before being forwarded, and viruses and obvious spam will be discarded. If your SSCC email is being forwarded at the time your SSCC account is closed, we will continue to forward your mail for one year.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Running OpenOffice on Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>OpenOffice is an open source alternative to Microsoft Office that runs on Linux. 
+  This includes programs similar to Word, Excel, PowerPoint, and Front Page. Since 
+  SSCC staff have little experience or expertise with this program, we can offer 
+  only minimal support (for details about what minimal support means, please see 
+  our <a href="/sscc/policies/softsup.htm">Software Support Policy</a>). Documentation 
+  is available on the <a href="http://www.openoffice.org">OpenOffice web site</a>.</p>
+<p>OpenOffice will attempt to read documents created with Microsoft Office, and 
+  with simple files it may be successful. You can convert documents by simply 
+  opening them, or convert whole dirctories at a time using the <span class="MenuOutput">File 
+  Converter</span> under <span class="MenuOutput">AutoPilot</span>. We do not 
+  recommend trying to switch back and forth between Office and OpenOffice, because 
+  fixing the problems created by the conversion process may take a great deal 
+  of time. However, OpenOffice does provide a way for dedicated Linux users to 
+  run Office style applications without having to use any Microsoft products.</p>
+<h2>Running OpenOffice</h2>
+<p>Before you can use OpenOffice, you must have X-Win32 running (or another program
+   that displays X windows). If you need help using X-Win32, please see <a href="https://www.ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting
+  to SSCC Linux Computers using X-Win32</a>.</p>
+<p>Start OpenOffice by typing:</p>
+<p class="InputCode">&gt; ooffice</p>
+<p>If you want to be able to use your Linux session at the same time, add an
+  ampersand (<span class="InputCode">&amp;</span>) to the end of the command
+  so OpenOffice runs in the background. Once OpenOffice starts, you can then
+  use whatever component you need by clicking <span class="MenuOutput">File</span>, <span class="MenuOutput">New</span> 
+  and then creating a new spreadsheet, presentation, etc. </p>
+<p>In general you'll find that OpenOffice is is very similar to Microsoft Office, 
+  and if you're comfortable with Office you'll feel right at home.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Printing from Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>The SSCC's Linux servers all have access to the SSCC's network printers. This
+		 allows all SSCC users to print to 2470, 3218, and 4218 Social
+  Science. These rooms are open when a student lab monitor is on duty Monday
+  - Friday, 8:00 a.m. - 7:30 p.m. In
+  order to get into these rooms after hours, you will need a PIN to use along
+  with your UW ID. You can <a href="https://www.ssc.wisc.edu/sscc_jsp/account/lab.jsp">request
+		a PIN</a> online. Note
+		 that you cannot print to personal printers from Linux.</p>
+<p>SSCC printing costs are  substantial, to both the SSCC's budget and the environment.
+  We do not charge SSCC members for printing, but we do track printer usage and
+  report it to our member agencies. This then becomes one of the factors in determining
+  how much each agency contribues to the SSCC budget.</p>
+<p> We urge you to look for ways to conserve on printing whenever possible. This 
+  would include printing double-sided, printing more than one page per sheet if 
+  possible, and only printing what you really need. Instructions for doing all 
+  of these are included in this article.</p>
+<h2><a id="TheenscriptCommand" name="TheenscriptCommand"></a>The <span class="InputCode">enscript</span> 
+  Command</h2>
+<p>You can submit jobs to be printed using the <span class="InputCode">enscript</span> 
+  command. This replaces the <span class="InputCode">lpr</span> command which 
+  often does not work with the newer printers. The basic syntax is:</p>
+<p class="InputCode">enscript <span class="Parameter">options</span> <span class="Parameter">file</span></p>
+<p>Here <span class="Parameter"><span class="InputCode">file</span></span> should 
+  be replaced by the name of the file you want to print. It is possible to use 
+  wildcards, but do not do so unless you are certain you will only print the files 
+  you need.</p>
+<h2><a id="PrintQueues" name="PrintQueues"></a>Print Queues</h2>
+<p>One of the most important options is the print queue. Each printer has two 
+  queues (one for double sided printing and one for single), and you select the 
+  one you want to use with the <span class="InputCode">-P</span> option followed 
+  by the queue name. Always use the double-sided queues if at all possible. If 
+  you do not specify a printer it will go to the default, which is <span class="InputCode">user4double</span>. 
+  The following table lists the available print queues:</p>
+<p></p>
+<table align="center" border="1" cellpadding="3" width="85%">
+<tr>
+<th scope="row">Output Location</th>
+<th scope="row">Queue Name</th>
+<th scope="row">Notes</th>
+</tr>
+<tr>
+<td rowspan="2">Computer Lab (4218)</td>
+<td class="InputCode">user4double (u4)</td>
+<td>Prints on both sides of the paper. Self-service printer. <b>This is the 
+	  default printer if no queue is specified.</b></td>
+</tr>
+<tr>
+<td class="InputCode">user4single (u4s)</td>
+<td>Prints on one side of the paper only. Self-service printer. </td>
+</tr>
+<tr>
+<td rowspan="2">Computer Lab (3218)</td>
+<td class="InputCode">user3double</td>
+<td>Prints on both sides of the paper. Self-service printer.</td>
+</tr>
+<tr>
+<td class="InputCode">user3single </td>
+<td>Prints on one side of the paper only. Self-service printer.</td>
+</tr>
+<tr>
+<td rowspan="2">Computer Lab (2470)</td>
+<td class="InputCode">user2double (u2)</td>
+<td>Prints on both sides of the paper. Self-service printer.</td>
+</tr>
+<tr>
+<td class="InputCode">user2single (u2s)</td>
+<td>Prints on one side of the paper only. Self-service printer.</td>
+</tr>
+</table>
+<p>The names in parentheses are shortcut aliases for the actual queue names--you 
+  may find them convenient.</p>
+<p class="InputCode">enscript <span class="Parameter">file</span></p>
+<p>will print your file double sided in the 4218, while</p>
+<p class="InputCode">enscript -P u2s <span class="Parameter">file</span></p>
+<p>will print your file in 2470, and on just one side of each page.</p>
+<p>Note that the printers in 4218 are the newest, fastest, and least likely to 
+  have problems with large or complex files (like articles in PDF format).</p>
+<h2><a id="PrintingOptions" name="PrintingOptions"></a>Printing Options</h2>
+<p>Many other options allow you to control the way your document will be printed. 
+  One we ask that you use as often as possible is <span class="InputCode">-U<span class="Parameter">x</span></span> 
+  which allows you to print <span class="Parameter"><span class="InputCode">x</span></span> 
+  pages per side of the paper. Thus</p>
+<p class="InputCode">enscript -U2 -P u4 <span class="Parameter">file</span></p>
+<p>will print four pages of your file per sheet of paper (two on the front and 
+  two on the back). Of course the printing will be smaller, but this may be acceptable 
+  for codebooks, logs, or other long documents. </p>
+<p> You can print your file in landscape format with the <span class="InputCode">-r</span> 
+  option, e.g.</p>
+<p class="InputCode">enscript -r <span class="Parameter">file</span></p>
+<p>Think of this as rotating your file 90 degrees, hence the <span class="InputCode">-r</span>. 
+  Note that by default SAS assumes you are printing in portrait format. If you 
+  include the following line in your SAS program any output after that point will 
+  be formatted nicely for landscape printing:</p>
+<p class="InputCode">OPTIONS LINESIZE=122 PAGESIZE=47;</p>
+<p>You can also specify which pages you want printed with the <span class="InputCode">-a</span> 
+  option, The baisc syntax is <span class="InputCode">-a <span class="Parameter">x</span>-<span class="Parameter">y</span></span>, 
+  where <span class="Parameter"><span class="InputCode">x</span></span> specifies 
+  the starting page and <span class="Parameter"><span class="InputCode">y</span></span> 
+  the ending page. A single number will print just that page. If you give a single 
+  number with a dash, <span class="InputCode">enscript</span> will treat the missing 
+  number as either the beginning or the end of the file. Thus</p>
+<p class="InputCode">enscript -a 3-5 <span class="Parameter">file</span></p>
+<p>will print pages three through five,</p>
+<p class="InputCode">enscript -a 4 <span class="Parameter">file</span></p>
+<p>will print just page four,</p>
+<p class="InputCode">enscript -4 <span class="Parameter">file</span></p>
+<p>will print from the beginning to page four, and </p>
+<p class="InputCode">enscript 4- <span class="Parameter">file</span> </p>
+<p>will print from page four to the end.</p>
+<p>There are many more options. Type <span class="InputCode">man enscript</span> 
+  to see them all.</p>
+<h2><a id="PrintingPostscriptFiles" name="PrintingPostscriptFiles"></a>Printing Postscript Files</h2>
+<p>The <span class="InputCode">enscript</span> command converts files to postscript 
+  format before printing, which normally works quite well. However if a file is 
+  already in postscript format, the output will be useless. Normally postscript 
+  files end with the extension <span class="InputCode">.ps</span>. To print postscript 
+  files use <span class="InputCode">lpr</span>. The syntax for choosing a printer 
+  with <span class="InputCode">lpr</span> is identical to <span class="InputCode">enscript</span>. 
+  For example:</p>
+<p class="InputCode">lpr -P u2d <span class="Parameter">postscriptfile.ps</span></p>
+<p>If you need to use other options please type <span class="InputCode">man lpr</span>.</p>
+<p>The <span class="InputCode">lpr</span> command does not allow for printing 
+  multiple pages per sheet. However you can pipe to output of a postscript command 
+  to <span class="InputCode">lpr</span>:</p>
+<p class="InputCode">psnup -n 2 <span class="Parameter">postscriptfile.ps</span> 
+  | lpr</p>
+<p>This will print <span class="Parameter"><span class="InputCode">postscriptfile.ps</span></span> 
+  to the 4218 printers with two pages per sheet.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Running SAS on Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>SAS is a comprehensive program used by SSCC researchers for data management
+  and statistical analysis. It can be run in both 
+  a Windows-like or batch environment on Linux. SSCC has version 9 of SAS installed
+  on Linux, Windows Terminal Server (Winstat1-3), and the lab PCs in Social Science
+  3218 and 4218. This article explains how to run SAS jobs on Linux. For
+  an introduction to writing SAS programs to work with data, see <a href="https://www.ssc.wisc.edu/sscc/pubs/4-18.htm">An Introduction
+  to SAS Data Sets</a>. </p>
+<h2> Invoking SAS</h2>
+<p>SAS can be invoked simply by typing the word "sas" at the Linux prompt. 
+  To take advantage of the many options available with the command, use the general 
+  form of the SAS command as follows:</p>
+<p> <b>sas</b> <i>filename -option1...-optionn</i></p>
+<p>where <i>filename</i> gives the name of the file containing the SAS program
+   to be executed. Specifying a filename on the SAS command invokes SAS in batch
+  mode.</p>
+<p><i>options</i> specifies a SAS system option to configure your session. Some 
+  options include:</p>
+<p><b>-linesize</b> <i>n</i> specifies the line size of the SAS output. The range
+   of linesize is 64 to 256. The default is 132 for batch mode.</p>
+<p><b>-obs</b> <i>n</i> specifies the last observation from a data set that SAS 
+  is to read.</p>
+<p><b>-pagesize</b> <i>n</i> specifies the number of lines that can be placed
+  in a page of SAS output. Values can range from 15 to 32,767. The default is
+  60.</p>
+<p><b>-memsize</b> <i>n</i> specifies the maximum amount of memory a procedure
+   call may use. The default is 64mb. </p>
+<p><b>-log</b> <i>file</i> specifies that SAS write the log of the SAS session 
+  to "file". By default, the SAS log is written to the file <i>filename</i>.log 
+  where <i>filename</i> is the name of the file containing the SAS commands.</p>
+<p><b>-print</b> <i>file</i> specifies that SAS write the SAS output to "file". 
+  By default, the SAS output is written to the file <i>filename</i>.lst where 
+  <i>filename</i> is the name of the file containing the SAS commands.</p>
+<p> Example:</p>
+<p class="InputCode"> sas test1 -obs 0 -noreplace</p>
+<p>This command executes the program test1.sas, the file containing the SAS commands, 
+  with the system options OBS and NOREPLACE. These two options used together are 
+  a good way of checking to make sure your syntax is correct in your file containing 
+  the SAS statements. It causes SAS to execute each DATA and PROC step in the 
+  program without actually reading any of the data.</p>
+<h2> Modes of Execution</h2>
+<p> This section describes
+  how to invoke SAS in the Interactive SAS Windowing Environment and batch modes.</p>
+<h3>Interactive SAS Windowing Environment Mode</h3>
+<p>SAS can only be accessed in this mode from an X-display such as a Windows-based
+  Terminal or a PC running software like X-Win32. </p>
+<p>Typing <span class="InputCode">sas</span> at the Linux prompt brings up SAS 
+  in the Windowing Environment mode. The SAS Windowing Environment is an interactive 
+  windowing system that enables you to write and modify your programs, run them, 
+  and monitor the output. You can use menus or type commands within the SAS Windowing 
+  Environment. Choose <b>File: Exit</b> from the menu to terminate the SAS Windowing 
+  Environment and return control to the operating system.</p>
+<p>Note: If after typing <span class="InputCode">sas</span> on the command line,
+  you see a 1? prompt on your screen, you are NOT in the SAS Windowing Environment
+   but in old-style interactive line mode. Typing endsas; at the 1? prompt will
+  take you back to the Linux prompt. The SAS Windowing Environment is only available
+  from  X-displays.</p>
+<h3>Batch Mode</h3>
+<p>To invoke SAS in batch mode, enter the SAS command followed by the
+   name of the file containing the SAS program to be executed. For example, suppose
+   you have stored your SAS statements in a file named pums90.sas. To invoke
+  SAS and execute the program you would type the
+  following:</p>
+<p class="InputCode"> sas pums90 </p>
+<p>Note that you do not have to include the file extension in the filename when 
+  the file extension is .sas. SAS uses .sas by default.</p>
+<p>You do not get another Linux prompt until SAS finishes executing the program.
+   When SAS finishes and you get the Linux prompt, two new files are in your
+  working  directory which contain the SAS output. pums90.log contains the log
+  of the SAS session and pums90.lst contains the output from the SAS commands
+  in pums90.sas.. </p>
+<p>Note: If you have stored your SAS statements in a file which has some file
+   extension other than .sas, the log and lst files that are created will have
+   filenames that include the extension. For example, if your command file was
+   named pums90.ext, the log file created would be pums90.ext.log and the output
+  file would be pums90.ext.lst </p>
+<h4> Routing Output</h4>
+<p>In the example just shown, SAS created two files: one to hold the SAS output 
+  and the other one for a log of session messages. If you want to direct your 
+  output and log to other files, use the PRINT and LOG system options. For example,</p>
+<p class="InputCode"> sas pums90 -print report -log report.log</p>
+<p>The output goes to file report and the log goes to file report.log.</p>
+<h4>Running SAS Jobs in the Background </h4>
+<p>To execute a program in the background, you simply  type an <span class="InputCode">&amp;</span> at
+  the end of the command. For the pums90.sas example above, type the following:</p>
+<p class="InputCode"> sas pums90 &amp;</p>
+<p>Your job will then be executed in the background, meaning you do not have
+   to wait until the SAS program finishes execution before you get the Linux
+  prompt. In other words, your shell is available for other work. Submit only
+  one SAS background job at a time on any one Linux server. </p>
+<h2> SAS Documentation</h2>
+<p>Online documentation for SAS 9 is available at <a href="http://support.sas.com/documentation/onlinedoc/sas9doc.html">http://support.sas.com/documentation/onlinedoc/sas9doc.html </a></p>
+<p>We also have printed copies of the version 6 manuals and other SAS books on
+  programming and statistical topics which you
+  may find useful. These manuals are available for short term loan in the CDE
+  Print Library, Social Science 4457. </p>
+<p>SSCC staff have prepared many  articles on using SAS. These are  available 
+  in the <a href="https://www.ssc.wisc.edu/sscc/pubs/stat.htm">SSCC Knowledge Base</a>.</p>
+<p>To subscribe to the SAS listserv, visit <a href="http://www.stattransfer.com/lists.html">http://www.stattransfer.com/lists.html</a>.
+   This web site provides a subscription service to all the major statistical
+  software  listservs including SAS. The SAS listserv provides a depth of
+  information  and support that is essentially impossible for staff at any one
+  institution  (like ours) to duplicate. </p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using Compressed Data in Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>Linux has a variety of tools for working with compressed data. 
+              This article will describe how to use them, and why.</p>
+<p>Compression programs look for patterns in the data, and then replace 
+              the original file with a file that describes those patterns. Nothing 
+              is lost--that description contains all the information needed to 
+              recreate the original file. The description will be smaller than 
+              the original file, but how much smaller will depend on the data 
+              itself and the compression scheme used.</p>
+<p>The catch is that it takes CPU time to compress or uncompress a 
+              file. Thus compression is really a way to trade CPU power for disk 
+              space. For files you use constantly, this may not be a good trade. 
+              But we strongly encourage you to compress any data sets you are 
+              not using on a regular basis. The SSCC's current disk space was 
+              quite costly and we hope to avoid adding to it any sooner than necessary.</p>
+<p>This article will not attempt cover all the available compression	
+              tools or all the things they can do, just the most common usage. 
+              Full details are available by typing <span class="InputCode">man</span> 
+              and then the name of the command in Linux (e.g. <span class="InputCode">man 
+              compress</span>).</p>
+<h2>compress/uncompress</h2>
+<p>The <span class="InputCode">compress</span> and <span class="InputCode">uncompress</span> 
+              commands are very easy to use:</p>
+<p class="InputCode">compress <span class="Parameter">file</span></p>
+<p>Will replace <span class="Parameter"><span class="InputCode">file</span></span> 
+              with the compressed file <span class="InputCode"><span class="Parameter">file</span>.Z</span> 
+              (think zipped). You can uncompress a file with:</p>
+<p class="InputCode">uncompress <span class="Parameter">file</span></p>
+<p>which replaces the compressed file with the original. <span class="InputCode">uncompress</span> 
+              doesn't care if you include the <span class="InputCode">.Z</span> 
+              at the end or not--it will find the file either way.</p>
+<h2>gzip/gunzip</h2>
+<p><span class="InputCode">gzip</span> and <span class="InputCode">gunzip</span> 
+              work in exactly the same way:</p>
+<p class="InputCode">gzip <span class="Parameter">file</span></p>
+<p>will replace <span class="Parameter"><span class="InputCode">file</span></span> 
+              with the compressed <span class="InputCode"><span class="Parameter">file</span>.gz</span>.</p>
+<p class="InputCode">gunzip <span class="Parameter">file</span></p>
+<p>will replace the compressed file with the original.</p>
+<h2>bzip2/bunzip2</h2>
+<p><span class="InputCode">bzip2</span> and <span class="InputCode">bzip2</span> 
+              are another variation on the same theme.</p>
+<p class="InputCode">bzip2 <span class="Parameter">file</span></p>
+<p>will replace <span class="Parameter"><span class="InputCode">file</span></span> 
+              with the compressed <span class="InputCode"><span class="Parameter">file</span>.bZ2</span>.</p>
+<p class="InputCode">bunzip2 <span class="Parameter">file</span>.bz2</p>
+<p>will replace the compressed file with the original. Note that in 
+              this case you must type the <span class="InputCode">.bz2</span> 
+              at the end of the name of the file to be uncompressed.            </p>
+<h2>zip/unzip</h2>
+<p><span class="InputCode">zip</span> works slightly differently in 
+              that it asks you to name the compressed file:</p>
+<p class="InputCode">zip <span class="Parameter">compressedFile</span>
+<span class="Parameter">file</span></p>
+<p>will create <span class="InputCode"><span class="Parameter">compressedFile</span>.zip</span> 
+              (the <span class="InputCode">.zip</span> is added automatically), 
+              containing a compressed version of <span class="Parameter"><span class="InputCode">file</span></span>. 
+              The original file is not removed.</p>
+<p class="InputCode">unzip <span class="Parameter">compressedFile</span></p>
+<p>will recreate the original file. The compressed file is not removed.</p>
+<h2>Which Command Should I Use?</h2>
+<p>Unfortunately which command will work best depends on the exact 
+              properties of the file you're working with. Bzip will usually give the best compression, while Zip files are more easily used on Windows. </p>
+<h2>How Do I Uncompress this File?</h2>
+<p>Suppose you've obtained a file, perhaps via email or from the web, 
+              and you know it's compressed but you don't know what program was 
+              used to compress it. Look at the last letters of the file name, 
+              following the period:</p>
+<table align="center" border="1" cellpadding="4">
+<tr>
+<th>Last Letters of the File Name...</th>
+<th>Program it was probably compressed with...</th>
+</tr>
+<tr>
+<td class="InputCode">.Z</td>
+<td class="InputCode">compress</td>
+</tr>
+<tr>
+<td class="InputCode">.gz</td>
+<td class="InputCode">gzip</td>
+</tr>
+<tr>
+<td class="InputCode">.bz2</td>
+<td class="InputCode">bzip2</td>
+</tr>
+<tr>
+<td class="InputCode">.zip</td>
+<td><span class="InputCode">zip</span> (possibly a Windows program 
+                  like Winzip)</td>
+</tr>
+</table>
+<p>Note that both <span class="InputCode">uncompress</span> and <span class="InputCode">unzip</span> 
+              will handle Windows <span class="InputCode">.zip</span> files just	
+              fine. Feel free to just experiment: if you try to uncompress a file 
+              using a program that can't read the needed format, it will just 
+              give you an error message and quit.</p>
+<h2>zcat/bzcat</h2>
+<p>The zcat command reads a compressed file and sends the results 
+              to the standard output (use <span class="InputCode">bzcat </span>with<span class="InputCode"> bzip2</span>). 
+              Just typing</p>
+<p class="InputCode">zcat <span class="Parameter">file</span></p>
+<p>where <span class="Parameter"><span class="InputCode">file</span></span> 
+              is a compressed file, will display the tables of the file on the 
+              screen. But the real point is to use the results in other programs. 
+              For example, to see the results one page at a time pipe the output 
+              to the more command:</p>
+<p class="InputCode">zcat <span class="Parameter">file</span> | more</p>
+<p>Both SAS and Stata can read directly from the output of the <span class="InputCode">zcat</span> 
+              command. For instructions see <a href="4-11.htm">Using Compressed 
+              Data in SAS</a> or <a href="7-12.htm#ReadingCompressedData">Using 
+              Stata on Linux</a>. Note that SAS has compression built in as a 
+              data set option. Stata users should consider using the user-written 
+              <span class="InputCode">gzsave</span> and <span class="InputCode">gzuse</span> 
+              commands. These act just like the regular <span class="InputCode">save</span> 
+              and <span class="InputCode">use</span> commands, but the file on 
+              disk is compressed just as if you had used <span class="InputCode">gzip</span> 
+              on it.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

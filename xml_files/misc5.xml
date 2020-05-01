@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Using Silo LDS</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Silo is the SSCC's secure computing enclave. It consists of secure  servers and data storage for working with data covered by HIPAA and other sensitive data. Currently, the Silo servers are all Windows-based and very similar to Winstat. New Linux servers will be available very soon.</p>
+<h2>Getting Access</h2>
+<p>If you are interested in using Silo, please contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a>. Depending on the nature of your data you may still need to get explicit approval from your IRB, the UW-Madison Office of Cybersecurity, or other relevant authorities before you can store data in Silo, but using Silo will expedite that process because it has already been approved for other projects.</p>
+<p>Connecting to Silo requires multifactor authentication using Duo, the same system used for your UW-Madison NetID. Most people use the Duo app on their smartphone, but you can also use  a separate hardware token. When you contact the Help Desk about using Silo please mention which method you prefer. Instructions for obtaining and using a hardware token can be found <a href="#token">here</a>.                </p>
+<h2>Installing the Citrix Workspace App</h2>
+<p>To use Silo you'll need to have the Citrix Workspace App installed on your computer. Just click on the appropriate link below and then run the installer after it finishes downloading. If you've already installed the Citrix Workspace App on your computer in order to use Winstat you do not need to install it again.</p>
+<ul>
+<li><a href="https://ssc.wisc.edu/sscc/receiver/CitrixWorkspaceApp.exe">Citrix Workspace App for Windows</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/receiver/CitrixWorkspaceApp.dmg">Citrix Workspace App for Mac</a></li>
+</ul>
+<p>See <a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat</a> for more information about using the Citrix Workspace App.                </p>
+<h2>Logging In</h2>
+<p>To log in to Silo, you will need go to the web site <a href="https://silo.ssc.wisc.edu">silo.ssc.wisc.edu</a>. If you're asked to give permission for programs to run, do so.</p>
+<img alt="silo login screen" class="CenterImage" height="334" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silo/silo1.png" width="750"/>
+<p>At the login screen, first give your SSCC username and password as usual. If it is your first time logging into Silo, you'll be prompted to follow the instructions on the screen to set up Duo on your smartphone. You'll be able to use the same Duo app for both Silo and your NetID.</p>
+<h2>The Silo File System</h2>
+<p>Silo uses a Linux-based file system. It is separate from the SSCC's main Linux file system, but we've given the drives the same names. Thus Z: is your home directory on Silo, and project folders are found on V:. Most research data will go in project folders, as home directories are initially limited to 20GB and expanded to 40GB on request.</p>
+<h2>Moving Files To and From Silo</h2>
+<p>Silo has its own file system and the ability to move files to and from that file system is intentionally limited. </p>
+<p>To move sensitive data to Silo, contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a> and we'll work with you to find the most convenient way to transfer your data.</p>
+<p>To move public data, program files, or other files to Silo, put them in a folder on your Z: drive in the regular SSCC file system and then contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a> and ask that that folder be copied to Silo.</p>
+<p>Moving data off of Silo's file system is simpler. We have created a folder called <span class="InputCode">silosync</span> in the Z: drive of each Silo user. Every five minutes, an automated script copies anything placed in this folder to a corresponding folder in the user's Z: drive on the SSCC's primary file system.  Similar folders can be created within project folders. Files are not copied from the main SSCC file system to Silo. It is your responsibility to ensure any data you place in the <span class="InputCode">silosync</span> folder can be appropriately stored on the SSCC's main file system and do not require the additional security Silo provides.</p>
+<h2>Using Silo</h2>
+<p>Once you've logged in, Silo behaves just like a regular Winstat server, with a few important exceptions:</p>
+<ul>
+<li>Silo cannot access the Internet. This can affect programs in unexpected ways: for example, Stata's <span class="InputCode">findit</span> command takes much longer to run than usual and then only gives partial results, because it tries to reach Stata's web server and does not display any results until that attempt times out. Fortunately the results it does give are the ones you're most likely to need.</li>
+<li>You can install R packages from CRAN and Bioconductor, Stata packages from SSC, and Python packages from PyPI. If you need to install packages from other sources contact the Help Desk.</li>
+<li>You cannot copy and paste between Silo and your own computer.</li>
+<li>Silo cannot access disk space on your computer.</li>
+<li>You cannot print from Silo.</li>
+</ul>
+<h2>Silo Downtime </h2>
+<p>Silo has a downtime from 7:00am-9:00am the first Wednesday of the month for security updates.   </p>
+<h2 id="token">Logging in Using a Hardware Token                </h2>
+<p>If you would like to use a token to log into Silo and have one already, please contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> and include the serial number printed on the back of your token in your email. The token must be black and white colored, with the words "OTP c100" printed on the front - we cannot use the blue and green tokens that say "Duo" on the front. If you do not have a token, please let us know and we will issue you one.</p><img alt="Silo token types" class="CenterImage" height="190" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silo/tokens.png" width="500"/>
+<p>Log in by going to <a href="https://silo.ssc.wisc.edu">silo.ssc.wisc.edu</a> and giving your SSCC username and password as usual. Then click <span class="MenuOutput">Enter a Passcode</span> and press the button on your token. Enter the 6-digit number from your token and click <span class="MenuOutput">Log In</span>.</p><img alt="" class="CenterImage" height="334" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silo/silo2.png" width="750"/>
+<p>If later you wish to add a smartphone app to your Silo account so you can authenticate with either the app or a token, click <span class="MenuOutput">Add a new device</span> under the SSCC logo and follow the onscreen instructions.</p>
+<p>If you have any questions about using Silo, feel free to contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>.</p>
+<div></div>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/silo/silo1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/silo/tokens.png, https://ssc.wisc.edu/sscc/pubs/screenshots/silo/silo2.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using Silo RD</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Silo is the SSCC's restricted data environment. It's actually made up of two environments with different levels of security. Silo LDS  is appropriate for data sets classified as "Limited Data Sets" under HIPAA and other data with similar security requirements. Silo RD  is appropriate for data sets classified as "Protected Health Information" under HIPAA and other data with similar requirements. Each environment consists of an isolated file system and servers for running analysis with statistical software installed. This article will discuss using Silo RD. A similar article on Silo LDS can be found <a href="https://ssc.wisc.edu/sscc/pubs/silo.htm">here</a>.</p>
+<p>Silo RD has a Windows server farm called WinRD which is very similar to Winstat and a Linux server called LinRD which is very similar to Linstat. To log into WinRD you will use the Citrix Receiver installed on your computer. To log into LinRD you will use SecureCRT on WinRD (you cannot log into LinRD directly from your computer). You can also use SecureFX on WinRD to transfer files from your computer to the Silor RD file system.</p>
+<p>Computers which log into Silo RD must be specially monitored by SSCC staff. Each Silo RD user will have a designated computer for use with Silo RD. Do not attempt to log in to Silo RD from any other computer.</p>
+<p>If you are interested in using Silo, please contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a>. Depending on the nature of your data you may still need to get explicit approval from your IRB, the UW-Madison Office of Cybersecurity, or other relevant authorities before you can store data in Silo, but using Silo will expedite that process because it has already been approved for other projects.</p>
+<p>This article has the following sections:</p>
+<ul>
+<li><a href="#WinRD">Using WinRD</a></li>
+<li><a href="#LinRD">Using LinRD</a></li>
+<li><a href="#SFTP">Using Secure FTP to Transfer Files</a></li>
+<li><a href="#working">Working in the RD environment</a></li>
+</ul>
+<h2 id="WinRD">Using WinRD</h2>
+<p>Using WinRD is very similar to using Winstat, but the process of logging in is different and requires some additional setup.</p>
+<h3>Installing the Citrix Receiver</h3>
+<p>To use WinRD you'll need to have the Citrix Receiver installed on your computer. Just click on the appropriate link below and then run the installer after it finishes downloading. If you've already installed the Citrix Receiver on your computer in order to use Winstat you do not need to install it again.</p>
+<ul>
+<li><a href="https://ssc.wisc.edu/sscc/receiver/Winstat Citrix Receiver.exe">Citrix Receiver for Windows</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/receiver/Winstat Citrix Receiver.dmg">Citrix Receiver for Mac</a></li>
+</ul>
+<p>See <a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat</a> for more information about using the Citrix Receiver.</p>
+<p></p>
+<h3>Setting Up Two-Factor Authentication</h3>
+<p>Logging into WinRD requires "two-factor authentication." When you log in you'll first be asked for  your SSCC username and password and then for a code that appears in Google Authenticator, a free app for your smartphone or tablet. If you do not have a smartphone or tablet, you can purchase a  hardware token that will do the same thing for about $15. Contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> for details.</p>
+<p>To set up two-factor authentication, log into Winstat, click on the Start/Windows logo button, and type <span class="InputCode">sms2</span> in the search box. This will locate the SMS2 Administrative Console for you, which is the tool you'll use to set up the server side of two-factor authentication.  It will start with your name and some other information already filled in but you don't need to fill in anything else on the main screen.</p>
+<p>Click on <span class="MenuOutput">Authentication Options</span>. Set <span class="MenuOutput">Token generation type</span> to <span class="MenuOutput">TOTP (time-based)</span>. Set <span class="MenuOutput">Authenticator</span> to <span class="MenuOutput">Google Authenticator</span>. Then click on <span class="MenuOutput">Generate Shared Secret</span> and <span class="MenuOutput">Save Configuration</span>. The shared secret is a alphanumeric code that needs to be entered on your phone, but the program will also generate a QR code that your phone can scan to read it in for you.</p>
+<p><img alt="Setup for two-factor authentication" height="402" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silo/sms_auth_qr.png" width="435"/></p>
+<p>Next you'll need to install the Google Authenticator app on your phone. On an iPhone go to the App Store, or on an Android phone go to Google Play. Search for Google Authenticator and then install it and open the program. Tap <span class="MenuOutput">Begin Setup</span> and then <span class="MenuOutput">Scan Barcode</span>. Allow Authenticator to access your phone's camera if asked. Then point it at your computer screen until it reads the QR code successfully. (We have seen Authenticator have difficulty with some laptop screens. If it fails to read the code try again on a desktop computer or another laptop, or enter the information manually.) Authenticator should then show a six digit number which will change every thirty seconds. You are now set up to use two-factor authentication.</p>
+<h3>Logging In</h3>
+<p>To log in to WinRD, you will need go to the web site <a href="https://silo.ssc.wisc.edu">silo.ssc.wisc.edu</a>. On a Windows PC use Internet Explorer, and on a Mac use Safari. The web browser may not recognize that the Citrix Receiver is installed and prompt you to install it; you can bypass that by clicking <span class="MenuOutput">Log in</span>. If you're asked to give permission for programs to run, do so.</p>
+<p>At the login screen, first give your SSCC username and password as usual. You'll then be asked for a <span class="MenuOutput">Message challenge</span>. Open the Authenticator app on your phone and type in the number you see there. It's okay if the number changes while you're typing it: there's a "grace period" during which the server will accept a number after it has expired on your phone. </p>
+<h3>The Silo File System</h3>
+<p>Silo RD uses a Linux-based file system. It is separate from the SSCC's main Linux file system, but we've given the drives the same names. Thus Z: is your home directory on WinRD, and project folders are found on V:.</p>
+<h3>Unlocking a WinRD Session</h3>
+<p>A WinRD session will automatically lock after 15 minutes of idle time. You can't unlock it by pressing <span class="InputCode">Ctrl-Alt-Del</span> as usual because that will affect your computer rather than your session on the server. Instead, expand the Citrix Receiver control bar at the top of the screen and click <span class="MenuOutput">Ctrl+Alt+Del</span> there. You will then be asked to give your username and password.</p>
+<p><img alt="Controls for the Citrix Receiver, including Ctrl+Alt+Del" height="100" src="https://ssc.wisc.edu/sscc/pubs/screenshots/winstat/winstat1.png" width="507"/></p>
+<h2 id="LinRD">Using LinRD</h2>
+<p>Using LinRD is very much like using Linstat, especially if you're used to using SecureCRT to log into Linstat. You will need to run SecureCRT on WinRD rather than your own computer.</p>
+<h3>Setting up SecureCRT</h3>
+<p>Start SecureCRT. If you get an initial window asking you to set a configuration passphrase, choose the <span class="MenuOutput">Without a configuration passphrase</span> option and click <span class="MenuOutput">OK</span>.</p>
+<p><img alt="Dialog for choosing not to use a configuration passphrase" height="511" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT1.jpg" width="513"/></p>
+<p>This will give you a "Quick Connect" window. Click <span class="MenuOutput">Cancel</span> to get the Session Manager instead so you can set up a permanent session for connecting to LinRD rather than entering its information every time. If you don't see the Session Manager window, click on the Session Manager tab on the left side of the window.</p>
+<p>Click the plus sign (<span class="MenuOutput">+</span>) right under Session Manager to create a new session.                </p>
+<p><img alt="Session manager" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT4.jpg"/></p>
+<p>On the first screen just click <span class="MenuOutput">Next</span>, because the default protocol, SSH2, is what you want to use. </p>
+<p><img alt="Choosing the protocol" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT5.jpg"/></p>
+<p>In the <span class="MenuOutput">Hostname</span> box type <span class="InputCode">linrd.ssc.wisc.edu</span>. If you type your SSCC username in the <span class="MenuOutput">Username</span> box you won't have to type it every time you log in.</p>
+<p><img alt="Setting the hostname" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT6.jpg"/></p>
+<p>In the next window you can enter a more user-friendly  name for this session if you like, or just click <span class="MenuOutput">Finish</span> and it will be called <span class="InputCode">linrd.ssc.wisc.edu</span>.</p>
+<p><img alt="Setting the session name" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT7.jpg"/></p>
+<p>When you return to the Session Manager you can log into LinRD by double-clicking on the new session.</p>
+<h3>The Silo File System</h3>
+<p>Silo RD uses a Linux-based file system. It is separate from the SSCC's main Linux file system, but we've given the directories the same names. Thus your home directory is <span class="InputCode">/home/{</span><span class="Parameter">first letter of your username</span><span class="InputCode">}/{</span><span class="Parameter">username</span><span class="InputCode">}</span> and project directories are under <span class="InputCode">/project</span> just like on Linstat.</p>
+<h2 id="SFTP">Using Secure FTP to Transfer Files</h2>
+<p>You can use Secure FTP to transfer files from the Silo RD file system to the Silo LDS file system or from your computer to the Silo RD file system. If you're comfortable using <a href="https://ssc.wisc.edu/sscc/pubs/1-11.htm">command-line SFTP</a>, you can run it on LinRD. If you prefer a graphical user interface, use SecureFX on WinRD.</p>
+<h3>Setting Up SecureFX</h3>
+<p>Start SecureFX. If you get an initial window asking you to set a configuration passphrase, choose the <span class="MenuOutput">Without a configuration passphrase</span> option and click <span class="MenuOutput">OK</span>.</p>
+<p><img alt="Choosing not to use a configuration passphrase" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX1.jpg"/></p>
+<p>This will give you a "Quick Connect" window. Click <span class="MenuOutput">Cancel</span>  so you can set up a permanent connection rather than entering the necessary information every time. Then click the Connect button on the far left.</p>
+<p><img alt="Clicking the connection button" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX2.jpg"/></p>
+<p>Click the plus sign (<span class="MenuOutput">+</span>) to create a new connection. If you need to transfer files both to the Silo LDS file system and from your computer, you'll need to carry out the this process twice, once for each process.</p>
+<p><img alt="Creating a new session" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX3.jpg"/></p>
+<p>If you are transferring files to the Silo LDS file system, set <span class="MenuOutput">Protocol</span> to <span class="MenuOutput">SFTP</span>. If you are transferring files from your own computer, set the <span class="MenuOutput">Protocol</span> to <span class="MenuOutput">FTP/TLS (explicit)</span>. Then click <span class="MenuOutput">Next</span>.</p>
+<p><img alt="Choosing the protocol" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX4.jpg"/></p>
+<p>Next enter the name of the computer you want to transfer files to or from. To transfer files to the Silo LDS file system, enter <span class="InputCode">linlds.ssc.wisc.edu</span>. To transfer files from your computer, enter the full name of your computer, including <span class="InputCode">.ads.ssc.wisc.edu</span>. If you don't know your computer's name, right click on <span class="MenuOutput">Computer</span> and choose <span class="MenuOutput">Properties</span>. It will be near the bottom.                </p>
+<p><img alt="Setting the hostname" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX5.jpg"/></p>
+<p>In the next window you can enter a more user-friendly  name for this session if you like, or just click <span class="MenuOutput">Finish</span> and the name will be the full name of the computer it connects to.</p>
+<p><img alt="Choosing a session name" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX6.jpg"/></p>
+<p>Unfortunately you're not quite done. Right-click on the new session and choose <span class="MenuOutput">Properties</span>, then uncheck the box for <span class="MenuOutput">Use outgoing data connections (PASV)</span> and click <span class="MenuOutput">OK</span>.</p>
+<p><img alt="Unchecking PASV" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX8.jpg"/></p>
+<p>Now it's ready for use.</p>
+<h2 id="working">Working in the Silo RD Environment</h2>
+<p>Once you've logged in, WinRD behaves just like a regular Winstat server and LinRD behaves just like a regular Linstat server, with a few important exceptions:</p>
+<ul>
+<li>They cannot access the Internet. This can affect programs in unexpected ways: for example, Stata's <span class="InputCode">findit</span> command takes much longer to run than usual and then only gives partial results, because it tries to reach Stata's web server and does not display any results until that attempt times out. Fortunately the results it does give are the ones you're most likely to need.</li>
+<li>Stata ado files and R packages must be installed by the system administrators. Send requests to the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>. Unlike on Winstat and Linstat, ado files and packages will be installed such that everyone can use them and must be updated by SSCC staff when new versions are released.</li>
+<li>You cannot copy and paste between WinRD and your own computer.</li>
+<li>WinRD cannot access disk space on your computer except via Secure FTP.</li>
+<li>You cannot print from WinRD or LinRD.</li>
+<li>WinRD and LinRD do not have as much software installed as Winstat and Linstat, but let us know if there is any additional software you need.                </li>
+</ul>
+<h2>Silo Downtime</h2>
+<p>Silo has a downtime from 7:00am-9:00am on the first Wednesday of the month for security updates. </p>
+<p>If you have any questions about using Silo, feel free to contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>.</p>
+<div></div>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/silo/sms_auth_qr.png, https://ssc.wisc.edu/sscc/pubs/screenshots/winstat/winstat1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT1.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT4.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT5.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT6.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureCRT7.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX1.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX2.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX3.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX4.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX5.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX6.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/silord/SecureFX8.jpg</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Installing New Software using Software Center</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>If you use a Windows PC that logs into the SSCC's PRIMO domain, you can use Software Center to easily install new software on your PC. This article will show you how.</p>
+<p>Click in the search box next to the Windows logo button, start typing <span class="InputCode">software</span>, and Software Center will appear. Alternatively, click on the Windows logo button, <span class="MenuOutput">All Programs</span>, <span class="MenuOutput">Microsoft System Center</span>, and then <span class="MenuOutput">Software Center</span>. (If <span class="MenuOutput">Software Center</span> does not appear contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>.)</p>
+<p>You'll be shown a list of software that is available:</p>
+<img alt="" class="CenterImage" height="645" src="https://ssc.wisc.edu/sscc/pubs/screenshots/software_center/software_center_2019.PNG" width="750"/>
+<p>Click on the program you wish to install, then click the <span class="MenuOutput">Install</span> button. Software Center will install your new software automatically. If the installation process requires rebooting your computer, Software Center will prompt you to do so. Once the <span class="MenuOutput">Status</span> of the program changes to <span class="MenuOutput">Installed </span>you can close Software Center and use the program. If you have to reboot, the program will be ready for use after rebooting.                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/software_center/software_center_2019.PNG</img_base_url>
+</kb_document>
+</kb_documents>

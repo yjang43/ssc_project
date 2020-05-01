@@ -1,0 +1,733 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Running SPSS Jobs on Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<div id="TOC">
+<ul>
+<li><a href="#overview-and-documentation">Overview and Documentation</a></li>
+<li><a href="#running-spss-jobs">Running SPSS Jobs</a></li>
+<li><a href="#some-spss-details">Some SPSS Details</a><ul>
+<li><a href="#output-format">Output Format</a></li>
+<li><a href="#data-format">Data Format</a></li>
+</ul></li>
+<li><a href="#linux-details">Linux Details</a></li>
+<li><a href="#an-example">An Example</a></li>
+</ul>
+</div>
+<div class="section level2" id="overview-and-documentation">
+<h2>Overview and Documentation</h2>
+<p>SPSS for Linux does not include a graphical user interface like the Windows version, but has most of the same capabilities. Instead, SPSS runs syntax with a command from the linux prompt, which SPSS refers to as "batch facility" processing.</p>
+<p><a href="http://public.dhe.ibm.com/software/analytics/spss/support/Stats/Docs/19.0/Server/User_Manuals/English/IBM_SPSS_Statistics_Batch_Facility_Users_Guide.pdf">Batch Facility User's Guide</a></p>
+<p><a href="http://ssc.wisc.edu/sscc_jsp/spssdocs.jsp">Full documentation of SPSS 19 for Linux</a> is available on our web server. If you are in the SSCC's domain (e.g. in the Social Science building) you will be able to access it. If you need to access it remotely, you should use VPN to connect to SSCC.</p>
+</div>
+<div class="section level2" id="running-spss-jobs">
+<h2>Running SPSS Jobs</h2>
+<p>The basic linux syntax for running an SPSS job is:</p>
+<pre><code>&gt; spssb -f filename.sps -out filename.log</code></pre>
+<p>where <em>filename</em> is the name of your SPSS syntax file. The file extensions (.sps, .log) don't matter, but it is a good idea to be consistent.</p>
+</div>
+<div class="section level2" id="some-spss-details">
+<h2>Some SPSS Details</h2>
+<div class="section level3" id="output-format">
+<h3>Output Format</h3>
+<p>By default, <strong>spssb</strong> gives you output in text ("draft") format. Not only is this ugly to work with, but you will not be able to produce graphs. Html output (web output) is easier to work with, and you can produce it by using the <strong>-type</strong> option</p>
+<pre><code>&gt; spssb -f filename.sps -type html -out filename.html</code></pre>
+</div>
+<div class="section level3" id="data-format">
+<h3>Data Format</h3>
+<p>You can use the same *.sav data files in both linux and Windows.</p>
+</div>
+</div>
+<div class="section level2" id="linux-details">
+<h2>Linux Details</h2>
+<p>The usual job management tools work just fine with SPSS jobs, such as putting them in the background, terminating them, etc.</p>
+<p>To run SPSS batch facility jobs in linux batch mode, use</p>
+<pre><code>&gt; spssb -f filename.sps -type html -out filename.html &amp;</code></pre>
+<p>See <a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a> for more information.</p>
+</div>
+<div class="section level2" id="an-example">
+<h2>An Example</h2>
+<p>Given a short syntax file, <a class="uri" href="https://ssc.wisc.edu/sscc/pubs/spss/Linux/carlinux.sps">carlinux.sps</a> process it with the SPSS batch facility with the linux command</p>
+<pre><code>&gt; spssb -f carlinux.sps -out carlinux.log &amp;</code></pre>
+<p>and you get the default text output, <a class="uri" href="https://ssc.wisc.edu/sscc/pubs/spss/Linux/carlinux.log">carlinux.log</a>.</p>
+<p>For nicer output, change <strong>-type</strong> to html</p>
+<pre><code>&gt; spssb -f carlinux.sps -type html -out carlinux.log &amp;</code></pre>
+<p>and you get output, <a class="uri" href="https://ssc.wisc.edu/sscc/pubs/spss/Linux/carlinux.html">carlinux.html</a>, suitable for the web or use in Word.</p>
+<p>Last Revised: 7/29/2016</p>
+</div>
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>SPSS Extension Bundles in the SSCC</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<div id="TOC">
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#download-the-extension-bundle">Download the Extension Bundle</a></li>
+<li><a href="#locations-to-install-extension-bundles">Locations to Install Extension Bundles</a></li>
+<li><a href="#setting-up-environment-variables">Setting Up Environment Variables</a></li>
+<li><a href="#install-the-extension-bundle">Install the Extension Bundle</a></li>
+</ul>
+</div>
+<div class="section level2" id="background">
+<h2>Background</h2>
+<p>It has long been possible to extend the capabilities of SPSS through the use of various other scripting languages. In recent years much of the development of these capabilities has centered on the Python and R scripting languages. IBM themselves have added many features to SPSS that rely on these languages. In SPSS 23, many items you find in the SPSS menus are actually implemented using R or Python.</p>
+<p>These extended capabilities can generally be used through either syntax or the SPSS menus. Users familiar with the Python or R languages can call these programs fairly directly from within SPSS syntax by including the other language within a block of <code>PROGRAM</code> - <code>END PROGRAM</code> syntax.</p>
+<p>Of broader utility to end users, programmers can create SPSS-like syntax and SPSS-like dialog boxes that call programs written in these other languages. The familiarity of the SPSS interface makes it much easier for end users to get up to speed using algorithms based in other languages. This combination of SPSS syntax/dialog and an algorithm in another language is what SPSS calls an <em>extension bundle</em>.</p>
+<p>To use an extension bundle, you must be working on a computer with the bundle installed. On the SSCC's Winstat servers and lab computers, this may require you to <strong><em>download</em></strong> the bundle from somewhere, to set up several <strong><em>environment variables</em></strong>, and then to <strong><em>install</em></strong> the bundles in <strong><em>your own file space</em></strong> (i.e. the U: drive). This is very simple, as long as you are aware you need to do something!</p>
+</div>
+<div class="section level2" id="download-the-extension-bundle">
+<h2>Download the Extension Bundle</h2>
+<p>Many extension bundles are hosted at IBM's SPSS Community website. With SPSS 23, extension bundles hosted by SPSS can be downloaded, installed, and updated using the SPSS menus - <strong><em>however, you will first need to set up directories where they can be installed, and some Windows environment variables that point to those directories</em></strong> (see the next two sections).</p>
+<p>For extension bundles not hosted by SPSS, and for older versions of SPSS, you will need to download them manually (usually through a web browser). If they are packaged as zip files, you will need to unzip them manually as well.</p>
+<p>I'd suggest putting bundle downloads near where they will eventually be installed, perhaps in u:\spss\extensions (see the next section).</p>
+</div>
+<div class="section level2" id="locations-to-install-extension-bundles">
+<h2>Locations to Install Extension Bundles</h2>
+<p>On Winstat or a lab computer, create two (or three) folders on your U:\ drive where you can install your SPSS extensions. For example</p>
+<p><code>U:\SPSS\extensions\bin</code>, and</p>
+<p><code>U:\SPSS\extensions\lib</code></p>
+<p>These are for syntax and dialog extensions, respectively. If you are installing a bundle that uses R packages beyond base R, you will also need a folder where you can install these. (This should <strong><em>NOT</em></strong> be the same place you install R packages if you are an R user! On SSCC computers, SPSS uses a different version of R, currently 3.1.2 on Winstat.) If you are not sure, go ahead and set this up. For instance</p>
+<p><code>U:\SPSS\extensions\rpackages</code></p>
+</div>
+<div class="section level2" id="setting-up-environment-variables">
+<h2>Setting Up Environment Variables</h2>
+<p>On Winstat, set up two environment variables. These tell the operating system where to look for syntax and dialog extensions, in the folders you just created. Click <strong>Start - Control Panel - User Accounts</strong></p>
+<p><img alt="User Account dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/Windows/Extension_bundle_screenshots/UserAccountdialog.JPG"/></p>
+<p>At the bottom left, click <strong>Change my environment variables</strong>.</p>
+<p>The new environment variables will be</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong><em>Variable name:</em></strong></th>
+<th align="left"><strong><em>Variable value:</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>SPSS_EXTENSIONS_PATH</em></td>
+<td align="left">U:\SPSS\extensions\bin</td>
+</tr>
+<tr class="even">
+<td align="left"><em>SPSS_CDIALOGS_PATH</em></td>
+<td align="left">U:\SPSS\extensions\lib</td>
+</tr>
+</tbody>
+</table>
+<p>Click the <strong>New</strong> button, once for each variable, and fill in the variable name and variable value for each new variable.</p>
+<p><img alt="New Environment Variable dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/Windows/Extension_bundle_screenshots/NewEnvVardialog.JPG"/></p>
+<p>For additional R packages, you need a third environment variable</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong><em>Variable name:</em></strong></th>
+<th align="left"><strong><em>Variable value:</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>SPSS_RPACKAGES_PATH</em></td>
+<td align="left">U:\SPSS\extensions\rpackages</td>
+</tr>
+</tbody>
+</table>
+<p>Click OK a couple of times, and you are done.</p>
+<p>Like creating folders, this only needs to be done once on Winstat. (If you are working on the lab computers, however, you may need to set up environment variables on each lab computer you use.)</p>
+</div>
+<div class="section level2" id="install-the-extension-bundle">
+<h2>Install the Extension Bundle</h2>
+<p>To install or update bundles from the SPSS Community website, start up SPSS, then click <strong>Utilities - Extension Bundles - Download and Install Extension Bundles</strong>. Find your bundle(s) in the list, and click the selection box on the right. Click <strong>OK</strong>, then in the "Terms of Use" dialog box, change the selection to "I accept" and click <strong>OK</strong>.</p>
+<p>To install a downloaded bundle, start up SPSS, then click <strong>Utilities - Extension Bundles - Install Local Extension Bundles</strong>, and navigate to where you saved the downloaded bundle (an *.spe file). Select the file and click <strong>Open</strong>.</p>
+<p><img alt="Extension Bundle Installation File" src="https://ssc.wisc.edu/sscc/pubs/spss/Windows/Extension_bundle_screenshots/ExtBundleInst.JPG"/></p>
+<p>You should get one or more dialog boxes to pop up, telling you the installation was a success.</p>
+<p>We have encountered some "extension bundles" that are set up somewhat differently, for example, Hayes' PROCESS extension. If your bundle has an <code>spd</code> file, but no <code>spe</code> file, install it by clicking <strong>Utilities - Custom Dialogs - Install Custom Dialog</strong>, and navigate to the <code>spd</code> file.</p>
+<p>If you are using an R extension, and it requires additional packages, they should be automatically downloaded as you install. If there is an error reported during this download, contact our <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>. If you are familiar with R and installing R packages, you might try starting up R 3.1.2, setting the .libPath to the SPSS folder you are using for R packages, and manually installing any packages mentioned (that's what we'll do!).</p>
+<p>You should be able to use the extension right away. You may need to restart SPSS in order for syntax highlighting to work properly.</p>
+<p>Last Revised: 7/29/2016</p>
+</div>
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/spss/Windows/Extension_bundle_screenshots/UserAccountdialog.JPG, https://ssc.wisc.edu/sscc/pubs/spss/Windows/Extension_bundle_screenshots/NewEnvVardialog.JPG, https://ssc.wisc.edu/sscc/pubs/spss/Windows/Extension_bundle_screenshots/ExtBundleInst.JPG</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>SPSS Syntax</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<div id="TOC">
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#commands">Commands</a></li>
+<li><a href="#help-on-command-syntax">Help on Command Syntax</a></li>
+<li><a href="#keywords-special-symbols-and-variable-names">Keywords, Special Symbols, and Variable Names</a></li>
+<li><a href="#spacing-in-syntax">Spacing in Syntax</a></li>
+<li><a href="#capitalization">Capitalization</a></li>
+<li><a href="#comments-in-syntax">Comments in Syntax</a></li>
+<li><a href="#further-reading">Further Reading</a></li>
+</ul>
+</div>
+<div class="section level2" id="overview">
+<h2>Overview</h2>
+<p>SPSS, like all general purpose statistical software, is built around a programming language. Working directly with the programming language gives you access to many options that do not appear in the graphical user interface. Syntax also makes repetitive tasks quicker and less err0r-prone, ensures that you can repeat all the steps in your analysis, and makes troubleshooting quicker and more precise.</p>
+<p>Syntax pasted from the graphical user interface is very useful as a memory aid - the dialog boxes include pointers to many more options than I can usually remember. You can also copy-and-paste syntax from the Output Viewer. However, automatically generated syntax is verbose, almost always including keywords for unnecessary default options. This can make it difficult to spot the crucial parts of a given command. If you use pasted syntax, I recommend editing it as you generate it, to ensure that you understand your code and to make it easier to read later.</p>
+</div>
+<div class="section level2" id="commands">
+<h2>Commands</h2>
+<p>The main unit of work in SPSS is the <strong><em>command</em></strong>. Each command begins with an SPSS keyword (also referred to as the "command" or "command name") and ends with a period before a line break, the SPSS <strong><em>command terminator</em></strong>. For example, a <code>GET</code> command might look like this:</p>
+<pre><code>get file = "Y:\spss\data\cars.sav".</code></pre>
+<p>Most commands have additional options and <strong><em>subcommands</em></strong>. Subcommands begin with a forward slash and a keyword. For example, a <code>GET</code> command that opens a working data set with only two of its original variables uses a <code>KEEP</code> subcommand, and might look like this:</p>
+<pre><code>get file = "Y:\spss\data\cars.sav"
+  /keep=mpg weight.</code></pre>
+</div>
+<div class="section level2" id="help-on-command-syntax">
+<h2>Help on Command Syntax</h2>
+<p>For details of what options and subcommands are available and how they work, you will want to look at the on-line Help files. There are two versions of these, in either HTML or PDF form. The easiest to access are the HTML help files: in any SPSS window click <strong>Help - Topics</strong>. You can also quickly get help on a specific command by typing or pasting the command name in a syntax window, and then pressing the F1 key - using the F1 key with any command in the syntax editor brings up the relevant Help page.</p>
+<p>If you find it easier to use Help in book form, the entire SPSS Syntax Reference Manual is on-line as a PDF. Click <strong>Help - Command Syntax Reference</strong>. Each command is essentially a chapter in the printed Reference Manual.</p>
+<p>Each chapter begins with a syntax diagram. For example, the chapter on the <code>DESCRIPTIVES</code> command begins with a diagram similar to this:</p>
+<pre><code>DESCRIPTIVES VARIABLES= varname [(zname)] [varname...]
+  [/MISSING= {<strong>VARIABLE**</strong>} [INCLUDE]]
+              {LISTWISE }
+  [/SAVE]
+  [/STATISTICS= [<strong>DEFAULT**</strong>] [<strong>MEAN**</strong>] [<strong>MIN**</strong>] [SKEWNESS]]
+                [<strong>STDDEV**</strong> ] [SEMEAN] [<strong>MAX**</strong>] [KURTOSIS]
+                [VARIANCE ] [SUM   ] [RANGE] [ALL]
+  [/SORT=[{<strong>MEAN</strong>    }] [ {<strong>(A)</strong>}]]
+          {SMEAN   }    {(D)}
+          {STDDEV  }
+          {VARIANCE}
+          {KURTOSIS}
+          {SKEWNESS}
+          {RANGE   }
+          {MIN     }
+          {MAX     }
+          {SUM     }
+          {NAME    }</code></pre>
+<p>The square brackets, "<strong>[ ]</strong>", indicate optional specifications. This particular command requires at least the keywords <code>DESCRIPTIVES</code> and <code>VARIABLES=</code>, as well as the name of at least one variable to be analyzed, everything else is optional. For example, a minimal specification for <code>DESCRIPTIVES</code> might look like this:</p>
+<pre><code>descriptives variables=mpg.</code></pre>
+<p>Options that may be specified repeatedly are indicated with ellipses. For example, you may specify more than one variable name:</p>
+<pre><code>descriptives variables=mpg weight.</code></pre>
+<p>Keywords in <strong>bold</strong> in a syntax diagram represent two types of default options. Those marked with a double asterisk, "<strong>**</strong>", show you options that will have effect if no subcommand is specified. For example, these commands produce the same output:</p>
+<pre><code>descriptives variables=mpg.
+  /statistics=default.
+
+descriptives variables=mpg.</code></pre>
+<p>Keywords in bold, but without asterisks, are the default only when the optional subcommand is specified. For example, the following two commands present your output in different order:</p>
+<pre><code>descriptives variables=all.
+
+descriptives variables=all
+/sort.</code></pre>
+<p>(The syntax diagram for DESCRIPTIVES in the SPSS 23 documentation is wrong - the explanation given further into the chapter is correct - the diagram in SPSS 22, shown here, is correct.)</p>
+<p>Many commands have lists of alternative options. The alternatives are indicated by curly braces, "<strong>{ }</strong>" For example, when sorting <code>DESCRIPTIVES</code> output, you could sort your output by either mean or variance, among many options.</p>
+<pre><code>descriptives variables=all
+  /sort=mean.
+
+descriptives variables=all
+  /sort=variance.</code></pre>
+</div>
+<div class="section level2" id="keywords-special-symbols-and-variable-names">
+<h2>Keywords, Special Symbols, and Variable Names</h2>
+<p>Commands are composed of keywords, special symbols like the "equals" symbol or parentheses, and user-supplied "words". User-supplied parts of commands are typically things like data set names, variable name, or data values. In SPSS documentation (and in pasted syntax) it is conventional for SPSS keywords to be indicated in ALL CAPS, while user-supplied "words" are given in lower case. However, the SPSS interpreter ignores case. For example, in the <code>DESCRIPTIVES</code> syntax above, the only specifications that are not SPSS keywords are variables names and standardized-variable names.</p>
+</div>
+<div class="section level2" id="spacing-in-syntax">
+<h2>Spacing in Syntax</h2>
+<p>The rules for how to put SPSS syntax on the page vary, depending on the source (run from a window or from a file), mode of execution (interactive or batch), and even the operating system of the computer you are using. The guidelines I will give you here should work in any context, but if you work with SPSS syntax long enough, you will eventually see exceptions to many of these recommendations!</p>
+<ul>
+<li><p>Begin each command in column one.</p></li>
+<li><p>End each command with a period at the end of a line.</p></li>
+<li><p>Commands may be written on more than one line. Continuations should be indented at least one space.</p></li>
+<li><p>You may use blank lines between commands, but not within commands.</p></li>
+<li><p>Words and keywords must be separated by spaces or special symbols. Where one space is allowed, multiple spaces may be used.</p></li>
+</ul>
+<p>For example, these work equally well:</p>
+<pre><code>compute kpl1=mpg/(0.621371*3.78541).
+
+compute   kpl2 =   mpg / (0.621371 * 3.78541) .
+execute.</code></pre>
+</div>
+<div class="section level2" id="capitalization">
+<h2>Capitalization</h2>
+<p>Capitalization does not matter in keywords or in variable names. It does matter in data values, and may matter in file names, depending on the operating system you are working on (case matters in linux, not Windows).</p>
+<p>SPSS will use the capitalization you supply for things like new variable names, variable labels, and value labels, which will affect how these are displayed in SPSS windows and in output. However, subsequent syntax use of the variable name can be in any case: to SPSS the variables "Salary" and "salary" are the same thing.</p>
+</div>
+<div class="section level2" id="comments-in-syntax">
+<h2>Comments in Syntax</h2>
+<p>A <em>comment</em> is any text which is to be ignored by the command processor. These are generally used two ways: to add explanatory notes to a command file, and to disable parts of our code.</p>
+<p>In SPSS, comments work at two levels: as a whole "command" (begins with a keyword/symbol, ends with a period), or within a line.</p>
+<p>A command level comment begins with the keyword <code>COMMENT</code>, or with an asterisk, "<strong>*</strong>". It ends with a period at the end of a line.</p>
+<p>A within-line comment begins with a forward slash-asterisk, "<strong>/*</strong>", and ends at the end of the line or at an asterisk-slash, "<strong>*/</strong>", whichever comes first. These do not continue over more than one line. A line of syntax with only a within-line comment is treated as a blank line (so it is not allowed within a command).</p>
+<p>Here are all three forms of comment:</p>
+<pre><code>* pounds/(pounds/kilogram).
+compute kilos=weight/2.20462.
+
+comment "kpl" is kilometers per liter. This is
+  calulated as 
+  (miles/gallon) / ((miles/kilometers) * (liters/gallon)).
+compute kpl = mpg / (0.621371 * 3.78541) .
+execute.
+
+* Note: Correlation is unchanged by change of scale.
+correlations variables= kilos kpl.
+graph /scatterplot = kilos with kpl.
+correlations variables= /*kilos kpl*/ weight mpg.
+graph /scatterplot = weight with mpg.</code></pre>
+</div>
+<div class="section level2" id="further-reading">
+<h2>Further Reading</h2>
+<p>See the <strong>Universals</strong> chapter in the <strong><em>Command Syntax Reference</em></strong>, the sub-section "Commands" (page 37 in the SPSS 23 manual).</p>
+<p>For a more accurate description of the default options for many commands, see the <a href="ftp://public.dhe.ibm.com/software/analytics/spss/documentation/statistics/22.0/en/client/Manuals/IBM_SPSS_Statistics_Command_Syntax_Reference.pdf"><strong><em>SPSS 22 Command Syntax Reference</em></strong></a></p>
+<p>Last Revised: 7/13/2016</p>
+</div>
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>SPSS for the Classroom: the Basics</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<div id="TOC">
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#starting-spss-statistics">Starting SPSS Statistics</a></li>
+<li><a href="#the-spss-windows-and-files">The SPSS Windows and Files</a><ul>
+<li><a href="#data-editor-.sav-files">Data Editor (.sav files)</a></li>
+<li><a href="#output-viewer-.spv-files">Output Viewer (.spv files)</a></li>
+<li><a href="#syntax-editor-.sps-files">Syntax Editor (.sps files)</a></li>
+</ul></li>
+<li><a href="#issuing-commands">Issuing Commands</a><ul>
+<li><a href="#dialog-boxes">Dialog Boxes</a></li>
+</ul></li>
+<li><a href="#working-with-the-data-editor">Working with the Data Editor</a><ul>
+<li><a href="#data-view">Data View</a></li>
+<li><a href="#variable-view">Variable View</a></li>
+</ul></li>
+<li><a href="#working-with-the-output-viewer">Working with the Output Viewer</a></li>
+<li><a href="#working-with-the-syntax-editor">Working with the Syntax Editor</a></li>
+<li><a href="#learning-more">Learning More</a></li>
+</ul>
+</div>
+<div class="section level2" id="overview">
+<h2>Overview</h2>
+<p>IBM SPSS Statistics is software for managing data and calculating a wide variety of statistics. This document is intended for students taking classes that use SPSS Statistics or anyone else who is totally new to the SPSS software. Those who plan on doing more involved research projects using SPSS should follow up this brief intro with more in-depth training.</p>
+<p>For information about SSCC lab accounts, the labs, Winstat and more see <a href="https://ssc.wisc.edu/sscc/instruction/labusers.htm">Information for SSCC Instructional Lab Users</a>.</p>
+<p>The SPSS software is built around the SPSS programming language. The good news for beginners is that you can accomplish most basic data analysis through menus and dialog boxes without having to actually learn the SPSS language. Menus and dialog boxes are useful because they give you visual reminders of (most of) your options with each step of your analysis. However, some tasks cannot be accomplished from the menus, and others are more quickly carried out by typing a few key words than by working through a long series of menus and dialogs. As a beginner, it will be strategic to learn a bit of both SPSS programming and the menus.</p>
+<p>In the long run, you will want to learn to just work directly in the programming language, because this is how you document your work, and good documentation is key to both trouble-shooting and replicating complicated projects. For now, we assume you are just carrying out very simple tasks.</p>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students2.html">Part two</a> discusses common statistics, regression, and graphs.</p>
+</div>
+<div class="section level2" id="starting-spss-statistics">
+<h2>Starting SPSS Statistics</h2>
+<p>The SSCC has SPSS installed in our computer labs (4218 and 3218 Sewell Social Sciences Building) and on some of the <a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Winstats</a>. If you work on a University-owned computer you can also go to DoIT's Campus Software Library, and download and install SPSS on that computer (this requires a NetID, and administrator priviledges).</p>
+<p>To run SPSS, log in and click <strong>Start - Programs - IBM SPSS Statistics - IBM SPSS Statistics 23</strong>.</p>
+<p>When SPSS is first started you are presented with a dialog box asking you to open a file. Pick a recently opened file or pick "Open another file" from the list on the left.</p>
+<p><img alt="Initial Dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS01InitialDialog.jpg"/></p>
+<p>Typically you start your SPSS session by opening the data file that you need to work with.</p>
+</div>
+<div class="section level2" id="the-spss-windows-and-files">
+<h2>The SPSS Windows and Files</h2>
+<p>SPSS Statistics has three main windows, plus a menu bar at the top. These allow you to (1) see your data, (2) see your statistical output, and (3) see any programming commands you have written. Each window corresponds to a separate type of SPSS file.</p>
+<div class="section level3" id="data-editor-.sav-files">
+<h3>Data Editor (.sav files)</h3>
+<p>The Data Editor lets you see and manipulate your data. You will always have at least one Data Editor open (even if you have not yet opened a data set). When you open an SPSS data file, what you see is a working copy of your data. Changes you make to your data are not permanent until you save them (click <strong>File - Save</strong> or <strong>Save As</strong>). Data files are saved with a file type of <strong>.sav</strong>, a file type that most other software cannot work with. When you close your last Data Editor you are shutting down SPSS and you will be prompted to save all unsaved files.</p>
+<p><img alt="Data Editor" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS02DataEditor.jpg"/></p>
+<p>To open a different data set, click <strong>File - Open - Data</strong>. (It is also possible to open some non-SPSS data files by this method, such as Excel, Stata, or SAS files.) SPSS lets you have many data sets open simultaneously, and the data set that you are currently working with, the <em>active</em> data set, is always marked with a tiny red "plus" sign on the title bar. In order to avoid confusion it is usually a good strategy to close out any Data Editors you're done using.</p>
+</div>
+<div class="section level3" id="output-viewer-.spv-files">
+<h3>Output Viewer (.spv files)</h3>
+<p>As you ask SPSS to carry out various computations and other tasks, the results can show up in a variety of places. New data values will show up in the Data Editor. Statistical results will show up in the Output Viewer.</p>
+<p><img alt="Output Viewer" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS03OutputViewer.jpg"/></p>
+<p>The Output Viewer shows you tables of statistical output and any graphs you create. By default it also show you the programming language for the commands that you issued (called <em>syntax</em> in SPSS jargon), and most error messages will also appear here. The Output Viewer also allows you to edit and print your results. The tables of the Output Viewer are saved (click <strong>File - Save</strong> or <strong>Save As</strong>) with a file type of <strong>.spv</strong>, which can only be opened with SPSS software.</p>
+<p>As with Data Editors, it is possible to open more than one Output Viewer to look at more than one output file. The <em>active</em> Viewer, marked with a tiny blue plus sign, will receive the results of any commands that you issue. If you close all the Output Viewers and then issue a new command, a fresh Output Viewer is started.</p>
+</div>
+<div class="section level3" id="syntax-editor-.sps-files">
+<h3>Syntax Editor (.sps files)</h3>
+<p>If you are working with the SPSS programming language directly, you will also open a Syntax Editor.</p>
+<p><img alt="Syntax Editor" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS04SyntaxEditor.jpg"/></p>
+<p>The Syntax Editor allows you to write, edit, and run commands in the SPSS programming language. If you are also using the menus and dialog boxes, the <strong>Paste</strong> button automatically writes the syntax for the command you have specified into the active Syntax Editor. These files are saved as plain text and almost any text editor can open them, but with a file extension of <strong>.sps</strong>.</p>
+<p>As with the other types of windows, you can have more than one Syntax Editor open and the <em>active</em> window is marked with a tiny orange plus sign. When you paste syntax from dialog boxes, it goes to the active Syntax Editor. If you close out all your Syntax Editors and then paste a command, a fresh Syntax Editor is opened.</p>
+</div>
+</div>
+<div class="section level2" id="issuing-commands">
+<h2>Issuing Commands</h2>
+<p>Unless you command SPSS to do something, it just sits there looking at you. In general commands may be issued either through menus and dialog boxes that invoke the programming language behind the scenes, or by typing the programming language in a Syntax Editor and <em>running</em> the commands.</p>
+<div class="section level3" id="dialog-boxes">
+<h3>Dialog Boxes</h3>
+<p>Although each dialog box is unique, they have many common features. A fairly typical example is the dialog box for producing frequency tables (tables with counts and percents). To bring up this dialog box from the menus, click on <strong>Analyze - Descriptive Statistics - Frequencies</strong>.</p>
+<p><img alt="Dialog Box" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS05FrequenciesDialog.jpg"/></p>
+<p>On the left is a variable <em>selection list</em> with all of the variables in your data set. If your variables have variable labels, what you see is the beginning of the variable label. To see the full label as well as the variable name [in square brackets], hold your cursor over the label beginning. Select the variables you want to analyze by clicking on them (you may have to scroll through the list). Then click the arrow button to the right of the selection list, and the variables are moved to the <em>analysis list</em> on the right. If you change your mind about a variable, you can select it in the list on the right and then click the arrow button to move it back out of the analysis list. On the far right of the dialog are several buttons that lead to further dialog boxes with options for the frequencies command. At the bottom of the dialog box, click <strong>OK</strong> to issue your command to SPSS, or <strong>Paste</strong> to have the command written to a Syntax Editor.</p>
+<p>If you return to a dialog box you will find it opens with all the specifications you last used. This can be handy if you are trying a number of variations on your analysis, or if you are debugging something. If you'd prefer to start fresh you can click the <strong>Reset</strong> button.</p>
+</div>
+</div>
+<div class="section level2" id="working-with-the-data-editor">
+<h2>Working with the Data Editor</h2>
+<p>The main use of the Data Editor is to show you (a portion of) the data values you are working with. It can also be used to redefine the characteristics of variables (change the type, add labels, define missing values, etc.), create new variables, and enter data by hand.</p>
+<p>The Data Editor gives you two views of your data set: a <em>Data View</em> and a <em>Variable View</em>, selected by clicking on the appropriate tab in the lower left corner of the window.</p>
+<p><img alt="Data View" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS06DataView.jpg"/></p>
+<p><img alt="Variable View" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS07VariableView.jpg"/></p>
+<div class="section level3" id="data-view">
+<h3>Data View</h3>
+<p>In the Data View, the data are laid out in the standard rectangular format for statistical software. Each row represents a unit of observation, sometimes also referred to as a <em>record</em> or in SPSS as a <em>case</em>. The case (observation) number in the leftmost column is assigned automatically and is not saved as data. Each column represents a variable. All of the data in a column must be of the same <em>type</em>, either <em>numeric</em> or <em>string</em> (also called character).</p>
+<p>Each data cell holds a data value. If data are missing, they are displayed as a period (".") or as a blank (" "). Data values may be displayed as either the actual value or as a <em>formatted</em> value. For example, a data value about a person's income might be 15000, while its formatted value might be shown as $15,000. Formats can also take the form of value labels, for instance, data recorded as 1's and 2's might be labeled as "Male" and "Female." While formatting makes it easier to interpret results, it is important to remember that the data values are what SPSS actually processes. In particular, when you set up a command that requires you to specify one or more data values, you use values and not formatted values.</p>
+<p>You can switch the Data View between formatted and unformatted data by clicking on the <strong>Value Labels</strong> button on the Toolbar, the fourth button from the right when in the Data View. With value labels on you can also see the actual values for a given variable by clicking on a cell and then looking at the bar just above the data. The box to the left indicates the observation number and variable selected, e.g. <em>1:gender</em>, while the center box shows you the actual value, e.g. <em>m</em>.</p>
+<p>Data values can be edited or added by typing them directly into the Data View. To enter data, type in the actual data value. However, aside from very small data sets for class exercises, you should almost never need to do this.</p>
+</div>
+<div class="section level3" id="variable-view">
+<h3>Variable View</h3>
+<p>In the Variable View you can see and edit the information that defines each variable (sometimes called <em>meta-data</em>) in your data set: each column of the Data View is described by a row of the Variable View.</p>
+<p>The first attribute of each variable is its <strong>Name</strong>. The variable name is how the data column is identified in the programming language, and in order for the programming language to work gracefully variable names have to abide by certain restrictions: names must begin with a letter, and may be made up of characters, numerals, non-punctuation characters, and the period. Capitalization is ignored. Variable names may be up to 64 characters long. Other restrictions may apply - no coupons please. Variable names may be added or changed simply by typing them in.</p>
+<p>The basic variable types are either <em>numeric</em> or <em>string</em>. However, just to make things confusing, SPSS allows you to select among several different standard formats for displaying numeric data (e.g. scientific notation, comma formatting, currencies) and calls this <strong>Type</strong>. You set the variable type by clicking in the column, then clicking on the gray button that appears and working in a dialog box.</p>
+<p>The <strong>Label</strong> attribute allows you to give each variable a longer description that is displayed in place of the variable name, analogous to value labels for data values. Both variable labels and value labels are useful for giving you more intelligible output.</p>
+<p>The <strong>Values</strong> attribute allows you to create a list of value labels. Often several variables will share a common set of value labels, and in this window you can copy and paste value label sets. Variable labels are set by simply typing them in, value labels work through a dialog box.</p>
+<p>The <strong>Missing</strong> attribute is a place for you to designate certain data values that you want SPSS to ignore when it calculates statistics. For instance, in survey data it is common practice to record a data value of <em>8</em> when a respondent says "I don't know" in response to a question, and you can have SPSS treat the 8's in a variable as if they were missing data.</p>
+<p>The other attributes, <strong>Width</strong>, <strong>Decimals</strong>, <strong>Columns</strong>, <strong>Align</strong>, <strong>Measure</strong>, and <strong>Role</strong>, are minor settings related to data display. Although Measure (level of measurement) is statistically a very important concept, it has little meaning within the SPSS software.</p>
+</div>
+</div>
+<div class="section level2" id="working-with-the-output-viewer">
+<h2>Working with the Output Viewer</h2>
+<p>The Output Viewer collects your statistical tables and graphs, and gives you the opportunity to edit them before you save or print them. The Output Viewer is divided into two main sections, an outline pane on the left, and a tables pane on the right. When you print your output, it is the tables pane that is printed.</p>
+<p><img alt="Selected Output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS08SelectedOutput.jpg"/></p>
+<p>When SPSS creates output (tables, syntax, error messages, etc.) it adds them to the tables pane as <em>objects</em>, and each object is noted in the outline pane. Individual objects may be opened and edited, deleted, hidden, rearranged, or printed. To select an object to work with, you can either click on it in the tables pane, or click on the corresponding entry in the outline pane. A red arrow appears next to the object in both panes.</p>
+<p><strong>To edit objects</strong>, double-click on them in the tables pane. Depending on whether you are trying to edit a simple object like a title (which is just a box with some text in it), or something more complicated like a table or a graph, you may be able to simply change the object in the Output Viewer, or another window may open. Except for editing the look of graphs, it will often be easier to edit your output by exporting it to Microsoft Word first, but in principle you can change anything you can see in your output, down to deleting columns and changing numbers. (But if your intent is to fake your results, you should attend our Simulations workshop for better methods of doing this.)</p>
+<p><strong>To delete objects</strong>, select them in either pane and use the <strong>Delete</strong> key.</p>
+<p><strong>To hide objects</strong>, double-click on the icon for each object in the outline pane. To make them visible, just double-click again. You can hide a whole section of the outline by clicking on the minus sign to the left of the group in the outline pane. Hidden objects are not printed, but are saved with the output file.</p>
+<p><strong>To rearrange objects</strong>, select the object (or group of objects) in either pane, and drag them until the red arrow points to the object below which you want them to appear.</p>
+<p><strong>To export your output</strong>, you go through a special procedure. In the Output Viewer click <strong>File - Export</strong> to invoke the Export dialog box. There are three main settings to look at. First, pick the type of file to which you want to export: useful file types include Excel, PDF, PowerPoint, or Word. Next, check that you are exporting as much of your output as you want, the <strong>Objects to Export</strong> at the top of the dialog. If you have a part of your output selected, this option will default to exporting just your selection, otherwise you typically will export all your visible output. Finally, change the default file name to something meaningful, and save your file to a location where you will be able to keep it, like your U:\ drive.</p>
+<p>Once your options are set, click <strong>OK</strong>.</p>
+<p><img alt="Export Output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS09ExportOutput.jpg"/></p>
+</div>
+<div class="section level2" id="working-with-the-syntax-editor">
+<h2>Working with the Syntax Editor</h2>
+<p>Learning SPSS programming syntax is a separate topic; the fundamentals are addressed in our SSCC training workshops. But you don't have to memorize a whole new language in order to paste and run SPSS syntax.</p>
+<p>The fundamental unit of work in the SPSS language is the command: think of commands as analogous to well-formed sentences. In this language, commands begin with a keyword and end with a period. Commands should begin in the leftmost column in the editor. If they are wrapped onto more than one line, the continuing lines should begin with a blank space. Capitalization does not matter. The Syntax Editor displays syntax that SPSS cannot interpret in red type.</p>
+<p>Like the Output Editor, the Syntax Editor has two panes. The tables pane on the right is what is actually saved in the <strong>.sps</strong> file.</p>
+<p><img alt="Selected Syntax" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS09SelectedSyntax.jpg"/></p>
+<p><strong>Running syntax</strong>. To have SPSS actually carry out your command(s), you must <em>run</em> them. Click <strong>Run</strong>, and then one of the menu options. There is also an icon on the Toolbar to run your program, a right-facing triangle ("play"). You can run all the commands in the editor, or select a group of commands and run just that (be careful that you highlight full commands, from the first keyword through the final period). You can also run the <em>current</em> command, which is whatever command the cursor is located within.</p>
+<p><strong>Pasting and running</strong>. From most dialog boxes you have the option of <em>pasting</em> commands instead of simply running them. SPSS then writes the command into a Syntax Editor. The syntax tends to be verbose, specifying many options that are the defaults - syntax you write yourself tends to be much shorter and simpler. After you have pasted a command, you still need to run it to get any output.</p>
+</div>
+<div class="section level2" id="learning-more">
+<h2>Learning More</h2>
+<p>Now that you understand the basics of using the SPSS windows, you can learn how to carry out statistical tasks by reading <a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students2.html">part two of SPSS for Students</a>. It covers common statistics, regression, and graphs.</p>
+<p>To learn more about the SPSS user interface, you can look at the on-line tutorial that comes with the software: click <strong>Help - Tutorial</strong>.</p>
+<p>To learn more about specific data management or statistical tasks, you should try the on-line Help files. Click <strong>Help - Topics</strong> and you can read about a variety of basic SPSS topics, or search the index.</p>
+<p>Your instructor and/or TA are your best resource for class-specific tasks.</p>
+<p>If you are at UW-Madison, <a href="mailto:dehemken@wisc.edu">Doug Hemken</a>, a statistical consultant for the SSCC, is available to help with SPSS projects. See <a href="https://ssc.wisc.edu/sscc/statconsult.htm">Stat Consulting</a> for details.</p>
+<p>Last Revised: 7/5/2016</p>
+</div>
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS01InitialDialog.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS02DataEditor.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS03OutputViewer.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS04SyntaxEditor.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS05FrequenciesDialog.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS06DataView.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS07VariableView.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS08SelectedOutput.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS09ExportOutput.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students1/SPSS09SelectedSyntax.jpg</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>SPSS for the Classroom: Statistics and Graphs</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<div id="TOC">
+<ul>
+<li><a href="#frequencies-counts-and-percents">Frequencies: Counts and Percents</a></li>
+<li><a href="#descriptives-means-and-standard-deviations">Descriptives: Means and Standard Deviations</a></li>
+<li><a href="#histograms">Histograms</a></li>
+<li><a href="#crosstabs-counts-by-group">Crosstabs: Counts by Group</a></li>
+<li><a href="#means-by-group">Means by Group</a></li>
+<li><a href="#bar-charts">Bar Charts</a></li>
+<li><a href="#boxplots">Boxplots</a></li>
+<li><a href="#correlation">Correlation</a></li>
+<li><a href="#scatter-plots">Scatter Plots</a></li>
+<li><a href="#t-tests">T-tests</a></li>
+<li><a href="#chi-square-tests">Chi-square Tests</a></li>
+<li><a href="#anova-tables-and-tests">ANOVA Tables and Tests</a></li>
+<li><a href="#regression">Regression</a></li>
+<li><a href="#learning-more">Learning More</a></li>
+</ul>
+</div>
+<p>This document is intended for students taking classes that use SPSS Statistics. Those who plan on doing more involved research projects using SPSS should attend our <a href="https://ssc.wisc.edu/sscc_jsp/training/index.jsp">workshop series</a>.</p>
+<p>If you are not already familiar with the SPSS windows (the Data Editor, Output Viewer, and Syntax Editor), please read <a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html">SPSS for the Classroom: The Basics</a>.</p>
+<p>The examples that follow are based on the sample data in <code>C:\Program Files\IBM\SPSS\Statistics\23\Samples\English\Employee data.sav</code></p>
+<div class="section level2" id="frequencies-counts-and-percents">
+<h2>Frequencies: Counts and Percents</h2>
+<p>Counts and percents are wonderful statistics because they are easy to explain and quickly grasped. Frequencies also form the very foundation of most explanations of probability. They are an excellent place to begin understanding any data you may work with.</p>
+<div class="section level3" id="menu-and-dialog-box">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Analyze - Descriptive Statistics - Frequencies</strong></p>
+<p><img alt="Frequencies dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS10Freq.jpg"/></p>
+<p>Select one or more variables in the selection list on the left, and move them into the analysis list on the right by clicking on the arrow in between. Then click <strong>OK</strong>.</p>
+</div>
+<div class="section level3" id="syntax">
+<h3>Syntax:</h3>
+<pre><code>frequencies variables = gender minority.</code></pre>
+</div>
+<div class="section level3" id="output">
+<h3>Output:</h3>
+<p><img alt="Frequencies Output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS11FreqOut.jpg"/></p>
+<p>Note that this is one of the few tables where missing values (whether system missing "." or user designated missing) show up in the default output table (however, not in this particular example).</p>
+</div>
+</div>
+<div class="section level2" id="descriptives-means-and-standard-deviations">
+<h2>Descriptives: Means and Standard Deviations</h2>
+<p>The mean and standard deviation of a variable are such fundamental quantities in statistics, that there are many SPSS commands that will report them to you. The most straightforward command to use is <strong>Descriptives</strong>.</p>
+<p>Two other useful commands are <strong>Frequencies</strong> (in the dialog box, click on the <strong>Statistics</strong> button), when you want to see counts as well as means and standard deviations (perhaps for Likert scales), and <strong>Explore</strong>, which gives you such additional statistics as the median and interquartile range as well as a variety of graphs.</p>
+<div class="section level3" id="menu-and-dialog-box-1">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Analyze - Descriptive Statistics - Descriptives</strong></p>
+<p><img alt="Descriptives dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS12Desc.jpg"/></p>
+<p>Select one or more variables in the selection list on the left, and move them into the analysis list on the right by clicking on the arrow in between. Then click <strong>OK</strong>.</p>
+</div>
+<div class="section level3" id="syntax-1">
+<h3>Syntax:</h3>
+<pre><code>descriptives variables=educ salary.</code></pre>
+</div>
+<div class="section level3" id="output-1">
+<h3>Output:</h3>
+<p><img alt="Descriptives Output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS13DescOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="histograms">
+<h2>Histograms</h2>
+<p>SPSS has three different sets of commands for producing graphs. The easiest to learn and use are the oldest "legacy" graphing commands. They give you graphs with a default visual style (colors used, weight of lines, size of type, etc) that can be customized by hand.</p>
+<p>Histograms are vexing because they can be alternately informative or deceptive, depending upon how the bins (the bar boundaries) are chosen. They are useful and popular because they are conceptually very simple, easy to draw and interpret, and if drawn well they can give a good visual representation of the distribution of values of a variable.</p>
+<div class="section level3" id="menu-and-dialog-box-2">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Graphs - Legacy Dialogs - Histogram</strong></p>
+<p><img alt="Histogram dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS14Hist.jpg"/></p>
+<p>The basic histogram command works with one variable at a time, so pick one variable from the selection list on the left and move it into the <strong>Variable</strong> box. (A useful option if you expect your variable to have a normal distribution is to <strong>Display normal curve</strong>.)</p>
+</div>
+<div class="section level3" id="syntax-2">
+<h3>Syntax:</h3>
+<pre><code>graph /histogram(normal) = prevexp.</code></pre>
+</div>
+<div class="section level3" id="output-2">
+<h3>Output:</h3>
+<p><img alt="Histogram output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS14HistOut.jpg"/></p>
+<p>In this example, the distribution of the data is nothing like a normal distribution!</p>
+<p>To edit colors, titles, scales, etc. double-click on the graph in the Output Viewer, then double-click on the graph element you want to change.</p>
+</div>
+</div>
+<div class="section level2" id="crosstabs-counts-by-group">
+<h2>Crosstabs: Counts by Group</h2>
+<p>The basic crosstabs command just gives you counts by default. Typically it is useful to also look at either row-percents or column-percents, which must be specified as options.</p>
+<div class="section level3" id="menu-and-dialog-box-3">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Analyze - Descriptive Statistics - Crosstabs</strong></p>
+<p>Select one variable as the rows, another variable as the columns. Conventionally you might put an independent variable in the rows and a dependent variable in the columns, although mathematically it doesn't really matter. To get percents in your output, click on the <strong>Cells</strong> button and specify the kind of percents you want to see.</p>
+<p><img alt="Crosstabs dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS15Cross.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-3">
+<h3>Syntax:</h3>
+<pre><code>crosstabs
+  /tables=jobcat by minority
+  /cells=count row.</code></pre>
+<p>In this command syntax (and the next one, <code>MEANS</code>), you see the key word <code>BY</code> used to specify a categorical variable that divides the data into groups.</p>
+</div>
+<div class="section level3" id="output-3">
+<h3>Output:</h3>
+<p><img alt="Crosstabs output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS16CrossOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="means-by-group">
+<h2>Means by Group</h2>
+<div class="section level3" id="menu-and-dialog-box-4">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Analyze - Compare Means - Means</strong></p>
+<p>Select the variable(s) that you want means of, and move it to the <strong>Dependent List</strong>. Select the variable that divides the data into subsets (the "grouping" or "by" variable) and move it to the <strong>Independent List</strong>. You may have more than one variable in either/both lists, and SPSS processes them in pairs and produces separate tables.</p>
+<p><img alt="Means dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS17GroupMeans.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-4">
+<h3>Syntax:</h3>
+<pre><code>means tables=salary by minority.</code></pre>
+</div>
+<div class="section level3" id="output-4">
+<h3>Output:</h3>
+<p><img alt="Means output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS18GroupMeansOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="bar-charts">
+<h2>Bar Charts</h2>
+<p>Similar to a histogram, the x axis is treated as a categorical variable, and the y axis represents one of a variety of summary statistics: counts (a.k.a. a histogram!), means, sums, etc.</p>
+<div class="section level3" id="menu-and-dialog-box-5">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Graphs - Legacy Dialogs - Bar</strong></p>
+<p>This takes you through an initial dialog box, where you choose among several basic schemas for making bar charts,</p>
+<p><img alt="Bar charts dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS19Bars.jpg"/></p>
+<p>and then to the main dialog box. To graph means by groups, select <strong>Other statistic</strong> for what the bars represent, the variable for which you want to calculate means in the <strong>Variable</strong> box (means will be the default statistic), and the group in the <strong>Category Axis</strong> box.</p>
+<p><img alt="Simple bar chart dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS20BarChart.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-5">
+<h3>Syntax:</h3>
+<pre><code>graph /bar=mean(salary) by jobcat.</code></pre>
+</div>
+<div class="section level3" id="output-5">
+<h3>Output:</h3>
+<p><img alt="Simple bar chart" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS21BarChartOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="boxplots">
+<h2>Boxplots</h2>
+<div class="section level3" id="menu-and-dialog-box-6">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Graphs - Legacy Dialogs - Boxplot</strong></p>
+<p>As with bar charts, you first choose a specific boxplot schema from an initial dialog box,</p>
+<p><img alt="Boxplots dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS22Boxes.jpg"/></p>
+<p>and then choose the analytical variable (the one you want to see medians and interquartile ranges for, the y axis), and the categorical variable (the x axis).</p>
+<p><img alt="Simple boxplot dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS23BoxPlot.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-6">
+<h3>Syntax:</h3>
+<pre><code>examine variables=salary by jobcat
+  /plot=boxplot
+  /statistics=none
+  /nototal.</code></pre>
+</div>
+<div class="section level3" id="output-6">
+<h3>Output:</h3>
+<p><img alt="Simple boxplot" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS24BoxPlotOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="correlation">
+<h2>Correlation</h2>
+<div class="section level3" id="menu-and-dialog-box-7">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Analyze - Correlate - Bivariate</strong></p>
+<p>SPSS calculates bivariate correlations (the Pearson's r) for all pairs of variables in the list.</p>
+<p><img alt="Correlation dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS25Corr.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-7">
+<h3>Syntax:</h3>
+<pre><code>correlations /variables=educ salary prevexp.</code></pre>
+</div>
+<div class="section level3" id="output-7">
+<h3>Output:</h3>
+<p><img alt="Correlation output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS25CorrOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="scatter-plots">
+<h2>Scatter Plots</h2>
+<p>Both simple scatter plots and scatter plot matrixes are pretty easy to produce.</p>
+<div class="section level3" id="menu-and-dialog-box-8">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Graphs - Legacy Dialogs - Scatter/Dot</strong></p>
+<p>Takes you through two dialog boxes. First you choose the scatter plot schema you want to work with,</p>
+<p><img alt="Scatter Plots" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS26Scatters.jpg"/></p>
+<p>And then you specify the variables with the x and y coordinates of the points you wish to plot.</p>
+<p><img alt="Simple scatter plot dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS27ScatPlot.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-8">
+<h3>Syntax:</h3>
+<pre><code>graph /scatterplot=salary with salbegin.
+
+graph /scatterplot(matrix)=salary salbegin prevexp.</code></pre>
+</div>
+<div class="section level3" id="output-8">
+<h3>Output:</h3>
+<p><img alt="Simple scatter plot output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS28ScatPlotOut.jpg"/></p>
+<p><img alt="Scatter plot matrix output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS30ScatMatOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="t-tests">
+<h2>T-tests</h2>
+<p>T-test can be used in a variety of ways, and SPSS gives you quick access to three of them (univariate, grouped, and paired) through the <strong>Compare Means</strong> menu. They all access the same <code>t-test</code> command.</p>
+<div class="section level3" id="menu-and-dialog-box-9">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Analyze - Compare Means - Independent-Samples T Test</strong></p>
+<p>When setting up an independent-samples (grouped) t-test, you not only specify the variable being tested and the grouping variable, but you also have to specify which data values represent the two groups you want compared (because in general the grouping variable might have an arbitrary number of categories, not just two). Use the <strong>Define Groups</strong> button, and type in the data values (not the value labels) that define the groups being compared.</p>
+<p><img alt="T-test dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS31Ttest.jpg"/></p>
+<p>If you type in an invalid data value for any of the groups, SPSS will not catch your mistake until you actually run the command. You need to know what your data look like before you get to this dialog box, because SPSS will not let you browse your data set while a dialog box is open.</p>
+<p><img alt="T-test define groups dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS32Tgroups.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-9">
+<h3>Syntax:</h3>
+<pre><code>t-test groups=gender('f' 'm')
+  /variables=educ.</code></pre>
+</div>
+<div class="section level3" id="output-9">
+<h3>Output:</h3>
+<p><img alt="T-test output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS32TOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="chi-square-tests">
+<h2>Chi-square Tests</h2>
+<p>Like t-tests, chi-square tests come up in a wide variety of circumstances, the most common of which is assessing the independence of two variables in a contingency table (a crosstab). So this chi-square test is specified as an option on a crosstab command.</p>
+<div class="section level3" id="menu-and-dialog-box-10">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Analyze - Descriptive Statistics - Crosstabs</strong></p>
+<p>In the main dialog box, click on the <strong>Statistics</strong> button, then select <strong>Chi-square</strong> and <strong>Continue</strong> back to the main dialog box. Specify your variables and run.</p>
+<p><img alt="Crosstab statistics dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS34Chi.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-10">
+<h3>Syntax:</h3>
+<pre><code>crosstabs
+  /tables=jobcat by minority
+  /statistics=chisq
+  /cells=count row.</code></pre>
+</div>
+<div class="section level3" id="output-10">
+<h3>Output:</h3>
+<p><img alt="Chi-square output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS35ChiOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="anova-tables-and-tests">
+<h2>ANOVA Tables and Tests</h2>
+<p>ANOVA tables are a core concept in statistics, and they are produced by several different commands in SPSS, including <code>ONEWAY</code>, <code>GLM</code>, and <code>UNIANOVA</code>. The <code>UNIANOVA</code> command is perhaps the easiest to use overall, because it allows you to use string (character) variables as factors.</p>
+<p>(If you are doing a one-way ANOVA and your factor is coded in numeric form, then <code>ONEWAY</code> is even easier to use.)</p>
+<div class="section level3" id="menu-and-dialog-box-11">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Analyze - General Linear Model - Univariate</strong></p>
+<p>For a simple ANOVA, your factors are considered <strong>Fixed Factors</strong>. If you have more than one factor and you do <em>not</em> want to include interactions in your model, you will need to specify that with the <strong>Model</strong> button.</p>
+<p><img alt="ANOVA dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS39Anova.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-11">
+<h3>Syntax:</h3>
+<pre><code>unianova salary by jobcat.</code></pre>
+</div>
+<div class="section level3" id="output-11">
+<h3>Output:</h3>
+<p><img alt="ANOVA output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS40AnovaOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="regression">
+<h2>Regression</h2>
+<div class="section level3" id="menu-and-dialog-box-12">
+<h3>Menu and Dialog Box:</h3>
+<p><strong>Analyze - Regression - Linear</strong></p>
+<p><img alt="Regression dialog" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS41Reg.jpg"/></p>
+</div>
+<div class="section level3" id="syntax-12">
+<h3>Syntax:</h3>
+<pre><code>regression
+  /dependent salary
+  /method=enter salbegin.</code></pre>
+</div>
+<div class="section level3" id="output-12">
+<h3>Output:</h3>
+<p><img alt="Regression output" src="https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS42RegOut.jpg"/></p>
+</div>
+</div>
+<div class="section level2" id="learning-more">
+<h2>Learning More</h2>
+<p>To learn more about how to use the SPSS windows, you can look at the on-line tutorial that comes with the software: click <strong>Help - Tutorial</strong>.</p>
+<p>To learn more about specific data management or statistical tasks, you should try the on-line Help files. Click <strong>Help - Topics</strong> and you can read about a variety of basic SPSS topics, or search the index.</p>
+<p>Your instructor and/or TA are your best resource for class-specific tasks.</p>
+<p>If you are at UW-Madison, <a href="mailto:helpdesk@ssc.wisc.edu">Doug Hemken</a>, a statistical consultant for the SSCC, is available to help with SPSS projects. See <a href="https://ssc.wisc.edu/sscc/statconsult.htm">Stat Consulting</a> for details.</p>
+<p>Last Revised: 7/5/2016</p>
+</div>
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS10Freq.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS11FreqOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS12Desc.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS13DescOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS14Hist.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS14HistOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS15Cross.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS16CrossOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS17GroupMeans.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS18GroupMeansOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS19Bars.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS20BarChart.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS21BarChartOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS22Boxes.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS23BoxPlot.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS24BoxPlotOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS25Corr.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS25CorrOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS26Scatters.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS27ScatPlot.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS28ScatPlotOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS30ScatMatOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS31Ttest.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS32Tgroups.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS32TOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS34Chi.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS35ChiOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS39Anova.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS40AnovaOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS41Reg.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS42RegOut.jpg</img_base_url>
+</kb_document>
+</kb_documents>

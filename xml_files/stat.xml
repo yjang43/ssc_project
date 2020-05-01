@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Articles on Statistical Computing</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<a id="content" name="content"></a>
+<div id="RightContentLeftCol"><!-- InstanceBeginEditable name="Menu" -->
+<p><a href="#dstr">Data Science Tools for Resesarch</a></p>
+<p><a href="#StataBasics">Stata Basics</a></p>
+<p><a href="#StataTopics">Stata Topics</a></p>
+<p><a href="#RBasics">R Basics</a></p>
+<p><a href="#RTopics">R Topics</a></p>
+<p><a href="#SASBasics">SAS Basics</a></p>
+<p><a href="#SASTopics">SAS Topics</a></p>
+<p><a href="#SPSS">SPSS</a></p>
+<p><a href="#mplus">Mplus</a></p>
+<p><a href="#Python">Python</a></p>
+<p><a href="#SPSS"></a><a href="#NVivo">NVivo</a></p>
+<p><a href="#SASBasics"></a><a href="#Tools">Research Tools</a></p>
+<!-- InstanceEndEditable --></div>
+<div id="RightContentRightCol"><div><!-- InstanceBeginEditable name="Content" -->
+<h2 id="dstr">Data Science Tools for Research</h2>
+<p>This is SSCC's new training curriculum, designed to teach basic data science concepts and relevant software skills.</p>
+<table border="1">
+<tbody>
+<tr>
+<td width="227"><h3>R (tidyverse) &amp;<br/>
+                              Python (pandas)</h3>
+<p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/DWE/">Data Wrangling Essentials</a></p>
+<ol start="0" style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/preface.html">Preface</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/1-programming.html">Programming</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/2-data-frames.html">Data Frames</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/3-visual-exploration-of-data.html">Visual Exploration of data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/4-cleaning.html">Cleaning</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/5-transforming-variables.html">Transforming variables</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/6-transforming-data-frames.html">Transforming Data Frames</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/book/7-programming-index.html">Programming index</a></li>
+</ol>
+<ul style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/datasets.zip">R Example Datasets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/dw_py.zip">Python Example Datasets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/solutions_R/">Exercise Solutions in R</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/DWE/solutions_Python/preface.html">Exercise Solutions in Python</a></li>
+</ul>
+</td>
+<td width="227"><h3>Stata<br/>
+<br/>
+</h3>
+<p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata1.htm">Introduction to Stata</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata1.htm">Using Stata</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata2.htm">Structure of a Stata Data Set</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata3.htm">Elements of Stata Syntax</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata4.htm">Do Files</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata5.htm">Statistics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata6.htm">Creating and Changing Variables</a></li>
+</ol>
+<p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Data Wrangling in Stata</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Introduction and Review</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata2.htm">Reading in Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata3.htm">First Steps With Your Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata4.htm">Variable Transformations</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata5.htm">Hierarchical Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata6.htm">Restructuring Data Sets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata7.htm">Combining Data Sets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata8.htm">Project Management</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata9.htm">Learning More</a></li>
+</ol>
+</td></tr>
+</tbody>
+</table>
+<h2><a id="StataBasics" name="StataBasics"></a>Stata Basics</h2>
+<p style="margin-bottom: 0">Looking for the old Stata for Researchers? It's <a href="https://ssc.wisc.edu/sscc/pubs/sfr-intro.htm">here</a>, but we think you'll like the Stata track of our new <a href="#dstr">Data Science Tools for Research</a> curriculum even better.</p>
+<p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/sfs/">Stata for Students</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-where.htm">Where You Can Use Stata</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-files.htm">Managing Stata Files</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-do_files.htm">Doing Your Work Using Do Files</a> </li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ui.htm">Stata's User Interface</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-data.htm">Stata Data Sets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-syntax.htm">How Stata Commands Work</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-comments.htm">Comments and Other Tools for Making Do Files Readable</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-vars.htm">Creating Variables</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-graphs.htm">Using Graphs</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-import.htm">Reading Data from a Spreadsheet or CSV File</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-qualtrics.htm">Downloading Data from Qualtrics and Importing it into Stata</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/home.htm#desc">Descriptive Statistics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/home.htm#graphs">Graphs</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ci.htm">Means and Confidence Intervals</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ttest.htm">t-tests</a></li>
+<li> <a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-scatter.htm">Scatterplots </a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-cor.htm">Correlations</a></li>
+</ol>
+<p><a href="https://www-stata-journal-com.ezproxy.library.wisc.edu/archives/">Stata Journal at the UW-Madison Library System</a> (2012 vol. 4-present)<br/>
+<a href="http://www.library.wisc.edu.ezproxy.library.wisc.edu/databases/launch/uw/resources/Stata-journal/">Stata Journal Archive</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/statahelp.htm">Search Stata's Online Help</a>                       (For full Stata documentation, start Stata and click <span class="MenuOutput">Help</span>, <span class="MenuOutput">PDF Documentation</span>.)</p>
+<h2><a id="StataTopics" name="StataTopics"></a>Stata Topics</h2>
+<p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/stata_prog1.htm">Stata Programming</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_prog1.htm">Stata Programming Essentials</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_prog2.htm">Stata Programming Tools</a></li>
+</ol>
+<p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_intro.htm">Multiple Imputation in Stata</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_intro.htm">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_decide.htm">Deciding to Impute</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_models.htm">Creating Imputation Models</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_impute.htm">Imputing</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_manage.htm">Managing Multiply Imputed Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_estimate.htm">Estimating</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_ex.htm">Examples</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_readings.htm">Recommended Readings</a></li>
+</ol>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/4-24.htm">An Introduction to Stata Graphics</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/stata_bar_graphs.htm">Bar Graphs in Stata</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/stata_mp.htm">Running Stata/MP at the SSCC</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-26.htm">An Introduction to Mata<br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/4-16.htm">Finding and Installing User-Written Stata Programs</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/stata_memory.htm">Reducing Stata's Memory Usage</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/readhtml.htm">Stata Tools for Reading Data from Web Pages</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/stata_psmatch.htm">Propensity Score Matching in Stata using teffects</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/RegressionDiagnostics.html">Regression Diagnostics</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/stata_panel.htm">Stata Programming Techniques for Panel Data</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/stata_dates.htm">Working with Dates in Stata</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/stata_margins.htm">Exploring Regression Results using Margins</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/stata_tables.htm">Creating Publication-Quality Tables in Stata</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-23.htm">Using Stata Graphs in Documents</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-25.htm">Including Calculated Results In Stata Graphs</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-28.htm">Using Reshape to Manage Hierarchical Data</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-27.htm">Bootstrapping in Stata</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_condor.htm">Speeding up Multiple Imputation in Stata using Parallel Processing</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-22.htm">Making Predictions with Counter-Factual Data in Stata</a><br/>
+</p>
+<h2 id="RBasics">R Basics</h2>
+<p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Introduction.html">R for Researchers </a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Introduction.html">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Projects.html">R Projects</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RMarkdown.html">R Markdown</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RScript.html">R Scripts</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPrep.html">Data preparation</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataExpl.html">Data exploration</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPres.html">Data presentation</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Regression.html">Regression (OLS)</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Diagnostics.html">Diagnostics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegressionGLM.html">Regression (GLM)</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegInference.html">Regression inference</a></li>
+</ol>
+<p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/R_intro/book/preface.html">R Introduction to Selected Topics<br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/r-install.htm">Installing R on Your Personal Computer</a><a href="https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntro.html"> </a> </p>
+<h2 id="RTopics">R Topics</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html">Mixed Models</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Models.html">Models</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_TestEffects.html"> Testing Significance of Effects</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_DiagInfer.html">Diagnostics and Inference</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_MultRand.html">Multiple Random Parameters</a></li>
+</ol>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntro.html"></a><a href="https://ssc.wisc.edu/sscc/pubs/RegressionDiagnostics.html">Regression Diagnostics</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/r-packages.htm">Using  R Packages on SSCC Computers</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/r-install.htm"></a></p>
+<h2><a id="SASBasics" name="SASBasics"></a>SAS Basics</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/4-18.htm">An Introduction to SAS Data	
+                        Steps</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/sas_output.htm">Managing Output in SAS 9.3 and Above</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-4.htm">Running SAS on Linux</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/bigsas.htm">Running Large SAS Jobs on Linstat<br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/sas_launch.htm">Launching SAS Files from Windows Explorer</a><br/>
+<a href="http://support.sas.com/cdlsearch?ct=80000">SAS Version 
+                          9 Online Documentation</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/sas.pdf">SAS Workbook for Writing SAS 
+                          Programs to Process Data on UNIX</a><br/>
+<a href="https://www.ssc.wisc.edu/sscc/pubs/4-8.htm">Redirecting 
+                          and Customizing Tabular Output in SAS</a><br/>
+</p>
+<h2><a id="SASTopics" name="SASTopics"></a>SAS Topics</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/convert_sas_formats.htm">Converting SAS Formats from 32-Bit to 64-Bit</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/sas_excel.htm">SAS and Excel Files on Winstat</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-21.htm">A Simple Procedure for Producing 
+                        Publication-Quality Graphs using SAS</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-19.htm">Storing SAS Formats</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-1.pdf">Using SAS to Perform a Table	
+                          Lookup</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-2.pdf">Constructing Indicator Variables 
+                          with SAS</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-4.pdf">Converting a Code Book to a 
+                          SAS FORMAT Library</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-5.pdf">Using SAS to Reformat Data Records 
+                          from One to Several</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-20.htm">Saving SAS Graphs For Printing 
+                          or Other Uses</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-11.htm">Using Compressed Data in SAS </a></p>
+<h2><a id="OlderSASTopics" name="OlderSASTopics"></a>Older SAS Topics</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/4-3.pdf">SAS Programming Efficiencies</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-12.htm">Creating SAS Transport Files</a></p>
+<h2><a id="SPSS" name="SPSS"></a>SPSS</h2>
+<p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html">SPSS Statistics for the Classroom</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html">The Basics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students2.html">Statistics and Graphs</a></li>
+</ol>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/spss/Windows/SPSS_Syntax.html">SPSS Syntax</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/spss/Windows/Extension_bundles.html" title="Using Extension Bundles in SSCC">Using Extension Bundles in SSCC</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/spss/Linux/7-18.html">Running SPSS Jobs on Linux</a><br/>
+<a href="http://ssc.wisc.edu/sscc_jsp/spssdocs.jsp">SPSS 19
+                        Online Documentation</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-6.pdf">Using SPSS to Reformat Data 
+                        Records from One to Several</a> </p>
+<h2>Mplus</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/mplus_linstat.htm">Running Mplus Jobs on Linstat</a></p>
+<h2 id="Python">Python</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/python_packages_winstat.htm">Installing Python Packages on Winstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/python_linstat.htm">Running Python on Linstat</a><br/>
+</p>
+<h2><a id="NVivo" name="NVivo"></a>NVivo</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/nvivo.htm">Using NVivo on Winstat</a> </p>
+<h2><a id="Tools" name="Tools"></a>Research Tools</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/computing_resources.htm">Computing Resources at the
+                        SSCC</a><a href="https://ssc.wisc.edu/sscc/pubs/4-17.htm"><br/>
+                          Using Stat/Transfer</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/GitBrief/GitBriefIntro.html">Git - Brief Introduction</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/data_entry_excel.htm">Using Excel for Data Entry</a><br/>
+</p>
+<p> </p>
+<!-- InstanceEndEditable --></div></div>
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

@@ -5,34 +5,7 @@
 <kb_keywords>.</kb_keywords>
 <kb_summary>.</kb_summary>
 <kb_body>
-<body>
-<div id="OuterWrapper"><!-- #BeginLibraryItem "/Library/Header.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/><div id="Header">
-<div id="HeaderImage"> <a href="#table"><img alt="SSCC - Social Science Computing Cooperative" border="0" height="130" src="/sscc/assets/main_header.jpg" title="SSCC - Social Science Computing Cooperative" usemap="#Map" width="800"/></a>
-<map name="Map">
-<area alt="SSCC Home Page" coords="5,24,298,120" href="/sscc/" shape="rect"/>
-</map>
-</div>
-<div id="HeaderNav">
- • <a href="/sscc/" id="lnkHome" title="HOME">HOME</a> • <a href="/sscc/pubs/winstat.htm" title="Learn How to Log In to Winstat">WINSTAT</a> •  <a href="/sscc/helpdesk.htm" title="Contact the SSCC Help Desk">HELP DESK</a> • <a href="/sscc/statconsult.htm" title="SSCC Statistical Consulting">STAT CONSULTING</a> • <a href="/sscc/pubs" title="Articles on statistical computing and using SSCC resources">KNOWLEDGE BASE</a> •
-<span style="visibility:hidden">&lt;%@ include file="/authenticate/logoutlink.jsp" %&gt;</span></div>
-<div id="HeaderSearch"><form action="/sscc/results.html" id="cse-search-box">
-<div>
-<input name="cx" type="hidden" value="009976823638626595604:fyieafx208s"/>
-<input name="cof" type="hidden" value="FORID:11"/>
-<input name="ie" type="hidden" value="UTF-8"/>
-<input class="SearchBox" id="SearchInput" name="q" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" size="31" title="Search" type="text" value="Search"/>
-</div>
-</form></div>
-</div><!-- #EndLibraryItem --><div id="MainWrapper">
-<div id="RightWrapper">
-<div id="RightInnerWrapper">
-<div id="RightHeader">
-<div id="RightHeaderContent"><a href="home.htm">SSCC Knowledge Base</a></div>
-</div>
-<div class="Clear"></div>
-<div id="RightContent">
-<h1><a id="content" name="content"></a><!-- #BeginEditable "Title" -->Using 
-              SFTP <!-- #EndEditable --></h1>
+
 <!-- #BeginEditable "Text" -->
 <p>FTP, or File Transfer Protocol, has been moving files from computer 
               to computer since the earliest days of the Internet. To cope with 
@@ -40,7 +13,7 @@
               Secure FTP or SFTP. But the commands remain the same.</p>
 <p>There are a wide variety of SFTP clients that will take care of 
               all the actual commands for you, giving you a drag-and-drop interface 
-              similar to Windows. For Windows we suggest <a href="5-35.htm">SecureFX</a>. 
+              similar to Windows. For Windows we suggest <a href="https://ssc.wisc.edu/sscc/pubs/5-35.htm">SecureFX</a>. 
               But SFTP is not difficult to use. In fact, if you're comfortable 
               with Linux you'll find that you only need to learn a few extra commands.</p>
 <p>To run SFTP from one of the SSCC Linux servers, type</p>
@@ -158,69 +131,23 @@
               delete the original file after you have copied it, but it will be 
               deleted in the course of normal maintenance.</p>
 <!-- #EndEditable -->
-<p class="reviseDate">Last Revised: <!-- #BeginEditable "Date" -->5/17/2006<!-- #EndEditable --></p>
-</div>
-</div>
-</div>
-</div>
-<div class="Clear"></div><!-- #BeginLibraryItem "/Library/footer.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/>
-<div id="Footer">
-<div id="UWLogo">
-<div id="UWPic"><a href="http://www.wisc.edu" title="University of Wisconsin - Madison"><img alt="University of Wisconsin - Madison" src="/sscc/assets/UWLogo.jpg" title="University of Wisconsin - Madison"/></a></div>
-</div>
-<div id="BlueCurve">
-<div id="FooterCopy">©2009-2019 UW Board of Regents, <a href="http://www.wisc.edu">University of Wisconsin - Madison</a></div>
-<div id="FooterNav">| <a href="/sscc/helpdesk.htm">Contact Us</a> | <a href="/sscc/wp/?feed=rss2"><img alt="RSS Feed Icon" class="RSSicon" height="14" src="/sscc/assets/feed-icon-14x14.png" width="14"/>RSS</a> |</div>
-</div>
-</div>
-<!-- #EndLibraryItem --></div>
-<div id="PrintLogo">
-<img alt="Social Science Computing Cooperative" height="85" src="../assets/SSCC_logoBW3.gif" width="350"/></div>
-</body>
+
 </kb_body>
-<kb_int_notes>.</kb_int_notes>
-<img_base_url>.</img_base_url>
+<img_base_url></img_base_url>
 </kb_document>
 <kb_document>
 <kb_title>Connecting to SSCC Computers Using a WinTerm</kb_title>
 <kb_keywords>.</kb_keywords>
 <kb_summary>.</kb_summary>
 <kb_body>
-<body>
-<div id="OuterWrapper"><!-- #BeginLibraryItem "/Library/Header.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/><div id="Header">
-<div id="HeaderImage"> <a href="#table"><img alt="SSCC - Social Science Computing Cooperative" border="0" height="130" src="/sscc/assets/main_header.jpg" title="SSCC - Social Science Computing Cooperative" usemap="#Map" width="800"/></a>
-<map name="Map">
-<area alt="SSCC Home Page" coords="5,24,298,120" href="/sscc/" shape="rect"/>
-</map>
-</div>
-<div id="HeaderNav">
- • <a href="/sscc/" id="lnkHome" title="HOME">HOME</a> • <a href="/sscc/pubs/winstat.htm" title="Learn How to Log In to Winstat">WINSTAT</a> •  <a href="/sscc/helpdesk.htm" title="Contact the SSCC Help Desk">HELP DESK</a> • <a href="/sscc/statconsult.htm" title="SSCC Statistical Consulting">STAT CONSULTING</a> • <a href="/sscc/pubs" title="Articles on statistical computing and using SSCC resources">KNOWLEDGE BASE</a> •
-<span style="visibility:hidden">&lt;%@ include file="/authenticate/logoutlink.jsp" %&gt;</span></div>
-<div id="HeaderSearch"><form action="/sscc/results.html" id="cse-search-box">
-<div>
-<input name="cx" type="hidden" value="009976823638626595604:fyieafx208s"/>
-<input name="cof" type="hidden" value="FORID:11"/>
-<input name="ie" type="hidden" value="UTF-8"/>
-<input class="SearchBox" id="SearchInput" name="q" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" size="31" title="Search" type="text" value="Search"/>
-</div>
-</form></div>
-</div><!-- #EndLibraryItem --><div id="MainWrapper">
-<div id="RightWrapper">
-<div id="RightInnerWrapper">
-<div id="RightHeader">
-<div id="RightHeaderContent"><a href="home.htm">SSCC Knowledge Base</a></div>
-</div>
-<div class="Clear"></div>
-<div id="RightContent">
-<h1><a id="content" name="content"></a><!-- #BeginEditable "Title" -->Connecting to SSCC Computers Using a 
-        WinTerm<!-- #EndEditable --></h1>
+
 <!-- #BeginEditable "Text" -->
 <p>WinTerms provide easy access to all of the SSCC's servers. To log on to a
   server,  double click on the server's name in the Neoware Connection Manager
   dialog box.</p>
 <p>Note that the telnet client used to connect to Linux servers does not have
 	the ability to display graphics. If you need to display Linux graphics, connect
-	to Winstat and then use <a href="5-2.htm">X-Win32</a>  to
+	to Winstat and then use <a href="https://ssc.wisc.edu/sscc/pubs/5-2.htm">X-Win32</a>  to
 	connect to a Linux server.</p>
 <h2>Managing Connections</h2>
 <p>Once you have made a connection to a server, that connection will fill the 
@@ -242,61 +169,16 @@
   clipboard will be pasted at the current location of the cursor (not the mouse 
   pointer).</p>
 <!-- #EndEditable -->
-<p class="reviseDate">Last Revised: <!-- #BeginEditable "Date" -->7/5/2007<!-- #EndEditable --></p>
-</div>
-</div>
-</div>
-</div>
-<div class="Clear"></div><!-- #BeginLibraryItem "/Library/footer.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/>
-<div id="Footer">
-<div id="UWLogo">
-<div id="UWPic"><a href="http://www.wisc.edu" title="University of Wisconsin - Madison"><img alt="University of Wisconsin - Madison" src="/sscc/assets/UWLogo.jpg" title="University of Wisconsin - Madison"/></a></div>
-</div>
-<div id="BlueCurve">
-<div id="FooterCopy">©2009-2019 UW Board of Regents, <a href="http://www.wisc.edu">University of Wisconsin - Madison</a></div>
-<div id="FooterNav">| <a href="/sscc/helpdesk.htm">Contact Us</a> | <a href="/sscc/wp/?feed=rss2"><img alt="RSS Feed Icon" class="RSSicon" height="14" src="/sscc/assets/feed-icon-14x14.png" width="14"/>RSS</a> |</div>
-</div>
-</div>
-<!-- #EndLibraryItem --></div>
-<div id="PrintLogo">
-<img alt="Social Science Computing Cooperative" height="85" src="../assets/SSCC_logoBW3.gif" width="350"/></div>
-</body>
+
 </kb_body>
-<kb_int_notes>.</kb_int_notes>
-<img_base_url>.</img_base_url>
+<img_base_url></img_base_url>
 </kb_document>
 <kb_document>
 <kb_title>Virus Protection at the SSCC</kb_title>
 <kb_keywords>.</kb_keywords>
 <kb_summary>.</kb_summary>
 <kb_body>
-<body>
-<div id="OuterWrapper"><!-- #BeginLibraryItem "/Library/Header.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/><div id="Header">
-<div id="HeaderImage"> <a href="#table"><img alt="SSCC - Social Science Computing Cooperative" border="0" height="130" src="/sscc/assets/main_header.jpg" title="SSCC - Social Science Computing Cooperative" usemap="#Map" width="800"/></a>
-<map name="Map">
-<area alt="SSCC Home Page" coords="5,24,298,120" href="/sscc/" shape="rect"/>
-</map>
-</div>
-<div id="HeaderNav">
- • <a href="/sscc/" id="lnkHome" title="HOME">HOME</a> • <a href="/sscc/pubs/winstat.htm" title="Learn How to Log In to Winstat">WINSTAT</a> •  <a href="/sscc/helpdesk.htm" title="Contact the SSCC Help Desk">HELP DESK</a> • <a href="/sscc/statconsult.htm" title="SSCC Statistical Consulting">STAT CONSULTING</a> • <a href="/sscc/pubs" title="Articles on statistical computing and using SSCC resources">KNOWLEDGE BASE</a> •
-<span style="visibility:hidden">&lt;%@ include file="/authenticate/logoutlink.jsp" %&gt;</span></div>
-<div id="HeaderSearch"><form action="/sscc/results.html" id="cse-search-box">
-<div>
-<input name="cx" type="hidden" value="009976823638626595604:fyieafx208s"/>
-<input name="cof" type="hidden" value="FORID:11"/>
-<input name="ie" type="hidden" value="UTF-8"/>
-<input class="SearchBox" id="SearchInput" name="q" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" size="31" title="Search" type="text" value="Search"/>
-</div>
-</form></div>
-</div><!-- #EndLibraryItem --><div id="MainWrapper">
-<div id="RightWrapper">
-<div id="RightInnerWrapper">
-<div id="RightHeader">
-<div id="RightHeaderContent"><a href="home.htm">SSCC Knowledge Base</a></div>
-</div>
-<div class="Clear"></div>
-<div id="RightContent">
-<h1><a id="content" name="content"></a><!-- #BeginEditable "Title" -->Virus Protection at the SSCC<!-- #EndEditable --></h1>
+
 <!-- #BeginEditable "Text" -->
 <p>Computer viruses, worms and other malicious software have become a serious
    and very public issue. SSCC staff have taken several steps to avoid being
@@ -361,7 +243,7 @@
   are suspicious,  simply scan your PC.</p>
 <p>You know that Symantec Antivirus is running if you see the yellow logo in
   the lower right corner of the screen, on the system tray:</p>
-<p><img alt="Norton Antivirus Logo in the System Tray" height="36" src="screenshots/1-14/1-14_1.png" width="174"/></p>
+<p><img alt="Norton Antivirus Logo in the System Tray" height="36" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-14/1-14_1.png" width="174"/></p>
 <p>Right click on this icon and open Symantec Antivirus  if
   you want to perform a scan.</p>
 <p>New viruses are constantly being created, and anti-virus software must be
@@ -371,7 +253,7 @@
 <p>Home computers need to be protected from viruses as well. Symantec Antivirus
    is available free to UW faculty, staff and students, and we encourage everyone
    to take advantage of it. It must also be kept up-to-date to be effective.
-  Please  see  <a href="5-12.htm">Keeping Your PC Secure</a> for
+  Please  see  <a href="https://ssc.wisc.edu/sscc/pubs/5-12.htm">Keeping Your PC Secure</a> for
   detailed  instructions.</p>
 <h2><a id="VirusHoaxes" name="VirusHoaxes"></a>Virus Hoaxes</h2>
 <p>Hoaxes about viruses are almost as common as viruses themselves. Typically 
@@ -403,61 +285,16 @@
   in question, or simply delete it. Reading the message is usually (but not always)
   safe; never open suspicious attachments.</p>
 <!-- #EndEditable -->
-<p class="reviseDate">Last Revised: <!-- #BeginEditable "Date" -->3/06/2007<!-- #EndEditable --></p>
-</div>
-</div>
-</div>
-</div>
-<div class="Clear"></div><!-- #BeginLibraryItem "/Library/footer.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/>
-<div id="Footer">
-<div id="UWLogo">
-<div id="UWPic"><a href="http://www.wisc.edu" title="University of Wisconsin - Madison"><img alt="University of Wisconsin - Madison" src="/sscc/assets/UWLogo.jpg" title="University of Wisconsin - Madison"/></a></div>
-</div>
-<div id="BlueCurve">
-<div id="FooterCopy">©2009-2019 UW Board of Regents, <a href="http://www.wisc.edu">University of Wisconsin - Madison</a></div>
-<div id="FooterNav">| <a href="/sscc/helpdesk.htm">Contact Us</a> | <a href="/sscc/wp/?feed=rss2"><img alt="RSS Feed Icon" class="RSSicon" height="14" src="/sscc/assets/feed-icon-14x14.png" width="14"/>RSS</a> |</div>
-</div>
-</div>
-<!-- #EndLibraryItem --></div>
-<div id="PrintLogo">
-<img alt="Social Science Computing Cooperative" height="85" src="../assets/SSCC_logoBW3.gif" width="350"/></div>
-</body>
+
 </kb_body>
-<kb_int_notes>.</kb_int_notes>
-<img_base_url>.</img_base_url>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/1-14/1-14_1.png</img_base_url>
 </kb_document>
 <kb_document>
 <kb_title>How to Change Your SSCC Passwords</kb_title>
 <kb_keywords>.</kb_keywords>
 <kb_summary>.</kb_summary>
 <kb_body>
-<body>
-<div id="OuterWrapper"><!-- #BeginLibraryItem "/Library/Header.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/><div id="Header">
-<div id="HeaderImage"> <a href="#table"><img alt="SSCC - Social Science Computing Cooperative" border="0" height="130" src="/sscc/assets/main_header.jpg" title="SSCC - Social Science Computing Cooperative" usemap="#Map" width="800"/></a>
-<map name="Map">
-<area alt="SSCC Home Page" coords="5,24,298,120" href="/sscc/" shape="rect"/>
-</map>
-</div>
-<div id="HeaderNav">
- • <a href="/sscc/" id="lnkHome" title="HOME">HOME</a> • <a href="/sscc/pubs/winstat.htm" title="Learn How to Log In to Winstat">WINSTAT</a> •  <a href="/sscc/helpdesk.htm" title="Contact the SSCC Help Desk">HELP DESK</a> • <a href="/sscc/statconsult.htm" title="SSCC Statistical Consulting">STAT CONSULTING</a> • <a href="/sscc/pubs" title="Articles on statistical computing and using SSCC resources">KNOWLEDGE BASE</a> •
-<span style="visibility:hidden">&lt;%@ include file="/authenticate/logoutlink.jsp" %&gt;</span></div>
-<div id="HeaderSearch"><form action="/sscc/results.html" id="cse-search-box">
-<div>
-<input name="cx" type="hidden" value="009976823638626595604:fyieafx208s"/>
-<input name="cof" type="hidden" value="FORID:11"/>
-<input name="ie" type="hidden" value="UTF-8"/>
-<input class="SearchBox" id="SearchInput" name="q" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" size="31" title="Search" type="text" value="Search"/>
-</div>
-</form></div>
-</div><!-- #EndLibraryItem --><div id="MainWrapper">
-<div id="RightWrapper">
-<div id="RightInnerWrapper">
-<div id="RightHeader">
-<div id="RightHeaderContent"><a href="home.htm">SSCC Knowledge Base</a></div>
-</div>
-<div class="Clear"></div>
-<div id="RightContent">
-<h1><a id="content" name="content"></a><!-- #BeginEditable "Title" -->How to Change Your SSCC Passwords<!-- #EndEditable --></h1>
+
 <!-- #BeginEditable "Text" -->
 <p> You can quickly and easily change your SSCC password using
 		our <a href="https://www.ssc.wisc.edu/sscc_jsp/password">web page for password
@@ -466,9 +303,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 <title>Untitled Document</title>
-</meta></head>
+</head>
 <body>
 <h2><a id="PasswordRequirements" name="PasswordRequirements"></a>Password Requirements</h2>
 <p>All computers are now subject to regular attempts to gain unauthorized access,
@@ -504,61 +341,16 @@
 </body>
 </html>
 <!-- #EndEditable -->
-<p class="reviseDate">Last Revised: <!-- #BeginEditable "Date" -->12//17/2008<!-- #EndEditable --></p>
-</div>
-</div>
-</div>
-</div>
-<div class="Clear"></div><!-- #BeginLibraryItem "/Library/footer.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/>
-<div id="Footer">
-<div id="UWLogo">
-<div id="UWPic"><a href="http://www.wisc.edu" title="University of Wisconsin - Madison"><img alt="University of Wisconsin - Madison" src="/sscc/assets/UWLogo.jpg" title="University of Wisconsin - Madison"/></a></div>
-</div>
-<div id="BlueCurve">
-<div id="FooterCopy">©2009-2019 UW Board of Regents, <a href="http://www.wisc.edu">University of Wisconsin - Madison</a></div>
-<div id="FooterNav">| <a href="/sscc/helpdesk.htm">Contact Us</a> | <a href="/sscc/wp/?feed=rss2"><img alt="RSS Feed Icon" class="RSSicon" height="14" src="/sscc/assets/feed-icon-14x14.png" width="14"/>RSS</a> |</div>
-</div>
-</div>
-<!-- #EndLibraryItem --></div>
-<div id="PrintLogo">
-<img alt="Social Science Computing Cooperative" height="85" src="../assets/SSCC_logoBW3.gif" width="350"/></div>
-</body>
+
 </kb_body>
-<kb_int_notes>.</kb_int_notes>
-<img_base_url>.</img_base_url>
+<img_base_url></img_base_url>
 </kb_document>
 <kb_document>
 <kb_title>Getting SSCC Announcements via RSS</kb_title>
 <kb_keywords>.</kb_keywords>
 <kb_summary>.</kb_summary>
 <kb_body>
-<body>
-<div id="OuterWrapper"><!-- #BeginLibraryItem "/Library/Header.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/><div id="Header">
-<div id="HeaderImage"> <a href="#table"><img alt="SSCC - Social Science Computing Cooperative" border="0" height="130" src="/sscc/assets/main_header.jpg" title="SSCC - Social Science Computing Cooperative" usemap="#Map" width="800"/></a>
-<map name="Map">
-<area alt="SSCC Home Page" coords="5,24,298,120" href="/sscc/" shape="rect"/>
-</map>
-</div>
-<div id="HeaderNav">
- • <a href="/sscc/" id="lnkHome" title="HOME">HOME</a> • <a href="/sscc/pubs/winstat.htm" title="Learn How to Log In to Winstat">WINSTAT</a> •  <a href="/sscc/helpdesk.htm" title="Contact the SSCC Help Desk">HELP DESK</a> • <a href="/sscc/statconsult.htm" title="SSCC Statistical Consulting">STAT CONSULTING</a> • <a href="/sscc/pubs" title="Articles on statistical computing and using SSCC resources">KNOWLEDGE BASE</a> •
-<span style="visibility:hidden">&lt;%@ include file="/authenticate/logoutlink.jsp" %&gt;</span></div>
-<div id="HeaderSearch"><form action="/sscc/results.html" id="cse-search-box">
-<div>
-<input name="cx" type="hidden" value="009976823638626595604:fyieafx208s"/>
-<input name="cof" type="hidden" value="FORID:11"/>
-<input name="ie" type="hidden" value="UTF-8"/>
-<input class="SearchBox" id="SearchInput" name="q" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" size="31" title="Search" type="text" value="Search"/>
-</div>
-</form></div>
-</div><!-- #EndLibraryItem --><div id="MainWrapper">
-<div id="RightWrapper">
-<div id="RightInnerWrapper">
-<div id="RightHeader">
-<div id="RightHeaderContent"><a href="home.htm">SSCC Knowledge Base</a></div>
-</div>
-<div class="Clear"></div>
-<div id="RightContent">
-<h1><a id="content" name="content"></a><!-- InstanceBeginEditable name="Title" -->Getting SSCC Announcements via RSS<!-- InstanceEndEditable --></h1>
+
 <!-- InstanceBeginEditable name="Text" -->
 <p>The SSCC makes important announcements available through our Broadcast message, which appears when you log in to our Windows domain or our Linux servers. This includes information about downtime, hardware and software upgrades, any problems with SSCC services, and anything else SSCC users need to know. However, you will only see Broadcast when you first log in, not when it changes--and if you don't log in to the SSCC you won't see it at all.</p>
 <p>Thus we also make these announcements available as an RSS feed. With RSS you can get the information that's currently in Broadcast at any time and from any place, and get updates as situations change.</p>
@@ -569,60 +361,97 @@
 <p>You are welcome to use any RSS reader you prefer. Once you have one installed and configured, the only information you'll need in order for it to get the SSCC's RSS feed is the feed's location: <a href="https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</a>. However, this article will step you through the process of setting up Thunderbird, Firefox and Internet Explorer to read the SSCC's RSS feed.</p>
 <h3><a id="Thunderbird" name="Thunderbird"></a>Thunderbird</h3>
 <p>If you've never used Thunderbird as an RSS reader before, you first need to add an RSS reader account. Click <span class="MenuOutput">Tools</span>, <span class="MenuOutput">Account Settings</span>, <span class="MenuOutput">Add Account</span>.</p>
-<p><img alt="Adding an Account" height="575" src="screenshots/1-21/1-21_1.png" width="612"/></p>
+<p><img alt="Adding an Account" height="575" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_1.png" width="612"/></p>
 <p>Then for the type of account choose <span class="MenuOutput">RSS News &amp; Blogs</span> and click <span class="MenuOutput">Next</span>.</p>
-<p><img alt="Choose RSS" height="443" src="screenshots/1-21/1-21_2.png" width="447"/></p>
+<p><img alt="Choose RSS" height="443" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_2.png" width="447"/></p>
 <p>Now tell Thunderbird how you want to refer to this account. The default <span class="MenuOutput">News &amp; Blogs</span> is probably fine. Click <span class="MenuOutput">Next</span> when you're done.</p>
-<p><img alt="Name the account" height="443" src="screenshots/1-21/1-21_3.png" width="447"/></p>
+<p><img alt="Name the account" height="443" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_3.png" width="447"/></p>
 <p>Finally review what you've entered and click <span class="MenuOutput">Finish</span>. Thunderbird is now ready to read RSS feeds, but you haven't told it what feeds you are interested in. To do so select your RSS account and click <span class="MenuOutput">Manage Subscriptions</span>.</p>
-<p><img alt="Manage Subscriptions" height="575" src="screenshots/1-21/1-21_4.png" width="612"/></p>
+<p><img alt="Manage Subscriptions" height="575" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_4.png" width="612"/></p>
 <p>Next click <span class="MenuOutput">Add</span>.</p>
-<p><img alt="Add a feed" height="290" src="screenshots/1-21/1-21_5.png" width="494"/></p>
+<p><img alt="Add a feed" height="290" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_5.png" width="494"/></p>
 <p>Now all you have to do is type or paste in the address of the RSS feed you want to add, which for the SSCC's feed is <span class="InputCode">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</span>. Then click <span class="MenuOutput">Ok</span> and close the <span class="MenuOutput">RSS Subscriptions</span> window.</p>
-<p><img alt="Type the feed address" height="158" src="screenshots/1-21/1-21_6.png" width="370"/></p>
+<p><img alt="Type the feed address" height="158" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_6.png" width="370"/></p>
 <p>This will put you back at the main window for your RSS account. While you're there, you may want to set how often it checks for new articles to something smaller (say, every 15 minutes) and have it check automatically when you start Thunderbird.</p>
 <p>Once you close the <span class="MenuOutput">Account Settings</span> window, you'll see your new RSS account underneath your main email account. Remember it may take a while before it checks the server for items.</p>
 <h3><a id="Firefox" name="Firefox"></a>Firefox</h3>
-<p>To set up an RSS feed in Firefox, you must first open Firefox and go to <a href="http://ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">its location</a>. You can do so by clicking on the previous link, clicking on the orange RSS icon (<img alt="RSS Icon" height="15" src="screenshots/1-21/1_21_13.png" width="14"/>) you'll see in the address bar of your browser whenever you visit an SSCC web page, or by typing <a href="https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</a> in the address bar.</p>
+<p>To set up an RSS feed in Firefox, you must first open Firefox and go to <a href="http://ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">its location</a>. You can do so by clicking on the previous link, clicking on the orange RSS icon (<img alt="RSS Icon" height="15" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1_21_13.png" width="14"/>) you'll see in the address bar of your browser whenever you visit an SSCC web page, or by typing <a href="https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</a> in the address bar.</p>
 <p>You'll get a page which allows you to subscribe to the feed using one of several methods (it will also give you the current tables of the feed). If you want to use Firefox itself, choose <span class="MenuOutput">Live Bookmarks</span> and click <span class="MenuOutput">Subscribe Now</span>.</p>
 <p>(Note that while this page will give you the option to subscribe using Thunderbird, it doesn't actually work. To use Thunderbird as your RSS reader use the method described <a href="#Thunderbird">above</a>.)</p>
-<p><img alt="Subscribing using Live Bookmarks" height="455" src="screenshots/1-21/1-21_7.png" width="666"/></p>
+<p><img alt="Subscribing using Live Bookmarks" height="455" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_7.png" width="666"/></p>
 <p>You'll then be asked where to put this bookmark. The default, the <span class="MenuOutput">Bookmarks Toolbar Folder</span>, allows you to make the feed available on a toolbar, but it doesn't really matter where you put it.</p>
-<p><img alt="Adding a live bookmark" height="142" src="screenshots/1-21/1-21_8.png" width="326"/></p>
+<p><img alt="Adding a live bookmark" height="142" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_8.png" width="326"/></p>
 <p>To see the feed, click on the folder you put it in, then the feed itself. Each item will show up as a bookmark. Click on the bookmark to see the tables of the item.</p>
-<p><img alt="Using a live bookmark" height="387" src="screenshots/1-21/1-21_9.png" width="642"/></p>
+<p><img alt="Using a live bookmark" height="387" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_9.png" width="642"/></p>
 <h3><a id="InternetExplorer" name="InternetExplorer"></a>Internet Explorer</h3>
-<p>To set up an RSS feed in Internet Explorer, you must first open Internet Explorer and go to <a href="http://ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">its location</a>. You can do so by clicking on the previous link, clicking on the orange RSS icon (<img alt="RSS Icon" height="15" src="screenshots/1-21/1_21_13.png" width="14"/>) you'll see in the address bar of your browser whenever you visit an SSCC web page, or by typing <a href="https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</a> in the address bar.</p>
+<p>To set up an RSS feed in Internet Explorer, you must first open Internet Explorer and go to <a href="http://ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">its location</a>. You can do so by clicking on the previous link, clicking on the orange RSS icon (<img alt="RSS Icon" height="15" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1_21_13.png" width="14"/>) you'll see in the address bar of your browser whenever you visit an SSCC web page, or by typing <a href="https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</a> in the address bar.</p>
 <p>You'll get a page which allows you to subscribe to the feed using Google tools if you have the Google toolbar installed, or using Internet Exporer itself. To do the latter click <span class="MenuOutput">Subscribe to this feed</span>.</p>
-<p><img alt="Subscribing" height="338" src="screenshots/1-21/1-21_10.png" width="642"/></p>
+<p><img alt="Subscribing" height="338" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_10.png" width="642"/></p>
 <p>You'll then be asked where to create the feed. The default location (<span class="MenuOutput">Feeds</span>) will probably be fine, so just click <span class="MenuOutput">Subscribe</span>.</p>
-<p><img alt="Storing the feed" height="253" src="screenshots/1-21/1-21_11.png" width="369"/></p>
+<p><img alt="Storing the feed" height="253" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_11.png" width="369"/></p>
 <p>To access the feed, click on Favorites (the star) and then the <span class="MenuOutput">Feeds</span> button. You can then click on the name of the feed to view its tables.</p>
-<p><img alt="Accessing the feed" height="408" src="screenshots/1-21/1-21_12.png" width="642"/></p>
+<p><img alt="Accessing the feed" height="408" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_12.png" width="642"/></p>
 <h2><a id="WebBasedReaders" name="WebBasedReaders"></a>Web-Based Readers</h2>
 <p>Web-based RSS readers have the advantage of being available anywhere. Thus you wouldn't need to set up the SSCC RSS feed on both your office computer and your home computer, for example. However, they do not check for new table very often and can go up to two hours between updates. Thus they're less useful for time-sensitive information, such as finding out when we've fixed a problem.</p>
 <!-- InstanceEndEditable -->
-<p class="reviseDate">Last Revised: <!-- InstanceBeginEditable name="Date" -->3/14/2012<!-- InstanceEndEditable --></p>
-</div>
-</div>
-</div>
-</div>
-<div class="Clear"></div><!-- #BeginLibraryItem "/Library/footer.lbi" --><meta http-equiv="Content-Type" table="text/html; charset=utf-8"/>
-<div id="Footer">
-<div id="UWLogo">
-<div id="UWPic"><a href="http://www.wisc.edu" title="University of Wisconsin - Madison"><img alt="University of Wisconsin - Madison" src="/sscc/assets/UWLogo.jpg" title="University of Wisconsin - Madison"/></a></div>
-</div>
-<div id="BlueCurve">
-<div id="FooterCopy">©2009-2019 UW Board of Regents, <a href="http://www.wisc.edu">University of Wisconsin - Madison</a></div>
-<div id="FooterNav">| <a href="/sscc/helpdesk.htm">Contact Us</a> | <a href="/sscc/wp/?feed=rss2"><img alt="RSS Feed Icon" class="RSSicon" height="14" src="/sscc/assets/feed-icon-14x14.png" width="14"/>RSS</a> |</div>
-</div>
-</div>
-<!-- #EndLibraryItem --></div>
-<div id="PrintLogo">
-<img alt="Social Science Computing Cooperative" height="85" src="../assets/SSCC_logoBW3.gif" width="350"/></div>
-</body>
+
 </kb_body>
-<kb_int_notes>.</kb_int_notes>
-<img_base_url>.</img_base_url>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_3.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_4.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_5.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_6.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1_21_13.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_7.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_8.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_9.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1_21_13.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_10.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_11.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_12.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Publishing a Web Site on the SSCC's Web Server</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>SSCC members are welcome to create personal web sites on the
+          		SSCC's web server. Web sites on the SSCC web server must be focused
+          		on University business and comply with  <a href="http://www.cio.wisc.edu/policies/">University
+          		computing policies</a>, including the <a href="http://www.cio.wisc.edu/policies/appropriateuse.aspx">Guidelines
+          		for Appropriate Use</a> and the <a href="http://www.wisc.edu/policy/wwwap.php">Policy
+          		Governing World Wide Web Accessibility</a>, and with the SSCC's <a href="https://ssc.wisc.edu/sscc/policies/webpublish.htm">Web
+          		Publishing Policy</a>. Commercial or political use is strictly prohibited.</p>
+<p>If you are creating a brand new web site, we recommend you use <a href="https://ssc.wisc.edu/sscc/pubs/wordpress.htm">WordPress</a>, especially if you've never made a web site before. </p>
+<p>This article will teach you how to put existing files on the
+          		SSCC's web server.</p>
+<h2>Putting Files on the Web</h2>
+<p>The SSCC's web server will publish any files it finds in the <span class="MenuOutput">PUBLIC_web</span>          		directory
+          		inside your Linux home directory. If you are using Windows, your
+          		Linux home directory is mapped as the <span class="MenuOutput">Z:</span> drive,
+          		so your web site will go in <span class="MenuOutput">Z:\PUBLIC_web</span>.
+          		If you want to use SFTP (Secure FTP), the SSCC's Linux FTP server is <span class="InputCode">ftp.ssc.wisc.edu</span>.
+          		Your FTP program may allow you to tell it to start in <span class="MenuOutput">PUBLIC_web</span>          		automatically,
+          		or you may need to change to that directory each time you log
+          		in. </p>
+<p>This directory starts out empty, but you can put files in it
+          		at any time just like any other directory.</p>
+<h2>Your Web Address</h2>
+<p>Once you put files in your PUBLIC_web directory, they will be available
+          		on the web at <span class="InputCode">http://ssc.wisc.edu/~<span class="Parameter">username</span>/<span class="Parameter">filename</span></span> where
+          		<span class="Parameter"><span class="InputCode">username</span> </span>should
+          		be replaced by your SSCC username (e.g. <span class="InputCode">rdimond</span>)
+          		and <span class="InputCode"><span class="Parameter">filename</span></span>          		should
+          		be replaced by the name of the file you're trying to access (e.g.
+          		<span class="InputCode">econ101.htm</span>). If you create a web
+          		page named <span class="InputCode">home.htm</span>, <span class="InputCode">home.html</span>, <span class="InputCode">index.htm</span>,
+          		<span class="InputCode">index.html</span> or one of the other common
+          		home page names, the web server will present it if someone asks
+          		for just <span class="InputCode">http://ssc.wisc.edu/~<span class="Parameter">username</span></span>.</p>
+<h2>Making Files Available Without Creating a Web Page</h2>
+<p>The web server will be happy to distribute files that are not web
+          		pages, such as PDF files or Word documents (just make sure your
+          		intended audience has or can get the proper software for reading
+          		them). However, if you don't make a home page people will need
+          		to know the name of each file they want to download. It is possible
+          		to have the web server automatically generate a home page of
+          		sorts just listing the files in your <span class="MenuOutput">PUBLIC_web</span> directory
+          		so people can get one by clicking on its name. If you'd
+          		like us to enable this for your web site, please <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">contact
+          		the Help Desk</a>. </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
 </kb_document>
 </kb_documents>

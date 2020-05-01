@@ -1,0 +1,214 @@
+<kb_documents>
+<kb_document>
+<kb_title>SPSS for the Classroom: Statistics and Graphs</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+
+		<pre style=";text-align:left">
+   1  * Encoding: UTF-8.
+   2  *  A simple example to introduce .sps files .
+   3
+   4  get file=&quot;../Data/Cars.sav&quot;.
+   5  * Can also be downloaded from https://www.ssc.wisc.edu/~hemken/SPSSworkshop
+         s/Data .
+<BR/>
+28 Jun 16
+
+   6  GRAPH   /SCATTERPLOT(BIVAR)=weight WITH mpg.
+   7
+		</pre>
+
+		<pre style=";text-align:left">
+/home/h/hemken/PUBLIC_web/SPSSworkshops/Data/Cars.sav
+		</pre>
+		<div style="align:left">
+			<img alt="Scatter of mpg weight " src="carlinux_files/image000.png">
+		</DIV>
+
+		<pre style=";text-align:left">
+   8  descriptives variables=weight mpg.
+   9
+		</pre>
+
+		<pre style=";text-align:left">
+/home/h/hemken/PUBLIC_web/SPSSworkshops/Data/Cars.sav
+		</pre>
+		<p />
+		<table border="1" cellspacing="0" style="font-size: 80%;align:left">
+
+			<caption style="text-align:left;font-weight:bold">
+				Descriptive Statistics
+			</caption>
+			<thead left>
+				<tr>
+					<th>&nbsp; </th>
+					<th> N </th>
+					<th> Minimum </th>
+					<th> Maximum </th>
+					<th> Mean </th>
+					<th> Std. Deviation </th>
+				</tr>
+			</thead>
+			<tbody align="left">
+				<tr>
+					<th> Vehicle Weight (lbs.) </th>
+					<td align="right"> 406 </td>
+					<td align="right"> 732 </td>
+					<td align="right"> 5140 </td>
+					<td align="right"> 2969.56 </td>
+					<td align="right"> 849.827 </td>
+				</tr>
+				<tr>
+					<th> Miles per Gallon </th>
+					<td align="right"> 398 </td>
+					<td align="right"> 9 </td>
+					<td align="right"> 47 </td>
+					<td align="right"> 23.51 </td>
+					<td align="right"> 7.816 </td>
+				</tr>
+				<tr>
+					<th> Valid N (listwise) </th>
+					<td align="right"> 398 </td>
+					<td>&nbsp; </td>
+					<td>&nbsp; </td>
+					<td>&nbsp; </td>
+					<td>&nbsp; </td>
+				</tr>
+			</tbody>
+		</table>
+
+		<pre style=";text-align:left">
+  10  CORRELATIONS
+  11    /VARIABLES=mpg weight.
+  12
+		</pre>
+
+		<pre style=";text-align:left">
+/home/h/hemken/PUBLIC_web/SPSSworkshops/Data/Cars.sav
+		</pre>
+		<p />
+		<table border="1" cellspacing="0" style="font-size: 80%;align:left">
+
+			<caption style="text-align:left;font-weight:bold">
+				Correlations
+			</caption>
+			<thead left>
+				<tr>
+					<th colspan="2">&nbsp; </th>
+					<th> Miles per Gallon </th>
+					<th> Vehicle Weight (lbs.) </th>
+				</tr>
+			</thead>
+			<tbody align="left">
+				<tr>
+					<th rowspan="3"> Miles per Gallon </th>
+					<th> Pearson Correlation </th>
+					<td align="right"> 1 </td>
+					<td align="right"> -.807 </td>
+				</tr>
+				<tr>
+					<th> Sig. (2-tailed) </th>
+					<td>&nbsp; </td>
+					<td align="right"> .000 </td>
+				</tr>
+				<tr>
+					<th> N </th>
+					<td align="right"> 398 </td>
+					<td align="right"> 398 </td>
+				</tr>
+				<tr>
+					<th rowspan="3"> Vehicle Weight (lbs.) </th>
+					<th> Pearson Correlation </th>
+					<td align="right"> -.807 </td>
+					<td align="right"> 1 </td>
+				</tr>
+				<tr>
+					<th> Sig. (2-tailed) </th>
+					<td align="right"> .000 </td>
+					<td>&nbsp; </td>
+				</tr>
+				<tr>
+					<th> N </th>
+					<td align="right"> 398 </td>
+					<td align="right"> 406 </td>
+				</tr>
+			</tbody>
+		</table>
+
+		<pre style=";text-align:left">
+  13  show version.
+  14
+		</pre>
+
+		<pre style=";text-align:left">
+/home/h/hemken/PUBLIC_web/SPSSworkshops/Data/Cars.sav
+		</pre>
+		<p />
+		<table border="1" cellspacing="0" style="font-size: 80%;align:left">
+
+			<caption style="text-align:left;font-weight:bold">
+				Version
+			</caption>
+			<thead left>
+				<tr>
+					<th valign="bottom" align="left"> Component </th>
+					<th> Version </th>
+					<th> Date </th>
+				</tr>
+			</thead>
+			<tbody align="left">
+				<tr>
+					<th> STATISTICSB </th>
+					<td> 19.00.00 </td>
+					<td align="right"> 20-DEC-2010 </td>
+				</tr>
+				<tr>
+					<th> libspsswctl.so </th>
+					<td> 19.00.00 </td>
+					<td align="right"> 20-DEC-2010 </td>
+				</tr>
+				<tr>
+					<th> libspsswlib.so </th>
+					<td> 19.00.00 </td>
+					<td align="right"> 20-DEC-2010 </td>
+				</tr>
+				<tr>
+					<th> libspsswpea.so </th>
+					<td> 19.00.00 </td>
+					<td align="right"> 20-DEC-2010 </td>
+				</tr>
+				<tr>
+					<th> libspsswcde.so </th>
+					<td> 19.00.00 </td>
+					<td align="right"> 20-DEC-2010 </td>
+				</tr>
+				<tr>
+					<th> libspsswgra.so </th>
+					<td> 19.00.00 </td>
+					<td align="right"> 20-DEC-2010 </td>
+				</tr>
+				<tr>
+					<th> libspsswfil.so </th>
+					<td> 19.00.00 </td>
+					<td align="right"> 20-DEC-2010 </td>
+				</tr>
+			</tbody>
+		</table>
+
+		<pre style=";text-align:left">
+  15
+
+    14 command lines read.
+     0 errors detected.
+     0 warnings issued.
+     2 seconds CPU time.
+     3 seconds elapsed time.
+       End of job.
+		</pre>
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS10Freq.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS11FreqOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS12Desc.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS13DescOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS14Hist.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS14HistOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS15Cross.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS16CrossOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS17GroupMeans.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS18GroupMeansOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS19Bars.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS20BarChart.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS21BarChartOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS22Boxes.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS23BoxPlot.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS24BoxPlotOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS25Corr.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS25CorrOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS26Scatters.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS27ScatPlot.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS28ScatPlotOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS30ScatMatOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS31Ttest.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS32Tgroups.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS32TOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS34Chi.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS35ChiOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS39Anova.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS40AnovaOut.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS41Reg.jpg, https://ssc.wisc.edu/sscc/pubs/spss/classintro/screenshots/spss_students2/SPSS42RegOut.jpg</img_base_url>
+</kb_document>
+</kb_documents>

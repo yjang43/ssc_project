@@ -2,7 +2,7 @@
 ## Overview
 web automation, web crawler, and xml file generator to support SSCC website revamp.
 
-December 2019 ~ January 2020
+December 2019 ~ May 2020
 ## Prerequisites
 the program requires python/python3 and following packages
 ```

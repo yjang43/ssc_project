@@ -1,0 +1,376 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Using Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Linstat is the SSCC's primary Linux computing cluster. Linstat combines familiar statistical software like Stata, SAS, R, and Matlab with the power of Linux, making it ideal for jobs that require more memory or computing time than Winstat can provide. Linstat also gives you access to the SSCC's HTCondor flock, where you can run  multiple jobs at the same time.</p>
+<p>Learning to run jobs on a Linux server is probably easier than you think. If you're new to Linux, be sure to read the section  <a href="#GettingStartedonLinstat">Getting Started on Linstat</a>. Veteran Linux users can probably stop reading when they reach that point, but should be sure to read the sections before that which describe some of the unique features of Linstat.</p>
+<p>To log in to Linstat you'll use your SSCC username (typed in lower case) and password. If you've forgotten your password, you can <a href="https://www.ssc.wisc.edu/sscc_jsp/password/reset.jsp">reset it here</a>.</p>
+<p><strong>If you are outside the United States please read <a href="https://ssc.wisc.edu/sscc/pubs/linstat_outside_us.htm">Connecting to Linstat from Outside the United States</a>.</strong></p>
+<h2><a id="ConnectingtoLinstat" name="ConnectingtoLinstat"></a>Connecting to Linstat</h2>
+<p>How you'll connect to Linstat depends on what kind of computer you're connecting from:</p>
+<h3>Windows PCs or Winstat</h3>
+<p>If your computer runs Windows, we suggest you connect using a program called X-Win32 (though there are many fine alternatives). X-Win32 is already installed and configured on Winstat, so one option is to log in to Winstat and run X-Win32 there. Alternatively, you can download and install a pre-configured version of X-Win32 from the SSCC web site. Simply download the installation file and then double-click on it.</p>
+<p><a href="https://ssc.wisc.edu/sscc/downloads/download-xwin32.php">Download X-Win32 from the SSCC</a></p>
+<p>You'll be asked to log in because X-Win32 is only licensed for UW faculy, staff, and students. Just give your usual SSCC username and password. To use it you'll need to first connect to the SSCC network using <a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">VPN</a>.</p>
+<p>When you run X-Win32 it will place an icon in the lower right corner of your screen: <img alt="The X-Win32 Icon" height="30" src="https://ssc.wisc.edu/sscc/pubs/screenshots/5-2c/5-2_3.png" width="111"/></p>
+<p>Click on the icon once and choose Linstat.                </p>
+<p>For more details, including how to set up a connection to a particular Linstat server, see <a href="https://ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting to SSCC Linux Computers using X-Win32</a>.</p>
+<p><strong>If you are not on the UW-Madison campus you must establish a <a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">VPN connection</a> to campus before using X-Win32.</strong></p>
+<h3>Macs or Computers running Linux</h3>
+<p>Macs and Linux computers have client programs for connecting to Linux servers installed by default. Simply start a Terminal program (on a Mac it will be found under <span class="MenuOutput">Applications</span>, <span class="MenuOutput">Utilities</span>) and then type:</p>
+<p class="InputCode">ssh -Y <span class="Parameter">username</span>@linstat.ssc.wisc.edu</p>
+<p><span class="Parameter">username</span> should be replaced by your SSCC username. If your username on your computer is the same as your SSCC username, you can leave it out (<span class="InputCode">ssh -Y linstat.ssc.wisc.edu</span>). If you are plugged into the wired network in the Sewell Social Sciences Building you can leave out the domain (<span class="InputCode">ssh -Y linstat</span>).</p>
+<p>For more details, including how to  connect to a particular Linstat server, see <a href="https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm">Connecting to Linstat from a Mac</a>.</p>
+<p>In order to display Linux graphics, including graphical user interfaces for Stata, Matlab, and other programs, Macs need to have an X windows program like <a href="https://www.xquartz.org/">XQuartz</a> installed.</p>
+<h2><a id="Cluster" name="Cluster"></a>The Linstat Cluster</h2>
+<p>When you connect to Linstat, you'll  be directed to the least busy of the four Linstat servers (<span class="InputCode">linstat1</span>, <span class="InputCode">linstat2</span>, <span class="InputCode">linstat3</span>, and <span class="InputCode">linstat4</span>) automatically. This will spread users among the four servers and help avoid situations where one server is much busier than another.</p>
+<p> If you are running a long job and need to connect to the same server again to monitor it, log in to Linstat and then type <span class="InputCode">ssh <span class="Parameter">server</span></span>, where <span class="Parameter">server</span> should be replaced by the name of the server where you started the job. Be sure to note which server you're on when you start a long job. Most people have the server name in their prompt, but if you don't you can find out which server you're using by typing <span class="InputCode">printenv HOST</span>. It's also possible to connect to a specific server directly—the links in the previous section have instructions.</p>
+<h2 id="BatchMode">Batch Mode</h2>
+<p>If you run a program in batch mode, you can log out and the program will continue to run. Putting an ampersand (<span class="InputCode">&amp;</span>) at the end of a command will put it in batch mode. However, many programs need additional settings to work in batch mode, such as not starting a graphical user interface. These program-specific settings are described below when we talk about running programs.</p>
+<h2><a id="ramdisk" name="ramdisk"></a>/ramdisk</h2>
+<p><span class="InputCode">/ramdisk</span> is a special "directory" that is actually stored in RAM, making it extremely fast. The maximum size of <span class="InputCode">/ramdisk</span> is 32GB, and any files that are not in use will be deleted after one hour. The <span class="InputCode">/ramdisk</span> directory can be very helpful for programs that spend a lot of time reading and writing temporary files.</p>
+<h2 id="stata">Stata</h2>
+<p>We have a small number of Stata MP32 licenses, which are ideal for running computationally intensive do files. Do files run using the <span class="InputCode">stata</span> and <span class="InputCode">condor_stata</span> commands will be run using Stata MP32, though some HTCondor servers only have 8 cores and Stata MP32 will automatically adapt accordingly.</p>
+<h2><a id="SAS" name="SAS"></a>SAS</h2>
+<p>On Linstat, the default directory where SAS stores temporary data sets (the WORK library) is <span class="InputCode">/ramdisk</span>. This increases the speed of data-intensive programs significantly. It also prevents them from slowing down the entire server due to disk I/O bottlenecks.</p>
+<p>If you need more than 32GB of temporary space, change the WORK directory to <span class="InputCode">/tmp</span>. You can do so by adding the <span class="InputCode">-work</span> option to your SAS command:</p>
+<p class="InputCode">sas -work /tmp myprogram</p>
+<p>You'll then be able to use  up to 243GB of space (or as much of it as is available at the time). For more details see <a href="https://ssc.wisc.edu/sscc/pubs/bigsas.htm">Running Large SAS Jobs on Linstat</a>.</p>
+<h2><a id="Condor" name="Condor"></a>HTCondor
+                </h2>
+<p>The SSCC's HTCondor flock contains 136 CPUs and is ideal for  running multiple jobs at the same time. HTCondor can run Stata, SAS, Matlab, and R jobs as well as user-written programs. We've written scripts that make submitting jobs to HTCondor very easy—see <a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">An Introduction to HTCondor</a> for instructions. (You can also <a href="https://ssc.wisc.edu/sscc_jsp/condor/">submit Stata jobs to  HTCondor</a> flock via the web.)</p>
+<h2>Mplus</h2>
+<p>Due to licensing restrictions, Mplus is only installed on Linstat1, Linstat2, and Linstat3, and may only run one job at a time on each server. Because of the unusual way Mplus launches additional terminal sessions you'll need to stay logged in the entire time the program is running. <a href="https://ssc.wisc.edu/sscc/pubs/mplus_linstat.htm">Running Mplus on Linstat</a> has more details.</p>
+<h2><a id="GettingStartedonLinstat" name="GettingStartedonLinstat"></a>Getting Started on Linstat</h2>
+<p>Linux can be intimidating because it just waits for you to type commands without giving you any menus or icons to suggest what you can do. But if all you want to do is run jobs, you can get by with just a couple of Linux commands. Here's how:</p>
+<h3>Get your job ready using your computer</h3>
+<p>If you're on Winstat or a Windows PC that logs into the SSCC's PRIMO domain, your Linux home directory is available as the Z: drive, and Linux project directories are the V: drive. They're also available from Macs—see <a href="https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm">Using SSCC Network Disk Space from Macs</a>. This means you can write your program, manage your files, etc. using the tools you're familiar with and still put the programs and related files on the Linux file system so Linstat can run them.</p>
+<p>Put all the files relating to a given project in a single folder (or directory in Linux terminology), then write your programs on the assumption that that folder will be your working directory (i.e. a Stata program should say <span class="InputCode">use datafile</span>, not <span class="InputCode">use z:\research\datafile</span>). If you're only working on a single project then just declare <span class="MenuOutput">Z:</span> itself that project's "directory."</p>
+<h3>Command #1: cd</h3>
+<p>When you log into Linux, your "working directory" (where you "are" in the file system) starts out as your home directory—what Windows calls <span class="MenuOutput">Z:</span>. If that's where your project's files are, you can skip directly to running your job. Otherwise you'll need to go to your project's directory using the <span class="InputCode">cd</span> ("change directory") command. If your project's directory is on your Z: drive, type:</p>
+<p class="InputCode">cd <span class="Parameter">myProject</span></p>
+<p>Where <span class="InputCode"><span class="Parameter">myProject</span></span> should be replaced by the name you gave your project's directory.</p>
+<p>If your project's directory is inside an official Linux project directory on the <span class="MenuOutput">V:</span> drive, type:</p>
+<p class="InputCode">cd /project/<span class="Parameter">projectName</span>/<span class="Parameter">myProject</span></p>
+<p></p>
+<p>A few more points on the Linux file system:</p>
+<ul>
+<li>Directories are separated using the forward slash (/) rather than the backslash
+                    (\).</li>
+<li>There are no drives or drive letters in Linux. All directories are part of a single tree
+                    structure with the "root" of the tree denoted by a slash (/).</li>
+<li>If a directory path starts with a slash (/), it starts from the root (it is an "absolute" path). Thus <span class="InputCode">cd /project</span> means "go to the root directory, then to <span class="InputCode">project</span> underneath that"</li>
+<li>If a directory path does not start with a slash, it is assumed to start with the current directory and go from there (it is a "relative" path). Thus <span class="InputCode">cd myProject</span> means "go to the <span class="InputCode">myProject</span> directory under the current directory."</li>
+<li>Linux does not like spaces in file or directory names (you have to put the
+                    whole path in quotes if it includes a space)</li>
+<li> Unlike Windows, Linux is case-sensitive. <span class="InputCode">File</span> and <span class="InputCode">file</span> are two
+                    different files.</li>
+</ul>
+<h3>Command #2: Run Your Program</h3>
+<p>The command to run your program will depend on the program you want to use. Here are some of the most popular:</p>
+<h4>Stata</h4>
+<p>You can start Stata's graphical user interface by typing <span class="InputCode">xstata</span>.  You can also run a do file called <span class="InputCode">mydofile.do</span> in batch mode by typing:</p>
+<p class="InputCode"> stata -b do mydofile &amp;</p>
+<p> Alternatively you can submit it to HTCondor with:</p>
+<p class="InputCode"> condor_stata mydofile &amp;</p>
+<p> If you run <span class="InputCode">mydofile.do</span> in batch mode or on HTCondor, Stata will automatically log its output in <span class="InputCode">mydofile.log</span>.</p>
+<h4>SAS</h4>
+<p>You can start SAS's graphical user interface by typing <span class="InputCode">sas</span>, though it's somewhat clunkier than the Windows version. You can also run  a program called <span class="InputCode">myprogram.sas</span> in batch mode by typing:</p>
+<p class="InputCode"> sas myprogram &amp;</p>
+<h4>R</h4>
+<p>To run R, simply type <span class="InputCode">R</span>. It does not have a graphical user interface but the commands are the same as in Windows R or RStudio. </p>
+<p>To run an R program in batch mode, type:</p>
+<p class="InputCode">R &lt; <span class="Parameter">myprogram</span>.R &gt; <span class="Parameter">myprogram</span>.log --no-save &amp;</p>
+<p>To submit <span class="InputCode">myprogram.R</span> to HTCondor and save the output to <span class="InputCode">myprogram.log</span>, type:</p>
+<p class="InputCode">condor_R <span class="Parameter">my program</span>.R <span class="Parameter">myprogram</span>.log</p>
+<p>If your job uses multiple processors, type:</p>
+<p class="InputCode">condormp_R program.R program.log &amp;</p>
+<h3></h3>
+<h4>Matlab</h4>
+<p>You can start Matlab's graphical user interface by typing <span class="InputCode">matlab</span>. To run a Matlab program <span class="intro">myprogram.m</span> in the background and save its output in <span class="InputCode">myprogram.log</span>, type:</p>
+<p class="InputCode">matlab -nodisplay -nojvm &lt; mprogram.m &gt; myprogram.log &amp;</p>
+<p>To submit <span class="InputCode">myprogram.m</span> to HTCondor and save its output in <span class="InputCode">myprogram.log</span>, type:</p>
+<p class="InputCode">condor_matlab myprogram.m myprogram.log &amp;</p>
+<p>If your job uses multiple processors, type:</p>
+<p class="InputCode">condormp_matlab <span class="Parameter">program</span>.m <span class="Parameter">program</span>.log &amp;</p>
+<h3></h3>
+<h4>Mplus</h4>
+<p wrap="">To run an Mplus job, log into Linstat1, Linstat2, or Linstat3, and type:</p>
+<p class="InputCode" wrap="">mplus <span class="Parameter">myprogram</span>.inp &amp;</p>
+<p>where <span class="Parameter">myprogram.inp</span> should be replaced by the name of the Mplus program (the .inp file) you want to run.                </p>
+<p>Linstat has many other programs available (see our <a href="https://ssc.wisc.edu/sscc_jsp/software/">software database</a>). See the documentation of the program you're interested in for details on how to run it.</p>
+<h4 id="Mplus"></h4>
+<h3>Learning More</h3>
+<p>While this will get you started, there are several other SSCC Knowledge Base articles you can read to become a more flexible and efficient Linstat user.  <a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a> will teach you how to monitor and manage jobs while they run. <a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">An Introduction to HTCondor</a> will teach you more about the SSCC's HTCondor flock and how to use it. Finally, if you really want to make yourself at home in Linux, read the SSCC's <a href="https://www.ssc.wisc.edu/sscc/pubs/linuxos.htm">Getting Started in Linux</a><a href="https://ssc.wisc.edu/sscc/pubs/linuxos.htm"></a>. For a full list of articles, visit the <a href="https://ssc.wisc.edu/sscc/pubs/linux.htm">Linux section</a> of our <a href="https://ssc.wisc.edu/sscc/pubs/home.htm">Knowledge Base</a>. SSCC staff will also be happy to answer any questions you have about using Linstat and help you solve any problems you run into—just contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/5-2c/5-2_3.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Connecting to Linstat from a Mac</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Macs have all the software needed to connect to Linux servers installed by default, so connecting is very easy:</p>
+<ol>
+<li>Start the <span class="MenuOutput">Terminal</span> program (found in <span class="MenuOutput">Applications</span>, <span class="MenuOutput">Utilities</span>)</li>
+<li>Type <span class="InputCode">ssh -Y </span><span class="Parameter">username</span><span class="InputCode">@linstat.ssc.wisc.edu</span></li>
+</ol>
+<p><span class="Parameter">username</span> should be replaced by your SSCC username. If your username on your Mac is the same as your SSCC username, you can leave it out (<span class="InputCode">ssh -Y linstat.ssc.wisc.edu</span>). If you are plugged into the wired network in the Sewell Social Sciences Building you can leave out the domain (<span class="InputCode">ssh -Y linstat</span>).</p>
+<p>If you need to connect to a particular Linstat machine,  for example to monitor a long-running job, replace <span class="InputCode">linstat</span> with the name of the machine you need to connect to (<span class="InputCode">linstat1</span>, <span class="InputCode">linstat2</span>, <span class="InputCode">linstat3</span>, or <span class="InputCode">linstat4</span>).                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Configuring Google Authenticator to Log in to Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Google Authenticator is an app that runs on your smartphone. Once configured, when you try to log in to Linstat from outside the United States the app will generate a code which you must enter before giving your password. Using Google Authenticator takes some configuration, but does not send all your network traffic through an intermediary like VPN or Winstat. This makes it a good choice for Linstat users outside the United States who are concerned about the performance of their interactive sessions. (How you connect has no bearing on how quickly jobs run.)</p>
+<p>Configuring Google Authenticator requires a connection to Linstat. If you will be traveling we suggest configuring it before you leave the United States; otherwise you'll need to connect using VPN or Winstat once to set up Google Authenticator. Keep in mind that as long as you're in the United States you won't be asked to use Google Authenticator even if you have it configured.</p>
+<h2>Installing Google Authenticator</h2>
+<p>The Google Authenticator smartphone app can be installed for free by searching the application marketplace for your smartphone, or from these links:</p>
+<ul>
+<li><a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8">iPhone</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Android</a></li>
+<li><a href="http://www.windowsphone.com/en-us/store/app/authenticator/021dd79f-0598-e011-986b-78e7d1fa76f8">Windows Phone</a></li>
+<li>BlackBerry: Go to <a href="http://m.google.com/authenticator">http://m.google.com/authenticator</a> on your phone to download and install the application. </li>
+</ul>
+<h2>Configuration on Linstat</h2>
+<p>Once the application is installed, log into Linstat and type <span class="InputCode">google-authenticator</span>. Answer <span class="InputCode">y</span> to all the questions it asks. The result will look similar to the following:</p>
+<pre class="InputCode">linstat1.ssc.wisc.edu&gt; google-authenticator
+Do you want authentication tokens to be time-based (y/n) y
+https://www.google.com/chart?chs=200x200&amp;chld=M|0&amp;cht=qr&amp;chl=otpauth://totp/example@linstat1.ssc.wisc.edu%3Fsecret%3DLNP6YAQQSXZ7TFN5
+Your new secret key is: LNP6YAQQSXZ7TFN5
+Your verification code is 007939
+Your emergency scratch codes are:
+  52302031
+  85960129
+  70252895
+  88603301
+  62022909
+Do you want me to update your "/home/d/dtest/.google_authenticator" file (y/n) y
+Do you want to disallow multiple uses of the same authentication
+token? This restricts you to one login about every 30s, but it increases
+your chances to notice or even prevent man-in-the-middle attacks (y/n) y
+By default, tokens are good for 30 seconds and in order to compensate for
+possible time-skew between the client and the server, we allow an extra
+token before and after the current time. If you experience problems with poor
+time synchronization, you can increase the window from its default
+size of 1:30min to about 4min. Do you want to do so (y/n) y
+If the computer that you are logging into isn't hardened against brute-force
+login attempts, you can enable rate-limiting for the authentication module.
+By default, this limits attackers to no more than 3 login attempts every 30s.
+Do you want to enable rate-limiting (y/n) y
+</pre>
+<h2>Configuration on Your Phone</h2>
+<p>Open the Google Authenticator app on your phone, and tap the icon to add a new account (the pencil in the upper right on iPhone, the three dots in the upper right on Android, the + in a circle at the bottom on Windows Phone). You can either select <span class="MenuOutput">Scan Barcode</span> or <span class="MenuOutput">Manual Entry</span> to enter the needed settings.</p>
+<h3>Scan Barcode</h3>
+<p>Copy the URL that the Linux <span class="InputCode">google-authenticator</span> command produced. It will be similar to:</p>
+<p class="InputCode">https://www.google.com/chart?chs=200x200&amp;chld=M|0&amp;cht=qr&amp;chl=otpauth://totp/example@linstat1.ssc.wisc.edu%3Fsecret%3DLNP6YAQQSXZ7TFN5</p>
+<p>Paste it into a web browser on your PC or Mac and it should produce a square (QR) barcode. Align your phone's camera with the code on your monitor—you may need to adjust the distance between your phone and the screen before the phone will recognize it. The app should automatically add a code on the main screen. The app will call it <span class="Parameter">username</span><span class="InputCode">@linstat1.ssc.wisc.edu</span> (or whichever Linstat you were logged into) but it will work for the entire Linstat cluster.</p>
+<h3>Manual Entry</h3>
+<p>The code you want is also produced by the <span class="InputCode">google-authenticator</span> command; it's listed on this line of output:</p>
+<p class="InputCode">Your new secret key is: LNP6YAQQSXZ7TFN5</p>
+<p>Give the account a name like <span class="InputCode">Linstat</span> and enter the code where it says <span class="MenuOutput">Key</span>. Make sure <span class="MenuOutput">Time Based</span> is checked.</p>
+<h2>Configuration in SecureCRT</h2>
+<p>If you connect to Linstat from a   Mac or Linux computer, or from a Windows computer using PuTTY, no further configuration is needed. However, SecureCRT does need to be configured to ask for the verification code.</p>
+<p> (Recall that if you're connecting remotely and not using VPN you cannot use X-Win32. <a href="http://software.wisc.edu">SecureCRT</a> and <a href="http://www.putty.org/">PuTTY</a> are good alternatives, though neither of them can display graphics without forwarding them to a  
+                separate program like X-Win32 or <a href="http://sourceforge.net/projects/xming/">Xming</a>.)</p>
+<p>Open the Properties for your Linstat session.</p>
+<p><img alt="Open the Properties of your Linstat session" height="453" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_google_auth/linstat_google_auth_2.png" width="512"/></p>
+<p>Under <span class="MenuOutput">Category</span> on the left, click <span class="MenuOutput">Connection</span> and then <span class="MenuOutput">SSH2</span>. In the <span class="MenuOutput">Authentication</span> section, select <span class="MenuOutput">Keyboard Interactive</span> and click the up arrow until it is the top choice.</p>
+<p><img alt="Under connection, SSH2, make Keyboard Interactive the top Authentication method" height="511" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_google_auth/linstat_google_auth_3.png" width="553"/></p>
+<p>Save the session, and from now on when you connect you'll be prompted for your verification code before your password.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_google_auth/linstat_google_auth_2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_google_auth/linstat_google_auth_3.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Managing Jobs on Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>One of the main reasons for using Linstat is that it can run very long jobs. This article will teach you how to manage such jobs on Linstat.</p>
+<h2><a id="ForegroundandBackgroundJobs" name="ForegroundandBackgroundJobs"></a>Foreground and Background Jobs</h2>
+<p>Normally when you type a command, it is processed and you see the results (if 
+  any) before the cursor returns and you can type a new command. These jobs are 
+  said to be running in the foreground. If you put a job in the background, 
+  the cursor returns immediately and you can keep giving commands and doing other 
+  work while the your job is running. When the job finishes a message will appear 
+  on your screen.</p>
+<p>If a job is  running in the background it will keep running even if you log out, so you can start a long job before you leave in the evening, log out, 
+  and get the results the next morning (or next week, or next month—though such jobs are good candidates for <a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">Condor</a>). Just keep track of which Linstat server you are using when you start a job, because if you need to manage that job you'll need to return to that server.</p>
+<p>What you should not do when you have a job running in the background is start another CPU-intensive job—see the <a href="https://ssc.wisc.edu/sscc/policies/server_usage.htm">SSCC's Server Usage Policy</a>.</p>
+<p>To run a job in the background,  add an ampersand (<span class="InputCode">&amp;</span>) at the end 
+  of the command. For example, if you type:</p>
+<p class="InputCode">stata -b do myprogram</p>
+<p> Stata will start and run <span class="InputCode">myprogram.do</span> in the 
+  foreground. Thus your session will be unavailable until the job is done. On the 
+  other hand:</p>
+<p class="InputCode">stata -b do myprogram &amp;</p>
+<p>runs Stata in the background. The cursor returns immediately and you can do other things while Stata is running your program. When it is done you'll see a message like:
+</p>
+<pre class="InputCode">[1]    Done                          stata -b do myprogram</pre>
+<p>A job which creates a separate window (<span class="InputCode">xstata</span>, for example) will be 
+  completely functional in the background (in fact <span class="InputCode">xstata</span> puts itself in the background by default).</p>
+<h3><a id="SwitchingBetweenForegroundandBackground" name="SwitchingBetweenForegroundandBackground"></a>Switching Between Foreground 
+  and Background</h3>
+<p>If you have a job running in the foreground and want to put it in the background, 
+   press <span class="InputCode">CTRL-z</span> (if the  
+  job has opened a separate window, you must return to your main Linstat window before 
+  pressing <span class="InputCode">CTRL-z</span>). The current job will be suspended 
+  and you will get your cursor back. Then type <span class="InputCode">bg</span> to put it in the 
+  background—it will not run while suspended. You can also type <span class="InputCode">fg</span> to move it back 
+  to the foreground, either from being suspended or from the background.</p>
+<h2><a id="ManagingBackgroundJobs" name="ManagingBackgroundJobs"></a>Monitoring  Jobs</h2>
+<p>The <span class="InputCode">ps</span> 
+  command (think processes) gives you a list of processes you are running on the server. The output will be similar to the following:</p>
+<pre class="InputCode">PID TTY          TIME CMD<br/>29413 pts/30   00:00:00 tcsh<br/> 1601 pts/30   00:00:00 emacs<br/> 1602 pts/30   00:00:00 emacs<br/> 1605 pts/30   00:00:00 ps</pre>
+<p> <span class="InputCode">PID</span> is short for Process IDentifier, and is used when you need to specify a particular job. Keep in mind that Linstat is a cluster of four servers, and <span class="InputCode">ps</span> will only show you the jobs you are running on the server you're logged into. See <a href="#SwitchingBetweenLinstatServers">Switching Between Linstat Servers</a> to learn how to get back to the Linstat server where you started your job.</p>
+<p>Unfortunately, the default <span class="InputCode">ps</span> output will only show jobs you started in your current session. To see all your jobs from any session, type:</p>
+<p class="InputCode">ps aux | grep <span class="Parameter">username</span></p>
+<p>where <span class="Parameter">username</span> should be replaced by your SSCC username (e.g. <span class="InputCode">ps aux | grep rdimond</span>). This lists all jobs on the server, then filters it to only show yours.</p>
+<p>Another useful command for monitoring jobs is <span class="InputCode">top</span>. This will tell you the "top" jobs (in terms of resources used) currently running on the server. With it you can verify that your job is actually doing work by checking that its <span class="InputCode">%CPU</span> is greater than zero, though jobs can easily get stuck in a state where they use CPU without doing anything productive.</p>
+<p> <span class="InputCode">top</span> also gives you a sense of how busy the server is. The Linstat servers have sixteen CPUs, so if <span class="InputCode">%CPU</span> adds up to more than 1600% programs will have to share the available CPU time. If the Linstat you're on has less CPU time available than your program is capable of using, consider switching to a different Linstat.</p>
+<p>Unfortunately <span class="InputCode">top</span> does not monitor all the resources a server needs to run jobs. For example, SAS jobs occasionally generate enough disk traffic to slow down a server without anything unusual appearing in <span class="InputCode">top</span>.</p>
+<h2><a id="KillingaJob" name="KillingaJob"></a>Killing a Job</h2>
+<p>If you need to stop a running job, use the <span class="InputCode">kill</span> command. Simply type <span class="InputCode">kill</span> and then the  PID of the job you want to kill. For example:</p>
+<p class="InputCode"> kill 1602</p>
+<p>This doesn't actually stop the job, it merely requests that it shut down, giving 
+  the program an opportunity to clean up temporary files and such. Unfortunately 
+  both SAS and SPSS will not do so, so if you kill one of these jobs, please go 
+  to the <span class="InputCode">/tmp</span> directory and manually delete any 
+  files and directories belonging to you. On the other hand, adding the <span class="InputCode">-9</span> 
+  switch to the <span class="InputCode">kill</span> command will kill a program 
+  immediately with or without its consent. Thus:</p>
+<p class="InputCode"> kill -9 1602</p>
+<p><strong>will</strong> kill process 1602.</p>
+<h2><a id="SwitchingBetweenLinstatServers" name="SwitchingBetweenLinstatServers"></a>Switching Between Linstat Servers</h2>
+<p>Linstat is actually a cluster of four servers. When you log in you're assigned to a server randomly to try to balance the load between them. However, you can choose to connect to a specific server to monitor a job you started previously or if the server you're assigned to turns out to be particularly busy.</p>
+<p>To switch to a different server, type:</p>
+<p class="InputCode"> ssh <span class="Parameter">server</span></p>
+<p>where <span class="Parameter">server</span> can be <span class="InputCode">linstat1</span>, <span class="InputCode">linstat2</span>, <span class="InputCode">linstat3</span>, or <span class="InputCode">linstat4</span>. Alternatively you can set up your client program to log in to one of those four servers directly.</p>
+<p>Be sure to note which server you're on when you start a long job. If the server name is not in your prompt, you can identify it by typing:</p>
+<p class="InputCode">printenv HOST</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Connecting to Linstat from Outside the Madison Area</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>While all computers are subject to regular attacks today, Linux servers draw particular attention. Most attacks originate outside the United States, while most SSCC members are in the United States. SSCC therefore blocks standard Secure Shell (ssh) connections to Linstat from outside the United States. This reduces the number of attacks Linstat is subjected to, but SSCC members can still connect to Linstat from anywhere in the world using  one of the following easy methods:</p>
+<ul>
+<li><strong><a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">Connect to the SSCC network using VPN before logging into Linstat.</a></strong> This is perhaps the simplest method. Recall that you must connect to the SSCC network to run X-Win32 anyway.</li>
+<li><strong><a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">First log into Winstat and then connect to Linstat from within your Winstat session.</a></strong> This is also very simple, and also gives you access to all the software on Winstat. However it uses one of our Winstat licenses, so if you only need Linstat we suggest using VPN instead.</li>
+<li><strong><a href="https://ssc.wisc.edu/sscc/pubs/linstat_google_auth.htm">Use the Google Authenticator app on your smartphone to obtain a code you then enter while logging in.</a></strong> This method requires more configuration, but may give somewhat better performance.</li>
+<li><strong><a href="https://ssc.wisc.edu/sscc/pubs/linstat_public_key.htm">Create a pair of encryption keys that are stored on Linstat and your computer which can then be used to connect to Linstat from that specific computer.</a></strong> This method also requires more configuration but may give somewhat better performance.</li>
+</ul>
+<p>You only need to use one of these four methods. Note that the Google Authenticator and key pair methods must be set up while you are connected to Linstat. If you will be traveling and want to use these methods, we suggest configuring them before you leave. Otherwise you'll need to connect using VPN or Winstat once to set them up.                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Configuring a Public/Private Key Pair to Log into Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Public key authentication uses two files to prove who you are rather than a password: a public key on the server and a private key on your local computer. Once configured, you'll be asked for the password associated with the key rather than your SSCC password whenever you log into Linstat from that computer. Using a key pair takes some configuration, but does not send all your network traffic through an intermediary like VPN or Winstat. This makes it a good choice for Linstat users outside the United States who are concerned about the performance of their interactive sessions. (How you connect has no bearing on how quickly jobs run.)</p>
+<p>Configuring a key pair requires a connection to Linstat. If you will be traveling we suggest configuring it before you leave the United States; otherwise you'll need to connect using VPN or Winstat once to set up the key pair.</p>
+<p>No matter how you connect to Linstat, the process of creating a key pair is very much the same:</p>
+<ol>
+<li>
+<p>Generate a public/private key pair on your local computer</p>
+</li>
+<li>
+<p>Add the key to <span class="InputCode">.ssh/authorized_keys</span> in your Linstat home directory</p>
+</li>
+<li>Configure the client program to use key authentication rather than passwords</li>
+</ol>
+<p>This article 
+                has instructions for <a href="#SecureCRT">SecureCRT</a>, <a href="#PuTTY">PuTTY</a>, and <a href="#Mac_Linux">Mac/Linux</a>. (Recall that if you're connecting remotely and not using VPN you cannot use X-Win32. <a href="http://software.wisc.edu">SecureCRT</a> and <a href="http://www.putty.org/">PuTTY</a> are good alternatives, though neither of them can display graphics without forwarding them to a  
+                separate program like X-Win32 or <a href="http://sourceforge.net/projects/xming/">Xming</a>.)</p>
+<h2 id="SecureCRT">SecureCRT</h2>
+<p>In SecureCRT, click <span class="MenuOutput">Tools</span>,  <span class="MenuOutput">Create Public Key</span>.</p>
+<p><img alt="Key Generation Wizard" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_1.png" width="505"/></p>
+<p>Set the <span class="MenuOutput">Key type</span> to <span class="MenuOutput">DSA</span>.</p>
+<p><img alt="Set Key type to DSA" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_2.png" width="505"/></p>
+<p>Enter a password for the key or, even better, a <a href="http://xkcd.com/936/">passphrase</a>, along with a comment. The comment could be used to remind you of the password, but must not allow others to guess it.</p>
+<p><img alt="Choose a passphrase and comment" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_3.png" width="505"/></p>
+<p>Set the <span class="MenuOutput">Key length in bits</span> to <span class="InputCode">1024</span>.</p>
+<p><img alt="Set key length to 1024" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_5.png" width="505"/></p>
+<p>Select the <span class="MenuOutput">OpenSSH Key</span> format, and then save the keys in a convenient location on your local hard drive (the default location is probably OK).</p>
+<p><img alt="Choose the key format and location to save it" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_6.png" width="505"/></p>
+<p>Click <span class="MenuOutput">Yes</span> when asked if you want to use this as your global public key.</p>
+<p><img alt="" height="161" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_6.5.png" width="405"/></p>
+<p>Now that the key has been generated it, use Notepad, TextPad or your favorite text editor and open <span class="InputCode">Identity.pub.</span> (The <span class="InputCode">.pub</span> extension indicates that this is the <em>public</em> key, to be shared with the server, rather than the <em>private</em> key which remains on your computer.)</p>
+<p><img alt="Open the key in a text editor and copy the contents" height="207" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_7.png" width="577"/></p>
+<p>If you are currently on the SSCC network  save the file as <span class="InputCode">z:\.ssh\authorized_keys</span>. The <span class="InputCode">.ssh</span> folder is hidden by default, so you'll need to type its name rather than clicking on it.</p>
+<p>If not, copy the entire contents of the file, log in to Linstat, then open <span class="InputCode">.ssh/authorized_keys</span> using your preferred Linux text editor (<span class="InputCode">pico</span>, <span class="InputCode">emacs</span>, <span class="InputCode">vi</span>, etc.).</p>
+<p><img alt="Log into Linstat and edit your authorized key file" height="208" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_8.png" width="646"/></p>
+<p>Paste in the contents of the key, making sure it is all on one line, and save the file.</p>
+<p><img alt="Paste in the key contents" height="191" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_9.png" width="655"/></p>
+<p>If you haven't already, log into Linstat. Then run the following command:</p>
+<p class="InputCode">chmod g-w ~/.ssh/authorized_keys</p>
+<p>(SSCC uses "user private groups" to make it easy to share files in project directories while keeping files in home directories private. Unfortunately the program that manages key pair connections doesn't understand user private groups and insists keys must not have group write permissions for security reasons.)</p>
+<p>Next, open the session properties for your Linstat connection.</p>
+<p><img alt="Open properties for your Linstat session" height="189" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_10.png" width="625"/></p>
+<p>Under <span class="MenuOutput">Category</span> on the left, click <span class="MenuOutput">Connection</span>, <span class="MenuOutput">SSH2</span>. Then select <span class="MenuOutput">PublicKey</span> in the <span class="MenuOutput">Authentication</span> section and click the up arrow until it is the top choice.</p>
+<p><img alt="Make PublicKey the top Auth method" height="511" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_11.png" width="553"/></p>
+<p>Click <span class="MenuOutput">OK</span>, and from now on when you log in to Linstat, you'll be prompted for your key passphrase rather than your SSCC password.</p>
+<h2 id="PuTTY">PuTTY</h2>
+<p>To create a public/private key pair in PuTTY, you need to run PuTTYgen. You can find it by searching or by clicking <span class="MenuOutput">Start</span>, <span class="MenuOutput">All Programs</span>, <span class="MenuOutput">PuTTY</span>, <span class="MenuOutput">PuTTYgen</span>.</p>
+<p>Set the type to <span class="MenuOutput">SSH-2 DSA</span> and click <span class="MenuOutput">Generate</span>. </p>
+<p><img alt="Generate a key" height="477" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_12.png" width="493"/></p>
+<p>You will be asked to generate randomness by moving your mouse around. Once the generation finishes, enter a password for the key or, even better, a <a href="http://xkcd.com/936/">passphrase</a>, along with a comment. The comment could be used to remind you of the password, but must not allow others to guess it. Save both the public key and the private key in a convenient location on your local hard drive by clicking <span class="MenuOutput">Save public key</span> and <span class="MenuOutput">Save private key</span>. Then copy everything contained in the box <span class="MenuOutput">Public key for pasting into Open SSH authorized_keys file</span>.</p>
+<p><img alt="Set a passphrase and then save. Copy the key itself." height="477" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_13.png" width="493"/></p>
+<p>If you are on the SSCC network, open Notepad, TextPad, or your favorite text editor, paste in the key and save it as  <span class="InputCode">z:\.ssh\authorized_keys</span>. The <span class="InputCode">.ssh</span> folder is hidden by default, so you'll need to type its name rather than clicking on it.</p>
+<p> If you are not on the SSCC network,  log in to Linstat, then open <span class="InputCode">.ssh/authorized_keys</span> using your preferred Linux text editor (<span class="InputCode">pico</span>, <span class="InputCode">emacs</span>, <span class="InputCode">vi</span>, etc.), paste in the key, and save it. Either way, make sure the entire key is pasted onto one line.</p>
+<p><img alt="Edit .ssh/authorized_keys" height="125" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_14.png" width="675"/></p>
+<p>If you haven't already, log into Linstat. Then run the following command:</p>
+<p class="InputCode">chmod g-w ~/.ssh/authorized_keys</p>
+<p>(SSCC uses "user private groups" to make it easy to share files in project directories while keeping files in home directories private. Unfortunately the program that manages key pair connections doesn't understand user private groups and insists keys must not have group write permissions for security reasons.)</p>
+<p>Run PuTTY and load your previously saved Linstat profile.</p>
+<p><img alt="Open your Linstat profile" height="448" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_15.png" width="466"/></p>
+<p>Under <span class="MenuOutput">Category</span> on the left choose <span class="MenuOutput">Connection</span>, <span class="MenuOutput">SSH</span>, <span class="MenuOutput">Auth</span>. Then click <span class="MenuOutput">Browse</span> and find the private key you generated and saved.</p>
+<p><img alt="Set Auth to the private key you generated" height="448" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_16.png" width="466"/></p>
+<p>Go back to <span class="MenuOutput">Session</span> to save the profile, then click <span class="MenuOutput">Open</span>. You'll be prompted for your key passphrase rather than your SSCC password.</p>
+<h2 id="Mac_Linux">Mac or Linux</h2>
+<p>On a Mac or Linux computer, open a terminal and run <span class="InputCode">ssh-keygen</span>. When it asks where to save the file press enter for the default location. Choose a password or, even better, a <a href="http://xkcd.com/936/">passphrase.</a></p>
+<p>Then open the file <span class="InputCode">id_dsa.pub</span> using your favorite text editor and copy the contents. (The <span class="InputCode">.pub</span> extension indicates that this is the <em>public </em>key, to be shared with the server, rather than the <em>private</em> key which remains on your computer.)</p>
+<p>Log in to Linstat, then open <span class="InputCode">.ssh/authorized_keys</span> using your preferred Linux text editor (<span class="InputCode">pico</span>, <span class="InputCode">emacs</span>, <span class="InputCode">vi</span>, etc.), paste in the key, and save it. Make sure the entire key is pasted onto one line.</p>
+<p>Next run the following command:</p>
+<p class="InputCode">chmod g-w ~/.ssh/authorized_keys</p>
+<p>(SSCC uses "user private groups" to make it easy to share files in project directories while keeping files in home directories private. Unfortunately the program that manages key pair connections doesn't understand user private groups and insists keys must not have group write permissions for security reasons.)</p>
+<p> The next time you connect you'll be prompted for the key passphrase, not your SSCC password. </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_3.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_5.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_6.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_6.5.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_7.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_8.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_9.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_10.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_11.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_12.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_13.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_14.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_15.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_16.png</img_base_url>
+</kb_document>
+</kb_documents>
