@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Articles on E-mail and Email Lists</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>This page lists articles relating to the 
+                                use of email, including email lists. Office 365 is primarily managed and supported by the <a href="http://kb.wisc.edu/helpdesk" target="new" title="DoIT Help Desk">DoIT Help Desk</a>. </p>
+<h2>Office 365</h2>
+<p><a href="https://wiscmail.wisc.edu">Log in to the Outlook Web App</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=28350">Setting Up Your Desktop Clients and Mobile  Devices for Office 365</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=32588">Setting Up Email Rules in Outlook 2013 (Windows)</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=32601">Setting Up Email Rules in Outlook 2011 (Mac)</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=32586">Setting Up Email Rules in the Outlook Web App</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=36539">Setting a Forward in Office 365</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=13789">Setting Up a UW Directory Search in Outlook  2010/2013 (Windows)</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=45872">Setting Up a UW Directory Search in Outlook for  Mac</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=35405" title="Importing Contacts">Import your Email Contacts (Address Book) to Office 365</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=43142" title="Email signature">Add an Email Signature in Office 365</a><br/>
+<a href="https://my.wisc.edu/portal/f/work-record/p/contact-information.u110l1n41/max/render.uP?pCp">Set your Preferred Name</a> (so it doesn't show up in ALL CAPS)<br/>
+<a href="http://kb.wisc.edu/page.php?id=40005">Change your Primary Email Address</a><br/>
+<a href="https://kb.wisc.edu/helpdesk/page.php?id=38630">Additional Steps to take if you Changed your Primary Email Address</a><br/>
+</p>
+<h2>Email Lists</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/wisclist.htm">Using WiscList</a><a href="http://listar.ssc.wisc.edu/listar.cgi"></a><br/>
+</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using SSCC's HPC cluster</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>The SSCC's High Performance Computing Cluster, Flash, is designed for parallel computing. It is ideal for jobs that can be broken up into many pieces that are executed simultaneously. As of this writing it has of  456   cores. Most jobs run on Flash are written in FORTRAN, C, or C++ and use MPI to handle the parallelization.            </p>
+<p>If after reading this article you'd like to use Flash, please contact the clusters' administrator, Dan Bongert (<a href="mailto:dbongert@ssc.wisc.edu">dbongert@ssc.wisc.edu</a>).
+            	He will set up an account for you on Flash and schedule a brief
+            	orientation.</p>
+<h2>Moving Files to Flash</h2>
+<p>For performance reasons, our HPC cluster does not have access
+            	to the shared SSCC file system; it uses local disks
+            	exclusively. Thus you will need to transfer any data or
+            	other files you need using SFTP. You can start an SFTP program
+            	on your computer and connect to <span class="InputCode">flash.ssc.wisc.edu</span>. See <a href="https://ssc.wisc.edu/sscc/pubs/1-11.htm">Using SFTP</a> 
+           	  for instructions.</p>
+<h2>Running Jobs</h2>
+<p> The general sequence for running an MPI job is as follows:</p>
+<ol>
+<li>Check the status of Flash to make sure no one else is using 
+                the nodes you plan to use.</li>
+<li>Compile your program, making sure you link it to the MPI libraries.              </li>
+<li>Run your program.</li>
+</ol>
+<p>The example Fortran program <span class="InputCode">/etc/skel/pi.f90</span> 
+              which computes pi in parallel is used to illustrate the steps for 
+              submitting a job. It assumes that you are logged on to Flash and 
+              are in your home directory. We highly recommend that you run this 
+              example the first time you log on to Flash in order to verify that 
+              everything is running correctly.</p>
+<p>1. Check the status of the cluster online by opening a browser 
+              and going to <a href="http://flash.ssc.wisc.edu/ganglia/">http://flash.ssc.wisc.edu/ganglia/</a>. 
+              If the graph labeled <span class="MenuOutput">Flash CPU last hour</span> 
+              is not nearly all <span class="MenuOutput">Idle CPU</span> (i.e. 
+              gray) then you should wait until the load goes down to submit a 
+              new job.<strong> Only one person should have jobs running at a time on any given node.</strong> 
+              Otherwise, system performance will be poor for everyone. You may however run jobs on nodes that are idle even if other nodes are in use.</p>
+<p>2. Compile the program using the gfortran compiler:</p>
+<p>&gt; <span class="InputCode">mpif90 pi.f90 
+              -O3 -o pi.bin</span></p>
+<p>where </p>
+<p><span class="InputCode">-O3     </span>enables aggressive optimization,              <br/>
+<span class="InputCode">-o      </span>specifies where to write the output.</p>
+<p>For more information regarding the command line options type: <span class="InputCode">man 
+              mpif90</span> for mpi specific options and<span class="InputCode"> man gfortran</span> for fortran specifc options.</p>
+<p> To compile C programs use <span class="InputCode">mpicc</span> 
+              instead; for C++ use <span class="InputCode">mpicxx</span>.</p>
+<p>3. Run the program using <span class="InputCode">mpirun</span>:            </p>
+<p>&gt;<span class="InputCode">mpirun --hostfile hosts.txt -np 16 pi.bin</span></p>
+<p>where <span class="InputCode">-np</span> is the number of processes (slots)
+              you want to use. The hostfile option is a file which tells OpenMPI which nodes to run your job on and how many slots are available on each node. If you want to run your job on certain nodes you should copy the <span class="InputCode">hosts.txt</span> file to your home directory and modify it as needed, but by using the default file you'll be sure to always have the latest node list.</p>
+<p> </p>
+<p>Your output will be similar to: </p>
+<p><span class="InputCode">Process 2 of 16 is alive<br/>
+              Process 0 of 16 is alive<br/>
+              Process 6 of 16 is alive<br/>
+              Process 5 of 16f is alive<br/>
+</span>. . .<span class="InputCode"><br/>
+              pi is approximately: 3.1415926535898362 Error is: 0.0000000000000431 
+              </span></p>
+<p> </p>
+<h2>Further Information</h2>
+<p>The following links provide more information about running jobs 
+              using Flash:</p>
+<ul>
+<li><a href="http://flash.ssc.wisc.edu/ganglia">FLASH </a> (cluster
+           	  status information)</li>
+<li><a href="http://www.open-mpi.org/doc/">OpenMPI documentation</a></li>
+<li><a href="http://flash.ssc.wisc.edu/roll-documentation/ganglia/6.1.1/using-ganglia.html">Using 
+                the cluster status information</a></li>
+</ul>
+<p>SSCC staff cannot write or debug your programs for you, but if 
+              you need assistance submitting jobs, please contact the cluster's 
+              administrator, Dan Bongert (<a href="mailto:dbongert@ssc.wisc.edu">dbongert@ssc.wisc.edu</a>).                </p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Paying for Printing in the SSCC Labs</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p><em><a href="#PayingforPersonalPrintingasanSSCCMember">Note for SSCC Members</a></em></p>
+<p>While printing on SSCC printers is free for full members of the Cooperative, lab users can print in the SSCC computer labs by paying for it through GoPrint. To use GoPrint you will need a valid UW NetID and money on your WisCard account. To add money to your account or for more information on WisCard, please go to <a href="http://wiscard.wisc.edu">http://wiscard.wisc.edu</a>.</p>
+<p>You will be charged a $2.50 processing fee to add to your balance online.You can add money to your WisCard for free at the Memorial Union WisCard Office.</p>
+<p>To print using GoPrint, you'll need to choose the correct printer. Your choices are:</p>
+<table align="center" border="1" cellpadding="3">
+<tr>
+<th>Room</th>
+<th>Printer Name</th>
+</tr>
+<tr>
+<td align="center">4218</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC4218</td>
+</tr>
+<tr>
+<td align="center">3218</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC3218</td>
+</tr>
+<tr>
+<td align="center">2470</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC2470</td>
+</tr>
+<tr>
+<td align="center">4218 with PostScript Driver</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC4218_PS</td>
+</tr>
+<tr>
+<td align="center">3218 with PostScript Driver</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC3218_PS</td>
+</tr>
+<tr>
+<td align="center">2470 with PostScript Driver</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC2470_PS</td>
+</tr>
+</table>
+<table border="0" cellpadding="3" class="noBorder" width="100%">
+<tr>
+<td align="center"><span class="vmid"><img alt="Choosing a GoPrint printer" height="262" src="https://ssc.wisc.edu/sscc/pubs/screenshots/goprint_1.png" width="282"/></span></td>
+</tr>
+</table>
+<p>Use the PostScript drivers if you're having trouble printing a particular document—usually a complex journal article.</p>
+<p>Note that you can only print to GoPrint using one of the SSCC lab computers or a computer that logs into SSCC's PRIMO domain. You cannot print to it from personal computers.</p>
+<p>Once you have chosen the correct printer, you’ll be prompted to sign in to GoPrint with your UW NetID and password, then select your print jobs and choose <span class="MenuOutput">Pay and Print</span>.</p>
+<p>Printing costs  $.07 per page (i.e. per side of a sheet of paper). If you need to print a single page, set the printer to print it single-sided or you'll be charged for both sides.</p>
+<h2>Refunds for Printing Problems</h2>
+<p>If a problem with GoPrint prevents your job from actually printing, you can request a refund at <a href="https://it.wisc.edu/printing-problem-refunds/">https://it.wisc.edu/printing-problem-refunds/</a>. Refund requests are reviewed by both DoIT staff and SSCC staff.</p>
+<h2><a id="PayingforPersonalPrintingasanSSCCMember" name="PayingforPersonalPrintingasanSSCCMember"></a>Paying for Personal Printing as an SSCC Member</h2>
+<p>If you are an SSCC member, your printing is paid for by your sponsoring department or  agency. This is intended for printing related to University business (i.e. research and instruction, though some departments ask you to avoid using the SSCC printers for instructional printing). If you need to do some printing for personal purposes, you should pay for it using GoPrint as described above. However, you'll need to contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> first and ask to be added to the group of SSCC members who have access to GoPrint. Printing for commercial or political purposes is strictly forbidden no matter how it is paid for.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/goprint_1.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>SSCC Knowledge Base</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>The SSCC
+                Knowledge Base  is your primary source of information about using SSCC resources and statistical computing in general.</p>
+<dl>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/newusers.htm">New Users</a></dt>
+<dd>Articles of particular interest for new users or others seeking
+        		basic information. </dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/stat.htm">Statistical Computing</a></dt>
+<dd>Articles related to specific statistical software packages and
+        		doing statistical work in general.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/remote.htm">Remote Computing</a></dt>
+<dd>Articles related to computing from home or anywhere other than
+        		the UW campus.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/email.htm">Email</a></dt>
+<dd>Articles on sending and receiving email, email lists.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/web.htm"></a></dt>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/linux.htm">Using Linux</a></dt>
+<dd>Articles on using the Linux operating system and basic utilities.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/termserv.htm">Using Winstat </a></dt>
+<dd>Articles on using Winstat, the SSCC's Windows Terminal Server
+          Farm.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/web.htm"></a></dt>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/windows.htm">Using Windows</a></dt>
+<dd>Articles on using the Windows operating system and SSCC resources.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/mac.htm">Using OS X</a></dt>
+<dd>Articles on using OS X and SSCC resources</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/web.htm">The Web</a></dt>
+<dd>Articles about publishing material on the World Wide Web.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/apps.htm">Applications</a></dt>
+<dd>Articles on the use of particular applications
+        		 (other than statistical software and email programs).</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/print.htm">Printing</a></dt>
+<dd>Articles on printing.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/allpubs.htm">All SSCC Knowledge Base articles</a></dt>
+<dd>A list of all SSCC Knowledge Base articles by Publication Number.</dd>
+</dl>
+<p>This list is organized by topic. The page for each topic lists articles 
+		that have information relevant to that topic, and many articles fall 
+		under multiple topics. The page <a href="https://ssc.wisc.edu/sscc/pubs/allpubs.htm">All SSCC articles</a> 
+		is organized by Publication Number if you already know the Publication 
+		Number you are looking for.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

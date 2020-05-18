@@ -1,0 +1,1285 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>All SSCC Knowledge Base Articles</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<h2>SSCC Handbook</h2>
+<ul>
+<li> <a href="https://ssc.wisc.edu/sscc/pubs/linuxos.htm">Getting Started in Linux</a></li>
+</ul>
+<h2>General Information (1)</h2>
+<table border="0" cellspacing="1" summary="General Information" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/goprint.htm">Paying for Printing in the SSCC Labs</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/working_from_home.htm">Working From Home and Other Remote Locations</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/records.htm">Open Records and SSCC Email</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/wordpress.htm">Getting Started with WordPress</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/wisclist.htm">Using WiscList</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">1-4</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/1-4.htm">Publishing a Web Site on the SSCC's Web
+							Server</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">1-11</td>
+<td valign="top" width="87%"><a href="https://ssc.wisc.edu/sscc/pubs/1-11.htm">Using SFTP</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">1-13</td>
+<td valign="top" width="87%"><a href="https://ssc.wisc.edu/sscc/pubs/1-13.htm">Connecting 
+						to SSCC Computers Using a WinTerm</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">1-14</td>
+<td valign="top" width="87%"><a href="https://ssc.wisc.edu/sscc/pubs/1-14.htm">Virus Protection 
+						at the SSCC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">1-15</td>
+<td valign="top" width="87%"><a href="https://ssc.wisc.edu/sscc/pubs/1-15.htm">How to Change 
+						Your SSCC Passwords</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">1-17</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/disk.htm">Network Disk Space at the SSCC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">1-19</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/computing_resources.htm">Computing Resources at the SSCC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">1-21</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/1-21.htm">Getting SSCC Announcements via RSS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/researchdrive.htm">Using ResearchDrive</a></td>
+</tr>
+</table>
+<h2>Statistical Software (4)</h2>
+<table border="0" cellspacing="1" summary="Statistical Software" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/sfr-intro.htm">Stata for Researchers<br/>
+</a>
+<ol style="margin-top: 0">
+<li><a href="#top">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-syntax.htm">Usage and Syntax</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-do.htm">Do Files</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-data.htm">Working With Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-stats.htm">Statistics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-groups.htm">Working with Groups </a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-hier.htm">Hierarchical Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-combine.htm">Combining Data Sets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-graphics.htm">Graphics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-projects.htm">Project Management</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-learning.htm">Learning More</a></li>
+</ol></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Introduction.html">R for Researchers<br/></a>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Introduction.html">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Projects.html">R Projects</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RMarkdown.html">R Markdown</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RScript.html">R Scripts</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPrep.html">Data preparation</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataExpl.html">Data exploration</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPres.html">Data presentation</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Regression.html">Regression (OLS)</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Diagnostics.html">Diagnostics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegressionGLM.html">Regression (GLM)</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegInference.html">Regression inference</a></li>
+</ol></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/sfs/">Stata for Students</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-where.htm">Where You Can Use Stata</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-files.htm">Managing Stata Files</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-do_files.htm">Doing Your Work Using Do Files</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ui.htm">Stata's User Interface</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-data.htm">Stata Data Sets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-syntax.htm">How Stata Commands Work</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-comments.htm">Comments and Other Tools for Making Do Files Readable</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-vars.htm">Creating Variables</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-graphs.htm">Using Graphs</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-import.htm">Reading Data from a Spreadsheet or CSV File</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/home.htm#desc">Descriptive Statistics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/home.htm#graphs">Graphs</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ci.htm">Means and Confidence Intervals</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ttest.htm">t-tests</a></li>
+<li> <a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-scatter.htm">Scatterplots </a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-cor.htm">Correlations</a></li>
+</ol></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html">SPSS  for the Classroom</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html">The Basics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students2.html">Statistics and Graphs</a></li>
+</ol> </td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top">
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_prog1.htm">Stata Programming Essentials</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_prog2.htm">Stata Programming Tools</a></li>
+</ol> </td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html">Mixed Models</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Models.html">Models</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_TestEffects.html"> Testing Significance of Effects</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_DiagInfer.html">Diagnostics and Inference</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_MultRand.html">Multiple Random Parameters</a></li>
+</ol></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_intro.htm">Multiple Imputation in Stata</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_intro.htm">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_decide.htm">Deciding to Impute</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_models.htm">Creating Imputation Models</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_impute.htm">Imputing</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_manage.htm">Managing Multiply Imputed Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_estimate.htm">Estimating</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_ex.htm">Examples</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_readings.htm">Recommended Readings</a></li>
+</ol> <a href="https://ssc.wisc.edu/sscc/pubs/stata_prog2.htm"></a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntro.html">R - A Brief Introduction</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntroReg.html">R - A Brief Introduction to Regression</a><a href="https://ssc.wisc.edu/sscc/pubs/GitBrief/GitBriefIntro.html"></a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/GitBrief/GitBriefIntro.html">Git - Brief Introduction</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_mp.htm">Running Stata/MP at the SSCC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_bar_graphs.htm">Bar Graphs in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/RegressionDiagnostics.html">Regression Diagnostics</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_memory.htm">Reducing Stata's Memory Usage</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/spss/Windows/SPSS_Syntax.html">SPSS Syntax</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_panel.htm">Stata Programming Techniques for Panel Data</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_psmatch.htm">Propensity Score Matching in Stata using teffects</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_tables.htm">Creating Publication-Quality Tables in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/readhtml.htm">Stata Tools for Reading Data from Web Pages</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"> <a href="https://ssc.wisc.edu/sscc/pubs/bigsas.htm">Running Large SAS Jobs on Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/r-packages.htm">Using  R Packages on SSCC Computers</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/r-install.htm">Installing R on Your Personal Computer</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/mplus_linstat.htm">Running Mplus Jobs on Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_margins.htm">Exploring Regression Results using Margins</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_condor.htm">Speeding up Multiple Imputation in Stata using Parallel Processing</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_dates.htm">Working with Dates in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/sas_output.htm">Managing Output in SAS 9.3 and Above</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/sas_launch.htm">Launching SAS Files from Windows Explorer</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/convert_sas_formats.htm">Converting SAS Formats from 32-Bit to 64-Bit</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/data_entry_excel.htm">Using Excel for Data Entry</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/nvivo.htm">Using NVivo on Winstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/sas_excel.htm">SAS and Excel Files on Winstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-1</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-1.pdf">Using 
+                                    SAS to Perform a Table Lookup</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-2</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-2.pdf">Constructing 
+                                    Indicator Variables with SAS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-3</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-3.pdf">SAS 
+                                    Programming Efficiencies</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-4</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-4.pdf">Converting 
+                                    a Code Book to a SAS FORMAT Library</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-5</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-5.pdf">Using 
+                                    SAS to Reformat Data Records from One to Several</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-6</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-6.pdf">Using 
+                                    SPSS to Reformat Data Records from One to 
+                                    Several</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-8</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-8.htm">Redirecting 
+                                    and Customizing Tabular Output in SAS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-11</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-11.htm">Using Compressed 
+                                    Data in SAS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-12</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-12.htm">Creating 
+                                    SAS Transport Files</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-16</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-16.htm">Finding and Installing User-Written Stata Programs</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-17</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-17.htm">Using 
+                                    Stat/Transfer</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-18</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-18.htm">An 
+                                    Introduction to SAS Data Steps</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-19</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-19.htm">Storing 
+                                    SAS Formats</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-20</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-20.htm">Saving SAS 
+                                    Graphs For Printing or Other Uses</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-21</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-21.htm">A Simple 
+                                    Procedure for Producing Publication-Quality 
+                                    Graphs using SAS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-22</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-22.htm">Making Predictions
+                                			with Counter-Factual Data in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-23</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-23.htm">Using Stata Graphs in Documents</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-24</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-24.htm">An Introduction to Stata Graphics</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-25</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-25.htm">Including Calculated Results
+                                		In Stata Graphs</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-26</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-26.htm">An Introduction to Mata</a> </td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-27</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-27.htm">Bootstrapping in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-28</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-28.htm">Using Reshape to Manage Hierarchical Data</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%"> </td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/sas.pdf">SAS 
+                                    Workbook for Writing SAS Programs to Process 
+                                    Data on UNIX</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/python_linstat.htm">Running Python on Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/python_packages_winstat.htm">Installing Python Packages on Winstat</a></td>
+</tr>
+</table>
+<h2>Using Winstat</h2>
+<table border="1" cellpadding="3" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using
+      Winstat</a></td>
+</tr>
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/silo.htm">Using  Silo</a></td>
+</tr>
+</table>
+<p> </p>
+<h2>Using PC's (5)</h2>
+<table cellspacing="1" summary="Using PC's" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/softwarecenter.htm">Installing New Software using Software Center</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/office2013.htm">Upgrading to Office 2013 using SSCC's Software Center</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/winstat_chrome.htm">Connecting to Winstat using Chrome</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/winstat_firefox.htm">Connecting to Winstat using Firefox</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/winstat_fonts.htm">Changing Font Sizes on Winstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/wp_word.htm">Opening WordPerfect Documents using Word</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-2</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting 
+                                    to SSCC Linux Computers using X-Win32</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-13</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-13.htm">Writing 
+                                    a CD Using Ahead Nero</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-15</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-15.htm">Printing 
+                                    on Special Paper</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-17</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/5-17.htm">Creating 
+                                    Web Pages Using Dreamweaver</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-21</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">Connecting 
+                                    to the SSCC Network via VPN</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-22</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-22.htm">Cleaning 
+                                    Out Your Email</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-24</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/5-24.htm">Setting 
+                                    Up Network Printers in Windows</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-26</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">Mapping 
+                                    a Drive to a Network Share in Windows</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-29</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-29.htm">Formatting 
+                                    Your Dissertation in Word</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-31</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-31.htm">Removing Hidden Data from Documents</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-34</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/remote_desktop.htm">Connecting to Your Office Computer Using Remote Desktop (Windows)</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-35</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-35.htm">Transferring 
+                                    Files Using SecureFX</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"> <a href="https://ssc.wisc.edu/sscc/pubs/writencite.htm">Installing the Refworks Write-N-Cite Plugin for Word</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/pc_sec.htm">Securing Your Windows PC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/bookmarks.htm">Importing Bookmarks/Favorites  into Chrome</a></td>
+</tr>
+</table>
+<h2>Using Macs</h2>
+<table border="1" cellpadding="3" width="100%">
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/printfrommac.htm">Using SSCC Printers from Macs</a></td>
+</tr>
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm">Using SSCC Network  Disk Space from Macs</a></td>
+</tr>
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm">Connecting to Linstat from a Mac</a></td>
+</tr>
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/screen_sharing.htm">Connecting to Your Office Computer Using Screen Sharing (Mac)</a></td>
+</tr>
+</table>
+<p> </p>
+<h2>Using Linux (7)</h2>
+<table border="0" cellspacing="1" summary="Using UNIX" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linuxos.htm">Getting Started in Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat_outside_us.htm">Connecting to Linstat from Outside the Madison Area</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat_google_auth.htm">Configuring Google Authenticator to Log in to Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat_public_key.htm">Configuring a Public/Private Key Pair to Log into Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-1</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">An Introduction 
+                                    to Condor</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-4</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-4.htm">Running
+                                      SAS on Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-6</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">7-8</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-8.htm">Using Compressed 
+                                    Data in Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-9</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-9.pdf">Configuring 
+                                    Your Login Session</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-10</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-10.htm">Using Emacs</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">7-11</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linux_disk_space.htm">Managing 
+                                    Disk Space in Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-12</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-12.htm">Using STATA 
+                                    on Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">7-13</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/flash.htm">Using the SSCC's High Performance Computing Cluster</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-14</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-14.pdf">Using the 
+                                    Revision Control System</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-15</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-15.pdf">Using PICO 
+                                    on UNIX</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-17</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-17.pdf">Using nu/TPU 
+                                    on UNIX</a> </td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-18</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/spss/Linux/7-18.html">Running 
+                                    SPSS Jobs on Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-20</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-20.htm">Limiting 
+                                    Access to a Web Page</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-23</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-23.htm">Forwarding 
+                                    Your Email to Another Address</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-27</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-27.htm">Running 
+                                    OpenOffice on Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-28</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-28.htm">Printing 
+                                    from Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/printfromlinux.htm">Using SSCC Network  Printers from Personal Linux Computers</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/diskfromlinux.htm">Using SSCC Network  Disk Space from Personal Linux Computers</a></td>
+</tr>
+</table>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Articles on Applications</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>This page lists articles relating to specific applications. Note 
+		that <a href="https://ssc.wisc.edu/sscc/pubs/stat.htm">statistical software</a> and <a href="https://ssc.wisc.edu/sscc/pubs/email.htm">email</a> have their own pages.</p>
+<h2>Windows</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/nvivo.htm">Using NVivo on Winstat</a><a href="https://ssc.wisc.edu/sscc/pubs/bookmarks.htm"><br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/softwarecenter.htm">Installing New Software using Software Center</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/bookmarks.htm">Importing Bookmarks/Favorites into Chrome</a><a href="https://ssc.wisc.edu/sscc/pubs/5-13.htm"><br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/wp_word.htm">Opening WordPerfect Documents using Word</a><br/>
+</p>
+<h2> Linux</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/7-10.htm">Using Emacs</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-15.pdf">Using	PICO on UNIX</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-17.pdf">Using nu/TPU on UNIX</a></p>
+<h2>General</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/researchdrive.htm">Using ResearchDrive</a><br/>
+</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Running Large SAS Jobs on Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Linstat is capable of running the vast majority of SAS jobs without any difficulties. However, if you run SAS files  that use extremely large data sets or do a lot of reading and writing of data sets, you need to understand where SAS stores your data sets and how and where to run your programs so that they get the resources they need without slowing down the server for others.</p>
+<h2><a id="WhereSASStoresFiles" name="WhereSASStoresFiles"></a>Where SAS Stores Files</h2>
+<p>SAS can put files in three types of storage:</p>
+<h3>/ramdisk</h3>
+<p>Linstat allows programs to use up to 24GB of RAM as if it were disk space in a directory called <span class="InputCode">/ramdisk</span>. This space is much faster than real disk space. SAS on Linstat is configured to use <span class="InputCode">/ramdisk</span> as its default WORK library, where all temporary data sets are stored. Files in <span class="InputCode">/ramdisk</span> that are not in use will be deleted after three hours. </p>
+<h3>/tmp</h3>
+<p>The <span class="InputCode">/tmp</span> directory is a directory on each server's local hard drive. It is much faster than network disk space, but much slower than <span class="InputCode">/ramdisk</span>. Linstat has about 200GB of space in <span class="InputCode">/tmp</span>.</p>
+<p>The trouble with <span class="InputCode">/tmp</span> (and one reason <span class="InputCode">/ramdisk</span> is much preferred whenever it can be used) is that disk I/O is difficult for servers to manage. While today's servers have many CPUs and very large amounts of RAM, they still have just one one disk and one I/O bus. Switching between disk I/O tasks is a slow process, so if a server is busy with disk I/O even a trivial command like <span class="InputCode">cd</span> or <span class="InputCode">ls</span> can take several seconds to execute. This makes the server almost unusable.                </p>
+<h3>Network Disk Space</h3>
+<p>Permanent data sets are generally stored in network disk space, such as home and <span class="InputCode">/project</span> directories. <span class="InputCode">/project</span> directories can be very large  but they are much slower than either <span class="InputCode">/tmp</span> or <span class="InputCode">/ramdisk</span>. </p>
+<p>While intensive network I/O has much less  effect on a server than disk I/O, it could in principle overwhelm the SSCC's network  storage and slow down access to files stored on the network for everyone. We do not believe a single SAS program can generate enough network I/O to significantly affect our current network storage devices, but we're not eager to have you test that theory.</p>
+<h2><a id="MakingProgramsRunFaster" name="MakingProgramsRunFaster"></a>Making  Programs Run Faster</h2>
+<p>Since permanent data sets are written to the (relatively slow) network and temporary data sets are written (by default on Linstat) to  <span class="InputCode">/ramdisk</span>, using temporary data sets whenever possible can dramatically improve the performance of programs that use large data sets.</p>
+<p>Consider the following SAS program:</p>
+<p class="InputCode">data '/project/example/intermediate_data_set';<br/>
+<span class="indent3">set '/project/example/input_data_set';</span><br/>
+<span class="indent3">various commands...</span><br/>
+                  run;<br/>
+<br/>
+                  data '/project/example/output_data_set';<br/>
+<span class="indent3">set '/project/example/intermediate_data_set';</span><br/>
+<span class="indent3">more commands...</span><br/>
+                  run; </p>
+<p>Since all of the data sets used are permanent data  sets, all of the disk I/O generated by this program goes to the network.  But consider this variation:</p>
+<p class="InputCode">data intermediate_data_set;<br/>
+<span class="indent3">set '/project/example/input_data_set';</span><br/>
+<span class="indent3">various commands...</span><br/>
+                  run;<br/>
+<br/>
+                  data '/project/example/output_data_set';<br/>
+<span class="indent3">set intermediate_data_set;</span><br/>
+<span class="indent3">more commands...</span><br/>
+                  run; </p>
+<p><span class="InputCode">intermediate_data_set</span> is now temporary and stored in <span class="InputCode">/ramdisk</span>, which makes reading  and writing it much faster. The more steps you have between  reading your initial input and writing your final output the more time you will  save by making the intermediate data sets temporary.</p>
+<p>Never use a data step simply to reset the default data set. Consider this construction:</p>
+<p class="InputCode">data '/project/example/output_data_set';<br/>
+<span class="indent3">set '/project/example/output_data_set';</span><br/>
+                run;<br/>
+<br/>
+                proc tables;<br/>
+                run;</p>
+<p>From the user's perspective, all the data step does is make <span class="InputCode">output_data_set</span> the data set <span class="InputCode">proc tables</span> will act on. However, SAS will treat it as a real data step, reading the entire file and then writing it again unchanged. Use the following instead:</p>
+<p class="InputCode">proc tables data='/project/example/output_data_set';<br/>
+                run;</p>
+<p>Your programs will also be easier to read if proc steps state which data set they are to act on explicitly.</p>
+<h2><a id="PreventingProgramsfromRunningOutofSpace" name="PreventingProgramsfromRunningOutofSpace"></a>Preventing  Programs from Running Out of Space</h2>
+<p>The vast majority of SAS programs require much less than the 24GB of space available in <span class="InputCode">/ramdisk</span> on Linstat. If your program requires more, here are your options:</p>
+<table border="1" cellpadding="3">
+<tr>
+<th>WORK Space Required</th>
+<th>WORK </th>
+<th>Command</th>
+<th>Notes</th>
+</tr>
+<tr>
+<td>&lt;24GB</td>
+<td class="InputCode">/ramdisk</td>
+<td><span class="InputCode">sas </span><span class="Parameter">program</span></td>
+<td> </td>
+</tr>
+<tr>
+<td>24GB-200GB</td>
+<td class="InputCode">/tmp</td>
+<td><span class="InputCode">sas -work /tmp </span><span class="Parameter">program</span></td>
+<td>(<a href="#2">1</a>)</td>
+</tr>
+<tr>
+<td>&gt;200GB</td>
+<td class="InputCode">/project/<span class="Parameter">myproject</span></td>
+<td><span class="InputCode">sas -work /project/</span><span class="Parameter">myproject program</span></td>
+<td>(<a href="#3">2</a>)</td>
+</tr>
+</table>
+<p><a id="1" name="1"></a>(1) These jobs may slow down the server they run on. If they can be run at night, please do so.</p>
+<p><a id="2" name="2"></a>(2) Any job that needs to write this much data to the network will be extremely slow. You would be well advised to spend  time making sure your code is as efficient as possible before running such programs.</p>
+<h2>Putting "Permanent" Data Sets in Temporary Space</h2>
+<p>Both <span class="InputCode">/ramdisk</span> and <span class="InputCode">/tmp</span> can also be used to store "permanent" data sets. This can  reduce the amount of WORK space your program requires, or optimize your disk usage. For example, if your program can almost run using <span class="InputCode">/ramdisk</span> as WORK, storing a few files as permanent data sets in <span class="InputCode">/tmp</span> instead of as temporary data sets may be enough to let the others stay in <span class="InputCode">/ramdisk</span>, without slowing down access to those files as much as putting them on the network. If your program's temporary space needs are large enough that you must set WORK to <span class="InputCode">/tmp</span>, you could still put up to 24GB of "permanent" files in <span class="InputCode">/ramdisk</span> so that they can be accessed more quickly--ideally the most heavily used files.</p>
+<p>Just be sure to delete any permanent data sets you create in <span class="InputCode">/ramdisk</span> or <span class="InputCode">/tmp</span> at the end of your program using <span class="InputCode">proc datasets</span>.</p>
+<p>The <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a> can help you implement these suggestions and generally assist you with running large SAS programs. We'd also appreciate hearing about your experience running such programs on our servers: our server configuration and even purchasing decisions are often driven by making sure such large, ambitious projects can be run successfully.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Importing Bookmarks/Favorites into Chrome</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Chrome makes it very easy to import bookmarks and settings from other web browsers.</p>
+<p>If you're just starting with Chrome, you'll see an <span class="MenuOutput">Import bookmarks now</span> link at the top. If not, click on the "wrench" button in the upper-right corner, then <span class="MenuOutput">Bookmarks</span>, <span class="MenuOutput">Import Bookmarks and Settings</span>. </p>
+<p>Select the browser whose bookmarks you want to import. If there are any settings from that browser you do not want to import, uncheck the appropriate box. Then click <span class="MenuOutput">Import</span> and you're done.</p>
+<p>By default, Chrome will put the imported bookmarks in a separate folder. You may want to click on <span class="MenuOutput">Bookmarks</span>, <span class="MenuOutput">Bookmark manager</span> and rearrange them for quicker access.                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Computing Resources at the SSCC</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>The SSCC makes a tremendous amount of computing power available
+          		to its members. This article will help you find the computing
+          		resource that can do the job you need done and use it efficiently.</p>
+<p>SSCC has two computing environments: a general-purpose computing environment, and a secure computing environment called Silo for working with sensitive data. The two environments have very similar resources available.          	</p>
+<ul>
+<li><a href="#Winstat">Winstat</a></li>
+<li><a href="#WinSilo">WinSilo (AKA SiloLDS)</a></li>
+<li><a href="#Linstat">Linstat</a></li>
+<li><a href="#LinSilo">LinSilo</a></li>
+<li><a href="#HTCondor">Condor</a></li>
+<li><a href="#CondorSilo">CondorSilo</a></li>
+<li><a href="#Flash">Flash</a></li>
+<li><a href="#LabPCs">Lab PCs</a></li>
+<li><a href="#DataStorage">Data Storage</a></li>
+</ul>
+<h2><a id="Winstat" name="Winstat"></a>Winstat</h2>
+<p>Winstat is  SSCC's general purpose Windows computing cluster. It consists of Windows Remote Desktop Servers that you can log into from any location to run a wide variety of statistical and other software with full access to the SSCC network.</p>
+<p>The Winstat and WinSilo clusters share five physical servers that each run two servers as virtual machines for improved reliability. Winstat  has six virtual servers  that are each assigned 24  cores and 172GB of RAM. To ensure high performance for everyone, please use no more than 128GB of RAM on Winstat (see our <a href="https://ssc.wisc.edu/sscc/policies/server_usage.htm">Server Usage Policy</a>).</p>
+<p>Idle Winstat sessions (meaning no user input, even if jobs are running) are disconnected after two hours, all sessions are disconnected  after twenty-four hours, and disconnected sessions are closed after three  hours. If you need to run long jobs such that these limits would cause problems for you, contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>.</p>
+<p>For more information about Winstat, see <a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using
+       			Winstat</a>.</p>
+<h2 id="WinSiilo">WinSilo (AKA SiloLDS)</h2>
+<p>WinSilo, formerly known as SiloLDS, is a Windows-based computing cluster very similar to Winstat but in SSCC's Silo secure computing environment. The three WinSilo virtual servers have the same technical specifications as Winstat and the same policies, but have additional security controls that make them appropriate for HIPAA and other sensitive data. </p>
+<p>For more information about Silo, see <a href="https://ssc.wisc.edu/sscc/pubs/silo.htm">Using Silo</a>.</p>
+<p id="Silo3">If you need to use data that cannot be stored on any network, <a href="http://www.disc.wisc.edu/">Data &amp; Information Services Center</a> (DISC) makes a <a href="http://www.disc.wisc.edu/restricted/coldroom.html">Secure Computing Enclave</a> consisting of isolated computers available. </p>
+<h2><a id="Linstat" name="Linstat"></a>Linstat</h2>
+<p>Linstat is designed for researchers who need greater computing power. It consists of 4 servers running Linux (which many power users find more convenient for big computing projects) with 36 cores and 384GB of RAM. The Linstat servers have the most popular statistical software installed plus  the usual
+          		Linux utilities and compilers.             Jobs run "in the background" on Linstat will continue running after you log out, for days or weeks if necessary.</p>
+<p>For more information about using Linstat, see <a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a>.</p>
+<h2 id="LinSiilo">LinSilo</h2>
+<p>LinSilo is a Linux-based computing cluster similar to Linstat, but in SSCC's Silo secure computing environment. LinSilo has  a wide variety of software installed for biomedical research  to support researchers from the School of Medicine and Public Health.</p>
+<p>The three primary LinSilo servers have 40 cores and 384GB of RAM. Two additional servers, called LinSiloBig, have 80 cores and 768GB of RAM.</p>
+<p>For more information about LinSilo, see <a href="https://ssc.wisc.edu/sscc/pubs/silo.htm">Using Silo</a>.</p>
+<h2><a id="HTCondor" name="HTCondor"></a>Condor</h2>
+<p>HTCondor is a tool for running large numbers of jobs. When you submit jobs to HTCondor, HTCondor will distribute them across the servers in its pool.  SSCC's primary HTCondor pool, called Condor, has twelve dedicated Linux servers. The Linstat servers run jobs submitted to Condor as well. Four of the Condor servers have 16 cores and 320GB of RAM, while the others  have 8 cores and 24-48GB of RAM.</p>
+<p>You are  welcome to submit up to fifteen jobs at a time to Condor (see the <a href="https://ssc.wisc.edu/sscc/policies/server_usage.htm">SSCC's Server Usage Policy</a>).</p>
+<p>For more information about Condor, see <a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">An Introduction
+          			to Condor</a>. You can also <a href="https://www.ssc.wisc.edu/sscc_jsp/condor/">submit
+          			Stata jobs to Condor</a> from the
+       			web.</p>
+<h2 id="CondorSilo">CondorSilo</h2>
+<p>CondorSilo is an HTCondor pool in the Silo environment. It consists of nine dedicated Linux servers with 40 cores and 384GB of RAM each.</p>
+<p>For more information about CondorSilo, see Using Silo.</p>
+<h2></h2>
+<h2><a id="Flash" name="Flash"></a>Flash</h2>
+<p>SSCC's High Performance Computing Cluster, Flash, is designed for parallel computing. It is ideal for jobs that can be broken up into many pieces that are executed simultaneously. Most jobs run on Flash are written in FORTRAN and use MPI to handle the parallelization. </p>
+<p>For more information about Flash, see <a href="https://ssc.wisc.edu/sscc/pubs/flash.htm">Using the SSCC's High Performance Computing Cluster</a>.</p>
+<p></p>
+<h2><a id="LabPCs" name="LabPCs"></a>Lab PCs</h2>
+<p>The SSCC's computer labs, rooms 4218 and 3218 in the Sewell Social Sciences Building, have more than 50 PCs with most of the software installed on Winstat.  They also have client
+              programs installed for accessing all the SSCC servers. This makes
+              the labs an excellent place to do research. We also have a Mobile Lab consisting of 42 laptops with the same software which can be used in any classroom in the Sewell Social Sciences Building.</p>
+<p>For more information about the SSCC's computer labs, see <a href="https://ssc.wisc.edu/sscc/infrastructure/labs.htm">SSCC
+              Computer Labs</a> and <a href="https://ssc.wisc.edu/sscc/instruction/labusers.htm">Information
+                for SSCC Instructional Lab Users</a>.</p>
+<h2 id="DataStorage">Data Storage</h2>
+<p>SSCC can store approxmimately 190TB of data in our high-speed Storage Area Network. See <a href="https://ssc.wisc.edu/sscc/pubs/disk.htm">Network Disk Space at the SSCC</a> for more details. This data is backed up three times a day (see our <a href="https://ssc.wisc.edu/sscc/policies/backup.htm">Data Integrity Policy</a>). We have also partnered with the Division of Information Technology (DoIT) to provide secure data storage in the Silo environment for SMPH researchers. DoIT has committed to provide up to 2PB (2,000TB) of storage as needed.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Converting SAS Formats from 32-Bit to 64-Bit</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>The SSCC has both 32-bit SAS and 64-bit SAS installed on Winstat. Our plan is to remove 32-bit SAS in 2013, ideally by the end of summer.</p>
+<p>64-bit SAS has been the default on Winstat for some time, so if you haven't been making a special effort to use 32-bit SAS, you are already using 64-bit SAS. If you haven't run into any problems doing so, you can stop reading at this point. 64-bit SAS looks and acts just like 32-bit SAS, and programs you've written or data sets you've created using 32-bit SAS can be used in 64-bit SAS without any changes.                </p>
+<p>However, SAS catalog files containing formats that were created using 32-bit SAS cannot be read by 64-bit SAS. Unlike data files, catalog files are not portable across "platforms" and SAS considers 32-bit and 64-bit to be different platforms. If you've created customized formats using <span class="InputCode">proc format</span> and saved them as catalog files (see <a href="https://ssc.wisc.edu/sscc/pubs/4-19.htm">Storing SAS Formats</a> for a discussion of how and why you might do so), you'll need to convert these formats to make them readable by 64-bit SAS. </p>
+<h2>Symptoms</h2>
+<p>Most likely, the problem will arise when you try to use a data set. The error message will be some variant on:</p>
+<p class="InputCode">ERROR: File LIBRARY.FORMATS.CATALOG was created for a different  operating system.<br/>
+                ERROR: Format FEM not found or couldn't be loaded for variable  female. </p>
+<p>In this case, the data set contained a variable <span class="InputCode">female</span> which was formatted using the custom format <span class="InputCode">FEM</span>. That format was saved in a catalog file (<span class="InputCode">formats.sas7bcat</span>) by 32-bit SAS. However, 64-bit SAS cannot read this catalog file. This prevents 64-bit SAS from reading the data set at all.</p>
+<p>If you're opening a data set for viewing, all you'll see immediately is that it didn't work:</p>
+<p><img alt="ERROR: Unable to open table" height="152" src="https://ssc.wisc.edu/sscc/pubs/screenshots/convert_sas_formats/SASFormatproblem.JPG" width="324"/> </p>
+<p>The error message about formats will be in the log.</p>
+<p>You'll get a similar error message if you try to use 64-bit SAS to add formats to a 32-bit catalog file. It also doesn't work to have 64-bit SAS overwrite a 32-bit catalog file—note how the solutions below generally require that you delete or rename the 32-bit catalog file before creating a 64-bit version.</p>
+<h2>Solutions</h2>
+<p>There are several easy ways to fix this problem.</p>
+<h3>Solution 1: Remove the Format From the Variable</h3>
+<p>The very easiest is to simply not use the problem format. If you add the line:</p>
+<p class="InputCode">format female;</p>
+<p>to the data step or proc step you were trying to run, it will remove the <span class="InputCode">FEM</span> format from the <span class="InputCode">female</span> variable so there's no need to read the problem catalog file. However, if that format was actually useful you'll probably want to consider alternatives.</p>
+<h3>Solutution 2: Rerun proc format</h3>
+<p>If you still have the <span class="InputCode">proc format</span> code that created the catalog file in the first place, rerunning it using 64-bit SAS will create a catalog file that can be read by 64-bit SAS. Just be sure to delete or rename the 32-bit version first. This is the easiest solution that preserves the formats themselves.</p>
+<h3>Solution 3: Convert the Catalog to a Data Set and then Back to a Catalog</h3>
+<p>If you no longer have the <span class="InputCode">proc format</span> code, you can have 32-bit SAS convert the catalog file into a data set, then have 64-bit SAS convert the data set into a catalog file. This takes advantage of the fact that data sets, unlike catalogs, are portable between platforms.</p>
+<p>First start 32-bit SAS and then run the following code:</p>
+<p class="InputCode">libname mydir "<span class="Parameter">catalog directory</span>";<br/>
+                  libname mylibrary (mydir);<br/>
+<br/>
+                  proc format library=mylibrary cntlout=mydir.<span class="Parameter">myformats</span>;<br/>
+                  run;
+                </p>
+<p>Replace <span class="Parameter">catalog directory</span> with the actual directory where the catalog is located (e.g. <span class="InputCode">u:\</span>) and <span class="Parameter">myformats</span> with the name of the catalog file (most likely <span class="InputCode">formats</span>). This program will create a data set called <span class="InputCode">formats.sas7bdat</span> in that directory, containing all the information about the formats in the catalog file.</p>
+<p>Next delete or rename the existing catalog file, so that 64-bit SAS can create the new version.</p>
+<p>Now start 64-bit SAS and run the following code:</p>
+<p class="InputCode">libname mydir "<span class="Parameter">catalog directory</span>";<br/>
+libname mylibrary (mydir);<br/>
+<br/>
+proc format library=mylibrary cntlin=mydir.<span class="Parameter">myformats</span>;<br/>
+run; </p>
+<p>Again replace <span class="Parameter">catalog directory</span> with the directory where the data set is now located and the catalog file will be located, and <span class="Parameter">myformats</span> with the name of the catalog file to be created. This will read the data set and write the formats in a catalog file again.</p>
+<h3>Solution 4: proc cport / proc cimport</h3>
+<p>Use <span class="InputCode">proc cport</span> and <span class="InputCode">proc cimport</span> if you have lots of catalog files to convert and can put them in a single directory. They can also convert catalog files containing things other than formats (like saved graphics or macros). This process will also convert any data sets in that directory to the native 64-bit format, which allows 64-bit SAS to read them slightly faster.</p>
+<p>The basic idea is similar to using 32-bit SAS to turn a catalog file into a data set which can be read by 64-bit SAS, but in this case you will create a single <span class="InputCode">.cpt</span> file containing all the catalogs and data sets in the directory, then let 64-bit SAS convert that <span class="InputCode">.cpt</span> file back into 64-bit versions of the original catalogs and data sets.</p>
+<p>Begin by starting 32-bit SAS and running the following code:</p>
+<p class="InputCode">libname project "<span class="Parameter">catalog directory</span>";<br/>
+filename outfile "<span class="Parameter">temp location</span>/<span class="Parameter">cport file</span>.cpt";<br/>
+<br/>
+proc cport library=project file=outfile;<br/>
+run;</p>
+<p>Replace <span class="InputCode"><span class="Parameter">catalog directory</span></span> with the directory containing the catalog files. Replace <span class="Parameter">temp location</span> with a location where you can put the <span class="InputCode">.cp</span>t file (perhaps just <span class="InputCode">u:\)</span>, and <span class="Parameter">cport file</span> with the name you want to give the <span class="InputCode">.cpt</span> file.</p>
+<p>Close 32-bit SAS, rename the directory containing the catalog files so it can be recreated, start 64-bit SAS, and run the following code:</p>
+<p class="InputCode">libname project "<span class="Parameter">catalog directory</span>";<br/>
+filename outfile "<span class="Parameter">temp location</span>/<span class="Parameter">cport file</span>.cpt";<br/>
+<br/>
+proc cimport library=project file=outfile;<br/>
+run;</p>
+<p>Again, replace <span class="InputCode"><span class="Parameter">catalog directory</span></span> with the directory where the catalog files should go, replace <span class="Parameter">temp location</span> with a location where you put the <span class="InputCode">.cp</span>t file, and <span class="Parameter">cport file</span> with the name you gave it.</p>
+<p>This will recreate the directory and all the files it contained.</p>
+<p>No matter how you do the conversion, be sure to test your catalog files afterward and then delete the 32-bit versions if they are no longer needed.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/convert_sas_formats/SASFormatproblem.JPG</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using Excel for Data Entry</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Research groups sometimes find it useful to enter data in Excel and then convert it to the format of the statistical software package they'll use for analysis later. This article will describe  best practices that can help avoid problems in doing so.</p>
+<p> Some statistical packages can be used for  data entry just  as easily as Excel, and then you'll never have to worry about conversion issues. In general, once you know a statistical package, use it rather than Excel whenever possible. (Don't use Excel as a way to avoid becoming an expert user of your chosen statistical package.) However, if your research group includes people who enter data but do not do analysis and thus don't know a statistical package, Excel can be a good tool for them. Just be sure the instructions you give them will lead them to create files that can be used by statistical packages.</p>
+<p>Your goal should be to create a machine-readable file that can be read into your preferred statistical package by a program, without human intervention beyond starting that program. Ideally the process will be 100% reproducible with no opportunity for human error.</p>
+<h2>File Structure</h2>
+<p>Each Excel file should contain exactly one matrix of data. Do not use more than one worksheet per file. The file should not include titles, notes, or other metadata other than a row of variable names—any needed metadata can be placed in an accompanying file. (Exception: Stat/Transfer will by default ignore anything after a blank row. If you use Stat/Transfer, you can place notes and such at the bottom of the spreadsheet after a blank row.)</p>
+<p>Each row will be one observation and each column  one variable. (The definition of “observation” will depend on the project.) The first row should contain variable names.</p>
+<p>Do not use color to convey information.</p>
+<p>One  easy way to make sure everyone in a group uses the right file structure is to provide a    blank starting file that already has that structure in place. Individuals will open it, enter data, and save the result with a new name (ideally the starting file will be read-only).</p>
+<h2>Variables</h2>
+<p>Variable names must be compatible with the software to be used. In general that means they must be less than 32 characters long, must not start with a number, and cannot contain spaces. Use capital letters or underscores to separate words (e.g. <span class="InputCode">healthStatus</span> or <span class="InputCode">health_status</span>).</p>
+<h3>Numeric Variables</h3>
+<p>Variables should be designated as either numeric or text. Under no circumstances should anything but numbers be placed in columns designated for numeric variables. If explanations are likely to be needed, create a separate text variable for those explanations.</p>
+<p> Examples of characters that do not belong in numeric variables include:</p>
+<p class="InputCode"> $ % , ( ) &lt; &gt; ~  :</p>
+<p>Numeric variables should not contain ranges or lists of numbers. If a question allows for multiple answers ("check all that apply"), create separate indicator variables for "respondent checked option 1", "respondent checked option 2", etc. rather than putting a list of answers that were chosen in a single variable.</p>
+<p>Indicator variables (e.g. Yes/No or True/False variables) should usually be entered as numbers with 1 for Yes/True and 0 for No/False. Choose variable names that match the meaning of the indicator. For example, use <span class="InputCode">female</span> rather than <span class="InputCode">gender</span> so that 1 clearly means "Yes, this person is female."</p>
+<p>Communicate how percentages should be recorded (e.g. whether 80% will be recorded as 80 or 0.8).</p>
+<h3>Dates</h3>
+<p>Different programs store dates in different ways, and automatic conversion of dates is often problematic. It's safer to store dates as sets of simple numeric variables such as <span class="InputCode">year</span>, <span class="InputCode">month</span>, and <span class="InputCode">day</span>. If you choose to use a date format, make sure everyone uses the same one, ideally the ISO date format (YYYY-MM-DD). Always include the century in years (1999 not 99, so the following year is 2000 rather than 100).</p>
+<h2>Changing the  Data</h2>
+<p>Once data are entered, they should never be changed in Excel, even to correct clear errors. Changes should be made programmatically (i.e. use Stata do files, SAS programs, R scripts, or SPSS syntax files) so that the changes are documented, auditable, and reproducible. If you need to correct an error in the data, the code that makes the change should be accompanied by a comment that explains it.</p>
+<h2>Converting</h2>
+<p>Ideally, converting the file from Excel format to the format of your preferred statistical package will be done by a program as well. Some statistical packages have commands that can read Excel files (e.g. Stata's <span class="InputCode">import excel</span> or SAS's <span class="InputCode">proc import</span>) so you can include those commands along with the rest of your code. Alternatively, some packages allow you to include a command in your program that runs Stat/Transfer. See <a href="https://ssc.wisc.edu/sscc/pubs/4-17.htm">Using Stat/Transfer</a> for details.</p>
+<p>Using the Stat/Transfer Graphical User Interface is acceptable, especially if you have a small number of files to convert. If you have to make any changes to the default settings be sure to record exactly what settings you used.</p>
+<h2>Archiving</h2>
+<p>Always keep a copy of the file in exactly the form you received it. Consider also saving a copy in CSV (comma separated variable) format  so  you never have to worry about Excel going away, losing access to Excel, or future versions of Excel not being able to read your file. See <a href="http://researchdata.wisc.edu/manage-your-data/data-formats/">http://researchdata.wisc.edu/manage-your-data/data-formats/</a> for more discussion of "sustainable" data formats.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Network Disk Space at the SSCC </kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>This article is your guide to the
+          		disk space provided by the SSCC. Topics include:</p>
+<ul>
+<li><a href="#KeyLocationsataGlance">Key Locations at a Glance</a></li>
+<li><a href="#WindowsandLinux">Windows, Linux, and Silo</a></li>
+<li><a href="#PrivateSpace">Private Space</a></li>
+<li><a href="#ProjectSpace">Project (shared) Space</a></li>
+<li><a href="#TemporarySpace">Temporary Space</a></li>
+<li><a href="#BackupsandRestores">Backups and Restores</a></li>
+<li><a href="#ManagingyourSpace">Managing your Space</a></li>
+<li><a href="#WebDirectories">Web Directories</a> </li>
+</ul>
+<h2><a id="KeyLocationsataGlance" name="KeyLocationsataGlance"></a>Key Locations at a Glance</h2>
+<table align="center" border="1" cellpadding="5">
+<tr>
+<th scope="col"> </th>
+<th scope="col">Windows</th>
+<th scope="col">Linux</th>
+<th scope="col">Linux  Space Accessed From Windows </th>
+</tr>
+<tr>
+<td>Home Directory (Private Space) </td>
+<td><span class="MenuOutput">U:</span> Drive </td>
+<td><span class="InputCode">~</span></td>
+<td><span class="MenuOutput">Z:</span> Drive</td>
+</tr>
+<tr>
+<td>Project Directories (Shared Space) </td>
+<td><span class="MenuOutput">X:</span> Drive </td>
+<td class="InputCode">/project</td>
+<td><span class="MenuOutput">V:</span> Drive </td>
+</tr>
+<tr>
+<td>Temporary Space </td>
+<td><span class="MenuOutput">Y:</span> Drive </td>
+<td class="InputCode">/temp30days</td>
+<td><span class="MenuOutput">\\sscunix.ssc.wisc.edu\temp30days</span> (must be <a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">mapped</a>) </td>
+</tr>
+</table>
+<h2><a id="WindowsandLinux" name="WindowsandLinux"></a>Windows, Linux, and Silo</h2>
+<p>The SSCC has two parallel file systems: one for Windows and one
+          		for Linux. Thus you have two home directories, there are two
+          		project directories, etc. A program called Samba makes the Linux
+          		file system available to Windows, but not the other way around.
+          		This can be a big help to Windows users who are learning Linux,
+          		but if you're only using Windows programs Windows disk space
+          		will give slightly better performance.</p>
+<p>The Silo environment has a separate secure file system. It is Linux-based system, and thus has only Z: and V: drives, not U: and X:. It also has an S: drive, or <span class="InputCode">/smph</span>, containing project directories for SMPH researchers.</p>
+<h2><a id="PrivateSpace" name="PrivateSpace"></a>Private Space</h2>
+<p>Private disk space is provided in "home directories."
+          		In Windows, your home directory is the <span class="MenuOutput">U:</span> drive.
+          		In Linux your home directory is ~, or <span class="InputCode">/home/{<span class="Parameter">first
+          		letter of your user name</span>}/{<span class="Parameter">your user
+          		name</span>}</span> (e.g. <span class="InputCode">/home/r/rdimond</span>).
+          		 You can access your Linux home directory
+          		from Windows as the <span class="MenuOutput">Z:</span>          		drive.</p>
+<p>Each home directory starts with 20 gigabytes of space. If you
+          		need more space, we will increase either quota (or both) to 40 gigabytes
+          		on request.   If you need more than this, consider
+          		requesting a project directory. You can <a href="https://ssc.wisc.edu/sscc_jsp/account/space/">request
+          		additional space</a> in your home directory by filling out a web
+          		form. To check how much space you're using in Windows right-click
+          		on your <span class="MenuOutput">U:</span> drive and choose <span class="MenuOutput">Properties</span>; in Linux type <span class="InputCode">quota</span>. </p>
+<p>Home directories are private: other SSCC users cannot access files
+          		in your home directory. </p>
+<h2><a id="ProjectSpace" name="ProjectSpace"></a>Project Space</h2>
+<p>Project space is mainly for groups working together on a common
+          		project, though if you need more space than can be provided in
+          		your home directory it's possible to request a project directory
+          		for one person. Project directories can be as large as needed,
+          		but keep in mind that disk space is costly (see <a href="#ManagingyourSpace">Managing
+          		your Space</a>).</p>
+<p>Windows project folders can be found on the <span class="MenuOutput">X:</span> drive.
+          		Linux project directories can be found under <span class="InputCode">/project</span>.
+          		Linux project directories are available from Windows on the <span class="MenuOutput">V:</span>          		drive. SMPH projects in Silo are found under <span class="InputCode">/smph</span>, available from Windows as the <span class="MenuOutput">S:</span> drive.</p>
+<p>Each project directory has an associated group of users who can
+          		access the directory. Other users cannot. If you need access
+          		to a particular project directory, the owner of that directory
+          		must <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">contact the SSCC Help Desk</a> and
+          		ask that you be added to the group.</p>
+<p>You can <a href="https://www.ssc.wisc.edu/sscc_jsp/account/project/">request a project directory</a> by filling out a web form.</p>
+<p>Normally project directories should be created in the same operating
+          		system (Windows or Linux) as the programs you'll be using. However,
+          		if you'll be using both Windows and Linux programs the directory
+          		should be created in Linux.</p>
+<h2><a id="TemporarySpace" name="TemporarySpace"></a>Temporary Space</h2>
+<p>Both Windows and Linux have space where you can store
+          		 files temporarily. Files placed in these spaces will be deleted after 30 days.</p>
+<p>In Windows, temporary space is available on the <span class="MenuOutput">Y:</span> (Temp30days)
+          		drive.
+          		If you wish to use it, make a folder for your files (e.g. <span class="InputCode">Y:\rdimond</span>). The <span class="MenuOutput">Y:</span> drive is completely public:
+          		any SSCC user can read, change, or delete any file on the <span class="MenuOutput">Y:</span> drive.
+          		This makes it a convenient place for sharing files with others,
+          		however, it should never be used for confidential data (or for
+          		any serious research data, really).</p>
+<p>In Linux, temporary space is available in <span class="InputCode">/temp30days</span>.
+          		If you wish to  use it, make a subdirectory for your files
+          		 (e.g. <span class="InputCode">/temp30days/rdimond</span>).
+          		Directories under <span class="InputCode">/temp30days</span> are private by default, but if you're familiar with setting Linux permissions you can make them public if you so desire.</p>
+<p>If you need to access the Linux temporary space from Windows, you'll
+          		need to <a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">map a drive</a> to it. </p>
+<p>Note that <strong>temporary space is not backed up</strong> in
+          		either Linux or Windows. <strong>Temporary space is not intended for
+          		long-term storage of important files.</strong></p>
+<h2><a id="BackupsandRestores" name="BackupsandRestores"></a>Backups and Restores</h2>
+<p>Home  and project directories, and system directories such
+          		as web sites, are backed up  three times a day: see the <a href="https://ssc.wisc.edu/sscc/policies/backup.htm">SSCC
+          		Data Integrity Policy</a> for details. Files on local hard drives (<span class="MenuOutput">C:</span> or <span class="MenuOutput">D:</span>)
+          		are not backed up. We  hate to see anyone lose data, so
+          		please <strong>store all important files on the network
+          		where they are backed up</strong>.</p>
+<p>If you need a file restored,   <a href="mailto:helpdesk@ssc.wisc.edu">send
+          			the Help Desk an email</a> with the following information: </p>
+<ul>
+<li>The operating system the file was stored on (Windows or Linux) </li>
+<li>The name of the file</li>
+<li>The full location of the file (e.g. <span class="InputCode">U:\dissertation\absolutely
+          			critical data</span> or <span class="InputCode">~/dissertation/absolutelyCriticalData</span>)</li>
+<li>The date as of which you want it recovered (e.g. "the most recent
+          			backup") </li>
+</ul>
+<p>If the file has been deleted and you don't know some of this
+          		information, just do your best and we can usually find it.</p>
+<p>Please keep in mind that restoring files from backup takes a significant
+          		amount of staff time. </p>
+<h2><a id="ManagingyourSpace" name="ManagingyourSpace"></a>Managing your Space</h2>
+<p>The SSCC uses Storage Attached Network (SAN) devices to provide
+          		disk storage that is extremely fast and reliable. However, this
+          		storage space is much more expensive than a regular PC hard drive—in
+          		fact disk space is a major component of the capital SSCC's budget. We're
+          		pleased to provide all the disk space our members need without
+          		charging individuals or projects, but please help keep costs
+          		down by using disk space wisely:</p>
+<ul>
+<li>Compress large files that are not in active use.</li>
+<li>Share large data files among researchers rather than everyone making their own copy</li>
+<li>Delete intermediate data files that can be reproduced at will, keeping just the raw data and the version of the data you're currently working on (along with all the code that gets you from one to the other)</li>
+<li>Delete data files that are no longer needed (but only if you're sure they're no longer needed)</li>
+</ul>
+<p>Also see <a href="https://ssc.wisc.edu/sscc/pubs/linux_disk_space.htm">Managing
+          		Disk Space in Linux</a>, and <a href="https://ssc.wisc.edu/sscc/pubs/7-8.htm">Using Compressed Data
+          		in Linux</a>.          	</p>
+<h2><a id="WebDirectories" name="WebDirectories"></a>Web Directories</h2>
+<p>In your Linux home directory you will find a directory called <span class="InputCode">PUBLIC_web</span>          		(<span class="MenuOutput">Z:\PUBLIC_web</span> from
+          		Windows). This directory can be used for a personal web site
+          		(though it must be focused on University business). The Linux
+          		directory <span class="InputCode">/usr/global/web</span>,
+          		available from Windows as <span class="MenuOutput">\\sscunix.ssc.wisc.edu\web</span>,
+          		contains departmental and agency web sites. <span class="InputCode">/usr/global/cgi</span> is
+          		used for web scripts. See <a href="https://ssc.wisc.edu/sscc/pubs/1-4.htm">Publishing a Web Site
+          		on the SSCC's Web Server</a> for more information.</p>
+<p>All of these directories are automatically read by the web server,
+          		and files and folders placed in them will be available on the
+          		web. </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using SSCC Network Disk Space from Personal Linux Computers</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>This article will show you how to use the SSCC's network disk space from your personal computer running Linux. The details and pictures apply to Ubuntu 10.4, but the general procedure should work on any desktop-oriented Linux distribution.</p>
+<p>Click on <span class="MenuOutput">Places</span>, then <span class="MenuOutput">Connect to Server</span>. Set the <span class="MenuOutput">Service type</span> to <span class="MenuOutput">Windows share</span>. The <span class="MenuOutput">Server</span>, <span class="MenuOutput">Share</span> and <span class="MenuOutput">Folder</span> will depend on what you want to connect to--see the pictures for some of the most common choices or consult the <a href="#locs">table below</a> for more options. Enter your SSCC username in <span class="MenuOutput">User Name</span> and <span class="InputCode">primo</span> in <span class="MenuOutput">Domain</span>.</p>
+<table border="0" cellpadding="3" class="noBorder" width="100%">
+<tr>
+<td align="center"><strong>Windows Project Space</strong><br/>
+<img alt="Connecting to Windows Project Space" height="351" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux1.png" width="339"/></td>
+<td align="center"><strong>Windows Home Directory<br/>
+<img alt="Connecting to your Windows Home Directory" height="351" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux2.png" width="339"/></strong></td></tr><tr>
+<td align="center" colspan="2"><strong>Linux Project Space</strong><br/>
+<img alt="Connecting to Linux Project Space" height="351" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux4.png" width="339"/></td>
+</tr>
+</table>
+<p>Click <span class="MenuOutput">Connect</span> and you'll be asked for your SSCC password. If your password contains any special characters (<span class="InputCode">&amp;</span>, <span class="InputCode">@</span>, etc.) type a backslash (<span class="InputCode">\</span>) before that character. You can choose whether to save the password or not.</p>
+<p><img alt="Password request" height="211" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux3.png" width="399"/></p>
+<h2><a id="locs" name="locs"></a>SSCC Disk Space Locations</h2>
+<table align="center" border="1" cellpadding="3">
+<tr>
+<th scope="col">Location</th>
+<th scope="col">Server</th>
+<th scope="col">Share</th>
+<th scope="col">Folder</th>
+<th scope="col">Notes</th>
+</tr>
+<tr>
+<td>Windows Home Directory </td>
+<td class="InputCode">sscwin</td>
+<td class="InputCode">dfsroot</td>
+<td class="InputCode">users/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">U:</span> drive</td>
+</tr>
+<tr>
+<td>Linux Home Directory </td>
+<td class="InputCode">sscunix</td>
+<td class="Parameter">username</td>
+<td class="InputCode"> </td>
+<td><span class="MenuOutput">Z: </span>drive</td>
+</tr>
+<tr>
+<td>Windows Project Directories </td>
+<td class="InputCode">sscwin</td>
+<td class="InputCode">dfsroot</td>
+<td class="InputCode">project or project/<span class="Parameter">directory</span></td>
+<td><span class="MenuOutput">X:</span> drive</td>
+</tr>
+<tr>
+<td>Linux Project Directories </td>
+<td class="InputCode">sscunix</td>
+<td class="InputCode">project</td>
+<td class="InputCode">optional <span class="Parameter">directory</span></td>
+<td><span class="MenuOutput">V:</span> drive</td>
+</tr>
+<tr>
+<td>Windows Temporary Space </td>
+<td class="InputCode">sscwin</td>
+<td class="InputCode">dfsroot</td>
+<td class="InputCode">Temp30days or Temp30days/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">Y:</span> drive. All files  deleted after 30 days </td>
+</tr>
+<tr>
+<td> Linux Temporary Space </td>
+<td class="InputCode">sscunix</td>
+<td class="InputCode">temp30days</td>
+<td class="InputCode">optional <span class="Parameter">username</span></td>
+<td>All files  deleted after 30 days </td>
+</tr>
+<tr>
+<td>Web sites of SSCC member agencies </td>
+<td class="InputCode">sscunix</td>
+<td class="InputCode">web</td>
+<td class="InputCode">optional <span class="Parameter">website</span></td>
+<td> </td>
+</tr>
+</table>
+<p>If you only use one project directory, you can connect to it directly by putting its full name in the <span class="MenuOutput">Folder</span> box. If you use more than one, do not specify a directory and you'll be able to see all of them. If you use temporary space you should be putting your files in a folder with your username, and you can connect to it directly by adding that to the <span class="MenuOutput">Folder</span> box as well.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux4.png, https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux3.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using SSCC Network Disk Space from a Mac</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>This article will show you how to use the SSCC's network disk space from your  Mac.</p>
+<ol>
+<li>If you are not plugged into the wired network in the Sewell Social Science Building, you first need to establish a <a href="https://www.ssc.wisc.edu/sscc/pubs/vpn.htm#MacOS">VPN connection</a> to the SSCC network.</li>
+<li>Open the <span class="MenuOutput">Finder</span>, then click <span class="MenuOutput">Go</span>, <span class="MenuOutput">Connect to Server</span> or <kbd>⌘ command</kbd>+<kbd>K</kbd></li>
+<li>In the <span class="MenuOutput">Server Address</span> box, type the URL of the disk space you'd like to connect to from the <a href="#locs">table below</a>.<br/>
+<img alt="Adding a server" height="227" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfrommac/diskfrommac_1.jpg" width="489"/> </li>
+<li>Click the plus sign (<span class="MenuOutput">+</span>) to save the server in your <span class="MenuOutput">Favorite Servers</span>.</li>
+<li>When prompted, enter your SSCC username and password.  If your password contains any special characters (<span class="InputCode">&amp;</span>, <span class="InputCode">@</span>, etc.) type a backslash (<span class="InputCode">\</span>) before that character. Check <span class="MenuOutput">Remember this password in my keychain</span> and you won't be asked to give it again  in the future.<br/>
+<img alt="Giving your username and password" height="292" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfrommac/diskfrommac_2.jpg" width="428"/></li>
+<li>If you'd like this location to appear in your dock, hold down the alt/option key and drag it to the dock.</li>
+</ol>
+<h2><a id="locs" name="locs"></a>SSCC Disk Space Locations</h2>
+<table align="center" border="1" cellpadding="3">
+<tr>
+<th scope="col" width="111">Location</th>
+<th scope="col" width="529">URL</th>
+<th scope="col" width="118">Notes</th>
+</tr>
+<tr>
+<td>Windows Home  </td>
+<td class="InputCode" nowrap="nowrap">smb://sscwin.ads.ssc.wisc.edu/dfsroot/users/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">U:</span> drive</td>
+</tr>
+<tr>
+<td>Windows Home for Lab Users </td>
+<td class="InputCode" nowrap="nowrap">smb://sscwin.ads.ssc.wisc.edu/dfsroot/labusers/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">U:</span> drive </td>
+</tr>
+<tr>
+<td>Linux Home  </td>
+<td class="InputCode" nowrap="nowrap">smb://sscunix.ssc.wisc.edu/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">Z: </span>drive</td>
+</tr>
+<tr>
+<td>Windows Projects  </td>
+<td class="InputCode" nowrap="nowrap">smb://sscwin.ads.ssc.wisc.edu/dfsroot/project </td>
+<td><span class="MenuOutput">X:</span> drive</td>
+</tr>
+<tr>
+<td>Linux Projects  </td>
+<td class="InputCode" nowrap="nowrap">smb://sscunix.ssc.wisc.edu/project</td>
+<td><span class="MenuOutput">V:</span> drive</td>
+</tr>
+<tr>
+<td>Windows Temp Space </td>
+<td nowrap="nowrap"><span class="InputCode">smb://sscwin.ads.ssc.wisc.edu/dfsroot/temp30days</span></td>
+<td><span class="MenuOutput">Y:</span> drive.
+Files  deleted after 30 days </td>
+</tr>
+<tr>
+<td> Linux Temp Space </td>
+<td class="InputCode" nowrap="nowrap">smb://sscunix.ssc.wisc.edu/temp30days</td>
+<td>Files  deleted after 30 days </td>
+</tr>
+<tr>
+<td>Web sites of SSCC member agencies </td>
+<td class="InputCode" nowrap="nowrap">smb://sscunix.ssc.wisc.edu/web</td>
+<td> </td>
+</tr>
+</table>
+<p>If you only use one project directory, you can connect to it directly by putting its  name after <span class="InputCode">project</span> (e.g. <span class="InputCode">smb://sscwin.ads.ssc.wisc.edu/dfsroot/project/AddHealth</span> or <span class="InputCode">smb://sscunix.ssc.wisc.edu/project/assess)</span>. If you use more than one, do not specify a directory and you'll be able to see all of them. If you use temporary space you should be putting your files in a folder with your username, and you can connect to it directly by adding your username after<span class="InputCode"> temp30days</span>.</p>
+<p>If you use OS X 10.6 or earlier: you must add 'primo' before your username (e.g. primo\jdoe) and use the following server names instead for Windows home and Windows project directories:</p>
+<ul>
+<li> <span class="InputCode">smb://sscdfs2.ssc.wisc.edu:139/users$/<span class="Parameter">username</span></span> for your Windows Home Directory</li>
+<li><span class="InputCode">smb://sscdfs1.ssc.wisc.edu:139/project$ </span>for Windows Project Directories.</li>
+</ul>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/diskfrommac/diskfrommac_1.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/diskfrommac/diskfrommac_2.jpg</img_base_url>
+</kb_document>
+</kb_documents>

@@ -1,0 +1,1257 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Data Wrangling in Stata: Review</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Most data sets need to be changed in some way before they can be analyzed, a process that's come to be known as "data wrangling." Data Wrangling in Stata will introduce you to the key skills and processes of data wrangling, implementing them in Stata.                </p>
+<p>If you're new to Stata, we recommend working through our <a href="https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata1.htm">Introduction to Stata</a> before proceeding. We'll start by very briefly reviewing some basic Stata concepts that should be familiar to you, but if they're not, Introduction to Stata will do a much better job of teaching them to you.</p>
+<p>Data Wrangling in Stata includes the following sections:</p>
+<ul>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Introduction and Review</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata2.htm">Reading in Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata3.htm">First Steps With Your Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata4.htm">Variable Transformations</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata5.htm">Hierarchical Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata6.htm">Restructuring Data Sets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata7.htm">Combining Data Sets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata8.htm">Project Management</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata9.htm">Learning More</a></li>
+</ul>
+<p>The example files for this class can be obtained within Stata by running:</p>
+<p class="InputCode">net get dws, from(https://ssc.wisc.edu/sscc/stata/)</p>
+<p>If this fails on your computer, try <span class="InputCode">net get dws, from(http://ssc.wisc.edu/sscc/stata/)</span>.</p>
+<p>This will put the example files in your current working directory. If you are comfortable doing so, create a folder for the example files, make that Stata's working directory, and run the command above. If not, we'll talk about how to do all this in <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata2.htm">Reading in Data</a> and you can get the example files then. </p>
+<h2>Stata Syntax Fundamentals</h2>
+<p>The key to using Stata effectively is understanding its fundamental syntax, which applies to the vast majority of Stata commands. </p>
+<h3>Stata Commands</h3>
+<p>Stata is a command-based language. A Stata command is usually a verb, like <span class="InputCode">use</span>, <span class="InputCode">generate</span>, <span class="InputCode">replace</span>, <span class="InputCode">summarize</span>, or <span class="InputCode">regress</span>.  Most commands can be abbreviated, the exception being those that can destroy data (thus <span class="InputCode">use</span>, <span class="InputCode">gen</span>, <span class="InputCode">replace</span>, <span class="InputCode">sum</span>, <span class="InputCode">reg</span>). Some commands have subcommands, like <span class="InputCode">label variable</span> and <span class="InputCode">label value</span>. Stata normally has exactly one data set in memory, and commands act on that data set.</p>
+<h3>Subsetting by Variables</h3>
+<p>If a command is followed by a variable list or <em>varlist</em> (i.e. the names of one or more variables) the command will only act on those variables.</p>
+<h3>Subsetting by Observations</h3>
+<p>If a command  is followed by the word <span class="InputCode">if</span> and a logical <em>condition</em>, the command will only act on those observations where the condition is true.</p>
+<h3>Options</h3>
+<p>If a command is followed by a comma, then anything that comes after the comma is interpreted as one or more <em>options</em> that change how the command runs. If an option needs additional information, like a number or the name of a variable, that information goes in parentheses after the option.</p>
+<p>These syntax elements always go in the same order: </p>
+<p class="InputCode">command [<span class="Parameter">varlist</span>] [if <span class="Parameter">condition</span>] [, options]</p>
+<p>The square brackets indicate that most of these elements are optional. The command:</p>
+<p class="InputCode">sum x if y==1</p>
+<p>tells Stata to summarize (i.e. produce summary statistics for) the variable <span class="InputCode">x</span>, but only for those observations where <span class="InputCode">y</span> is 1. </p>
+<p>The command:</p>
+<p class="InputCode">tab y, sum(x)</p>
+<p>tells Stata to tabulate  (i.e. produce a frequency table for) the variable <span class="InputCode">y</span>. The <span class="InputCode">sum()</span> option tells Stata to also calculate basic summary statistics for the variable <span class="InputCode">x</span> for the observations in each cell of the table. Because <span class="InputCode">sum()</span> needs to know what variable you want it to act on, the name of the variable goes in parentheses after the option name.</p>
+<h2>Creating Variables</h2>
+<p>The Stata command to create a variable is <span class="InputCode">generate</span>, usually abbreviated <span class="InputCode">gen</span>. The syntax is:</p>
+<p class="InputCode">gen <span class="Parameter">name </span>= <span class="Parameter">expression</span></p>
+<p>where <span class="Parameter">name</span> is the name of the variable to be created and <span class="Parameter">expression</span> is some mathematical expression you write. The expression will typically include some combination of numbers, variables, and mathematical functions.</p>
+<p>The command to change the value of an existing variable is <span class="InputCode">replace</span>, and has the same syntax:</p>
+<p class="InputCode">replace <span class="Parameter">name </span>= <span class="Parameter">expression</span></p>
+<p>These commands act on all the observations for a given variable (unless you limit it with an <em>if condition</em>) but one at a time: the new value for a given observation depends on the expression as evaluated for the same observation.</p>
+<p>The <span class="InputCode">egen</span> command, short for extended generate, allows you to use a variety of useful functions like <span class="InputCode">mean()</span>, <span class="InputCode">max()</span>, and <span class="InputCode">total()</span>. Most egen functions are aggregate functions: they take multiple values as input and give back a single value as output. Unlike <span class="InputCode">gen</span>, many <span class="InputCode">egen</span> functions work across observations.</p>
+<h2>Do Files</h2>
+<p>A Stata do file is a text file containing Stata commands. You can write them using Stata's built-in do file editor. While typing (or clicking on) commands interactively is a great way to explore your data and check your work, actual data wrangling should <em>always</em> be done using do files.</p>
+<p>Working in Stata involves three separate things: commands, data, and results. A proper do file manages all three. It contains the commands, it loads and saves the data, and it records the results in a log file. </p>
+<p>A good template to follow is:</p>
+<p class="InputCode">capture log close<br/>
+                  log using mylogfile.log, replace<br/>
+<br/>
+                  clear all<br/>
+                use mydata<br/>
+<br/>
+                //do work
+                <br/>
+<br/>
+                save using mynewdata, replace<br/>
+                log close
+                </p>
+<p>Let's discuss each line in turn:</p>
+<p><span class="InputCode">capture log close</span> tells Stata to close any open log files. If your do file crashes before it reaches the <span class="InputCode">log close</span> command at the end, its log will stay open, getting in the way of future attempts to run your do file. The <span class="InputCode">capture</span> prefix means Stata can ignore any errors the command generates. We use it here because running <span class="InputCode">log close</span> when no log file is open generates an error and our goal is for this to work whether a log is open or not.</p>
+<p><span class="InputCode">log using mylogfile.log, replace</span> tells Stata to store all the results generated by this do file (i.e. all the text that shows up in in the Results window) in <span class="InputCode">mylogfile.log</span>. Of course you'll want to give real log files clearer names—our suggestion is that you give log files the same name as the do files that create them, so it's clear which ones go together. Giving the file the extension <span class="InputCode">.log</span> also tells Stata that you want the log to be in plain text format rather than the Stata Markup and Control Language (SMCL), which allows it to be used by other programs. The <span class="InputCode">replace</span> option tells Stata it can replace old versions of the log—without it you can't run the do file more than once.</p>
+<p><span class="InputCode">clear all</span> tells Stata to clear our all any data sets in memory, along with stored results, local macros, programs, etc. so the do file starts with a blank slate every time.</p>
+<p><span class="InputCode">use mydata</span> loads your data set into memory (we'll talk about alternative methods shortly). Having your do file clear whatever is in memory and then load your data fresh from disk every time goes a long way toward giving you reproducibility.</p>
+<p>Now your do file is ready to do work. When it's done, you'll need to do one or two steps to wrap up.</p>
+<p><span class="InputCode">save using mynewdata, replace</span> saves the data set in memory as <span class="InputCode">mynewdata.dta</span>. The <span class="InputCode">replace</span> option again tells Stata it can overwrite old versions of the data set. You only need to do this if your do file makes changes to the data set that you want to save (data wrangling do files will; analysis do files generally will not).</p>
+<p>Note that we're saving the new data set with a new name, so the original data set is not changed. <strong>Never save your output data set over your input data set.</strong> If you do, you can never run your do file again, as the data set it was written to work with is gone.</p>
+<p><span class="InputCode">log close</span> tells Stata to stop recording results in your log file. Without this command, anything you type after running the do file will be recorded in the do file's log.</p>
+<h2>Reproducibility</h2>
+<p>You're probably familiar in abstract with the importance of reproducibility to science: anyone with the proper training and equipment should be able to reproduce your experiment and get the same results. In practice we often use reproducibility as a rough proxy for truthfulness:  if a result can be reproduced it's true, and if it can't be it's not.</p>
+<p>If your experiment consists of analyzing a publicly available data set, then it may seem like allowing people to reproduce it is very simple: just tell people what data you analyzed and how, and they can reproduce what you did. But if you've ever tried to reproduce a published paper you probably discovered it's not that easy. There are many decisions to make in the process of preparing data for analysis and then analyzing it, and those decisions can have a big impact on the results. Even worse, it's very hard to describe those decisions precisely in human languages like English (or we wouldn't bother with programming languages like Stata).</p>
+<p>The solution is to publish your do files and your data as well as your results.</p>
+<p>To eliminate possible sources of confusion and error, your code should contain absolutely everything needed to start with the raw data and end with your results. The ideal—and this is easily achievable—is that someone can click a single button and reproduce your entire research project. (This does not mean it has to all be in a single do file: do files can call other do files, so write a master do file that runs everything else.) </p>
+<p>But this isn't just about helping others or some lofty ideal of how science should work. Reproducible do files make it easy to make changes and corrections. They reduce the probability of error (you'll make mistakes, but when you fix them they'll stay fixed). They help you keep your work organized. They allow you to reuse code when you run into a similar problem in the future. Even if you never shared your work on a project with anyone, you'd still benefit greatly from doing everything in reproducible do files. The goal of reproducibility underlies everything we do in Data Wrangling in Stata.</p>
+<p>Next: <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata2.htm">Reading in Data</a></p>
+<div></div>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Data Wrangling in Stata: Reading in Data</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p class="intro">This is part two of <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Data Wrangling in Stata</a>. </p>
+<p>In this section we'll discuss how to get data sets into Stata.</p>
+<h2>File Systems</h2>
+<p>Most data sets you'll work with will be files that are stored in a file system. You may never have given file systems much thought—most applications these days try to keep you from having to. But research projects with their many interdependent files require that you pay attention to where the files are located and how they're organized.</p>
+<p>A file system consists of folders (also known as directories) that can contain files and/or other folders, all organized in a hierarchy or "tree." A folder that is contained in another folder is also called a <em>subfolder</em>. In Windows the root of the tree is usually a drive letter, like C: or U:. In Linux or on a Mac, it's just called the root directory. <br/>
+</p>
+<p>Stata keeps track of a  <em>working directory</em>, which is shown in the lower left corner of the Stata window. Think of it as your current location in the file system hierarchy. If you try to load a file without specifying its location, Stata will look for it in the working directory. If you save a file without specifying a location, Stata will put it in the working directory. You can change the working directory with the <span class="InputCode">cd</span> (change directory) command:</p>
+<p class="InputCode">cd <span class="Parameter">path</span></p>
+<p>where <span class="Parameter">path</span> should be replaced by the path to the folder you want to make the new working directory.</p>
+<p>A <em>path</em> specifies the location of a file or folder. An <em>absolute path</em> starts at the root and lists all the folders and subfolders needed to get from there to the location of the file or folder. A <em>relative path</em> starts with the working directory and lists all the subfolders needed to get from there to the file or folder.</p>
+<p> An absolute path in Windows typically starts with a drive letter followed by a colon, and then puts a backslash between each folder. For example,</p>
+<p class="InputCode">C:\users\bbadger\dissertation\data\rawdata.dta</p>
+<p>An absolute path in Linux or MacOS starts with a forward slash, representing the root directory, and puts a forward slash between each folder:</p>
+<p class="InputCode">/users/bbadger/dissertation/data/rawdata.dta</p>
+<p>A relative path starts with just the name of a folder, which is assumed to be a subfolder of the working directory. If the working directory is <span class="InputCode">c:\users\bbadger\dissertation</span>, the relative path to the same file is:</p>
+<p class="InputCode">data\rawdata.dta</p>
+<p>The Linux or MacOS equivalent is:</p>
+<p class="InputCode">data/rawdata.dta</p>
+<p>Of course this wouldn't work if the working directory were <span class="InputCode">c:\users\bbadger\</span> instead. However, if you picked up the whole <span class="InputCode">dissertation</span> folder and moved it to the U: drive and then made <span class="InputCode">U:\dissertation</span> the working directory, it would work just fine. What's more, Stata knows what operating system it is running on and will convert backslashes to forward slashes or vice versa as needed, so you could move the folder to a Mac and that relative path would still work. This portability makes relative paths the preferred way to specify paths in your code. (On SSCC's network, if a do file and all  the files it uses are on V: or Z: and the do file uses relative paths, you can run the do file on either our Windows servers or our Linux servers without making any changes to the code at all.)</p>
+<p>In specifying a path, "<span class="InputCode">..</span>" means "go up one level." If the working directory were <span class="InputCode">c:\users\bbadger\dissertation\dofiles</span> then the path to the data file would be:</p>
+<p class="InputCode">..\data\rawdata.dta</p>
+<p>This means "go up one level, from <span class="InputCode">c:\users\bbadger\dissertation\dofiles</span> to <span class="InputCode">c:\users\bbadger\dissertation</span>, then go down into the <span class="InputCode">data</span> folder to find the <span class="InputCode">rawdata.dta</span> file." A single period, "<span class="InputCode">.</span>" represents the working directory. In Linux or MacOS, "<span class="InputCode">~</span>" is short for your home directory.</p>
+<p>In Windows, if you start Stata by double-clicking on a Stata file, the working directory will be set to the location of that file, making this easiest way to get to work in Stata. In Linux, the working directory of your session  at the time you start Stata (also set using the <span class="InputCode">cd</span> command) will become Stata's working directory.</p>
+<p><strong>Exercise: Decide where you want to put a folder containing the example files for this class, then use the <span class="InputCode">cd</span> command to make that the working directory. Create a folder called <span class="InputCode">dws</span> by running <span class="InputCode">mkdir dws</span>. Make that folder the working directory. Then run:</strong></p>
+<p class="InputCode"> net get dws, from(https://ssc.wisc.edu/sscc/stata/)</p>
+<p><strong> to get the files and put them in that folder.</strong></p>
+<p>For example, if I wanted to put the example files in a folder on my desktop, and my user name were bbadger on a Windows computer, I would run:</p>
+<p class="InputCode">cd c:\users\bbadger\desktop<br/>
+                  mkdir dws<br/>
+                  cd dws<br/>
+                  net get dws, from(https://ssc.wisc.edu/sscc/stata/)</p>
+<p>On a Mac I would run:</p>
+<p class="InputCode">cd /users/bbadger/desktop<br/>
+                  mkdir dws<br/>
+                  cd dws<br/>
+                net get dws, from(https://ssc.wisc.edu/sscc/stata/)</p>
+<h2>Stata Data Files</h2>
+<p>Stata has its own format for storing data sets, <span class="InputCode">.dta</span> files. These are highly convenient for Stata users because Stata can use them immediately without any need for interpretation. They can also contain metadata such as value labels. The disadvantage is that non-Stata users may or may not be able to use them, depending on the tools they have available. </p>
+<p>The command to load a Stata data set into memory so Stata can use it is simply:</p>
+<p class="InputCode">use <span class="Parameter">dataset</span></p>
+<p>where <span class="Parameter">dataset</span> should be replaced by the actual name of your data set. The data set specification can  include the path to the file; if it does not Stata will assume it is in the working directory.</p>
+<p>Stata will assume files you try to <span class="InputCode">use</span> are in Stata format. Thus you don't need to put <span class="InputCode">.dta</span> at the end of the file name, but it won't hurt if you do.</p>
+<p>Load one of the example data sets, <span class="InputCode">2000_acs_sample_harm.dta</span> with:</p>
+<p class="InputCode">use 2000_acs_sample_harm.dta</p>
+<p>The above command  will work if the working directory is set to the location of the example files. If it fails, you probably need to use the <span class="InputCode">cd</span> command to change the working directory.</p>
+<p>This data set is a sample from the 2000 American Community Survey, with "harmonized" variables created by IPUMS. We'll do a lot more with the ACS  in the next section.</p>
+<p>Stata can also load data sets directly from the web if you give the <span class="InputCode">use</span> command a URL. For example, the auto data set that comes with Stata is also available by running:</p>
+<p class="InputCode">use http://www.stata-press.com/data/r16/auto.dta</p>
+<p>Stata will not allow you to load a new data set if there is a data set in memory that has unsaved changes. You can first run a <span class="InputCode">clear</span> command to remove the data set from memory, or add the <span class="InputCode">clear</span> option to your <span class="InputCode">use</span> command (<span class="InputCode">use </span><span class="Parameter">dataset</span><span class="InputCode">, clear</span>).</p>
+<p><strong>Exercise: Load the data set <span class="InputCode">2000_acs_sample.dta</span>, which contains the ACS "source" data created by the Census Bureau</strong></p>
+<h2>Delimited Files and Excel Spreadsheets</h2>
+<p>Delimited files and Excel spreadsheets are very popular ways of storing data, but importing them into Stata sometimes requires telling Stata how to interpret them. Since the same issues arise with both kinds of files, we'll address them together.</p>
+<p>A delimited file is a text file that contains data, where a special character (the delimiter) separates one value from the next. The most common form is CSV (comma separated value) files, where the delimited is a comma, but the delimiter could be a space, a tab, or in theory just about any other character or set of characters. Your computer may import CSV files into Excel by default, but CSV files are not really Excel spreadsheets.</p>
+<p>The command to import a delimited file into Stata is <span class="InputCode">import delimited</span>, and the command to import an Excel spreadsheet is <span class="InputCode">import excel</span>. Sometimes it takes some experimentation to find the right options to properly read in a given file. This is a case where Stata's graphical user interface can help you: it includes a preview of what the data set will look like after it is imported as well as the options for reading it. When importing CSV files the preview will be updated as you choose different options, so you can experiment until it looks right (when importing Excel files the preview will only reflect some of the options you've chosen). Then you can actually carry out the import, look over the results to make sure it was successful, and then copy the <span class="InputCode">import</span> command that was generated into your do file.</p>
+<p>The two most common issues you'll have to deal with in importing delimited files or Excel spreadsheets are header rows containing variable names and content that is not actually data. Stata will try to identify whether the file has a header row or not, but may get confused. And it will definitely be confused if it tries to import content that is not data.</p>
+<p>If you have Excel on your computer, open <span class="InputCode">sscc_training.xlsx</span> from the example files, which contains data on the number of graduate students trained by SSCC in FY 2018. Note that row 1 is a title, while row 2 contains the variable names. The data ends with row 14, as the rows after that contain summary statistics and a note.</p>
+<p>Now return to Stata and click <span class="MenuOutput">File</span>, <span class="MenuOutput">Import</span>, <span class="MenuOutput">Text Data</span>. Then click Browse and find <span class="InputCode">sscc_training.csv</span>, a CSV version of the same data. Looking at the preview, you'll see that the presence of the title prevented Stata from recognizing that row 2 contains variable names. It also thinks it should interpret rows 15-19 as data. Note that all the data are in red, indicating that they are strings (text). Because Stata believes the text in row 2 is data, it must make all the variables string variables to store the values in row 2.</p>
+<p>Under <span class="MenuOutput">Use first row for variable names</span>, choose <span class="MenuOutput">Custom</span> and then enter 2, meaning that row 2 contains the variable names. Most of the variables will change from red to black, meaning that Stata now recognizes they are numeric. However, <span class="InputCode">workshoplength</span> remains red because Stata thinks the note in row 17 is data. </p>
+<p>Correct this by clicking on <span class="MenuOutput">Set ranges...</span>. Check the box next to Last and enter 14. This tells Stata to ignore everything after row 14. It will also ignore row 1 since it comes before the row with the variable names. Now all the variables except <span class="InputCode">workshopname</span>  are in black (<span class="InputCode">workshopname</span> really is text and should be in red). Click <span class="MenuOutput">Okay</span> and Stata will successfully import the data.</p>
+<p>The command Stata used will to do so will appear in both the History window and the Results Window. It will look something like:</p>
+<p class="InputCode">import delimited c:\users\bbadger\dws\sscc_training.csv, varnames(2) rowrange(:14)</p>
+<p>The next step would be to copy this command into your do file. Since it uses an absolute path, we'd suggest editing it to:</p>
+<p class="InputCode">import delimited sscc_training.csv, varnames(2) rowrange(:14)</p>
+<p>on the assumption that the data set will be in the working directory when you run the do file.</p>
+<p>Now try importing the Excel file <span class="InputCode">sscc_training.xlsx</span> (<span class="MenuOutput">File</span>, <span class="MenuOutput">Import</span>, <span class="MenuOutput">Excel Spreadsheet</span>). The preview is less useful here, in that it doesn't use color and doesn't always reflect the options you've chosen. Click the button by <span class="MenuOutput">Cell Range</span> to tell Stata to only read lines 2-14, and check <span class="MenuOutput">Import first row as variable names</span>. The preview will look like Stata intends to use row 1 as variable names, but when you click <span class="MenuOutput">Ok</span> and actually import the data it will use row 2 since it's the first row of the range to be read.</p>
+<p>The resulting command will again use an absolute path, so we'd suggest editing it to:</p>
+<p class="InputCode">import excel sscc_training.xlsx, sheet("Sheet1") cellrange(A2:F14) firstrow</p>
+<p>for your do file.</p>
+<p>So what happens if you just import one of these files without setting the proper options for the import? (Try it and see!) You'll still get a usable data set, but it will contain extraneous rows that will need to be dropped, and most of the variables will need to be converted from string to numeric. These problems can be fixed, but it's easier to import the file properly in the first place.</p>
+<p><strong>Exercise: <span class="InputCode">qualtrics_survey.csv</span> is a data file created by the survey program Qualtrics. It was a very simple survey with just four questions (labeled by Qualtrics as Q1, Q17, Q3, and Q4) but Qualtrics includes lots of other information about the respondent and their experience taking the survey that you don't care about. It also puts information about each question in rows 2-3. Import just the data that you care about into Stata. Yes, you'll have to count all the columns you want to ignore. If the import is done properly, Q3 and Q4 will be numeric variables but Q1 will not. Why?</strong></p>
+<p> (For real work it's easier to have Qualtrics give you an SPSS data set, which Stata can read, than to have it give you a CSV file. For one thing, that way you'll get labels for the values of Q3 and Q4.)</p>
+<h2>Fixed Format Files</h2>
+<p>Fixed format files are text files, but unlike CSV files there is no separator between variables. Instead, a data dictionary tells you which variables are stored in which columns. The advantage of fixed format files is that they are smaller (no space is wasted on separators). The disadvantage is that they are completely useless without the corresponding data dictionary. For this reason they've become less popular as data storage has gotten cheaper and we won't cover how to import them, though you will see an example shortly. If you need to read a fixed format file, read the help file for <span class="InputCode">infix</span>. It's not hard, but translating a data dictionary into  specifications for <span class="InputCode">infix</span> can be tedious.</p>
+<h2>Files in the Formats of Other Statistical Software</h2>
+<p>If you've got  an SPSS <span class="InputCode">.sav</span> file or a SAS <span class="InputCode">.sas7bdat</span> file, Stata can import them with <span class="InputCode">import spss</span> or <span class="InputCode">import sas</span>. If you have a file in the format of a different statistical program, Stat/Transfer can probably convert it to Stata format for you. Stat/Transfer is available on Winstat and Linstat or in SSCC's computer labs. It's very easy to use, but there are <a href="https://ssc.wisc.edu/sscc/pubs/4-17.htm">instructions</a> in the SSCC Knowledge Base. </p>
+<p>If you have a choice of file formats, avoid SAS. SAS stores value labels separately from the data they label, which complicates converting them.</p>
+<h2>Do Files Generated by the Data Provider</h2>
+<p>Some data providers, like IPUMS, give you data in text format plus a program you can run to read it into Stata. These generally work, but often challenge new Stata users.</p>
+<p>The  key to using them is to read the instructions. Often these are placed in comments inside the do file itself. For example, here are the first ten lines of such a do file from IPUMS:</p>
+<pre class="InputCode">* NOTE: You need to set the Stata working directory to the path
+* where the data file is located.
+
+set more off
+
+clear
+quietly infix             ///
+  int     year     1-4    ///
+  byte    datanum  5-6    ///
+  double  serial   7-14   ///</pre>
+<p>Later on the do file refers to the data file by name without specifying a location, so you really do need to set the working directory to the location of the data file before running this or it will not work. Other do files may require you to edit the do file and specify the location of the data file or make other changes.</p>
+<p>Then there's what this do file does not include (and this is common): a <span class="InputCode">save</span> command. When the do file finishes running the data will have been imported into Stata, but not saved as a Stata data set. You could just tell Stata to save it, but since you want your workflow to be completely reproducible you should add a <span class="InputCode">save</span> command to the do file they gave you instead.</p>
+<p>IPUMS data files are in fixed format, so this also demonstrates what it looks like to import fixed format data. The last three lines of the code displayed specify that columns 1-4 in the text data contain the <span class="InputCode">year</span> variable, columns 5-6 contain a variable called <span class="InputCode">datanum</span>, and columns 7-14 contain a variable called <span class="InputCode">serial</span>.</p>
+<h2>Saving Files in Stata Format</h2>
+<p>Reading files in Stata format will always be faster than importing other types of files. So unless your data set is extremely small, you don't want to import it over and over again. If your research project starts with a big file in text format, your first do file should probably just import the data,  drop any parts of it you won't actually use (more on that in the next section), and then save the result as a Stata data file. The next do file can then read that Stata data file and  go to work. For example, if you were working with the SSCC training data your complete first do file might be:</p>
+<p class="InputCode">capture log close<br/>
+                log using read.log, replace<br/>
+<br/>
+                clear all<br/>
+                import excel sscc_training.xlsx, sheet("Sheet1") cellrange(A2:F14) firstrow<br/>
+<br/>
+                save sscc_training, replace<br/>
+                log close</p>
+<p>Next: <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata3.htm">First Steps With Your Data</a></p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Data Wrangling in Stata: First Steps With Your Data</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p class="intro">This is part three of <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Data Wrangling in Stata</a>. </p>
+<p>When you start work with a data set, your first goals are to understand the data set and to clean it up. Logically these are two separate processes, but in practice they are intertwined: you can't clean your data set until you understand it at some level, but you won't fully understand it until it's clean. Thus this section will cover both.</p>
+<p>We'll also introduce a lot of data science concepts in this section. This makes for lengthy discussions of tasks that in practice you can complete very quickly. </p>
+<p>In this section, we'll primarily use the file <span class="InputCode">2000_acs_sample.dta</span>. This file started  as the 1% unweighted sample of the 2000 American Community Survey available from <a href="http://ipums.org">IPUMS</a>, but then we took a 1% random sample of the households in that dataset just to make it easier to work with. This data set uses the "source" variables directly from the Census Bureau rather than the "harmonized" variables created by IPUMS, which are much cleaner. For real work you can usually use the harmonized variables, but we're here to learn how to do the kinds of things IPUMS does to create them.</p>
+<p>By using this data set in the examples, you'll also gain some basic understanding of the U.S. population and some experience with a real and important data set, but you would not want to use this particular data file for research.</p>
+<p>Start a do file that loads <span class="InputCode">2000_acs_sample.dta</span>, and make it a proper do file (i.e. it keeps a log, starts with a blank slate, etc.):</p>
+<p class="InputCode">capture log close<br/>
+                  log using first_steps.log, replace<br/>
+<br/>
+                  clear all<br/>
+                  use 2000_acs_sample
+                </p>
+<h2>Read the Documentation</h2>
+<p>When you download a data set, you'll be tempted to open it up and go to work right away. Resist! Time spent reading the data set's documentation (assuming there is some) can save you much more time down the road. Data providers may give you files containing documentation along with the data itself, or it may be on their web site. Feel free to skim what's not relevant to you—this section will give you a better sense of what information is most important.</p>
+<p>Unfortunately, not all data sets have good documentation, or any documentation at all, so figuring out the nature of a data set by looking at the data set itself is a vital skill. You also can't assume that the documentation is completely accurate, so you need to check what it says.</p>
+<p>The ACS has lots of good documentation, but for practice we'll make minimal use of it (just the codebook) and figure out everything we can for ourselves. We'd still do all the same things if we were using the documentation, we'd just understand what we were looking at much more quickly.</p>
+<h2>Identify the Variables</h2>
+<p>The describe command will give you basic but useful information about your data set:</p>
+<p class="InputCode">describe</p>
+<p>The primary goal of running <span class="InputCode">describe</span> is to see what variables you have and what they're called. The variable labels will help you understand what they mean. But it will frequently let you start a "to do list" of issues you need to address before analyzing the data. Here are some issues brought out by running <span class="InputCode">describe</span> on this data set:</p>
+<ul>
+<li>The data set seems to have an excess of identifiers: <span class="InputCode">serial</span> and <span class="InputCode">us2000c_serialno</span> both appear to identify households groups, and <span class="InputCode">pernum</span> and <span class="InputCode">us2000c_pnum</span> both appear to identify individual persons.</li>
+<li>Since you're using a single data set from a single year, you don't need <span class="InputCode">year</span> and <span class="InputCode">datanum</span> to tell you where each observation come from.</li>
+<li>For the same reason, you also don't need <span class="InputCode">us2000c_</span> (US 2000 Census) in your variable names to tell you where those variables come from.</li>
+<li>You have both household weight (<span class="InputCode">hhwt</span>) and person weight (<span class="InputCode">pwt</span>) variables even though this is supposed to be an unweighted sample.</li>
+<li><span class="InputCode">serialno</span>, <span class="InputCode">pnum</span>, and all of the <span class="InputCode">us2000c_</span> variables are stored as strings of various lengths, even though some of them are clearly intended to be numeric variables. </li>
+</ul>
+<p>Another issue to watch out for is the storage type of identifier variables. The default variable type, <span class="InputCode">float</span>,  has seven digits of accuracy. Identifiers that are more than seven digits long must be stored as <span class="InputCode">double</span> (numbers with 16 digits of accuracy), as <span class="InputCode">long</span> (integers with up to 10 digits), or as strings (up to a billion characters, but stored as text). In this data set <span class="InputCode">serial</span> is stored as <span class="InputCode">double</span> and <span class="InputCode">us2000c_serialno</span> and <span class="InputCode">us2000c_pnum</span> as <span class="InputCode">string</span>, so those are fine. The <span class="InputCode">pernum</span> variable, on the other hand, is an <span class="InputCode">int</span>, so it can only have five digits. (This is our first hint that <span class="InputCode">pernum</span> by itself is not a unique identifier.)</p>
+<p>Note which variables have value labels: with those variables, what you see in output will  be the labels and not the underlying values. You need to use the values in your code. You can see what all the underlying values are with <span class="InputCode">label list</span>. This data set makes the interesting choice of applying value labels to <span class="InputCode">year</span> which are identical to the values themselves. (Most likely there are some circumstances where they apply a different label.) You can also list a single label using the label names you get from <span class="InputCode">describe</span>:</p>
+<p class="InputCode">label list gq_lbl</p>
+<p>This is a more typical set of value labels. Looking at this definition tells you that if you wanted to limit your analysis to "Households under 1970 definition" the code for that restriction would be <span class="InputCode">if gq==1</span>.</p>
+<p><strong>Exercise: Carry out the same steps with file <span class="InputCode">2000_acs_sample_harm.dta</span> (create a do file that loads the data, then runs <span class="InputCode">describe</span> and <span class="InputCode">label list</span>.) This is a similar sample but with the IPUMS "harmonized" variables. What issues did IPUMS resolve? What issues remain? How does seeing the definition of the <span class="InputCode">educ_lbl</span> label change how you might use the <span class="InputCode">educ</span> variable?</strong></p>
+<h2>Look at the Data</h2>
+<p>Unless your data set is very small, you can't possibly read all of it. But just looking at a few rows may allow you to immediately spot patterns that would be difficult to detect using code. In this case, opening the data browser (type <span class="InputCode">browse</span> or click the button that looks like a magnifying glass over a spreadsheet) will show the following:</p>
+<ul>
+<li><span class="InputCode">year</span> and <span class="InputCode">datanum</span> seem to always have the same value, suggesting that we don't need them.</li>
+<li><span class="InputCode">hhwt</span> and <span class="InputCode">perwt</span> (household and person weights) seem to always be 100.00, which makes sense given that this is supposed to be an unweighted sample.</li>
+<li><span class="InputCode">pernum</span> and <span class="InputCode">us2000c_pnum</span> appear to be identical other than <span class="InputCode">us2000c_pnum</span> being a string and having leading zeros.</li>
+<li><span class="InputCode">pernum</span> seems to count observations, starting over from 1 every time <span class="InputCode">serial</span> changes.</li>
+<li>All of the string variables contain mostly  numbers.</li>
+<li><span class="InputCode">us2000c_sex</span>, <span class="InputCode">us2000c_hispan</span>, <span class="InputCode">us2000c_race1</span>, <span class="InputCode">and us2000c_marstat</span> are clearly describing categories, but even though they are string variables they only contain numbers. We will have to refer to the codebook to find out what the numbers mean. (This also applies to <span class="InputCode">us2000c_educ</span>, it's just not as obvious at this point.)</li>
+<li><span class="InputCode">us2000c_inctot</span> sometimes has "BBBBBBB". This is a code used by the Census to indicate  missing values.</li>
+</ul>
+<p>You can't be sure that these patterns hold the for entire data set until you check, but now you know some things to check for. For example, you can run <span class="InputCode">tab year</span> and <span class="InputCode">tab datanum</span> to confirm they always contain the same value.</p>
+<p><strong>Exercise: Open <span class="InputCode">2000_acs_sample_harm.dta</span> in the data browser. What issues do you notice? Be sure to look closely at <span class="InputCode">inctot</span>. </strong></p>
+<h2>Find the Identifiers  and Figure Out the Data Structure</h2>
+<p>Imagine you wanted to call someone's attention to a particular value in this data set. How could you tell them exactly which row and column to look at? </p>
+<h3>Observation Numbers</h3>
+<p>One way to tell them which row to look at is to simply tell them the observation number. Observation numbers are tracked by the <em>system variable</em> <span class="InputCode">_n</span>, which you can use in commands as if it were any other variable. If you are using by the variable <span class="InputCode">_n</span> will take that into account, meaning it will start over from 1 in every by group. We'll use that heavily later.</p>
+<p>The trouble with observation numbers is that many common tasks change them: sorting, for example, or dropping or adding observations. Thus it's far better to use one or more identifier variables. If the data set does not contain identifier variables, you can create one based on the current observation numbers with <span class="InputCode">gen id = _n</span>. The variable <span class="InputCode">id</span> will not change even if the observation numbers do.</p>
+<p></p>
+<h3>Identifier Variables</h3>
+<p><em>Identifier variables</em>, also known as <em>primary keys</em> or <em>indexes</em>, are variables whose purpose is to identify observations. They normally do not contain information. If you had a data set where each row was a UW-Madison student, their UW-Madison ID number would be a <em>unique identifier</em>: specifying a UW-Madison ID number allows you to identify a single row.</p>
+<p>Now imagine a data set describing UW-Madison students, but there is one row for each class the student is currently taking, with each class being identified by a number. In order to identify a specific row you now need to specify both a UW-Madison ID number and a class number. The combination of ID number and class number would be a <em>compound identifier</em> for the data set, and the combination of the two is a unique identifier.</p>
+<p>Finding the identifier variables in a data set will help you understand the structure of the data. If student ID is a unique identifier, you know you have one row per student and an observation represents a student. If student ID and class number are a unique identifier, you know you have one row per student per class, and each observation represents a class/student combination. In practice you might refer to an observation as a class, as long as everyone understands that two students taking the same class will have two rows, not one.</p>
+<p>The <span class="InputCode">duplicates report</span> command can easily identify whether a variable or set of variables is a unique identifier: if it is, there will  be no duplicates. The ACS data has a variable called <span class="InputCode">pernum</span> (Person number in sample unit) is it a unique identifier?</p>
+<p class="InputCode">duplicates report pernum<br/>
+</p>
+<p>Clearly not: only one observation can be uniquely identified using <span class="InputCode">pernum</span>.  Running <span class="InputCode">tab</span> on an identifier wouldn't normally be useful because there will be too many values, but the large number of duplicates suggests it might be fruitful here:</p>
+<p class="InputCode">tab pernum<br/>
+</p>
+<p>Seeing the values, it's clear what this variable is: the person's identifier within their household. So <span class="InputCode">pernum</span> is not an unique identifier by itself, but it is part of a compound identifier that is. Try:</p>
+<p class="InputCode">duplicates report serial pernum</p>
+<p>There are no duplicates so we now know that the <span class="InputCode">serial</span> and <span class="InputCode">pernum</span> are a compound identifier for this data set. The <span class="InputCode">serial</span> variable identifies a household and <span class="InputCode">pernum</span> identifies a person with in that household. We also know that each observation represents a person, and the people are grouped into households.</p>
+<h3>Column Identifiers</h3>
+<p>In Stata, columns are  identified by variable names.  Variable names are always unique (Stata won't allow you to create two variables with the same name) but they often have multiple parts. In this data set, some of the variable names are in the form <span class="Parameter">source_variable</span>, like <span class="InputCode">us2000c_sex</span> and <span class="InputCode">us2000c_age</span>. It can be very useful to think of such variable names as a compound identifier with two separate parts (e.g. <span class="InputCode">source</span> and <span class="InputCode">variable</span>). It's even possible to convert row identifiers to part of a compound column identifier and vice versa—we'll learn how later.</p>
+<h3>Using Identifiers</h3>
+<p>Stata does not give identifiers any special status, so you use them like any other variable. If you want to see observation 5, run:</p>
+<p class="InputCode">list if _n==5</p>
+<p> If you want to see person 1 in the household where <span class="InputCode">serial</span> is 242, run:</p>
+<p class="InputCode">list if pernum==1 &amp; serial==242</p>
+<p>To identify a specific value in the data set you specify both the row identifier and column identifier (i.e. variable name):</p>
+<p class="InputCode">list us2000c_age if pernum==1 &amp; serial==242</p>
+<p>Another way to identify the value of a specific variable for a specific observation number is to put the observation number in square brackets after the variable name.</p>
+<p class="InputCode">display us2000c_age[5] </p>
+<p>This square bracket syntax can be used in mathematical expressions, which is very useful.</p>
+<p>Note: while the <span class="InputCode">list</span> command lists your data, the <span class="InputCode">display</span> command prints out a single thing. This can be the result of evaluating a mathematical expression (<span class="InputCode">display 2+2</span>) or a message (<span class="InputCode">display "Completed discussion of identifiers"</span>), both of which are quite useful.</p>
+<p><strong>Exercise: open the data set <span class="InputCode">atus.dta</span>. This is a selection from the American Time Use Survey, which measures how much time people spend on various activities. Find the identifiers in this data set. What does an observation represent? What was the first activity recorded for person <span class="InputCode">20170101170012</span>?</strong></p>
+<p></p>
+<h2>Get Rid of Data  You Won't Use</h2>
+<p>Understanding data takes time. Even skipping past data you don't care about to get to what you do care about takes  time. So if you won't use parts of a data set, get rid of those parts sooner rather than later. Doing so will also reduce the amount of memory needed to analyze your data and the amount of disk space needed to store it, and make anything you do with it run that much faster. If you change your mind about what you need, you can always change your do file later.</p>
+<p>The <span class="InputCode">drop</span> command can drop either variables or observations, depending on whether it is followed by a variable list or an if condition. To drop <span class="InputCode">year</span> and <span class="InputCode">datanum</span>, run:</p>
+<p class="InputCode">drop year datanum</p>
+<p>Let's declare that you don't want to include individuals living in "group quarters" (prisons, for example) in your analysis. Drop them with:</p>
+<p class="InputCode">drop if gq==3 | gq==4</p>
+<p>The <span class="InputCode">keep </span>command works in the same way, but in the opposite sense: running <span class="InputCode">keep year datanum</span> would drop all the variables except <span class="InputCode">year</span> and <span class="InputCode">datanum</span>. Running <span class="InputCode">keep if gq==3 | gq==4</span> would drop everyone except those in group quarters. If you start with a data set that contains thousands of variables but only intend to use a dozen (very common), a <span class="InputCode">keep</span> command that cuts the data set down to  just that dozen is an excellent starting point. On the other hand, if those variables have names that are codes rather than anything meaningful (also very typical in large data sets), consider renaming them first so you only have to use the codes once.</p>
+<h2>Change Variable Names</h2>
+<p>A good variable name tells you clearly what the variable contains. Good variable names make code easier to understand, easier to debug, and easier to write. If you have to choose between making a variable name short and making it clear, go with clear.</p>
+<p>Variable names cannot contains spaces, but many variable names should contain multiple words. There are two competing conventions for making muti-word variable names readable. <em>Camel case</em> capitalizes the first letter of each word after the first: <span class="InputCode">householdIncome</span>, <span class="InputCode">mothersEducation</span>, etc. <em>Snake case</em> uses underscores instead of spaces: <span class="InputCode">household_income</span>, <span class="InputCode">mothers_education</span>, etc. Which one you use is less important than that you choose one and stick with it: don't force yourself to remember whether you called your variable <span class="InputCode">householdIncome</span> or <span class="InputCode">household_income</span> this time!</p>
+<p>When you use abbreviations use the same abbreviation every time, even across projects. This data set abbreviates education as <span class="InputCode">educ</span>, and there's nothing wrong with that, but in our experience <span class="InputCode">edu</span> is more common—and that's sufficient reason to change it.</p>
+<p>The syntax to change a single variable name is just <span class="InputCode">rename </span><span class="Parameter">oldname newname. </span>Change <span class="InputCode">educ</span> to <span class="InputCode">edu</span> with:</p>
+<p class="InputCode">rename educ edu</p>
+<p></p>
+<p>The <span class="InputCode">rename</span> command can rename groups of variables as well. We're not planning to combine our example data with others, so we don't need the <span class="InputCode">us2000c_</span> at the beginning of many of the variable names to tell us which data set the variable came from. You can remove it with:</p>
+<p class="InputCode">rename us2000c_* *</p>
+<p>This can be read as "rename all the variables that match the pattern <span class="InputCode">us2000c_</span> followed by <em>something</em> to just the <em>something</em>." Type <span class="InputCode">help rename group</span> to see the various ways you can rename groups of variables.</p>
+<p>Many of these variable names are easy to remember once you know what they are but cryptic on a first reading. We'll make them clearer in the exercise.</p>
+<p><strong>Exercise: rename <span class="InputCode">race1 </span>to<span class="InputCode"> race</span>, <span class="InputCode">serial</span> to <span class="InputCode">household</span>, <span class="InputCode">pernum</span> to <span class="InputCode">person</span>, <span class="InputCode">hispan</span> to <span class="InputCode">hispanic</span>, <span class="InputCode">marstat</span> to <span class="InputCode">maritalStatus</span>, and <span class="InputCode">inctot</span> to <span class="InputCode">income</span>.</strong></p>
+<p><em>The data set <span class="InputCode">first_steps1.dta</span> contains the data as it should be when you complete this exercise, including all the other things we've done with it thus far. If you haven't followed all the steps described, you can catch up now by loading that data set.</em></p>
+<h2>Convert String Variables that Contain Numbers to Numeric Variables</h2>
+<p>Unfortunately, it's very common for numeric variables to be imported into Stata as strings. Before you can do much work with them they need to be converted into numeric variables.</p>
+<p>The <span class="InputCode">destring</span> command is the easy way to convert strings to numbers. Just give it a varlist to act on, and the <span class="InputCode">replace</span> option to tell it it can replace the existing string variables with the new numeric versions. You have some of these in the ACS sample; destring the ones you're interested in with:</p>
+<p class="InputCode">destring sex age hispanic race maritalStatus edu income, replace</p>
+<p>Before carrying out a conversion, Stata checks that all the string variable's values can be successfully converted to numbers. In the case of <span class="InputCode">income</span>, Stata found that some values could not be. Technically this is not an error (your do file did not crash) but income was not  converted. To explore why, use the <span class="InputCode">gen()</span> option to create a new variable containing the numeric values, and the <span class="InputCode">force</span> option to tell Stata to proceed with the conversion despite the values that cannot be converted.</p>
+<p class="InputCode">destring income, gen(income2) force</p>
+<p>The <span class="InputCode">force</span> option is so named because you're forcing Stata to do something it doesn't think is a good idea. This should make you nervous! Only use a <span class="InputCode">force</span> option if you're very confident that you  understand both why Stata thinks what you're doing might be a bad idea and why it's okay in your case.</p>
+<p>With both <span class="InputCode">income</span> (the original string variable) and <span class="InputCode">income2</span> (the new numeric variable) available to you, you can compare them and figure out what's going on. Observations with values  of <span class="InputCode">income</span> that could not be converted have missing values for <span class="InputCode">income2</span>, so get a list of the values of <span class="InputCode">income</span> that could not be converted with <span class="InputCode">tab</span>:</p>
+<p class="InputCode">tab income if income2==.</p>
+<p>There's only one value that couldn't be converted, "BBBBBBB". This is a code for missing, so it should be converted to a missing value: <span class="InputCode">destring</span> did exactly what you want it to do. Now that you know that, you can go back and just convert <span class="InputCode">income</span> using the <span class="InputCode">force</span> option rather than creating a separate <span class="InputCode">income2</span> variable. But you want to keep a record of how you know that that's okay to do.</p>
+<p><strong>Exercise: Go back in your do file and comment out (i.e. turn into comments) both the <span class="InputCode">destring</span> command that created <span class="InputCode">income2</span> and the <span class="InputCode">tab</span> command that checked it against <span class="InputCode">income</span>. Add a comment that explains what you found and why that means you don't have to worry about the values that could not be converted. Then add a <span class="InputCode">destring</span> command that converts <span class="InputCode">income</span> to a numeric variable using the <span class="InputCode">replace</span> and <span class="InputCode">force</span> options. Rerun your do file so that the data set no longer contains <span class="InputCode">income2</span> and <span class="InputCode">income</span> is numeric.</strong></p>
+<p>There's also a function that converts strings to numbers, called <span class="InputCode">real()</span> (as in real numbers). You could have created the income2 variable by running <span class="InputCode">gen income2=real(income)</span>. The advantage of <span class="InputCode">real()</span> is that you can use it as part of an expression.</p>
+<p>The <span class="InputCode">assert</span> command verifies that a condition you give it is true for all observations, making it very useful for checking all sorts of things. We've been reasonably confident that <span class="InputCode">person</span> and <span class="InputCode">pnum</span> are exactly the same (other than <span class="InputCode">pnum</span> being a string) for a long time, but now you can find out for sure:</p>
+<p class="InputCode">assert real(pnum)==person</p>
+<p>This command asserts that <span class="InputCode">pnum</span>, once converted to a number, is always the same as <span class="InputCode">person</span>. Stata does not complain, which means it agrees. If the assertion were not true, Stata would tell you how often the assertion is false—and then crash your do file. This is a good thing, because if you write a do file that assumes that some condition is true, it's far better for that do file to crash and tell you your assumption is wrong than for it to keep running and give you incorrect results.</p>
+<p>Now that you know you don't need <span class="InputCode">pnum</span>, drop it:</p>
+<p class="InputCode">drop pnum</p>
+<h2>Identify the Type of Each Variable</h2>
+<p>The most common variable types are <em>continuous</em> variables, <em>categorical</em> variables, <em>string</em> variables, and <em>identifier</em> variables. Categorical variables can be further divided into <em>unordered</em> categorical variables, <em>ordered</em> categorical variables, and <em>indicator</em> variables. (There are other variable types, such as date/time variables, but we'll focus on these for now.) Often it's obvious what type a variable is, but it's worth taking a moment to consider each variable and make sure you know its type.</p>
+<p><em>Continuous</em> variables can, in principle, take on an infinite number of values. They can also be changed by very small amounts (i.e. they're differentiable). In practice, all continuous variables must be rounded, as part of the data collection process or just  because computers do not have infinite precision. As long as the underlying quantity is continuous, it doesn't matter how granular the available measurements of that quantity are. You may have a data set where the income variable is measured in thousands of dollars and all the values are integers, but it's still a continuous variable.</p>
+<p>Continuous variables are sometimes referred to a <em>quantitative</em> variables, emphasizing that the numbers they contain actually correspond to some quantity in the real world. Thus it makes sense to do math with them.</p>
+<p><em>Categorical</em> variables, also called <em>factor</em> variables, take on a finite set of values, often called <em>levels</em>. The levels are typically stored as numbers (1=white, 2=black, 3=hispanic, for example), but it's important to remember that the numbers don't actually represent quantities. Categorical variables can also be stored as strings.</p>
+<p>With <em>unordered</em> categorical variables, the numbers assigned are completely arbitrary. Nothing would change if you assigned different numbers to each level (1=black, 2=hispanic, 3=white). Thus it makes no sense to do any math with them, like finding the mean.</p>
+<p>With <em>ordered</em> categorical variables, the levels have some natural order. Likert scales are examples of ordered categorical variables (e.g. 1=Very Dissatisfied, 2=Dissatisfied, 3=Neither Satisfied nor Dissatisfied, 4=Satisfied, 5=Very Satisfied). The numbers assigned to the levels should reflect their ordering, but beyond that they are still arbitrary: you could add 5 to all of them, or multiply them all by 2, and nothing would change. You will see people report means for ordered categorical variables and do other math with them, but you should be aware that doing so imposes assumptions that may or may not be true. Moving one person from Satisfied to Very Satisfied and moving one person from Very Dissatisfied to Dissatisfied have exactly the same effect on the mean, but are you really willing to assume that they're equivalent changes?</p>
+<p><em>Indicator </em> variables, also called<em> binary</em> variables or <em>dummy</em> variables, are just categorical variables with two levels. In principle they can be ordered or unordered but with only two levels it rarely matters. Often they answer the question "Is some condition true for this observation?" Occasionally indicator variables are referred to as <em>flags</em>, and more commonly <em>flagging</em> observations where a condition is true means to create an indicator variable for that condition.</p>
+<p><em>String</em> variables contain text. Sometimes the text is just labels for categories, and they can be treated like categorical variables. Other times they contain actual information.</p>
+<p><em>Identifier</em> variables allow you to find observations rather than containing information about them, though some compound identifiers blur the line between identifier variables and categorical variables. They may look like continuous variables because they have so many unique values, but you'll probably find the code you use for categorical variables to be more useful with them.</p>
+<p> A useful tool for identifying variable types is the codebook command:</p>
+<p class="InputCode">codebook</p>
+<p>This produces a lot of output (there's a reason we covered dropping unneeded variables first) and you can skim much of it. </p>
+<p>Stata will try to guess the variable type. For continuous variables, it will give you the mean, standard deviation, and percentiles. For categorical variables (including strings), it will give frequencies. For string variables it thinks are not categorical, it will give you some examples.</p>
+<p>Some things to note in the <span class="InputCode">codebook</span> output for this data set:</p>
+<ul>
+<li>It gave summary statistics for <span class="InputCode">household</span> (the household identifier formerly known as <span class="InputCode">serial</span>) and <span class="InputCode">person</span> (the person identifier formerly known as pernum) because it guessed they were continuous variables. This is of course nonsense and can be ignored. The <span class="InputCode">codebook</span> command gives useful output, but not all <span class="InputCode">codebook</span> output is useful.</li>
+<li><span class="InputCode">hhwt</span> and <span class="InputCode">perwt</span> really are always 100, so now you know for sure you can drop them.</li>
+<li><span class="InputCode">gq</span> is now down to two values, making it an indicator variable. But we don't care about the distinction between the 1970 and 1990 definitions of household so we'll just drop it.</li>
+<li><span class="InputCode">sex</span>  is an indicator variable coded 1 and 2. We'll have to look  up what those numbers mean.</li>
+<li><span class="InputCode">age</span> has 92 unique values and a range that looks like actual years, so we can be confident it's a continuous variable.</li>
+<li>You might think <span class="InputCode">hispanic</span> would be an indicator variable, but with 22 unique values it must be a categorical variable.</li>
+<li><span class="InputCode">race</span> and <span class="InputCode">maritalStatus</span> are categorical. Again, we'll have to look up what the numbers mean.</li>
+<li>With 17 unique values and examples that are plausible numbers of years in school, <span class="InputCode">edu</span> could be a quantitative variable. But the mean and median are low. We'll consider this variable more closely.</li>
+<li>With 2,614 unique values and values that look like plausible incomes we can be confident <span class="InputCode">income</span> is a continuous variable.</li>
+</ul>
+<p>Add the following to your do file:</p>
+<p class="InputCode">drop hhwt perwt gq</p>
+<p><strong>Exercise: load <span class="InputCode">atus.dta</span> and run <span class="InputCode">codebook</span>. Identify the variable type of <span class="InputCode">famincome</span>, <span class="InputCode">hispan</span>, <span class="InputCode">asian</span>, and several other variables. How are <span class="InputCode">hispan</span> and <span class="InputCode">asian</span> different from each other?</strong></p>
+<h2>Recode Indicator Variables</h2>
+<p>It is highly convenient to frame indicator variables as telling you if something is true or not, with "true" coded as 1 and "false" as zero. In this data set the variable sex has the levels 1 and 2. Which are the males and which are the females? We'll have to refer to the codebook to find out.  Now consider a variable called "female" coded with 1 and 0. To anyone familiar with the convention that 1 means true and 0 means false, no further documentation is required. This also allows you to write intuitive code like <span class="InputCode">if female</span> and <span class="InputCode">if !female</span> (but only if there are no missing values).</p>
+<p>IPUMS provided a codebook file for this dataset, <span class="InputCode">2000_acs_codebook.txt</span> (note that this is not the same as the output of Stata's <span class="InputCode">codebook</span> command). On line 112, you'll see the coding for <span class="InputCode">sex</span>: 1 is Male and 2 is Female. Create a variable called <span class="InputCode">female</span> instead with:</p>
+<p class="InputCode">gen female = (sex==2)</p>
+<p>Recall that if you set a variable equal to a condition, it will get a 1 if the condition is true and a 0 if the condition is false.</p>
+<p>This command relies on the fact that <span class="InputCode">sex</span> is never missing in this data set (as you saw by running <span class="InputCode">codebook</span>). If you had missing values for <span class="InputCode">sex</span>, you'd make sure <span class="InputCode">female</span> was also missing for those observations with:</p>
+<p class="InputCode">gen female = (sex==2) if sex&lt;.</p>
+<p>It also relies on the fact that <span class="InputCode">sex</span> is binary in this data set: anyone who is not female is male. That is likely to become less common over time.</p>
+<p>A good way to check your work for these kinds of tasks is to run a crosstab of the new and old variables. All the observations should be in table cells that make sense (e.g. 1 for <span class="InputCode">sex</span> and 0 for <span class="InputCode">female</span>) and none should be in the table cells that don't make sense (e.g. 2 for <span class="InputCode">sex</span> and 0 for <span class="InputCode">female</span>). Be sure to include missing values:</p>
+<p class="InputCode">tab sex female, miss</p>
+<p><strong>Exercise: Create an indicator variable for "this person is hispanic." Use the IPUMS codebook to see which values of the existing <span class="InputCode">hispanic</span> variable identify someone as hispanic. Call the new variable <span class="InputCode">hisp</span> at first. Check your work by running a crosstab of <span class="InputCode">hisp</span> and <span class="InputCode">hispanic</span>, then drop <span class="InputCode">hispanic</span> and rename <span class="InputCode">hisp</span> to <span class="InputCode">hispanic</span>. Also drop <span class="InputCode">sex</span>.</strong></p>
+<h2>Set Labels</h2>
+<p>Labels make a data set easier to use and understand—you've seen the benefits of variable labels as you've worked to understand this data set. Value labels can be even more useful by telling you what categorical variables mean: right now variables like <span class="InputCode">race</span> are useless without referring to the codebook.</p>
+<p>Labels are set using the <span class="InputCode">label</span> command. The <span class="InputCode">label</span> command has many subcommands, like the <span class="InputCode">label list</span> you've used already. </p>
+<h3>Set Variable Labels</h3>
+<p>You can set variables labels with the <span class="InputCode">label variable</span> command: just specify the variable to be labeled and the text to label it with.</p>
+<p>Variables like <span class="InputCode">female</span> are arguably clear enough that they don't need labels, but set one for it anyway just for practice:</p>
+<p class="InputCode">label variable female "Person is female"</p>
+<p><strong>Exercise: Set a similar variable label for <span class="InputCode">hispanic</span>.</strong></p>
+<h3>Set Value Labels</h3>
+<p>Value labels  are a mapping from a set of numbers, the levels of your categorical variables, to a set of text labels that tell you what each level means. The first step in using them is to define the mapping using <span class="InputCode">label define</span>:</p>
+<p class="InputCode">label define maritalStatusLabel ///<br/>
+<span class="indent3">1 "Now married" ///</span><br/>
+<span class="indent3">2 "Widowed" ///</span><br/>
+<span class="indent3">3 "Divorced" ///</span><br/>
+<span class="indent3">4 "Separated" ///</span><br/>
+<span class="indent3">5 "Never married"</span></p>
+<p>These meanings come from the codebook file, line 246. Note how the use of multiple lines and indentation makes this command  easier to read.</p>
+<p>The next step is to label the values of one or more variables with the mapping defined. This is done with the label values command:</p>
+<p class="InputCode">label values maritalStatus maritalStatausLabel</p>
+<p>If you wanted to apply this mapping to more than one variable you'd just list them all before ending with the name of the label.</p>
+<p>See the results by running:</p>
+<p class="InputCode">tab maritalStatus</p>
+<p>If a mapping will only apply to one variable, it may be convenient to give the mapping the same name as the variable. This makes for a <span class="InputCode">label values</span> command that will look confusing to new Stata users, which is why we don't do it here (e.g. <span class="InputCode">label values maritalStatus maritalStatus</span>), but makes it very easy to remember the name of the label mapping for each variable.</p>
+<p>You also need to remember the underlying values so you can use them in your code. In most cases this will come naturally as you work with the data. But if you don't mind somewhat uglier output you can put the numbers directly in the labels (e.g. <span class="InputCode">"1: Now married"</span> or <span class="InputCode">"Now married (1)"</span>).</p>
+<p>In the process of setting value labels you'll discover something important about <span class="InputCode">edu</span>: it is a categorical variable, not a quantitative variable meaning "years of school." Of course reading the documentation before getting started would have told you this long ago.</p>
+<p><strong>Exercise: Set value labels for <span class="InputCode">race</span>, using the codebook to find the meaning of each level. You may want to shorten  the descriptions. Hint: 5 really means "They checked the box for American Indian or Alaska Native, but they didn't specify a tribe so we don't know if they're an American Indian or an Alaska Native." Optional: set value labels for <span class="InputCode">edu</span>.</strong></p>
+<p><em>The data set first_steps2.dta contains the data as it should be when you complete this exercise, including value labels for <span class="InputCode">edu</span> and all the other things we've done with it thus far. If you haven't followed all the steps described, you can catch up now by loading that data set.</em></p>
+<h2>Examine Variable Distributions</h2>
+<p>Understanding the distributions of your variables is important for both data cleaning and analysis.</p>
+<h3>Continuous Variables </h3>
+<p>For a continuous variable, like income,  <span class="InputCode">summarize</span> (<span class="InputCode">sum</span>) is the place to start for understanding its distribution:</p>
+<p class="InputCode">sum income</p>
+<p>Things to note:</p>
+<ul>
+<li>These statistics were calculated across 21,266 observations, while the data set has 27,410. This reflects 6,144 missing values (the former "BBBBBBB" codes).</li>
+<li>The mean is $27,724.1, which seems low, but keep in mind it includes children, retirees, people who are unemployed, etc.</li>
+<li>The minimum value is -10000. Negative values of income need further thought.</li>
+</ul>
+<p>This  leads to further questions:</p>
+<p>Who has a missing value for income?</p>
+<p class="InputCode">sum age if income==.<br/>
+                sum income if age&lt;15                </p>
+<p>This tells us income is only missing for people under the age of 15, and is always missing for them. </p>
+<p>Who has an income less than 0? Run:</p>
+<p class="InputCode">sum age if income&lt;0<br/>
+                tab edu if income&lt;0</p>
+<p>People with incomes less than zero are all over the age and education distribution, making it hard to understand it might mean. Also note that it's quite rare:</p>
+<p class="InputCode">count if income&lt;0</p>
+<p>For analysis purposes, an important question is whether the variable is normally distributed, or even close to it. Add the detail option for some hints:</p>
+<p class="InputCode">sum income, detail</p>
+<p>With a mean that's much higher than the median (50th percentile) and a skewness of 4.95, <span class="InputCode">income</span> is clearly not normally distributed. You'll find that almost all income distributions are strongly right-skewed.</p>
+<p>A histogram is a great tool for understanding the distribution of continuous variables. Use the <span class="InputCode">freq</span> option to have the y-axis labeled in terms of frequency rather than density:</p>
+<p class="InputCode">hist income, freq</p>
+<p>Unfortunately, the outliers drive the scale, making it hard to say much about the distribution of the bulk of the observations. Consider looking at a subset of the incomes:</p>
+<p class="InputCode">hist income if income&lt;100000, freq</p>
+<p><strong>Exercise: Examine the distribution of <span class="InputCode">age</span>. How close is it to normally distributed? Do you see any concerns?  Since <span class="InputCode">age</span> is an integer, run another histogram with the <span class="InputCode">discrete</span> option, which gives you one bin for each value. Any concerns now?</strong></p>
+<p>The <span class="InputCode">age</span> variable has been top-coded, meaning that anyone older than 93  has been assigned a 93. This was done to protect the privacy of these individuals since there are not very many of them. </p>
+<h3>Categorical Variables</h3>
+<p>For a categorical variable, like <span class="InputCode">edu</span>, <span class="InputCode">tabulate</span> (<span class="InputCode">tab</span>) is the place to start for understanding its distribution:</p>
+<p class="InputCode">tab edu, miss</p>
+<p>Things to note:</p>
+<ul>
+<li>There are no missing values, or at least none coded as such.</li>
+<li>The category "Not in universe" needs some investigation.</li>
+<li>There are more people in lower education categories than you might expect (41.7% did not graduate from high school).</li>
+<li>There may be more categories here than are useful, so consider combining them.</li>
+</ul>
+<p>Further questions:</p>
+<p>Who are the people with "Not in universe" for <span class="InputCode">edu</span>?</p>
+<p class="InputCode">tab age if edu==0<br/>
+                tab edu if age&lt;3</p>
+<p>People with "Not in universe" are all under the age of 3, and people under the age of 3 are always "Not in universe." The Census Bureau uses "Not in universe" to denote "legitimate skips": questions that were intentionally not asked or not answered because they don't apply.</p>
+<p>But note that children over the age of three are included in the other categories of <span class="InputCode">edu</span>. Does this explain why we have more people in lower education categories than expected?</p>
+<p class="InputCode">tab edu if age&gt;=18</p>
+<p>If you limit the sample to adults, the percent who did not graduate from high school falls to 20.8%.</p>
+<p>A bar graph is a great tool for understanding the distribution of categorical variables. Unlike a frequency table, a reader can absorb the information in a bar graph instantly. It may take some work to make them presentable; <a href="https://ssc.wisc.edu/sscc/pubs/stata_bar_graphs.htm">Bar Graphs in Stata</a> discusses some of the tricks needed. You can see the problem if you try to create the default bar graph for <span class="InputCode">edu</span> (assuming you set value labels for it):</p>
+<p class="InputCode">graph bar, over(edu)</p>
+<p>There's not enough space on the x-axis for all the labels. But this problem has a very simple solution: switch to a horizontal bar graph.</p>
+<p class="InputCode">graph hbar, over(edu)</p>
+<p>This makes horizontal the format of choice for bar graphs.</p>
+<p>The syntax for bar graphs may seem confusing: why the <span class="InputCode">over()</span> option rather than just <span class="InputCode">graph hbar edu</span>? The reason is that bar graphs are also used to examine relationships between variables. A variable list is used to specify the variable that defines the lengths of the bars (by default the mean of that variable), while the <span class="InputCode">over()</span> option specifies the variable that defines the bars themselves, as in:</p>
+<p class="InputCode">graph hbar inc, over(edu)</p>
+<p>We hope the relative lengths of the last two bars do not surprise or disappoint any PhD students reading this.</p>
+<p><strong>Exercise: examine the distributions of <span class="InputCode">race</span>, <span class="InputCode">maritalStatus</span>, <span class="InputCode">female</span>, and <span class="InputCode">hispanic</span>. Investigate who the people who marked "Other" for <span class="InputCode">race</span> are. The 2010 Census (i.e. the census after the one we're examining) added a clarifying note to the questions about hispanic origin: "For this census, Hispanic Origins are not races." Can you see why? What problems did <em>not</em> having that note create in the 2000 data?</strong></p>
+<h2>Recode Values that Mean Missing to Missing Values</h2>
+<p>Stata uses special codes to indicate missing values. For numeric values there's the generic missing value, <span class="InputCode">.</span>, plus the extended missing values <span class="InputCode">.a</span>, <span class="InputCode">.b</span>, <span class="InputCode">.c</span>, through <span class="InputCode">.z</span>. (Recall that as far as greater than and less than are concerned, <span class="InputCode">.&lt;.a</span>, <span class="InputCode">.a&lt;.b</span>, etc. so <span class="InputCode">if x&lt;.</span> excludes all missing values of <span class="InputCode">x</span>.) For strings, the empty string, <span class="InputCode">""</span> (i.e. quotes with absolutely nothing inside, not even a space) means missing. These values receive special treatment. For example, statistical commands exclude missing values from their calculations.</p>
+<p>Data sets often use different codes to indicate missing values. We saw that with <span class="InputCode">income</span>: "BBBBBBB" meant missing. This was automatically converted to a missing value when you converted <span class="InputCode">income</span> from a string variable to a numeric variable, but it won't always be that simple. It's very common to use negative numbers to mean missing, especially -9. Stata will not recognize that -9 means missing and will include it in statistical calculations, giving incorrect results.</p>
+<p> The solution is to identify values that really mean missing, and then change them to missing values. For <span class="InputCode">edu</span>, the value 0, "Not in universe" means missing. Change it with:</p>
+<p class="InputCode">replace edu = . if edu==0</p>
+<p>What about negative values for income? Is that really a code for missing? Take a look with:</p>
+<p class="InputCode">tab income if income&lt;0</p>
+<p>The variety of values suggest these are actual quantities, not codes. Most likely these are people who lost money on investments—which means they probably have substantial wealth to invest. This leads to the paradox that while a low value of income is associated with low socio-economic status, a negative value of income might be associated with high socio-economic status. Ideally you'd consider wealth as well as income as proxies for socio-economic status, but for today "solve" the problem by changing all negative values of <span class="InputCode">income</span> to missing:</p>
+<p class="InputCode">replace income = . if income&lt;0</p>
+<p>The same code could be used for a variable that has multiple codes for missing if they are all negative numbers.</p>
+<p><strong>Exercise: The <span class="InputCode">income</span> and <span class="InputCode">maritalStatus</span> variables treat children differently. Children under 15 do not have a zero for <span class="InputCode">income</span>, they have a missing value. But children under 15 all have "Never Married" for <span class="InputCode">maritalStatus</span>. Recode <span class="InputCode">maritalStatus</span> so they have a missing value instead. How will that change subsequent analysis of the <span class="InputCode">maritalStatus</span> variable?</strong></p>
+<h2>Examine Missing Data</h2>
+<p>Once all missing values are coded in a way that Stata can recognize them, the <span class="InputCode">misstable sum</span> command will give you a very useful summary of the missing data in you data set.</p>
+<p class="InputCode">misstable sum</p>
+<p>Any variable that is not listed does not have any missing values. Thus you now know you can write conditions like <span class="InputCode">if age&gt;=65</span> without worrying about missing values of <span class="InputCode">age</span> being included. You also see how many missing values you have for each variable, and thus how big an issue missing data is in your data set.</p>
+<p>What <span class="InputCode">misstable</span> cannot tell you is why the data are missing, and in particular whether they are <em>missing completely at random</em>. If they are not, their presence is likely to bias your analysis.</p>
+<p>Often you can answer this question by examining the relationships between missing values and other variables, as we did when we looked at the distributions of the variables. For example, <span class="InputCode">edu</span> is clearly not missing at random: it is missing if and only if the person is less than three years old. The distribution of <span class="InputCode">edu</span> for these children is presumably made up mostly of zeros ("None") and perhaps some ones ("Nursery school-4th grade"), which is very different from the distribution of <span class="InputCode">edu</span> for the observations where <span class="InputCode">edu</span> is not missing.</p>
+<p>You should also consider relationships between missing values. In this data set, the apparent relationship between the missingness of <span class="InputCode">income</span> and the missingness of <span class="InputCode">maritalStatus</span> is driven by their individual relationships with <span class="InputCode">age</span>. But in many data sets there are direct relationships. For example, if a subject could not be located for one wave of a survey then they may have missing values for all the variables for that survey wave.</p>
+<p><strong>Exercise: What is the likely distribution of <span class="InputCode">income</span> for people with a missing value for <span class="InputCode">income</span>? How is that different from the distribution of income for those where income is known? How would the mean of income change if all its missing values became known?</strong></p>
+<p>At this point the data set is reasonably clean, and what you do with it next will depend on how you plan to use it. For example, if you wanted to use education as a predictor in a regression model it would probably be wise to combine some of the categories, but if you were doing a descriptive study you might leave it as is. Warp up this do file by saving the cleaned-up data set (never saving it over the original file) and closing the log:</p>
+<p class="InputCode">save 2000_acs_clean, replace<br/>
+                log close</p>
+<p>Next: <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata4.htm">Variable Transformations</a></p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Data Wrangling in Stata: Variable Transformations</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p class="intro">This is part four of <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Data Wrangling in Stata</a>. </p>
+<p>While the syntax for transforming variables in Stata is  simple, the process of converting an idea for how to change a variable into actual code can take some getting used to. In this section we'll work through an example, showing several ways of accomplishing the same task. The main goal is to expose you to some of the logical structures that are commonly used in programming. Since they are common, if you have previous programming experience you may find you can skim this section.</p>
+<p>For this example we'll use the automobile data set that comes with Stata. Start a do file that does the usual set-up and then loads the data:</p>
+<p class="InputCode">capture log close<br/>
+log using transforms.log, replace<br/>
+clear all<br/>
+sysuse auto</p>
+<p>Suppose the cost of manufacturing a car is the sum of the following:</p>
+<ul>
+<li>$1.50 per pound of <span class="InputCode">weight</span></li>
+<li>$0.25 per pound to ship if it is <span class="InputCode">foreign</span></li>
+<li>$100 if its <span class="InputCode">rep78</span> is 5</li>
+</ul>
+<p>Your task is to calculate the profit (price minus cost) from selling each car.</p>
+<p>In laying out the exercise we're doing the first step of a variable transformation for you: describing clearly and exactly what you need to do. If you can't explain to another person  what you're doing in  your native language you'll have an even harder time explaining it to a computer using Stata code.</p>
+<p>Your task description should include what to do with unusual or problem cases. The <span class="InputCode">rep78</span> variable is sometimes missing; what should be done with those cases? The safe thing would be to declare that if <span class="InputCode">rep78</span> is missing profit must be missing as well. However, to simplify this exercise we'll take the problem statement literally and declare that since missing is not 5 we won't add $100 to the cost for cars with a missing value for <span class="InputCode">rep78</span> (i.e. we'll treat them the same as if we knew <span class="InputCode">rep78</span> was not 5).</p>
+<p>New Stata users often try to define three variables containing the three components of cost, and then add them up:</p>
+<p class="InputCode">// first try--doesn't work<br/>
+gen weightCost = 1.5*weight<br/>
+gen shipCost = .25*weight if foreign<br/>
+gen qualityCost = 100 if rep78==5<br/>
+gen totalCost = weightCost + shipCost + qualityCost<br/>
+gen profit = price - totalCost</p>
+<p>The problem is that this gives mostly missing values for <span class="InputCode">profit</span>. Why? Look at the feedback Stata gave after running <span class="InputCode">gen shipCost = .25*weight if foreign</span>: "(52 missing values generated)". Cars that are not <span class="InputCode">foreign</span> are getting a missing value for <span class="InputCode">shipCost</span>, not a zero. (Recall that any time you use an if condition with <span class="InputCode">gen</span>, observations that do not meet the condition get a missing value.) The same happens with cars that don't have a 5 for <span class="InputCode">rep78</span>. Then those missing values cause <span class="InputCode">totalCost</span> and <span class="InputCode">profit</span> to be missing.</p>
+<p>One solution is to calculate <span class="InputCode">totalCost</span> using the <span class="InputCode">egen</span> function <span class="InputCode">rowtotal()</span>. Like most <span class="InputCode">egen</span> functions, <span class="InputCode">rowtotal()</span> ignores missing values and simply adds up the numbers that are available.  Comment out the first try in your do file and try this instead:</p>
+<p class="InputCode">// second try--works, but not ideal<br/>
+gen weightCost = 1.5*weight<br/>
+gen shipCost = .25*weight if foreign<br/>
+gen qualityCost = 100 if rep78==5<br/>
+                  egen totalCost = rowtotal(weightCost shipCost qualityCost)<br/>
+gen profit = price - totalCost</p>
+<p>The first problem with this method is that <span class="InputCode">shipCost</span> and <span class="InputCode">qualityCost</span> are still wrong: they should be zero for cars that do not meet their conditions, not missing. That might be acceptable if they are only intermediate results required to calculate <span class="InputCode">profit</span> and you drop them immediately after that is done. The second problem is that the method depends on very specific behavior of <span class="InputCode">rowtotal()</span>. Someone who is reading the code may not see that immediately, including yourself reading this code again six months from now. So here's a method that sets <span class="InputCode">shipCost</span> and <span class="InputCode">weightCost</span> properly the first time.</p>
+<p class="InputCode">// third try--a little long but works and is clear<br/>
+gen weightCost = 1.5*weight<br/>
+gen shipCost = .25*weight if foreign<br/>
+replace shipCost = 0 if shipCost==.<br/>
+gen qualityCost = 100 if rep78==5<br/>
+replace qualityCost = 0 if qualityCost==.<br/>
+gen totalCost = weightCost + shipCost + qualityCost<br/>
+gen profit = price - totalCost</p>
+<p>Note that the command:</p>
+<p class="InputCode"> replace shipCost = 0 if shipCost==. </p>
+<p>could have been:</p>
+<p class="InputCode">replace shipCost = 0 if !foreign</p>
+<p>The advantage of using <span class="InputCode">if shipCost==.</span> is that you don't have to come up with the inverse of the prior if condition, which can be tricky if the condition is complicated. However, converting all missing values of <span class="InputCode">shipCost</span> to zero would be incorrect if <span class="InputCode">shipCost</span> can be missing for reasons other than the car  not being foreign. If some foreign cars had missing values for <span class="InputCode">weight</span>, then it would be important that their <span class="InputCode">shipCost</span> be missing as well, and you'd have to use <span class="InputCode">if !foreign</span>.</p>
+<p>The <span class="InputCode">cond()</span> (condition) function can make this code shorter. It takes three inputs: a condition, the desired result if the condition is true, and the desired result if the condition is false.</p>
+<p class="InputCode">// fourth try--clear if the reader knows cond()<br/>
+                  gen weightCost = 1.5*weight<br/>
+gen shipCost = cond(foreign, .25*weight, 0)<br/>
+                  gen qualityCost = cond(rep78==5, 100, 0)<br/>
+gen totalCost = weightCost + shipCost + qualityCost<br/>
+gen profit = price - totalCost</p>
+<p>This is shorter, and  clear if the reader knows <span class="InputCode">cond()</span>.</p>
+<p>A clever alternative takes advantage of the fact that multiplying a number by an indicator variable gives zero if the indicator is zero.</p>
+<p class="InputCode">// fifth try--clever, but may be confusing<br/>
+gen weightCost = 1.5*weight<br/>
+gen shipCost = .25*weight*foreign<br/>
+gen qualityCost = 100*(rep78==5)<br/>
+gen totalCost = weightCost + shipCost + qualityCost<br/>
+gen profit = price - totalCost</p>
+<p>With this method you can easily turn it all into a single line:</p>
+<p class="InputCode">// sixth try--shortest of all<br/>
+gen profit = price - (1.5*weight + .25*weight*foreign + 100*(rep78==5))</p>
+<p>If you put a condition in a mathematical expression, like <span class="InputCode">(rep78==5)</span>, it will be evaluated and the result will be either 1 or 0. Once you get used to the way Stata handles conditions this is handy, but it will confuse anyone who is not used to it.</p>
+<p>An different approach creates just one variable for cost and then adds each cost component to it:</p>
+<p class="InputCode">// seventh try--simplest?<br/>
+gen cost = 1.5*weight<br/>
+replace cost = cost + .25*weight if foreign<br/>
+replace cost = cost + 100 if rep78==5<br/>
+gen profit = price - cost</p>
+<p>The construction <span class="InputCode">replace </span><span class="Parameter">variable</span><span class="InputCode"> = </span><span class="Parameter">variable</span><span class="InputCode"> + </span><span class="Parameter">something</span> is extremely useful and comes up all the time.</p>
+<p>Every line of this code is simple and easy to read, even for someone who doesn't know Stata.</p>
+<p>But isn't the shortest way to do something the best way to do it? Not necessarily! The short solution may save you a few seconds of typing, but those savings will be lost if you later have to spend a few minutes figuring out how it works or a few hours debugging it. In some programming communities "clever" is not a compliment.</p>
+<p>Which solution is the best for this particular task is a matter of opinion, and also depends on the intended audience. For a Stata beginner, consider the seventh method, but once you get  comfortable with the logic involved the sixth has its advantages. But they all contain useful programming techniques you're likely to need as you work with data.</p>
+<p><strong>Exercise: A car's Completely Arbitrary Rating (CAR) score is defined by the following:</strong></p>
+<ul>
+<li><strong>Start by multiplying the car's <span class="InputCode">weight</span> by its <span class="InputCode">mpg</span> and dividing by 1,000</strong></li>
+<li><strong>Subtract the car's <span class="InputCode">price</span> divided by 1,000 unless the following exception applies</strong>:</li>
+<li><strong>For foreign cars weighing more than 2,800 pounds, subtract the car's price divided by 1,200</strong></li>
+<li><strong>Add 10 if the car's <span class="InputCode">rep78</span> is greater than 3</strong></li>
+<li><strong>If any of the inputs to the CAR score are missing, the CAR score is missing</strong></li>
+</ul>
+<p><strong>Create a variable for the CAR score.</strong></p>
+<p>To wrap up, save the modified data set as <span class="InputCode">autoV3</span> (just in case you have <span class="InputCode">autoV2</span> left over from Introduction to Stata) and close your log.</p>
+<p class="InputCode">save autoV3, replace<br/>
+                  log close
+                </p>
+<p>Next: <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata5.htm">Hierarchical Data</a></p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Data Wrangling in Stata: Hierarchical Data</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p class="intro">This is part five of <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Data Wrangling in Stata</a>. </p>
+<p>Many data sets involve some sort of hierarchical structure. The American Community Survey is an example of one of the most common hierarchical data structures: individuals grouped into households.  Another common hierarchical data structure is <em>panel</em> or <em>longitudinal data</em> and <em>repeated measures,</em> where things are observed multiple times.  These structures may seem very different, but the same concepts apply to both and often even the same code.</p>
+<h2>Describing Hierarchical Data</h2>
+<p>Hierarchical data can be be described in terms of <em>levels</em> (note that these are not the same as the levels of a categorical variable). A level one unit is the smallest unit in the data set. A level two unit is then a group of level one units. Some examples:</p>
+<table border="1">
+<tbody>
+<tr>
+<th>Example Data Structure</th>
+<th>Level One Unit</th>
+<th>Level Two Unit</th>
+</tr>
+<tr>
+<td>Individuals living in households</td>
+<td>Individuals</td>
+<td>Households</td>
+</tr>
+<tr>
+<td>States grouped into regions</td>
+<td>States</td>
+<td>Regions</td>
+</tr>
+<tr>
+<td>Students in classes</td>
+<td>Students</td>
+<td>Classes</td>
+</tr>
+<tr>
+<td>Tests taken by students</td>
+<td>Tests</td>
+<td>Students</td>
+</tr>
+<tr>
+<td>Monthly observations of individuals</td>
+<td>Monthly observations</td>
+<td>Individuals</td>
+</tr>
+<tr>
+<td>Visits to the doctor by patients</td>
+<td>Doctor visits</td>
+<td>Patients</td>
+</tr>
+<tr>
+<td>Social media posts by individuals</td>
+<td>Posts</td>
+<td>Individuals</td>
+</tr>
+</tbody>
+</table>
+<p>If the hierarchy has more than two levels, simply keep counting up: if you have students grouped into classes grouped into schools grouped into districts, students are level one, classes are level two, schools are level three, and districts are level four.</p>
+<p>Each variable is associated with a specific level. A variable is a level two variable if all the level one units within a given level two unit have the same value for the variable. For data structures where a level two unit is observed over time, level two variables are variables that do not change over time.</p>
+<table border="1">
+<tbody>
+<tr>
+<th>Example Data Structure</th>
+<th>Level One Variables</th>
+<th>Level Two Variables</th>
+</tr>
+<tr>
+<td>Individuals living in households</td>
+<td>Age, Sex</td>
+<td>Household income, Address</td>
+</tr>
+<tr>
+<td>States grouped into regions</td>
+<td>State population</td>
+<td>Regional income per capita</td>
+</tr>
+<tr>
+<td>Students in classes</td>
+<td>Student's race</td>
+<td>Teacher's race, Class size</td>
+</tr>
+<tr>
+<td>Tests taken by students</td>
+<td>Test Score</td>
+<td>Free lunch eligibility</td>
+</tr>
+<tr>
+<td>Monthly observations of individuals</td>
+<td>Employment Status</td>
+<td>Highest degree earned</td>
+</tr>
+<tr>
+<td>Visits to the doctor by patients</td>
+<td>BMI, Diagnosis</td>
+<td>Race</td>
+</tr>
+<tr>
+<td>Social media posts by individuals</td>
+<td>Length, Topic</td>
+<td>Sex</td>
+</tr>
+</tbody>
+</table>
+<p>Of course all of these depend on the details of the actual data set. In a study that observes individuals for a few months, it's unlikely that their highest degree earned will change. But it might! And if it does,  highest degree earned becomes a level one variable. It does not meet the definition of a level two variable because different level one units (monthly observations) have different values for it.</p>
+<p>With a hierarchical data set, an observation (row) can represent either a level one unit or a level two unit. Consider observing two people for three months: </p>
+<table border="1">
+<tbody>
+<tr>
+<th class="InputCode">personID</th>
+<th class="InputCode">month</th>
+<th class="InputCode">yearsEdu</th>
+<th class="InputCode">employed</th>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>16</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>16</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>16</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>12</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>12</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exercise: Identify the level one units, level two units, level one variable(s), and level two variable(s) in this data set.</strong></p>
+<p>In this form, each observation represents a month (or more precisely, a person-month combination). Now consider the exact same data in a different form:</p>
+<table border="1">
+<tbody>
+<tr>
+<th class="InputCode">personID</th>
+<th class="InputCode">yearsEdu</th>
+<th class="InputCode">employed1</th>
+<th class="InputCode">employed2</th>
+<th class="InputCode">employed3</th>
+</tr>
+<tr>
+<td>1</td>
+<td>16</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>12</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>In this form, each observation represents a person. Because <span class="InputCode">yearsEdu</span> is a level two variable, there's just one value per person and thus one variable (column). However, <span class="InputCode">employed</span> is a level one variable with three (potentially) different values per person. Thus it needs three variables (columns).</p>
+<p>We call the first form the <em>long form</em> (or occasionally the <em>tall form</em>) and the second the <em>wide form</em>. The long form is longer because it has more rows; the wide form is wider because it has more columns. In most cases the long form is easier to work with, so we'll do most of our examples in this form.</p>
+<p>Now consider the identifiers in this data set. In the long form, <span class="InputCode">personID</span> and <span class="InputCode">month</span> were a compound identifier for the rows in the data set, while the variable names were a simple column identifier. In the wide form, <span class="InputCode">personID</span> is a simple row identifier, but now the variable names for the level one variables are a compound identifier with two parts: the variable name (employed) and the month in which the variable was observed. To identify a specific value in the data set we still need to know the <span class="InputCode">personID</span>, <span class="InputCode">month</span>, and a variable name, but <span class="InputCode">month</span> has been converted from a row identifier to part of a compound column identifier.</p>
+<p>Before proceeding, start a do file that loads <span class="InputCode">2000_acs_cleaned.dta</span>. This is one of the provided example data sets, but if you did everything in <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata3.htm">First Steps with your Data </a>(including the optional exercises) you can use the data set you created instead.</p>
+<p class="InputCode">capture log close<br/>
+log using level2.log, replace<br/>
+clear all<br/>
+use 2000_acs_cleaned                </p>
+<h2>Creating Level Two Variables Based on Summary Statistics</h2>
+<p>A very common data wrangling task is creating level two variables based on the level one variables in the data set. If the data set is in long form, one critical tool for doing so is the by prefix, so that commands are executed separately for each level two unit. Another is <span class="InputCode">egen</span>, with its aggregate functions that act across observations.</p>
+<h3>Continuous Variables</h3>
+<p>We'll start with examples of calculating continuous (or quantitative) level two variables based on continuous level one variables.</p>
+<p>For many purposes, the total income of a household is more relevant than individual incomes. You can calculate it with a combination of by and <span class="InputCode">egen</span>'s <span class="InputCode">total()</span> function:</p>
+<p class="InputCode">by household: egen householdIncome = total(income)</p>
+<p>Now calculate the income per person. Since this is the same as the mean income for the household, you might think you can use:</p>
+<p class="InputCode">by household: egen incomePerPerson = mean(income)</p>
+<p>In fact this does not give the right answer, as you can see by examining household 484 (<span class="InputCode">browse if household==484</span>). The reason is that young children have missing values for <span class="InputCode">income,</span>which prompts <span class="InputCode">egen</span> to completely ignore them in the calculation. Thus for household 484, <span class="InputCode">incomePerPerson</span> is the total income of the household divided by the number of people who have a non-missing value for income, two, when it should be divided by the number of people in the household, four.</p>
+<p>Fortunately, these <span class="InputCode">egen</span> functions can act on mathematical expressions, not just single variables. Since mean(x) = total(x)/N = total(x/N), we can instead use:</p>
+<p class="InputCode">by household: egen realIncomePerPerson = total(income/_N)<br/>
+</p>
+<p><span class="InputCode">_N</span> is a system variable, or a variable Stata always keeps track of and you can use even though you never created it. It contains the number of observations in the data set, or, if you are using by, the number of observations in the by group. In this case that's the number of people in the household. You might find that useful directly:</p>
+<p class="InputCode">by household: gen householdSize = _N</p>
+<p>Because Stata numbers observations starting from 1, <span class="InputCode">_N</span> is also the observation number of the last observation. We'll find that useful as well.</p>
+<p><strong>Exercise: Create a variable for the mean age of all the individuals in the household.</strong></p>
+<h3>Subsetting with egen</h3>
+<p>Sometimes the way <span class="InputCode">egen</span> ignores missing values can be useful. Consider trying to calculate the total income earned by the children of a household. You might think you could run:</p>
+<p class="InputCode">by household: egen householdChildIncome = total(income) if age&lt;18</p>
+<p>Examine household 8787. As you see, <span class="InputCode">householdChildIncome</span> has the right number, but it's not a proper household-level variable in that the parent has a missing value instead. For many purposes that would make it unusable. The reason is that <span class="InputCode">egen</span> used the condition <span class="InputCode">if age&lt;18</span> for two different purposes, one that you want and one that you don't. The first is that in calculating the total it only includes observations where <span class="InputCode">age&lt;18</span>, which is exactly what you want. The second is that it only stores the result in observations where <span class="InputCode">age&lt;18</span>, leaving the other observations with missing values. This is not what you want.</p>
+<p>An easy way to remedy this is to create a new variable which is 1 for observations you want to include in the calculation and missing for observations you do not:</p>
+<p class="InputCode">gen toUse=1 if age&lt;18</p>
+<p>Next, have egen act  on the variable of interest times the variable you just created:</p>
+<p class="InputCode">by household: egen realhouseholdChildIncome = total(income*toUse)</p>
+<p> For the observations you want to use, multiplying the variable of interest by 1 changes nothing. For the observations you don't want to use, multiplying by missing gives a missing value <span class="InputCode">egen</span> will ignore. This allows you to have <span class="InputCode">egen</span> do its calculations over a subset of the data without using an if condition, so it will store the result in all observations.</p>
+<p><strong>Exercise: Create a level two variable called <span class="InputCode">meanAdultAge</span> containing the mean age of the adults in the household. Make sure it has the same value for all the members of the household, including any children.</strong></p>
+<h3>Indicator Variables</h3>
+<p>When an indicator variable is coded one/zero, the <span class="InputCode">egen</span> functions used above take on new and useful meanings. For example, the total of an indicator variable is the number of observations for which the indicator is one. Create a variable containing the number of children in each household with:</p>
+<p class="InputCode">gen child=(age&lt;18)<br/>
+by household: egen numChildren = total(child)</p>
+<p>The mean of an indicator variable is the proportion of observations for which the indicator is one. Create a variable contain the proportion of each household that is below 18 with:</p>
+<p class="InputCode">by household: egen propChildren = mean(child)</p>
+<p>Next consider the maximum value of an indicator variable:</p>
+<p class="InputCode">by household: egen hasChildren = max(child)</p>
+<p>If a household has no children in it, then <span class="InputCode">child</span> is always zero and the maximum value is zero. If a household has any children in it, then those children have a one for <span class="InputCode">child</span> and the maximum is one. Thus <span class="InputCode">hasChildren</span> is a household-level indicator variable for "this household has children in it."</p>
+<p>More generally, applying the <span class="InputCode">max()</span> function to an indicator variable creates a new indicator variable which is one for all observations (or all observations within a by group) if the original indicator variable is one for any observation. </p>
+<p>You can use <span class="InputCode">min()</span> in the same way: the result will be one if the indicator you apply it to is one for all observations, but the result will be zero if any observation has a zero. Use that to create an indicator variable for "all the people in this household are children":</p>
+<p class="InputCode">by household: egen allChildren = min(child)</p>
+<p>All of these functions can act on an expression rather than a variable, including conditions. Thus we could have used <span class="InputCode">total(age&lt;18)</span>, <span class="InputCode">mean(age&lt;18)</span>, <span class="InputCode">max(age&lt;18)</span>, etc. rather than creating the indicator variable <span class="InputCode">child</span> and gotten the same results.</p>
+<p>This data set has no missing values for <span class="InputCode">age</span>, but it's worth thinking about what this code would do with them. The condition <span class="InputCode">(age&lt;18)</span> returns a zero for observations where <span class="InputCode">age</span> is missing (recall that you can think of missing as infinity), as if the person were known to be an adult. Thus in the presence of missing values <span class="InputCode">numChildren</span> isn't really the number of children in the household, it's the number of people known to be children. But that may be exactly what you want. </p>
+<p><strong>Exercise: create variables containing the number of college graduates in each household (Associate's degree or above), the proportion of the household members which are college graduates, and an indicator variable for "this household contains at least one college graduate." Then create an indicator variable for "all the adults in this household are college graduates."</strong> <strong>Remember that <span class="InputCode">edu</span> has missing values, but since the people with missing values of <span class="InputCode">edu</span> are all less than three years old you can safely assume they're not college graduates.</strong></p>
+<h2>Creating Level Two Variables in Wide Form</h2>
+<p>Start a new do file that loads <span class="InputCode">2000_acs_wide.dta</span>:</p>
+<p class="InputCode">capture log close<br/>
+log using level2_wide.log, replace<br/>
+clear all<br/>
+use 2000_acs_wide<br/>
+</p>
+<p>This is the exact same data set as before, but in wide form. Now there is just one row for each household, but it contains all the data about all the individuals in it. The <span class="InputCode">income1</span> variable contains the income of the first person in the household, <span class="InputCode">income2</span> the second, etc.</p>
+<p>Now consider adding up the total income of the household. In wide form, instead of using the <span class="InputCode">total()</span> function we need the <span class="InputCode">rowtotal()</span> function. It adds things up just like <span class="InputCode">total()</span>, but while <span class="InputCode">total()</span> adds up the values of a single variable across multiple observations, <span class="InputCode">rowtotal()</span> adds up the values of multiple variables within a single observation.</p>
+<p>However, the input <span class="InputCode">rowtotal()</span> needs is quite different. Rather than acting on a single mathematical expression, it acts on a list of variables, or <em>varlist</em>. When a Stata command or function takes a <em>varlist</em> this means both that it needs a list of variables and that it will understand certain shortcuts for specifying that list. In this case we want to act on all the income variables, but there are sixteen of them (one household has sixteen people in it) and typing them all out would be tiresome. So we'll take a brief digression into shortcuts for specifying lists of variables.</p>
+<h3>Shortcuts for Variable Lists</h3>
+<p>The most common shortcut is to use the asterisk (*) as a wildcard character. Try:</p>
+<p class="InputCode">describe income*</p>
+<p>This tells the <span class="InputCode">describe</span> command to act on all variables that match the pattern "income followed by anything." Note that "anything" can include nothing, so a variable just called "income" would be included as well. The wildcard can go anywhere:</p>
+<p class="InputCode">describe *1</p>
+<p>This matches all the variables with information about the first individual in the household, but also the variables with information about the eleventh individual. Be careful your wildcards don't match more than what you want!</p>
+<p>A question mark (?) is also a wildcard, but it matches exactly one character:</p>
+<p class="InputCode">describe income?</p>
+<p>This matches <span class="InputCode">income1</span> through <span class="InputCode">income9</span>, but not <span class="InputCode">income10</span> because it is income followed by two characters.</p>
+<p>Another shortcut is to put a dash between two variables. This will give you all the variables in between them:</p>
+<p class="InputCode">describe age1-hispanic1</p>
+<p>This gives you just the variables with information about the first individual. The order used in resolving this shortcut is the order the variables are listed in the variables window or a <span class="InputCode">describe</span> command. You can use the <span class="InputCode">order</span> command to put the variables in a convenient order.</p>
+<p>A varlist can mix multiple kinds of shortcuts as well as individual variable names:</p>
+<p class="InputCode">describe household age1-hispanic1 income*</p>
+<h3>Using Row Functions</h3>
+<p>Many of the tasks we carried out in long form can easily be done in wide form, with three changes:</p>
+<ul>
+<li>Remove the <em>by</em> prefix. In wide form a level 2 group is a single observation, not a group of them.</li>
+<li>Replace the egen function with its row equivalent.</li>
+<li>Replace the variable to act on with a variable list matching all the corresponding level one variables.</li>
+</ul>
+<p>Thus the long form command:</p>
+<p class="InputCode"> by household: egen householdIncome = total(income)</p>
+<p>becomes in wide form:</p>
+<p class="InputCode">egen householdIncome = rowtotal(income*)</p>
+<p>However, row functions cannot take expressions as arguments, like <span class="InputCode">(age&lt;18)</span> or <span class="InputCode">(income*toUse)</span>. You can always take these expressions and turn them into variables, just like we ran <span class="InputCode">gen child=age&lt;18</span> before. However, in wide form this has to be done for each individual (<span class="InputCode">gen child1=age1&lt;18</span>, <span class="InputCode">gen child2=age2&lt;18</span>, etc.). We discuss how to do this efficiently in <a href="https://ssc.wisc.edu/sscc/pubs/stata_prog1.htm">Stata Programming Essentials</a>, but in most cases it's easier to work in long form.</p>
+<p><strong>Exercise: Create indicator variables for each individual, indicating whether they are black or not. You'll need 16 of them, so use copy and paste. Make sure your indicator variable is missing if race as missing (i.e. if that person doesn't actually exist).Then create two household-level indicator variables: one for "At least one individual in this household is black" and one for "All of the  individuals in this household are black."  Why don't you need to do anything special with the egen functions to handle missing values?</strong></p>
+<h2>Panel Data</h2>
+<p><em>Panel</em> data, or <em>longitudinal</em> data, are data where subjects are observed repeatedly over time and the timing is important. If timing isn't important then we call it <em>repeated measures</em> data. The National Longitudinal Survey of Youth is an example of panel data, and we'll use it a small extract from it as an example. (Note that this extract combines income variables from different years with slightly different definitions into a single income variable, so you really wouldn't want to use this extract for actual research.) Create a do file called <span class="InputCode">panel.do</span> that loads it:</p>
+<p class="InputCode">capture log close<br/>
+                  log using panel.txt, replace<br/>
+                  clear all<br/>
+                  use nlsy_extract
+                </p>
+<p><strong>Exercise: Apply what you learned in "First Steps With Your Data" to this data set. In particular, identify the primary keys and the data structure that implies,  and figure out the nature of the <span class="InputCode">edu</span> variable.  What does it suggest about the data collection process that <span class="InputCode">income</span> and <span class="InputCode">edu</span> are frequently missing for the same observation? What does it tell you about <span class="InputCode">age</span> that it is never missing? What is a level one unit in this data set? What is a level two unit? Which variables are level one variables? Which are level two variables?</strong></p>
+<p>Most of the techniques we learned for working with individuals in household carry over directly to panel data. For example, to find the total income earned during the study period, run:</p>
+<p class="InputCode">by id: egen totalIncome = total(income)</p>
+<p>To find the age of the subject the first time they appear in the study, run:</p>
+<p class="InputCode">by id: egen startingAge = min(age)</p>
+<p>But what if you wanted to know their income the first time they appear in the study? Recall that <span class="InputCode">income[1]</span> means "the value of <span class="InputCode">income</span> for the first observation." If combined with by it means "the value of <span class="InputCode">income</span> for the first observation in the by group." This is highly convenient, but you need to make sure that the observations for each subject are in chronological order so their first observation really is the first time they appear in the study:</p>
+<p class="InputCode">sort id year<br/>
+by id: gen startingIncome = income[1]<br/>
+</p>
+<p>You need to be careful because Stata's default sorting algorithm is not <em>stable</em>. This means it will put ties in whatever order will make it run fastest. So if you run <span class="InputCode">sort id</span>, or <span class="InputCode">bysort id:</span>, the observations for each person could be in any order. In practice, if the data are already sorted or mostly sorted the order that will make the sort run fastest is usually to leave things alone. But you can't count on that. So if you're going to run code that depends on the sort order, be sure the data are actually in the right order.</p>
+<p><strong>Exercise: Create <span class="InputCode">endingIncome</span>, the subject's income the last time they appear in the study. Recall that _N is the observation number of the last observation.</strong></p>
+<h3>Calculations Based on Neighboring Observations</h3>
+<p>Sometimes you need to carry out calculations that take into account not just the current observation, but neighboring observations.</p>
+<p>The <span class="InputCode">edu</span> variable  is missing for years where the subject was not interviewed. In many cases the subject's level of education is the same before and after the gap and it would be safe to fill in those values.</p>
+<p>We'll start by filling them in "forwards", meaning that value of <span class="InputCode">edu</span> before the gap is carried forward to fill in the missing values. Make a copy of the variable so we can compare the new version with the original:</p>
+<p class="InputCode">gen eduForward = edu</p>
+<p>Then fill in the gaps with the following:</p>
+<p class="InputCode">by id: replace eduForward = eduForward[_n-1] if eduForward==.</p>
+<p>The system variable <span class="InputCode">_n</span> is the observation number of the current observation. Thus <span class="InputCode">eduForward[_n-1]</span> means "the value of <span class="InputCode">eduForward</span> for the observation before the current observation." </p>
+<p>The alternative is to fill <span class="InputCode">edu</span> in "backwards", meaning that the value of <span class="InputCode">edu</span> after the gap is carried backwards. You might think you can do this with the same command, just replacing <span class="InputCode">[_n-1]</span> with <span class="InputCode">[_n+1]</span>. However, that won't work because of the order in which Stata carries out a <span class="InputCode">replace</span> command.</p>
+<p>In carrying out a <span class="InputCode">replace</span> command, Stata  updates the observations in order starting from the first observation. Imagine a hypothetical subject who  has observed values for <span class="InputCode">edu</span> in year one and year four, but not years two and three. When filling in "forwards", Stata first sets <span class="InputCode">edu</span> for year two to the value of <span class="InputCode">edu</span> for year one, then sets <span class="InputCode">edu</span> for year three to the value of <span class="InputCode">edu</span> for year two, <em>which was carried forward from year one</em>. If you tried to fill in "backwards" in the same way, <span class="InputCode">edu</span> for year two would be set to the value of <span class="InputCode">edu</span> for year three, which is missing. Then <span class="InputCode">edu</span> for year three be set to the value of <span class="InputCode">edu</span> for year four, but at that point it's too late to fill in the value for year two.</p>
+<p>This does not mean it's impossible to fill in "backwards." It just means the sort order of the data needs to match the order in which we need the observations to be processed by replace:</p>
+<p class="InputCode">gsort id -year<br/>
+gen eduBackward=edu<br/>
+by id: replace eduBackward = eduBackward[_n-1] if eduBackward==.<br/>
+sort id year</p>
+<p>The <span class="InputCode">gsort</span> ("generalized sort") command will sort observations in descending order rather than ascending order if you put a minus sign in front of the variable name. Thus this code puts the observations for each subject in reverse chronological order, fills in the <span class="InputCode">eduBackward</span> variable, and then puts them back in chronological order.</p>
+<p>Run <span class="InputCode">browse id year edu*</span> to see the results. In most cases <span class="InputCode">eduForward</span> and <span class="InputCode">eduBackward</span> are the same, but subject number 1 is an exception: because subject 1 was never observed after 1981, <span class="InputCode">eduForward</span> fills in 12th grade for all the remaining years, while <span class="InputCode">eduBackward</span> still has missing values. Subject number 23 illustrates a different problem: they reported 3 years of college in 1983, then were lost until 1991 when they reported 6 years of college. Some time during the seven years in between they attended three years of college. but we don't know when and thus don't know their value of <span class="InputCode">edu</span> for any of those years. The safe thing is to only use filled in values when <span class="InputCode">edu</span> is the same before and after the gap, and thus <span class="InputCode">eduForward</span> is the same as <span class="InputCode">eduBackward</span>:</p>
+<p class="InputCode">replace edu = eduForward if eduForward==eduBackward</p>
+<p><strong>Exercise:  create an indicator for "the subject attended school this year." You'll know they attended school if their value of <span class="InputCode">edu</span> is higher than the year before. The variable should be missing if <span class="InputCode">edu</span> is missing for the current year or the year before.</strong></p>
+<p>Most likely your solution to the exercise above included <span class="InputCode">if edu&lt;. &amp; edu[_n-1]&lt;.</span> This will also lead to the indicator variable being missing for the first observation for each subject (1979). This makes sense, but how did Stata know to do it?</p>
+<p>When <span class="InputCode">_n</span> is 1 (the first observation for each subject) there is no observation <span class="InputCode">_n-1</span>. Many languages would give an error message like "index out of bounds" at this point. Stata proceeds, but sets <span class="InputCode">edu[_n-1]</span> to missing. This highlights the reason we need <span class="InputCode">by id:</span> for this command. If we did not have it, Stata would try to determine if a subject attended school in 1979 by comparing their education level in 1979 to the previous subject's education level in 2000. Having <span class="InputCode">by id:</span> in front of the command ensures each subject is handled separately.</p>
+<h3>Events and Event History</h3>
+<p>Often with panel data you'll need to identify particular events or sequences of events. For example,  suppose you need to identify the year in which each subject graduated from high school. A subject graduated from high school in a given year if they have 12 years of education in that year and less than 12 years of education the year before:</p>
+<p class="InputCode">by id: gen grad = (edu==12 &amp; edu[_n-1]&lt;12)</p>
+<p>If either <span class="InputCode">edu</span> or <span class="InputCode">edu[_n-1]</span> are missing, this code will set <span class="InputCode">grad</span> to zero. So a one for <span class="InputCode">grad</span> technically means "We know the person graduated this year" while a zero means "We don't know that the person graduated this year." For event analysis that's frequently what you need.</p>
+<p>When an indicator variable indicates that an event happened, the total of that variable is the number of times the event happened. To check your work, determine how many times each subject graduated from high school:</p>
+<p class="InputCode">by id: egen timesGraduated = total(grad)<br/>
+                tab timesGraduated</p>
+<p>Many subjects graduated zero times, but this is not surprising: either they really didn't graduate, or they graduated outside the study period, or missing data prevented you from identifying the year in which they graduated. Fortunately, no one graduated more than once. This could happen due to a data entry or reporting error and then you'd have to fix it.</p>
+<p>Next create an indicator for "subject took a break from college." We'll identify a year that a subject took a break from college with:</p>
+<ul>
+<li>They have started college (edu&gt;=13)</li>
+<li>They have not finished college (edu&lt;16)</li>
+<li>Their years of education completed is the same as the year before</li>
+</ul>
+<p class="InputCode">by id: gen break = (edu&gt;=13 &amp; edu&lt;16 &amp; edu==edu[_n-1])</p>
+<p>Now, create an indicator variable to identify people who took a break from college at some point in the study:</p>
+<p class="InputCode">by id: egen tookBreak = max(break)</p>
+<p>To see the results, run <span class="InputCode">browse id year edu break tookBreak if tookBreak</span>.</p>
+<p><strong>Exercise: Our current definition of taking a break from college includes dropping out of college permanently. Create a person-level indicator variable for "this person finished college" (i.e. at some point their <span class="InputCode">edu</span> is 16 or higher). Then modify the above commands so that only people who  finish college are  counted as taking a break from college</strong>.</p>
+<p>Suppose you are interested in the effect of taking a break from college on subsequent outcomes, so you need to identify all the years after a subject took a break from college. Do so with:</p>
+<p class="InputCode">gen afterBreak = 0<br/>
+by id: replace afterBreak = (break[_n-1]==1) | (afterBreak[_n-1]==1)<br/>
+</p>
+<p>The first term, <span class="InputCode">(break[_n-1]==1),</span> ensures <span class="InputCode">afterBreak</span> will be 1 in the year after the subject takes a break. The second term, <span class="InputCode">(afterBreak[_n-1]==1)</span> ensures <span class="InputCode">afterBreak</span> will be 1 in every year after that.</p>
+<p>Why do you need to write out <span class="InputCode">break[_n-1]==1</span> rather than just <span class="InputCode">break[_n-1]</span>? Remember, the construction <span class="InputCode">if indicatorVariable</span> only works properly if <span class="InputCode">indicatorVariable</span> has no missing values. Even though <span class="InputCode">break</span> has no missing values, <span class="InputCode">break[_n-1]</span> is always missing for each subject's first observation. (It asks for the value of <span class="InputCode">break</span> for the observation before the first observation, which does not exist.) A missing value counts as true, so if you just wrote <span class="InputCode">break[_n-1]</span> then <span class="InputCode">afterBreak</span> would be one for the first observation—and every observation after that.</p>
+<p>Now suppose you need to know the number of "break" years the subject has taken, as of the current year. This will be the <em>running sum</em> of the <span class="InputCode">break</span> variable, where a running sum is the sum of all the observations up to and including the current observation. The <span class="InputCode">sum()</span> function calculates running sums, and is very useful any time you need to calculate how many times a subject has experienced an event. You might expect <span class="InputCode">sum()</span> to be an <span class="InputCode">egen</span> function since it acts across observations, but in fact it's a standard function since it only needs to look at prior observations.</p>
+<p class="InputCode">by id: gen numBreaks = sum(break)</p>
+<p><strong>Exercise: Create an indicator variable that identifies those years that come after a break but before the subject graduates from college, meaning that  <span class="InputCode">edu</span> is less than 16.</strong></p>
+<h3>Level 2 Variables Based on a Special Level One Observation</h3>
+<p>Sometimes you need to create a level two variable which is just the value of a level one variable for a particular level one unit, such as the subject's age at the time they graduated from high school. Here's one way to do that:</p>
+<p class="InputCode">sort id grad<br/>
+by id: gen ageAtGraduation = age[_N] if grad[_N]</p>
+<p>Sorting by <span class="InputCode">id</span> and <span class="InputCode">grad</span> puts the observation in which the subject graduated last, so you can get the subject's age in that year with <span class="InputCode">age[_N]</span>. However, recall that for many subjects we could not identify the year they graduated, so it's important to only set <span class="InputCode">ageAtGraduation</span> to <span class="InputCode">age[_N]</span> if they actually graduated in that year (i.e. <span class="InputCode">grad[_N]</span> is true).</p>
+<p>An alternative method uses one of egen's aggregate functions with a subset which is just the observation of interest. Any aggregate function with the property that if you give it a single number it returns that number will do, including <span class="InputCode">mean()</span>, <span class="InputCode">total()</span>, <span class="InputCode">min()</span>, or <span class="InputCode">max()</span>.</p>
+<p class="InputCode">gen toUse=1 if grad<br/>
+                  by id: egen ageAtGraduation2 = mean(age*toUse)</p>
+<p><strong>Exercise: Find the subject's <span class="InputCode">age</span> and <span class="InputCode">income</span> at the time of their first break from college.</strong></p>
+<p>Next: <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata6.htm">Restructuring Data Sets</a><strong><br/>
+</strong></p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Data Wrangling in Stata: Restructuring Data Sets</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p class="intro">This is part six of <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Data Wrangling in Stata</a>.</p>
+<p>In this section we'll learn how to restructure data sets. We'll learn how reshape data so we can switch at will between the long form (one row per level one unit) and wide form (one row per level two unit). We'll also learn how to turn a data set containing both level one and level two units into a data set containing just level two units.</p>
+<h2>Reshape</h2>
+<p>The reshape command is very simple to use, if you understand the structure of the your data set. In particular, you need to know the level one and level two identifiers, and which variables are level one variables and which are level two.</p>
+<p>Start a do file that loads the cleaned version of the 2000 American Community Survey we worked with earlier:</p>
+<p class="InputCode">capture log close<br/>
+                  log using restructure.log, replace<br/>
+clear all<br/>
+use 2000_acs_cleaned<br/>
+</p>
+<p>Recall that this is hierarchical data consisting of people living in households, so a person is a level one unit and a household is a level two unit. The level one and level two identifier variables are <span class="InputCode">person</span> and <span class="InputCode">household</span>, and you can confirm that they uniquely identify observations with:</p>
+<p class="InputCode">duplicates report household person</p>
+<p>The variables <span class="InputCode">age</span>, <span class="InputCode">race</span>, <span class="InputCode">maritalStatus</span>, <span class="InputCode">edu</span>, <span class="InputCode">income</span>, <span class="InputCode">female</span>, and <span class="InputCode">hispanic</span> all describe individual persons, making them level one variables. At this point we don't have any variables that describe the household, so let's make one before proceeding:</p>
+<p class="InputCode">by household: egen householdIncome = total(income)</p>
+<p>The variable <span class="InputCode">householdIncome</span> is a level two, or household-level variable, because any persons who live in the same household will have the same value of <span class="InputCode">householdIncome</span>.</p>
+<p>The data set has one observation per person, or level one unit, so the data set is currently in long form. In wide form it would have one observation per household, and <span class="InputCode">reshape</span> can do that for you:</p>
+<p class="InputCode">reshape wide age race maritalStatus edu income female hispanic, ///<br/>
+<span class="indent3">i(household) j(person)</span></p>
+<p>The syntax of the <span class="InputCode">reshape</span> command begins by specifying the form you want, in this case <span class="InputCode">wide</span>. Then you give a list of all the level one variables. This is a bit different from the usual syntax where the list of variables tells the command which variables to act on. The <span class="InputCode">reshape</span> command always reshapes the entire data set, but to do so it needs to understand which variables are level one and which are level two. The variables you list are level one variables; any variables you do not list are assumed to be level two variables. (Make sure this is true!) Finally, the command needs to know the identifiers. The <span class="InputCode">i()</span> option specifies the level two identifier, which could be a compound identifier; the <span class="InputCode">j()</span> option specifies the level one identifier. It calls them i and j rather than level one and level two because reshape can be used on data with more than two levels of hierarchy.</p>
+<p>Take a moment to look at the data browser. As promised, there is now just one observation per household, and the <span class="InputCode">household</span> variable is now a unique identifier all by itself. Most of the variable names now have two parts: the name of the quantity described  (e.g. <span class="InputCode">income</span>) followed by the number of the person being described. The <span class="InputCode">person</span> variable has been changed from part of a compound row identifier to part of a compound column identifier. </p>
+<p>Note that there are 16 of each of the level one variables. The largest household had 16 people in it, so storing the information for all of them required 16 of each variable. Since the data set has to be rectangular, that means all the households have 16 of each level one variable, with most of them containing missing values. The  <span class="InputCode">householdIncome</span> variable (on the far right in the data browser) remains a single variable because it is a household level variable. </p>
+<p>Reshaping from wide form to long form requires the exact same command, just replacing <span class="InputCode">wide</span> with <span class="InputCode">long</span>:</p>
+<p class="InputCode">reshape long age race maritalStatus edu income female hispanic, ///<br/>
+<span class="indent3">                i(household) j(person)</span></p>
+<p>However, the meaning is quite different: <span class="InputCode">age</span>, <span class="InputCode">race</span>, etc. do not refer to individual variables, but to groups of variables, and <span class="InputCode">j(person)</span> does not refer to an existing variable at all. The <span class="InputCode">reshape long</span> command will identify all the variables that start with <span class="InputCode">age</span>, <span class="InputCode">race</span>, etc. then take what follows and store it in a new variable called <span class="InputCode">person</span>. </p>
+<p>With <span class="InputCode">reshape wide</span>, the list of level one variables is a list of actual, existing variables, so you can use shortcuts like <span class="InputCode">age-hispanic</span>. With <span class="InputCode">reshape long</span> you are giving a list of "stubs" of variable names, so you must list them all individually (individual stubs, that is, not individual variables). We recommend dropping any variables you won't actually use very early in the data wrangling process, but you definitely want to get rid of them before using <span class="InputCode">reshape long</span>.</p>
+<p>However, if you look in the data browser there's a lot more missing data than there used to be. You can see the problem by running:</p>
+<p class="InputCode">duplicates report household</p>
+<p>Every household now has exactly 16 observations in it. That's because in wide form every household had 16 of each level one variable. This will happen any time you reshape a data set from wide to long: every level two unit will end up with same number of level one units as the largest level two unit. So now you have a bunch of observations that do not actually represent people. Fortunately you can easily detect and drop the extraneous level one units because they have missing values for all the level one variables.</p>
+<p class="InputCode">drop if age==. &amp; race==. &amp; maritalStatus==. &amp; /// <br/>
+<span class="indent3">edu==. &amp; income==. &amp; female==. &amp; hispanic==.</span></p>
+<p>Keep in mind that real people can have missing data, so you would not want to drop observations that have a missing value for one level one variable or even a few of them. Include all the level one variables in your if condition.</p>
+<p><strong>Exercise: Start a new do file, and load the data set <span class="InputCode">nlsy_extract</span>. Identify the level one and level two units, and the level one and level two variables. Run <span class="InputCode">duplicates report id</span>. Reshape the data set to wide form, and then reshape it again to long. Run <span class="InputCode">duplicates report id</span> again. Why don't you need to worry about extraneous observations in this case?</strong></p>
+<h2>Collapse</h2>
+<p>Sometimes you want to get rid of the level one units in your data set entirely so you're left with a data set of level two units. For the ACS that would be a data set of households, with no individual-level variables. </p>
+<p>If the data is already in wide form this is just a matter of dropping the level one variables.</p>
+<p>If the data is in long form, like our ACS sample, begin by dropping the level one identifier and all of the level one variables:</p>
+<p class="InputCode">drop person age race maritalStatus edu income female hispanic</p>
+<p>Next, keep just one observation for each level two unit. All the observations for a given level two unit are identical so it doesn't matter which one you keep, but the first one is convenient:</p>
+<p class="InputCode">by household: keep if _n==1</p>
+<p>Often, however, you need to create new level two variables based on the level one units before you can eliminate the level one units entirely. In this example we'll create variables for "number of people in the household" and "proportion of the household that is female" as well as keeping the household income variable we created previously. You can always do that by creating the level two variables using the methods described in the previous section and then dropping the level one units using the method just described. But if all the variables you need to create are summary statistics, the <span class="InputCode">collapse</span> command can do the entire process for you quickly and easily.</p>
+<p>The <span class="InputCode">collapse</span> command takes all the observations (level one units) for a given level two unit and aggregates them into a single observation. Thus it needs to know the level two identifier, which variables you want aggregated, and how you want to aggregate them. Most of the aggregation rules are based on summary statistics.</p>
+<p>Since we're going to convert the data set to a data set of level two units again but in a different way, comment out the previous commands that did it:</p>
+<p class="InputCode">//drop person age race maritalStatus edu income female hispanic<br/>
+//by household: keep if _n==1</p>
+<p>Instead, run the following:</p>
+<p class="InputCode">collapse ///<br/>
+<span class="indent3">(first) householdIncome ///</span><br/>
+<span class="indent3">(mean) proportionFemale=female ///</span><br/>
+<span class="indent3">(count) householdSize=person, ///</span><br/>
+<span class="indent3">by(household)</span></p>
+<p>Now consider each element of the command in turn:</p>
+<p><span class="InputCode">(first)</span> means  the  variables that follow should be aggregated using the rule "keep the first value." The <span class="InputCode">householdIncome</span> variable is already a level two variable, so all the values for a given level two unit are the same and we just need to keep the first one.</p>
+<p><span class="InputCode">(mean)</span> means the variables that follow should be aggregated using the rule "take the mean." The <span class="InputCode">female</span> variable is binary, taking its mean tells us the proportion of household members that are female. However, we don't want to call the result <span class="InputCode">female</span>, so we rename it to <span class="InputCode">proportionFemale</span>. It's a bit backwards, but <span class="InputCode">(mean) proportionFemale=female</span> can be read "take the mean of the <span class="InputCode">female</span> variable and call the result <span class="InputCode">proportionFemale</span>."</p>
+<p><span class="InputCode">(count)</span> means the variables that follow should be aggregated using the rule "count the number of non-missing values." What we really want is the number of observations, but for any variable with no missing values that will be the same thing. If we had to we could create such a variable (<span class="InputCode">gen i=1</span>) but we know that <span class="InputCode">person</span> has no missing values (identifiers rarely do) so we can use it. Again, we want to give the result a new name, and the syntax <span class="InputCode">(count) householdSize=person</span> can be read "count the number of non-missing values of <span class="InputCode">person</span> and call the result <span class="InputCode">householdSize</span>."</p>
+<p>You can list many variables after each aggregation rule, not just one. You can also skip specifying an aggregation rule, in which case Stata will assume you want means.</p>
+<p>The <span class="InputCode">by(household)</span> option tells <span class="InputCode">collapse</span> the level two identifier so it knows which observations to aggregate.</p>
+<p>Note that after running this command, the only variables left in the data set are those mentioned in it.</p>
+<p><strong>Exercise: Go back to <span class="InputCode">nlsy_extract</span> and use <span class="InputCode">collapse</span> to convert it into a data set with one row per person. The resulting data set should contain the person's year of birth, their mean income over the study period, and their maximum educational attainment. (Bonus question for economists: what's the problem with simply taking the mean of income over the study period? We'll fix it in the next section.)</strong></p>
+<p>Next: <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata7.htm">Combining Data Sets</a></p>
+<div></div>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Data Wrangling in Stata: Combining Data Sets</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p class="intro">This is part seven of <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Data Wrangling in Stata</a>.</p>
+<p>Combining data sets is a very common task, and one that's easy to do if you understand the structure of the data sets you are trying to combine. However, if you've misunderstood the structure of the data sets you can end up with a data set that makes no sense at all. Also, combining data sets will often force you to deal with problems in the data set structure.</p>
+<p>Stata always works with one data set. (Stata 16 allows you to load multiple data sets as separate frames, but we won't explore this new feature.) So when we talk about combining data sets we mean taking a data set that's in memory, what Stata calls the <em>master</em> data set, and combining it with a data set on disk, what Stata calls the <em>using</em> data set for reasons that will become obvious when you see the command syntax. When you're done, you'll have a single data set in memory again.</p><p>Always think through what the resulting data set should look like before combining to data sets. If the resulting data set won't have a consistent, logical structure you probably need to rethink what you're doing.</p><p>How you combine the two data sets depends on what the using data set adds to the master data set. We'll discuss the most common scenarios, which are:</p><ul><li>Adding observations</li><li>Adding variables</li><li>Adding level one units to existing level two units</li>
+<li>Adding variables for different levels</li></ul><p>Before proceeding, start a new do file:</p><p class="InputCode">capture log close<br/>
+                  log using combine.log, replace<br/>
+                  clear all</p><h2>Adding Observations</h2><p>If the using data set adds more observations to the master data set, then this is a job for <span class="InputCode">append</span>. Using <span class="InputCode">append</span> makes sense if the master data set and the using data set contain the same kinds of things, but not the same things. The <span class="InputCode">append</span> command simply adds the using data set to the end of the master data set.</p>
+<p>Suppose that instead of a single file containing our 2000 ACS sample you were given <span class="InputCode">2000_acs_part1</span> and <span class="InputCode">2000_acs_part2</span>, with each file containing about half of the observations. Use <span class="InputCode">append</span> to combine them into a single data set:</p>
+<p class="InputCode">use 2000_acs_part1<br/>
+                  append using 2000_acs_part2</p>
+<p>If a variable only exists in one of the two data sets, observations from the other data set will have missing values for that variable. Make sure variables have the same name in both files before appending them, or append will treat them as different variables. Of course that assumes they actually measure the same thing in the same way. The warning you got about labels already being defined tells you those variables have value labels defined in both files, and you should make sure that they agree about what the values mean.</p>
+<h2>Adding Variables</h2>
+<p>If the using data set adds more variables to the master data set <em>and</em> observations represent the same things in both data sets, then this is a job for a one-to-one <span class="InputCode">merge</span>. The <span class="InputCode">merge</span> command combines data sets by combining observations that have the same value of an identifier variable or variables, so the result has all the variables from both files.</p>
+<p>Suppose you were given the data files <span class="InputCode">2000_acs_demographics</span> and <span class="InputCode">2000_acs_ses</span>, containing demographic information and socio-economic status (SES) information respectively about the 2000 ACS respondents. You can use <span class="InputCode">merge</span> to combine them into a single data set:</p><p class="InputCode">clear<br/>
+                    use 2000_acs_demographics<br/>
+                    merge 1:1 household person using 2000_acs_ses</p>
+<p><span class="InputCode">1:1</span> means you are doing a one-to-one merge: one respondent's demographic information will be matched with one respondent's SES information. Next come the identifier variables, two in this case, that tell <span class="InputCode">merge</span> which observations should be matched. Because we've specified that this is a 1:1 merge, the identifier variable(s) must uniquely identify observations in both data sets. We'll talk about handling duplicate identifiers shortly. The identifier variables must exist in both data sets, and have the same names, but in most cases all of the other variables should have different names.</p>
+<p>If an observation in one data set does not match anything in the other data set, it will get missing values for all the variables in that data set. How successful you are at matching observations can sometimes affect your entire research agenda, so Stata both gives you a report and creates a new variable, <span class="InputCode">_merge</span>, that tells you whether a given observation matched or not. In this case, all the observations matched and thus got a 3 for <span class="InputCode">_merge</span>. A 1 means the observation came from the master data but did not match anything in the using data set; a 2 means the observation came from the using data set but did not match anything in the master data set. Note that you cannot carry out another merge until you drop or rename the <span class="InputCode">_merge</span> variable, so Stata can create a new one.</p>
+<p><strong>Exercise: examine the following pairs of data sets: <span class="InputCode">2000_acs_race</span> and <span class="InputCode">2000_acs_education;</span> <span class="InputCode">2000_acs_adults</span> and <span class="InputCode">2000_acs_children</span>. Determine the appropriate method for combining each pair into a single data set and then do so.</strong></p>
+<h2>Adding Level One Units to Existing Level Two Units</h2><p>Next consider the data sets <span class="InputCode">nlsy1979</span> and <span class="InputCode">nlsy1980</span>. They each contain one year's worth of data from our NLSY extract. Is combining them a job for <span class="InputCode">append</span> or for <span class="InputCode">merge</span>?</p>
+<p>The answer depends on whether you want the resulting data set to be in long form or in wide form. In the NLSY, a level two unit is a person and a level one unit is a person-year combination, so adding <span class="InputCode">nlsy1980</span> to <span class="InputCode">nlsy1979</span> is adding new level one units (years) to the existing level two units (people). In long form each level one unit gets its own observation, so adding <span class="InputCode">nlsy1980</span> in long form adds observations. This is a job for <span class="InputCode">append</span>. In wide form, each level two unit gets its own observation, but each level one unit gets its own set of variables. Thus adding <span class="InputCode">nlsy1980</span> in wide form adds variables; a job for <span class="InputCode">merge</span>.</p>
+<p>The only complication is the level one identifier, year. Right now it is found <em>only</em> in the filenames of the two data sets, as is common. In long form, the level one identifier needs to be a variable. In wide form, it needs to be a suffix at the end of the names of all the level one variables. Either way that needs to be done before combining the data sets, or you'll have no way of knowing whether a value is from 1979 or 1980.</p>
+<p>First combine the two files using <span class="InputCode">append</span> so the result is in long form. Begin by loading <span class="InputCode">nlsy1980</span>, creating a <span class="InputCode">year</span> variable set to 1980, and saving the results:</p><p class="InputCode">clear<br/>use nlsy1980<br/>gen year=1980<br/>save nlsy1980_append, replace</p><p>Next, load <span class="InputCode">nlsy1979</span> and create a <span class="InputCode">year</span> variable set to 1979:</p><p class="InputCode">use nlsy1979<br/>
+                    gen year=1979</p><p>Now combine them with <span class="InputCode">append</span>:</p><p class="InputCode">append using nlsy1980_append</p>
+<p>This will give you a dataset with first all the 1979 observations and then all the 1980 observations. It's often useful to have all the observations for a given level two unit (person) together and in chronological order, which you could get by running <span class="InputCode">sort id year</span>.</p>
+<p>Now combine the two files using <span class="InputCode">merge</span> so the result is in wide form. Begin by loading <span class="InputCode">nlsy1980</span>, but this time instead of creating a variable to store 1980 we need to add 1980 to the names of all the level one variables: <span class="InputCode">edu</span>, <span class="InputCode">income</span>, and <span class="InputCode">age</span>. You could do that with three <span class="InputCode">rename</span> commands (e.g. <span class="InputCode">rename edu edu1980</span>) but you can also rename them as a group:</p>
+<p class="InputCode">clear<br/>
+use nlsy1980<br/>
+rename edu-age =1980<br/>
+save nlsy1980_merge, replace                    </p>
+<p>This <span class="InputCode">rename</span> command first uses variable list syntax to specify the variables to be acted on, <span class="InputCode">edu-age</span>, and then specifies that 1980 should be added to the end of the existing variable names with <span class="InputCode">=1980</span>.</p>
+<p>Repeat the process for <span class="InputCode">nlsy1979</span>:</p>
+<p class="InputCode">use nlsy1979<br/>
+rename edu-age =1979<br/>
+</p>
+<p>Now you're ready to combine them with <span class="InputCode">merge</span>. This will again be a one-to-one merge, since one person's data from 1979 is being combined with one person's data from 1980.</p>
+<p class="InputCode">merge 1:1 id using nlsy1980_merge</p>
+<p><strong>Exercise: The files <span class="InputCode">nlsy7980</span> and <span class="InputCode">nlsy8182</span> each contain two level one units (person-year combinations). Combine them into either long form or wide form, using <span class="InputCode">reshape</span> to make them consistent before combining.</strong></p>
+<h2>Adding Variables for Different Levels</h2>
+<p>If you need to combine hierarchical data where the master data set contains data on the level one units and the using data set contains data on the level two units, this is a job for a many-to-one merge. A many-to-one merge combines observations just like a one-to-one merge, but many level one units are combined with one level two unit. A one-to-many merge is essentially the same thing, just the master data set contains the level two unit (the "one") and the using data set contains the level one units (the "many").</p>
+<p>The data set <span class="InputCode">2000_acs_households</span> contains information about the households in our 2000 ACS extract (in particular, their household income). There is one observation per household. Adding it to <span class="InputCode">2000_acs_cleaned</span> is a job for a many-to-one merge:</p>
+<p class="InputCode">clear<br/>
+use 2000_acs_cleaned<br/>
+merge m:1 household using 2000_acs_households</p>
+<p>Note that the key variable here is just <span class="InputCode">household</span>, not <span class="InputCode">household</span> and <span class="InputCode">person</span> like in prior merges.</p>
+<p>You can also combine these data sets by adding <span class="InputCode">2000_acs_cleaned</span> to <span class="InputCode">2000_acs_households</span>. This will be a one-to-many merge but the result will be the same:</p>
+<p class="InputCode">clear<br/>
+use 2000_acs_households<br/>
+merge 1:m household using 2000_acs_cleaned</p>
+<p><strong>Exercise: <span class="InputCode">nlsy_person</span> contains information about the people in our NLSY extract that does not change over time, while <span class="InputCode">nlsy_person_year</span> contains only variables that change from year to year. Combine them.</strong></p>
+<h3>Adjusting for Inflation</h3>
+<p>Next we'll do an example that illustrates some of the complications that can arise when combining data sets from different sources.</p>
+<p>One weakness of the NLSY data extract we've been using is that incomes from different time periods are not really comparable due to inflation. To adjust them for inflation, we need information about the level of inflation in each year. The  <span class="InputCode">fredcpi</span> data set contains the average Consumer Price Index for All Urban Consumers for every year from 1970 to 2019. It was obtained from the <a href="https://fred.stlouisfed.org/">Federal Reserve Economic Data</a> (FRED). If you have a FRED API key, and if you are interested in the US economy you probably want one, you can obtain it directly from FRED with:</p>
+<p class="InputCode">import fred CPIAUCSL, daterange(1970 2019) aggregate(annual,avg)</p>
+<p>If you click <span class="MenuOutput">File</span>, <span class="MenuOutput">Import</span>, <span class="MenuOutput">Federal Reserve Economic Data (FRED)</span> you can search for and download a variety of economic data.</p>
+<p>Taking this data and adding <span class="InputCode">nlsy_extract</span> to it is a job for a one-to-many merge: one year's CPI data will match with many people's NLSY data for that year. Note how this treats a year as the level two unit! For most purposes it's more useful to think of people as the level two unit in the NLSY, but it's just as logical to group person-year combinations by year instead. </p>
+<p>The <span class="InputCode">fredcpi</span> data set will need some preparation before merging; load it and take a look using the data browser:<span class="InputCode"></span></p>
+<p class="InputCode">clear</p>
+<p class="InputCode">use fredcpi</p>
+<p><span class="InputCode">CPIAUCSL</span> contains the Consumer Price Index we want, but since the subtleties of the different indexes don't concern us, rename it just <span class="InputCode">cpi</span>:</p>
+<p class="InputCode">rename CPIAUCSL cpi</p>
+<p>As expected we have one observation per year, though note that as of this writing <span class="InputCode">cpi</span> is missing for 2019 since the year is not complete. Both <span class="InputCode">datestr</span> and <span class="InputCode">daten</span> are year identifiers, just in different forms. The <span class="InputCode">daten</span> variable is an official Stata date, which consists of a numeric variable recording the number of days since January 1, 1960 and a format which causes that number to be displayed as a human-readable date. If you're interested in learning more about Stata dates see <a href="https://ssc.wisc.edu/sscc/pubs/stata_dates.htm">Working with Dates in Stata</a>.</p>
+<p>The trouble is, neither of these match the <span class="InputCode">year</span> variable in the NLSY data so you'll need to create a variable that does. The <span class="InputCode">year()</span> function takes a Stata date and extracts the year from it:</p>
+<p class="InputCode">gen year=year(daten)</p>
+<p>Now that you have <span class="InputCode">year</span>, you no longer need <span class="InputCode">datestr</span> and <span class="InputCode">daten</span>, so  drop them (using a wildcard for practice/efficiency):</p>
+<p class="InputCode">drop date*</p>
+<p>You're now ready to merge in <span class="InputCode">nlsy_extract</span>:</p>
+<p class="InputCode">merge 1:m year using nlsy_extract</p>
+<p>This time we see something new: not everything matched. Is this a problem? It certainly could be! Take a look at all the observations that didn't match with:</p>
+<p class="InputCode">browse if _merge!=3</p>
+<p>First note that they are all from the master data set, <span class="InputCode">fredcpi</span>. Next note the years: many of them come from before or after the period of our extract. Others come from the period when the NLSY only collected data every other year (run <span class="InputCode">use nlsy_extract</span> and <span class="InputCode"> tab year</span> to see this). Putting it all together, the unmatched observations are years from <span class="InputCode">fredcpi</span> that did not match anything in <span class="InputCode">nlsy_extract</span> because there was no NLSY data for that year. This is not a problem at all, which highlights that a "successful" merge is not always one where all the observations match. On the other hand, it's always worth investigating why observations don't match. If we had tried to match by the original <span class="InputCode">daten</span> there would have been more observations that didn't match, and it definitely would have indicated a problem.</p>
+<p>The observations that did not match don't represent people like the other observations do, which could cause a variety of problems down the road. One way to get rid of them would be to simply <span class="InputCode">drop</span> based on <span class="InputCode">_merge</span>:</p>
+<p class="InputCode">drop if _merge!=3</p>
+<p>A more efficient way is to tell the <span class="InputCode">merge</span> command you only want observations that match using the <span class="InputCode">keep</span> option:</p>
+<p class="InputCode">merge 1:m year using nlsy_extract, keep(match)</p>
+<p>Don't use this approach until after you've looked at the observations that didn't match and are confident they don't indicate a problem.</p>
+<p>The <span class="InputCode">keep</span> option will also accept <span class="InputCode">master</span> and <span class="InputCode">using</span>, and you can list more than one. In this case, <span class="InputCode">keep(match using)</span> would mean you want to keep observations that match and observations from the using data set, which  might be useful in this case if you were worried that some of the NLSY data might be from years not contained in <span class="InputCode">fredcpi</span>.</p>
+<p>To adjust monetary quantities for inflation we need to pick a year and convert all of  them to dollars in that year. We'll use the year 2000. To convert dollars in some source year to dollars in a destination year, multiply them by the CPI in the destination year divided by the CPI in the source year. In this data set "CPI in the source year" is just the <span class="InputCode">cpi</span> variable. But we need a separate variable for "CPI in the year 2000" that contains the same number for all observations. This is just like creating a level two variable based on a special level one unit (the last topic in <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata5.htm">Hierarchical Data</a>) except we won't need to use by:</p>
+<p class="InputCode">gen year2000=1 if year==2000<br/>
+egen cpi2000=mean(cpi*year2000)<br/>
+gen inc2000=income*cpi2000/cpi<br/>
+</p>
+<p>To see what a difference adjusting for inflation makes, run:</p>
+<p class="InputCode">bysort year: sum inc*</p>
+<p>This will show you the mean income in each year, both in the original dollars and in 2000 dollars. Note how a dollar in 1979 was worth more than twice what a dollar was worth in 2000, but the difference decreases until in 2000 <span class="InputCode">income</span> and <span class="InputCode">inc2000</span> are identical.</p>
+<p> The United States is in a period of unusually low inflation, which almost makes it possible to forget inflation exists. But correcting for inflation is critical with historical data. Even in recent years inflation does add up and forgetting to adjust for it will cause problems.</p>
+<h2>Dealing with Duplicate Identifiers</h2>
+<p>The bane of everyone who does merges is the error message "variable id does not uniquely identify observations in the master data" and its variations. Sometimes this means you made a simple mistake: mixing up <span class="InputCode">1:m</span> and <span class="InputCode">m:1</span>, for example, or specifying just one identifier when you need two. Sometimes it means you've badly misunderstood the structure of the data and need to rethink everything. But often it means there is a problem with the data itself:  duplicate IDs.</p>
+<p>If you follow the steps we recommend in <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata3.htm">First Steps with your Data</a>, you'll find out about any duplicates in the process of finding the data set's identifiers (you'll also avoid completely misunderstanding the structure of the data). However, it's when you merge that  duplicates become a problem that must be resolved. Fortunately, you now have the skills to resolve them.</p>
+<p>The one thing you should not do is make the error message go away by changing the the type of merge you perform. If your merge should be one-to-one but you have duplicate identifiers in the master data set, changing it to many-to-one may allow the merge to run but the resulting data set won't make any sense. If you find yourself wanting to run a many-to-many merge (<span class="InputCode">m:m</span>), step away from the computer, take a break, and then rethink what you're doing. We've never seen a many-to-many merge that wasn't a mistake; it's hard to think of anything in the real world that could be modeled by what Stata does when you specify a many-to-many merge. Even the Stata documentation describes them as "a bad idea." </p>
+<p>The data sets we've been working with are carefully curated and will probably never have a duplicate identifier. However, they're very common in administrative and other real-world data. So we've prepared a data set that does have some: <span class="InputCode">merge_error</span>. This is a fictitious data set of students, their demographics, and their scores on a standardized test. Assume you were trying to merge it with another similar data set and got the dreaded "variable id does not uniquely identify observations in the master data." </p>
+<p>The first thing to do is load the data set that's causing the error:</p>
+<p class="InputCode">clear<br/>
+use merge_error</p>
+<p>The <span class="InputCode">id</span> variable is clearly intended to be an identifier, but recall that you can use <span class="InputCode">duplicates report</span> to check if it actually uniquely identifies observations:</p>
+<p class="InputCode">duplicates report id</p>
+<p>It does not—or you would not have gotten that error message—but this does not help us identify the problem. To do that, create a variable that tells you how many times each <span class="InputCode">id</span> is duplicated:</p>
+<p class="InputCode">bysort id: gen dups=_N</p>
+<p>Now you can examine the problem observations with:</p>
+<p class="InputCode">browse if dups&gt;1</p>
+<p>The first six rows consist of three pairs of observations which are completely identical. This is almost certainly a case of them having been put in the data set twice, a common data entry error. You can get rid of these duplicates by running:</p>
+<p class="InputCode">duplicates drop</p>
+<p>This is a good outcome: not only is the problem easy to fix, you didn't actually lose any data. Unfortunately it does not fix all the duplicates in this data set.</p>
+<p>At this point <span class="InputCode">dups</span> is no longer accurate: it is still 2 for the observations where we dropped a duplicate observation. Update it before proceeding:</p>
+<p class="InputCode">by id: replace dups=_N</p>
+<p>The remaining six rows with <span class="InputCode">dups&gt;1</span> are three pairs of observations with the same value of <span class="InputCode">id</span> but different values for one or more of the other variables. You should consider the possibility that there is some hierarchy involved that you were not aware of, such as some people taking multiple tests. However, there's no indication of anything like that in this data set, and it would be unusual for it to affect so few observations. Almost certainly the duplicates are different people who were somehow given the same <span class="InputCode">id</span>, most likely due to a data entry error.</p>
+<p>This is a bad outcome: Assuming you only have one person with an <span class="InputCode">id</span> of 64 in the other data set, you don't know which of the two people with an <span class="InputCode">id</span> of 64 in this data set is the same person. You can resolve this problem by dropping both of the duplicate observations:</p>
+<p class="InputCode">drop if dups&gt;1</p>
+<p>However, note that all of the duplicate observations have different values for <span class="InputCode">race</span>. This means that if you merged by <span class="InputCode">id</span> and <span class="InputCode">race</span>, they would be uniquely identified. This very much depends on the particulars of the data set:  merging by <span class="InputCode">id</span> and <span class="InputCode">female</span> instead wouldn't help much at all. On the other hand, if you had enough variables you might be able to match people even if the data sets didn't have an identifier in common. Linking records without relying on identifiers is a very hot topic, but one we won't address any further.</p>
+<p><strong>Exercise: <span class="InputCode">nlsy_err</span> is a version of our NLSY extract that has had duplicate identifiers introduced into it. Identify and address the errors so that the combination of <span class="InputCode">id</span> and <span class="InputCode">year</span> are a unique identifier again and could be used to carry out a one-to-one merge.</strong></p>
+<p>Next: <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata8.htm">Project Management</a></p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Data Wrangling in Stata: Project Management</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p class="intro">This is part eight of <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Data Wrangling in Stata</a>.</p>
+<p>
+                  Most Stata work takes place in the context of a research project. In a typical project you have a research question you want to
+                  answer and some data that you think will answer it, but the data
+                  isn't in a form that can actually answer the question—yet. Good project management will help you get from raw data to completed analysis efficiently and reproducibly.</p>
+<h2>Simple Best Practices</h2>
+<p>Books have been written about how to manage research projects properly. While we won't go into that level of detail here, we will suggest a few simple best
+                  practices that can save  a tremendous amount of time 
+                  and reduce the probability of making serious mistakes.</p>
+<h3>Don't Skip the First Steps</h3>
+<p>In <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata3.htm">First Steps with Your Data</a>, we laid out a process for both cleaning up your data set and gaining a deep understanding of it. Do not skip these steps! They will save you time down the road. A particularly painful scenario they can help you avoid is discovering after months of work that your data set cannot actually answer your research question.</p>
+<h3>Begin with the End in Mind </h3>
+<p>Before you write any code, think through what form the data
+                  needs to be in so you can analyze it. What should an observation
+                  represent? What variables will each observation need to contain?
+                  The answers to these questions will most likely be determined
+                  by the statistical techniques you plan to use. </p>
+<h3>Don't Try to do Everything at Once</h3>
+<p>Once the goal is clear in your mind, don't try to write one massive do file that
+                  gets you there in one step, only trying to run it once it's "done."
+                  If you do, the do file 
+                  will most likely have a large number of bugs. Then you
+                  may find that in order to make one part work, you need
+                  to do something in a different way than you originally planned.
+                You'll then have to change everything that follows.</p>
+<p>It's far better to write a bit of code, test and debug it, then
+                  write a little more, test and debug it, and so forth. How much to write depends on how difficult what you're writing is for you. If you're very confident in what you're doing, go ahead and write ten or twenty lines at a time. If what you're doing is brand new to you, write one and then test it, or even write it interactively in the command window and only copy it to your do file once it works.</p>
+<h3>Split Your Code into Multiple Do Files</h3>
+<p>If a do file gets too long, as you go through the write-test-debug cycle you'll find yourself spending a lot of time waiting for code you know is good to run so it can move on to the code you just added and need to test. More generally, you want to write do files that are short enough that while you're working on one you can remember everything it does.</p>
+<p>To break up a long do file into smaller pieces, just pick a logical stopping point, have the do file save the data set at that point, then create a new do file that uses that data set as its starting point. Just remember: <strong><em>never save your output data set over your input data set.</em></strong></p>
+<p>Avoid the practice of running parts of a do file as a substitute for breaking the do file into multiple pieces. Running part of a do file can be useful, but it's inherently not reproducible because it depends on clicking on the right thing. It can also introduce errors, such as code that crashes because it depends on prior code that was not run or because it was run more than once.</p>
+<h3>Put Code for Different Purposes in Different Do Files</h3>
+<p>While data wrangling is a linear process with each step depending on what came before, exploratory analysis often has multiple independent branches  as you try various things. Then when you've identified the results you want to report or publish, you want the code that produces them to be as clean, clear, and concise as possible. Thus it's best to have separate do files for each of these purposes.</p>
+<p>For most projects there should be a "final" data set that's used for all  analysis. That way you can open it up interactively and try things, write do files that analyze it in different ways, and generally experiment at will without running the risk of forgetting that, for example, the do file that ran the linear regressions also did a bit more recoding.</p>
+<h2>Checking your Work</h2>
+<p>Programming errors can be subtle and very difficult to catch by just staring at your code. Generally it's more effective to spend your time comparing your results to what they should be. Of course this depends on having some sense of what they should be: be constantly on the lookout for information you can use to check your work.</p>
+<p>Examine summary statistics and frequencies frequently as you carry out data preparation, especially when you create new variables or change the structure of your data. See if what you get is plausible. If the results change, be sure you can explain why.</p>
+<p>Spend even more time looking at individual cases. Use the <span class="InputCode">browse</span> command, often specifying a subset of the data so you can focus on what's currently relevant, and compare what your do file did to individual cases with what you meant it to do. If you have different types of cases, be sure to look at samples of each.</p>
+<p>If you do find problems, looking at cases is the best way to solve them. What kinds of cases get the wrong answers? How exactly are they wrong? Figuring out those details will point you to the particular commands that need to be corrected.</p>
+<h2>Make your Project Reproducible</h2>
+<p>With proper organization you should be able to reproduce your entire project at will.</p>
+<p>Start with the data as you obtained it.  Your first
+                  do file will  read it in, make some changes, and save the results
+                  in a different file. Your second do file will read in the output
+                  from the first do file, make further changes, and then save its
+                  results in another separate file. Repeat until your data wrangling is complete. Then all your analysis do files will read the same final data set and analyze it in various ways.</p>
+<p>If you discover errors or need to make changes, having a well-organized and reproducible project will save you significant amounts of time. To track down an error, run your do files one-by-one, checking the results after each, until the error appears. Then you'll know which do file needs to be fixed. Once the error is corrected or the change is made, consider whether  subsequent do files also need to be changed. Once all the needed changes are made, simply rerun all your do files.</p>
+<p>Consider writing a master do file that runs all the do files required by the project, in the proper order (recall that one do file can run another simply by running the command <span class="InputCode">do otherDoFile</span>). Also write a "readme" document to keep with the project files, containing other relevant information. This will be very valuable to anyone else who has to work with your code, but also to the future you who has to try to remember how it all worked months or years later. </p>
+<h2>Case Studies</h2>
+<p>Two stories that illustrate the importance of proper project management:</p>
+<p>One day a professor and her research assistant came to the SSCC's statistical consultants. They were working with census data from multiple  countries over many years, so a lot of data wrangling was required to make the various data sets compatible and then combine them. The RA had been working on this data wrangling for about six months.</p>
+<p>Then the the professor decided to run some basic frequencies on the data they had. The results were clearly wrong. The RA must have made a mistake at some point, and they came to us hoping we'd be able to fix the problem. After some discussion, we found that the RA had been doing all his work interactively. He would open a data set, do things to it, and then save it. He had only a general recollection of what he had done, and had no do files, logs or intermediate data sets to fall back on. Since everything he had created was useless, the project had to be started again from the original data.</p>
+<p>The next time we saw her, the professor had a new RA, and she made sure did her work reproducibly.</p>
+<p>On a happier note, a grad student once came to the SSCC's statistical consultants because in preparing to present her research she  discovered that the values of one variable for three observations had somehow been corrupted (we have never seen that happen before or since). We had no way of knowing how that affected her results.</p>
+<p>Fortunately she had done everything using do files. We got the data from the source again, checked that it was intact this time, and then she re-ran all her do files. Months of work were replicated in less than 15 minutes, and she was able to proceed with her presentation.</p>
+<p>Far more could be said about project management (we haven't even mentioned collaborating with others). You might find J. Scott Long's <a href="http://stata.com/bookstore/wdaus.html">Workflow of Data Analysis Using Stata</a> helpful.</p>
+<p><strong>Exercise: the files <span class="InputCode">final_demo.dta</span> and <span class="InputCode">final_scores</span>.dta contain fictional demographic information about students and their families, and the student's scores on a standardized test. Your research question is "What is the impact of living in a single-parent family on test scores?" You are also interested in the effect of household income and the education of the parents (which must be aggregated in some way to create a household-level variable). Use everything you've learned to wrangle the data into an appropriate form, and then use whatever analysis tools you're familiar with to answer the research question. Use the project management best practices described in this section, but consider this a review of everything you've learned.</strong></p>
+<p>Next: <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata9.htm">Learning More</a></p>
+<div></div>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Data Wrangling in Stata: Learning More</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p class="intro">This is part nine of <a href="https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm">Data Wrangling in Stata</a>. </p>
+<p>You've now learned a great deal about how to wrangle data in Stata. However, you'll almost certainly need to learn more at some point in your Stata career. Thus we'll conclude by discussing resources for doing so.</p>
+<h2>Help</h2>
+<p> Your first resource is the Stata help files, which are far better than most. Most of the time, you'll find what you need more quickly in the help files than by googling.</p>
+<h3>Help for Commands</h3>
+<p>To see the help for a particular
+                  command type <span class="InputCode">help</span> and then the name of the command in the Command window. For example, type:</p>
+<p class="InputCode">help mlogit</p>
+<p>This will show you an abbreviated version of the documentation for the <span class="InputCode">mlogit</span> (multinomial logit) command. For the full documentation, click <span class="MenuOutput">View complete PDF manual entry</span> at the top. This includes:</p>
+<ul>
+<li>The <span class="MenuOutput">Title</span> and <span class="MenuOutput">Description</span> of the command.</li>
+<li>A <span class="MenuOutput">Quick Start</span> section that shows you how the command is used, which is great if you just need a refresher on the syntax</li>
+<li>A full <span class="MenuOutput">Syntax</span> diagram for the command and a list of available options. It also tells you what kinds of weights are allowed.</li>
+<li>A detailed description of all the <span class="MenuOutput">Options</span>.</li>
+<li><span class="MenuOutput">Remarks and Examples</span> that can give you a pretty good start on both the Stata and the statistics involved in using the command.</li>
+<li><span class="MenuOutput">Methods and formulas</span> if you need to know exactly what it's doing.</li>
+<li><span class="MenuOutput">References</span> you should read if you plan on using a model in your research that you've never formally studied.</li>
+<li>An <strong>Also see</strong> section—if it turns out that a command isn't quite what you need, the chances are good that the command you actually need is listed there.</li>
+</ul>
+<p>Note that every command that runs a statistical model has a separate entry for postestimation tasks, like prediction or calculating margins. You can see it with:</p>
+<p class="InputCode">help mlogit postestimation</p>
+<p>Typing <span class="InputCode">help functions</span> will give you a list of the functions you can use in mathematical expressions, while <span class="InputCode">help egen</span> will give you a list of egen functions.</p>
+<h2>findit</h2>
+<p>Often you'll know what you want to do but not the
+                  name of the command that will do it. Then <span class="InputCode">findit</span> is
+                  your best bet—think of it as Google for Stata. For example, suppose you want to do something
+                  with Heckman selection models. If you type</p>
+<p class="InputCode">findit heckman</p>
+<p>you'll get a tremendous amount of information.  First Stata will
+                  search the help files and point out that there is a <span class="InputCode">heckman</span> command,
+                  along with related commands like <span class="InputCode">suest</span> and <span class="InputCode">treatreg</span>.
+                  Then it will search the <a href="http://stata.com/support/faqs/">Frequently Asked Questions files on Stata's
+                    web site</a> and the large <a href="http://www.ats.ucla.edu/stat/stata/default.htm">Stata web site at UCLA</a> (the UCLA web site contains a great deal of useful information, but unfortunately it's no longer being updated). Finally
+                  it will search through the user-written programs that have appeared
+                  in the <a href="http://stata.com/bookstore/sjdetails.html">Stata Journal</a>, the old <a href="http://stata.com/products/stb/">Stata Technical Bulletin</a>, or in
+                  the Boston College <a href="http://ideas.repec.org/s/boc/bocode.html">Statistical Software Components</a> archive. You
+                  can find out what these programs do by reading their help files (<span class="InputCode">.hlp</span>), and if you decide they'll be useful to you you can download and install them by clicking on the <span class="InputCode">click here to install</span> link. See <a href="https://ssc.wisc.edu/sscc/pubs/4-16.htm">Finding and Installing User-Written  		  Stata Programs</a> for more information.</p>
+<h2>Effective Googling</h2>
+<p>Of course Google will be a useful tool as well. Usually you can find what you need by searching for Stata and then the command or topic of interest. If you are getting a particularly obscure error message, googling for that exact error message (put it in quotes) can often find discussions of the exact problem you're facing.</p>
+<h2>SSCC Resources</h2>
+<p>The <a href="https://ssc.wisc.edu/sscc/pubs/stat.htm">SSCC's
+                  Knowledge Base</a> has a large section on Stata, including
+                  our training curriculum and discussions of specific topics. Once you feel confident using Stata's basic syntax, we strongly suggest reading <a href="https://ssc.wisc.edu/sscc/pubs/stata_prog1.htm">Stata Programming Essentials</a>. It will teach you things like how to do the same thing to ten different variables without having to write it out ten times.</p>
+<p>The SSCC offer <a href="https://ssc.wisc.edu/sscc_jsp/training/">classes</a> on Stata each semester. Look for further development of our <em>Data Science Tools for Research</em> curriculum as well as topical Stata Workshops.</p>
+<p>Finally, the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC's statistical consultants</a> are available to assist SSCC members. We cannot write your Stata programs for you.
+                  But we will be more than happy to help with planning your project,
+                  figuring out the commands that will make your program
+                  work, and of course finding and fixing bugs, along with consulting on statistical methodology.</p>
+<h2>Practice</h2>
+<p>The most important resource for learning Stata is practice. If you don't use the skills and knowledge you've gained from reading this series within the next few weeks (at most) you'll lose them rapidly. If you don't have a current research project that will require you to use Stata, make one up.</p>
+<p>One particular pitfall to watch out for is "I'll just do it in Excel." It may be true that you can carry out a particular task in Excel faster than you can first learn how to do it in Stata and then actually carry it out. But if you do it in Stata anyway, the next time it comes up you'll be able to do it much more quickly in Stata than in Excel, and more reproducibly, and with less likelihood of error. You'll also build up your general Stata expertise, so that soon you'll be able to do things faster in Stata even if you've never done them before. Now that you've spent the time to learn Stata, plan on never using Excel for research again.</p>
+<p><strong>Exercise: Load the <span class="InputCode">auto</span> data set that comes with Stata (<span class="InputCode">sysuse auto</span>). The <span class="InputCode">make</span> variable contains first the company that built the care and then the name of the car model. In Introduction to Stata, we created a company variable with <span class="InputCode">gen company=word(make,1)</span>. Now create a <span class="InputCode">model</span> variable. But since the model name is sometimes more than one word, you can't just use <span class="InputCode">gen model=word(make,2)</span>. Instead, look up <span class="InputCode">subinstr()</span> in the help files, and use it to create <span class="InputCode">model</span> by replacing <span class="InputCode">company</span> and the space that follows it with nothing.</strong></p>
+<p>This brings us to the end of Data Wrangling in Stata. We hope it has been useful to you.</p><!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>
