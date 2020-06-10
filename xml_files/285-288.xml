@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Open Records and SSCC Email</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Recent events have reminded many SSCC members that their University email is subject to Open Records requests. This article will introduce some of the basic concepts of Open Records law and discuss technical aspects of SSCC email that are relevant to it.</p>
+<p> Please keep in mind that SSCC staff are neither records managers nor lawyers. This article  includes links to authoritative sources on Open Records law and how to comply with it; for more information  please refer to <a href="http://archives.library.wisc.edu/records/">UW Records Management</a> or contact the <a href="http://archives.library.wisc.edu/records/contact-recmngt.html">University Records Officer</a>.</p>
+<h2>Open Records Law                </h2>
+<p>As a public institution, the University of Wisconsin-Madison is subject to Wisconsin's Open Records law. The University has created <a href="http://www.uwsa.edu/gc-off/records/training.htm">training materials</a> to help you understand your obligations under the law and what would need to be released in response to an Open Records request. The following discussion is based on that material.</p>
+<h3>What is a Record?</h3>
+<p>State law (Chapter 16.61) defines records as "all books, papers, maps, photographs, films, recordings, or other             documentary materials, regardless of their physical form or   characteristics,           produced or received by any state agency or   its officers or employees           in connection with the transaction   of public business." While this definition was written before email was in use, it is very broad and has been held to include email.</p>
+<p>If you work for the University, then your job duties are "public business" and information related to your job duties will generally be a public record. "In other words, regardless of how you create or receive the information, if the information is related to your work for the University, and it is memorialized or recorded in any format, then it is a public record." (<a href="http://www.uwex.uwc.edu/admin-services/audit/records/">Public Records Fundamentals</a>) Thus, with certain exceptions, email related to your job duties is a public record. The inverse, that email not related to your job duties is not a public record, is more controversial.</p>
+<h3>Record Retention</h3>
+<p>Public records must be retained for an appropriate period. The appropriate period depends on the nature and table of the record, and is specified by Records Schedules which have been created by the University Records Officer and approved by the Wisconsin Public Records Board. Most SSCC email will fall under the <a href="http://archives.library.wisc.edu:2784/records/schedules/06.16.2008.UWS.General.Records.Schedule.Business.Communication.FINAL.pdf">Business Communication</a> schedule. It defines two types of business communication: "Routine" and "Transitory."</p>
+<p> Routine communication is  substantial, but does not "set forth university policies, guidelines, procedures, or directives." Routine communication should be retained for "six months after a business activity or project is completed."</p>
+<p> Transitory communication "has no business value after the information contained in the message has been conveyed or superseded, or the event to which the message is related has occurred." Transitory communication is the kind of thing you would have talked  about in person if email weren't so convenient. The retention instructions for transitory communication are "Retain for seven days or destroy when obsolete because the communication has been superseded or the related event has transpired." (See the <a href="http://archives.library.wisc.edu:2784/records/schedules/06.16.2008.UWS.General.Records.Schedule.Business.Communication.FINAL.pdf">schedule</a> for more details.)</p>
+<p>Other records fall under different schedules. For example, the <a href="http://archives.library.wisc.edu:2784/records/schedules/GRS_StudentRec.pdf">Student Records</a> schedule<a href="http://archives.library.wisc.edu:2784/records/schedules/GRS_DeptAcadAdmin.pdf"></a> specifies that "Faculty records of grades given in whatever form" must be retained for five years. For more information see the list of <a href="http://archives.library.wisc.edu:2784/records/rda.html#general-records">General Records Schedules</a>.</p>
+<p>Any records that are the subject of an Open Records request must be retained regardless of their regular schedule until the request has been completed.</p>
+<h2>Open Records Requests</h2>
+<p>If you receive an Open Records request, you should contact the <a href="http://legal.wisc.edu/">Office of Administrative Legal Services</a> (<abbr>OALS</abbr>) for assistance. They will help you determine what should be released. While "[t]he law specifically declares that it is the public policy of this state   that all persons are entitled to the greatest possible information" the law also "identifies certain information that cannot be released." (<a href="http://legal.wisc.edu/reference/public-records.html">OALS Public Records web page</a>) There are exceptions to the definition of a record, legal requirements to protect privacy such as FERPA and HIPAA, and other public interests that must be balanced against the public interest in disclosure. Former Chancellor Biddy Martin said the following on releasing the results of an Open Records request for a faculty member's email:</p>
+<p> <em>I announced that the university would comply with the law and, as we   do in all cases, apply the kind of balancing test that the law allows,   taking such things as the rights to privacy and free expression into   account. We have done that analysis and will release the records later   today that we believe are in compliance with state law.</em></p>
+<p><em>We are excluding records involving students because they are   protected under FERPA. We are excluding exchanges that fall outside the   realm of the faculty member's job responsibilities and that could be   considered personal pursuant to Wisconsin Supreme Court case law. We are   also excluding what we consider to be the private email exchanges among   scholars that fall within the orbit of academic freedom and all that is   entailed by it. Academic freedom is the freedom to pursue knowledge and   develop lines of argument without fear of reprisal for controversial   findings and without the premature disclosure of those ideas.</em> (<a href="http://www.news.wisc.edu/19190">Chancellor’s message on academic freedom and open records</a>, see Senior University Legal Counsel John Dowling's <a href="http://www.news.wisc.edu/19196">response to the requestor</a> for more details about what was excluded.)</p>
+<p>The Wisconsin Supreme Court case law she refers to is almost certainly <a href="http://www.wicourts.gov/sc/opinion/DisplayDocument.pdf?table=pdf&amp;seqNo=52285">Schill vs. Wisconsin Rapids</a> where the Supreme Court ruled 5-2 that the Wisconsin Rapids school district should not release the personal emails  teachers  sent or received using their school district email accounts in response to an open records request. However, it is a complicated decision. Three justices ruled that personal emails on government accounts are not public records, with reasoning similar to that found in the University's training materials. Two ruled that they are public records, but that the public interest in giving employees  privacy overrides the public interest in disclosure. Two justices ruled that personal emails on government accounts are public records and should be disclosed. On the other hand, all parties agreed that there is no duty to retain personal emails.</p>
+<h3>Other Legal Requests for Email</h3>
+<p>Email can also become evidence in trials or other legal proceedings, and can be subpoenaed or demanded in discovery. In these cases it does not matter whether a given message is a record under Open Records law or not.</p>
+<h2>Deleting SSCC Email</h2>
+<p>Deleting email   that either is not a record or no longer needs to be retained makes   responding to Open Record requests much easier. Deleting unneeded email also saves disk space and improves email performance. However, selecting a message and pressing Delete does not necessarily make it disappear.</p>
+<h3>Deleted Messages and Your Email Program</h3>
+<p>Most email programs recognize that people sometimes delete messages by mistake and provide a way to recover deleted messages for a time, for example by moving it to a Trash folder rather than deleting it immediately. However, if a message is available in a Trash folder it must still be produced in response to an Open Records request. Thus you need to be aware of what your email program actually does when you press Delete.</p>
+<h4>Thunderbird</h4>
+<p>Thunderbird provides several options, which you can see by clicking <span class="MenuOutput">Tools</span>, <span class="MenuOutput">Account Settings</span>, <span class="MenuOutput">Server Settings</span> and looking under <span class="MenuOutput">When I delete a message</span>. The default is <span class="MenuOutput">Move it to this Folder: Trash</span>. SSCC automatically deletes messages from Trash folders after 30 days (see <a href="https://ssc.wisc.edu/sscc/policies/inbox.htm">Email Storage Limitations</a>). You can make sure it is deleted sooner by checking <span class="MenuOutput">Empty Trash on Exit</span>. The next option is <span class="MenuOutput">Just mark it as deleted</span>. If you select it, deleted email is not actually removed  until you "expunge" your Inbox. However, this is what Thunderbird actually does behind the scenes regardless of the setting you choose--the other settings just hide messages that are marked as deleted. <em>Thus it's very important that you leave</em> <span class="MenuOutput">Clean up ("Expunge") Inbox on exit</span> <em>checked or email will never actually be deleted from your Inbox.</em> The third option, <span class="MenuOutput">Remove it immediately</span>, is ideal for mass deletions of old messages where you're reasonably confident you won't change your mind.</p>
+<p>Most other email programs provide similar options.</p>
+<h4>SSCC Webmail</h4>
+<p>By default SSCC Webmail moves messages to your Trash folder when they are deleted, and completely removes them from your Inbox at the same time. You can change this behavior if you want to by clicking <span class="MenuOutput">Settings</span>, <span class="MenuOutput">Server Settings</span>.                </p>
+<h3>Deleted Messages and SSCC Backups</h3>
+<p>Each night,  all messages on the SSCC email server except those in Trash folders are backed up. These backups are retained for one month and then deleted (the tapes are reused). If someone files an Open Records request for email, email that is available on backups must  be produced even if the original has been deleted. Note that WiscMail (@wisc.edu addresses) and other email providers have very different backup policies.</p>
+<h3>Scenarios</h3>
+<ul>
+<li>You receive an email and delete it. Your email program is set to move deleted email to Trash, and not to delete trash automatically (the defaults). The email is available in your Trash folder for 30 days, and then it is automatically deleted by the SSCC.</li>
+<li>You receive an email and delete it. Your email program is set to remove deleted messages immediately. The email is no longer available.</li>
+<li>You receive an email and delete it the next day. Because it was on the server when nightly backups were created, it is available for one month from the SSCC backup tapes, and may also be available in your Trash for 30 days.</li>
+<li>You receive an email and delete it several weeks, months, or years later. It is available from the SSCC backup tapes for one month from the night before it was deleted, and may also be available in your Trash for 30 days.</li>
+</ul>
+<p>We emphasize that you should not delete email that constitutes a record that must be retained. If you have any questions about what must be retained, or about Open Records in general, please contact <a href="http://archives.library.wisc.edu/records/">UW Records Management</a>.</p>
+<h2>More Information</h2>
+<ul>
+<li><a href="http://archives.library.wisc.edu/">University Archives and Records Management</a></li>
+<li><a href="http://archives.library.wisc.edu/records/resource.html#tutorials">Records Management Tutorials</a></li>
+<li><a href="http://www.uwex.uwc.edu/admin-services/audit/records/">Public Records Fundamentals</a></li>
+<li><a href="http://www.uwex.uwc.edu/admin-services/audit/businessComm/">Business Communication</a></li>
+<li><a href="http://archives.library.wisc.edu:2784/records/rda.html#general-records">Records Schedules</a></li>
+<li><a href="http://legal.wisc.edu/reference/public-records.html">OALS Public Records web site</a></li>
+<li><a href="http://www.news.wisc.edu/19190">Chancellor’s message on academic freedom and open records</a></li>
+<li> <a href="http://www.wicourts.gov/sc/opinion/DisplayDocument.pdf?table=pdf&amp;seqNo=52285">Schill vs. Wisconsin Rapids Decision</a></li>
+</ul>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Articles on Remote Computing</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>This page lists articles dealing with using 
+                                the SSCC Computing resources from home or anywhere 
+                                else away from campus.</p>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/working_from_home.htm">Working From Home and Other Remote Locations</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting to SSCC Linux Computers using X-Win32</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm">Connecting to Linstat from a Mac</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">Connecting to the SSCC Network via VPN</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">Mapping a Drive to a Network Share in Windows</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm">Using SSCC Network Disk Space from a Mac</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/remote_desktop.htm">Connecting to Your Office Computer Using Remote Desktop (Windows)</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/screen_sharing.htm">Connecting to Your Office Computer Using Screen Sharing (Mac)</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/5-35.htm">Transferring Files Using SecureFX</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/1-11.htm">Using SFTP</a> </p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Connecting to Your Office Computer Using Remote Desktop (Windows)</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Remote Desktop allows you to connect to your office computer from home or another remote location. The result is similar to logging in to Winstat, though Winstat will generally give you better performance and stability. However, if you have software on your office computer that is not available on Winstat, remote desktop will allow you to use that software from home. Macs can also use Remote Desktop to connect to office computers running Windows (Macs connecting to Macs use <a href="https://ssc.wisc.edu/sscc/pubs/screen_sharing.htm">Screen Sharing</a> instead). Connecting to your office computer using Remote Desktop is  a great back-up plan in case you can't log in to Winstat, and we suggest all SSCC members learn how to do so.</p>
+<p>If you have a Remote Desktop connection already set up that requires you start VPN before using it, you can modify it so VPN is no longer required. In Windows, open the connection then click on <span class="MenuOutput">Options</span> as described <a href="#add_gateway_win">here</a>. On a Mac, edit your connection and then add a new gateway as described <a href="#add_gateway_mac">here</a>.</p>
+<h2>Setting Up Your Office Computer to Allow Remote Desktop</h2>
+<p><strong>In order to allow Remote Desktop connections to your office PC, you will need to contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm" target="new" title="SSCC Help Desk">SSCC Help Desk</a> for us to enable this functionality on each of your devices</strong>. </p>
+<p>You can simply email the Help Desk with your computer's name and we will enable Remote Desktop for you, no need to set up an office call. </p>
+<p>To find your computer name, click <strong>Start</strong> and start typing "name" to search. Open <strong>View Your PC Name</strong> from the menu and look under<strong> Device Specifications</strong> for<strong> Device Name</strong>. The full name of your computer is what you see there plus <span class="InputCode">.ads.ssc.wisc.edu</span> (e.g. <span class="InputCode">damask</span> becomes <span class="InputCode">damask.ads.ssc.wisc.edu</span>). Computer names are not case-sensitive.</p>
+<h2>Connecting to Your Office Computer            </h2>
+<h3>Windows</h3>
+<p>Click the Windows logo button, <span class="MenuOutput">All Programs</span>, <span class="MenuOutput">Accessories</span> and <span class="MenuOutput">Remote Desktop Connection</span>.            </p>
+<p> You'll then need to type in the name 
+              of your office computer.            </p>
+<p><img alt="" height="253" src="https://ssc.wisc.edu/sscc/pubs/screenshots/RDP_Win10.PNG" width="407"/></p>
+<p id="add_gateway_win">Select <span class="MenuOutput">Show Options</span> from the lower right hand corner.</p>
+<p><img alt="" height="253" src="https://ssc.wisc.edu/sscc/pubs/screenshots/RDG1.jpg" width="407"/></p>
+<p>Select the <span class="MenuOutput">Advanced</span> tab, then in the <em>Connect from anywhere</em> section click the <span class="MenuOutput">Settings</span> button.</p>
+<p><img alt="" height="474" src="https://ssc.wisc.edu/sscc/pubs/screenshots/RDG2.jpg" width="407"/></p>
+<p>Select <span class="MenuOutput">Use these RD Gateway server serttings</span> and in the <span class="MenuOutput">Server name</span> box enter <span class="InputCode">rdg.ssc.wisc.edu</span>. Under <em>Login settings</em>, check the box for <span class="MenuOutput">Use my RD Gateway credentials for the remote computer</span> and click <span class="MenuOutput">OK</span>. </p>
+<p><img alt="" height="440" src="https://ssc.wisc.edu/sscc/pubs/screenshots/RDG3.jpg" width="407"/></p>
+<p>You are then ready to connect to your remote computer.            </p>
+<p>Once you connect, you'll see that the remote connection takes over 
+              your screen and you can almost forget that you're not sitting in 
+              your office. If you want to go back to using the computer you're 
+              connecting from, click on the minimize button in the toolbar across 
+              the top of the screen. When you're done, log out of your office computer as usual.</p>
+<h3>Mac</h3>
+<p>Remote Desktop Connection software can be downloaded and installed for free from the <a href="http://www.apple.com/osx/apps/app-store" target="new" title="Mac App Store">Mac App Store</a>. Once installed, it can be found in the <span class="MenuOutput">Applications</span> folder. </p>
+<p id="add_gateway_mac">To set up your connection, click <span class="MenuOutput">New</span> in the upper left hand corner. Enter a name for the connection (ex. "My SSCC Desktop"), and the name of your office computer.  Enter the name of your office computer and your SSCC credentials (using <span class="InputCode">primo\</span><span class="Parameter">username</span> in the <span class="MenuOutput">User Name</span> field). From the <span class="MenuOutput">Gateway</span> dropdown box select <span class="MenuOutput">Add Gateway</span> to open the Gateway Preferences.</p>
+<p><img alt="" height="776" src="https://ssc.wisc.edu/sscc/pubs/screenshots/RDG_MacOS.png" width="576"/></p>
+<p>To add a new gateway, select <strong>Add Gateway</strong> from the drop down menu. In the <span class="MenuOutput">Gateway Name</span> field enter <span class="MenuOutput">SSCC RDG</span>. In <span class="MenuOutput">Server name</span> enter <span class="InputCode">rdg.ssc.wisc.edu.</span> Choose <strong>Use Desktop User Account</strong> and click <strong>Add</strong>. </p>
+<p><img alt="" height="778" src="https://ssc.wisc.edu/sscc/pubs/screenshots/RDG_MacOS_2.png" width="576"/></p>
+<p>Select the newly created gateway from the drop down menu and then close the <span class="MenuOutput">Edit Remote Desktops</span> window. You can now select the connection and <span class="MenuOutput">Start</span> to begin your remote desktop session.                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/RDP_Win10.PNG, https://ssc.wisc.edu/sscc/pubs/screenshots/RDG1.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/RDG2.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/RDG3.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/RDG_MacOS.png, https://ssc.wisc.edu/sscc/pubs/screenshots/RDG_MacOS_2.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using ResearchDrive</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>ResearchDrive is a University-funded and DoIT-provided data storage system available to all faculty PIs and academic staff with permanent PI status, and their research teams.  Five terabytes of storage is provided on request to each PI, with the option to purchase additional storage at $200 per terabyte per year.</p>
+<p> ResearchDrive is secure enough for most research data, but is not appropriate for data covered by HIPAA or other sensitive data. RestrictedDrive is a related service that is secure enough to store sensitive data, but it must be paired with secure computers for analyzing it like those provided by Silo.</p>
+<p>ResearchDrive is easy to use: you can map a drive to it just like SSCC network drives, from your own computer or Winstat. Performance is generally comparable to SSCC drives as well. At this point the tools for using ResearchDrive from Linux work on user machines but not servers like Linstat, but DoIT is working on that. </p>
+<p>There are two primary advantages of ResearchDrive over SSCC network drives:</p>
+<ul>
+<li>You don't need an SSCC account to use ResearchDrive, though you do need a UW NetID</li>
+<li>ResearchDrive is fully funded by the University, while hardware for data storage is one of SSCC's larger capital costs       </li>
+</ul>
+<p>However, there are several disadvantages of ResearchDrive compared to SSCC network drives:</p>
+<ul>
+<li>Users will need to map ResearchDrive, once on each computer they use, rather than it being mapped automatically</li>
+<li>PIs must manage permissions on ResearchDrive rather than SSCC staff (some may consider this an advantage)</li>
+<li>SSCC staff can provide little support for ResearchDrive; you'll need to work with the <a href="https://kb.wisc.edu/helpdesk/" target="new" title="DoIT Help Desk">DoIT Help Desk</a></li>
+<li>ResearchDrive only retains backups of  deleted files for one month, compared to a year for SSCC, and does not retain as many older versions of files</li>
+</ul>
+<p>Based on these advantages and disadvantages, we would suggest using ResearchDrive for storing data that are not in active use (so you're less likely to need files restored from backup due to user error) or if you need to share files with UW-Madison researchers who don't have SSCC accounts and don't need them.                </p>
+<p>For more information on ResearchDrive or to request a drive, please see <a href="https://kb.wisc.edu/researchdata/internal/page.php?id=93998" target="new" title="Getting Started with ResearchDrive">Getting Started with ResearchDrive</a>.</p>
+<div></div>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

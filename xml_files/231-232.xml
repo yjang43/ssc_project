@@ -1,0 +1,672 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>All SSCC Knowledge Base Articles</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<h2>SSCC Handbook</h2>
+<ul>
+<li> <a href="https://ssc.wisc.edu/sscc/pubs/linuxos.htm">Getting Started in Linux</a></li>
+</ul>
+<h2>General Information (1)</h2>
+<table border="0" cellspacing="1" summary="General Information" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/goprint.htm">Paying for Printing in the SSCC Labs</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/working_from_home.htm">Working From Home and Other Remote Locations</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/records.htm">Open Records and SSCC Email</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/wordpress.htm">Getting Started with WordPress</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/wisclist.htm">Using WiscList</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">1-4</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/1-4.htm">Publishing a Web Site on the SSCC's Web
+							Server</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">1-11</td>
+<td valign="top" width="87%"><a href="https://ssc.wisc.edu/sscc/pubs/1-11.htm">Using SFTP</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">1-13</td>
+<td valign="top" width="87%"><a href="https://ssc.wisc.edu/sscc/pubs/1-13.htm">Connecting 
+						to SSCC Computers Using a WinTerm</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">1-14</td>
+<td valign="top" width="87%"><a href="https://ssc.wisc.edu/sscc/pubs/1-14.htm">Virus Protection 
+						at the SSCC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">1-15</td>
+<td valign="top" width="87%"><a href="https://ssc.wisc.edu/sscc/pubs/1-15.htm">How to Change 
+						Your SSCC Passwords</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">1-17</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/disk.htm">Network Disk Space at the SSCC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">1-19</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/computing_resources.htm">Computing Resources at the SSCC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">1-21</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/1-21.htm">Getting SSCC Announcements via RSS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/researchdrive.htm">Using ResearchDrive</a></td>
+</tr>
+</table>
+<h2>Statistical Software (4)</h2>
+<table border="0" cellspacing="1" summary="Statistical Software" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/sfr-intro.htm">Stata for Researchers<br/>
+</a>
+<ol style="margin-top: 0">
+<li><a href="#top">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-syntax.htm">Usage and Syntax</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-do.htm">Do Files</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-data.htm">Working With Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-stats.htm">Statistics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-groups.htm">Working with Groups </a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-hier.htm">Hierarchical Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-combine.htm">Combining Data Sets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-graphics.htm">Graphics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-projects.htm">Project Management</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfr-learning.htm">Learning More</a></li>
+</ol></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Introduction.html">R for Researchers<br/></a>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Introduction.html">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Projects.html">R Projects</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RMarkdown.html">R Markdown</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RScript.html">R Scripts</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPrep.html">Data preparation</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataExpl.html">Data exploration</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPres.html">Data presentation</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Regression.html">Regression (OLS)</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Diagnostics.html">Diagnostics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegressionGLM.html">Regression (GLM)</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegInference.html">Regression inference</a></li>
+</ol></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/sfs/">Stata for Students</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-where.htm">Where You Can Use Stata</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-files.htm">Managing Stata Files</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-do_files.htm">Doing Your Work Using Do Files</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ui.htm">Stata's User Interface</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-data.htm">Stata Data Sets</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-syntax.htm">How Stata Commands Work</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-comments.htm">Comments and Other Tools for Making Do Files Readable</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-vars.htm">Creating Variables</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-graphs.htm">Using Graphs</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-import.htm">Reading Data from a Spreadsheet or CSV File</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/home.htm#desc">Descriptive Statistics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/home.htm#graphs">Graphs</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ci.htm">Means and Confidence Intervals</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ttest.htm">t-tests</a></li>
+<li> <a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-scatter.htm">Scatterplots </a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/sfs/sfs-cor.htm">Correlations</a></li>
+</ol></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html">SPSS  for the Classroom</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html">The Basics</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students2.html">Statistics and Graphs</a></li>
+</ol> </td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top">
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_prog1.htm">Stata Programming Essentials</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_prog2.htm">Stata Programming Tools</a></li>
+</ol> </td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html">Mixed Models</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_Models.html">Models</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_TestEffects.html"> Testing Significance of Effects</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_DiagInfer.html">Diagnostics and Inference</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/MM/MM_MultRand.html">Multiple Random Parameters</a></li>
+</ol></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><p style="margin-bottom: 0"><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_intro.htm">Multiple Imputation in Stata</a></p>
+<ol style="margin-top: 0">
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_intro.htm">Introduction</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_decide.htm">Deciding to Impute</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_models.htm">Creating Imputation Models</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_impute.htm">Imputing</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_manage.htm">Managing Multiply Imputed Data</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_estimate.htm">Estimating</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_ex.htm">Examples</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_readings.htm">Recommended Readings</a></li>
+</ol> <a href="https://ssc.wisc.edu/sscc/pubs/stata_prog2.htm"></a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntro.html">R - A Brief Introduction</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntroReg.html">R - A Brief Introduction to Regression</a><a href="https://ssc.wisc.edu/sscc/pubs/GitBrief/GitBriefIntro.html"></a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/GitBrief/GitBriefIntro.html">Git - Brief Introduction</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_mp.htm">Running Stata/MP at the SSCC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_bar_graphs.htm">Bar Graphs in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/RegressionDiagnostics.html">Regression Diagnostics</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_memory.htm">Reducing Stata's Memory Usage</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/spss/Windows/SPSS_Syntax.html">SPSS Syntax</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_panel.htm">Stata Programming Techniques for Panel Data</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_psmatch.htm">Propensity Score Matching in Stata using teffects</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_tables.htm">Creating Publication-Quality Tables in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/readhtml.htm">Stata Tools for Reading Data from Web Pages</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"> <a href="https://ssc.wisc.edu/sscc/pubs/bigsas.htm">Running Large SAS Jobs on Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/r-packages.htm">Using  R Packages on SSCC Computers</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/r-install.htm">Installing R on Your Personal Computer</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/mplus_linstat.htm">Running Mplus Jobs on Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_margins.htm">Exploring Regression Results using Margins</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_mi_condor.htm">Speeding up Multiple Imputation in Stata using Parallel Processing</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/stata_dates.htm">Working with Dates in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/sas_output.htm">Managing Output in SAS 9.3 and Above</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/sas_launch.htm">Launching SAS Files from Windows Explorer</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/convert_sas_formats.htm">Converting SAS Formats from 32-Bit to 64-Bit</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/data_entry_excel.htm">Using Excel for Data Entry</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/nvivo.htm">Using NVivo on Winstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/sas_excel.htm">SAS and Excel Files on Winstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-1</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-1.pdf">Using 
+                                    SAS to Perform a Table Lookup</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-2</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-2.pdf">Constructing 
+                                    Indicator Variables with SAS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-3</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-3.pdf">SAS 
+                                    Programming Efficiencies</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-4</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-4.pdf">Converting 
+                                    a Code Book to a SAS FORMAT Library</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-5</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-5.pdf">Using 
+                                    SAS to Reformat Data Records from One to Several</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-6</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-6.pdf">Using 
+                                    SPSS to Reformat Data Records from One to 
+                                    Several</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-8</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-8.htm">Redirecting 
+                                    and Customizing Tabular Output in SAS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-11</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-11.htm">Using Compressed 
+                                    Data in SAS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-12</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-12.htm">Creating 
+                                    SAS Transport Files</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-16</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-16.htm">Finding and Installing User-Written Stata Programs</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-17</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-17.htm">Using 
+                                    Stat/Transfer</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">4-18</td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/4-18.htm">An 
+                                    Introduction to SAS Data Steps</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-19</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-19.htm">Storing 
+                                    SAS Formats</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-20</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-20.htm">Saving SAS 
+                                    Graphs For Printing or Other Uses</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-21</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-21.htm">A Simple 
+                                    Procedure for Producing Publication-Quality 
+                                    Graphs using SAS</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-22</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-22.htm">Making Predictions
+                                			with Counter-Factual Data in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-23</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-23.htm">Using Stata Graphs in Documents</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-24</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-24.htm">An Introduction to Stata Graphics</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-25</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-25.htm">Including Calculated Results
+                                		In Stata Graphs</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-26</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-26.htm">An Introduction to Mata</a> </td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-27</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-27.htm">Bootstrapping in Stata</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">4-28</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/4-28.htm">Using Reshape to Manage Hierarchical Data</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%"> </td>
+<td valign="top" width="88%"><a href="https://ssc.wisc.edu/sscc/pubs/sas.pdf">SAS 
+                                    Workbook for Writing SAS Programs to Process 
+                                    Data on UNIX</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/python_linstat.htm">Running Python on Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/python_packages_winstat.htm">Installing Python Packages on Winstat</a></td>
+</tr>
+</table>
+<h2>Using Winstat</h2>
+<table border="1" cellpadding="3" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using
+      Winstat</a></td>
+</tr>
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/silo.htm">Using  Silo</a></td>
+</tr>
+</table>
+<p> </p>
+<h2>Using PC's (5)</h2>
+<table cellspacing="1" summary="Using PC's" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/softwarecenter.htm">Installing New Software using Software Center</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/office2013.htm">Upgrading to Office 2013 using SSCC's Software Center</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/winstat_chrome.htm">Connecting to Winstat using Chrome</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/winstat_firefox.htm">Connecting to Winstat using Firefox</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/winstat_fonts.htm">Changing Font Sizes on Winstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/wp_word.htm">Opening WordPerfect Documents using Word</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-2</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting 
+                                    to SSCC Linux Computers using X-Win32</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-13</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-13.htm">Writing 
+                                    a CD Using Ahead Nero</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-15</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-15.htm">Printing 
+                                    on Special Paper</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-17</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/5-17.htm">Creating 
+                                    Web Pages Using Dreamweaver</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-21</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">Connecting 
+                                    to the SSCC Network via VPN</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-22</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-22.htm">Cleaning 
+                                    Out Your Email</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-24</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/5-24.htm">Setting 
+                                    Up Network Printers in Windows</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">5-26</td>
+<td valign="top" width="95%"><a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">Mapping 
+                                    a Drive to a Network Share in Windows</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-29</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-29.htm">Formatting 
+                                    Your Dissertation in Word</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-31</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-31.htm">Removing Hidden Data from Documents</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-34</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/remote_desktop.htm">Connecting to Your Office Computer Using Remote Desktop (Windows)</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">5-35</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/5-35.htm">Transferring 
+                                    Files Using SecureFX</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"> <a href="https://ssc.wisc.edu/sscc/pubs/writencite.htm">Installing the Refworks Write-N-Cite Plugin for Word</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/pc_sec.htm">Securing Your Windows PC</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/bookmarks.htm">Importing Bookmarks/Favorites  into Chrome</a></td>
+</tr>
+</table>
+<h2>Using Macs</h2>
+<table border="1" cellpadding="3" width="100%">
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/printfrommac.htm">Using SSCC Printers from Macs</a></td>
+</tr>
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm">Using SSCC Network  Disk Space from Macs</a></td>
+</tr>
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm">Connecting to Linstat from a Mac</a></td>
+</tr>
+<tr>
+<td> </td>
+<td><a href="https://ssc.wisc.edu/sscc/pubs/screen_sharing.htm">Connecting to Your Office Computer Using Screen Sharing (Mac)</a></td>
+</tr>
+</table>
+<p> </p>
+<h2>Using Linux (7)</h2>
+<table border="0" cellspacing="1" summary="Using UNIX" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linuxos.htm">Getting Started in Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat_outside_us.htm">Connecting to Linstat from Outside the Madison Area</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat_google_auth.htm">Configuring Google Authenticator to Log in to Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat_public_key.htm">Configuring a Public/Private Key Pair to Log into Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-1</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">An Introduction 
+                                    to Condor</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-4</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-4.htm">Running
+                                      SAS on Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-6</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">7-8</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-8.htm">Using Compressed 
+                                    Data in Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-9</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-9.pdf">Configuring 
+                                    Your Login Session</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-10</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-10.htm">Using Emacs</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">7-11</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/linux_disk_space.htm">Managing 
+                                    Disk Space in Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-12</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-12.htm">Using STATA 
+                                    on Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top">7-13</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/flash.htm">Using the SSCC's High Performance Computing Cluster</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-14</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-14.pdf">Using the 
+                                    Revision Control System</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-15</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-15.pdf">Using PICO 
+                                    on UNIX</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-17</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-17.pdf">Using nu/TPU 
+                                    on UNIX</a> </td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-18</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/spss/Linux/7-18.html">Running 
+                                    SPSS Jobs on Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-20</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-20.htm">Limiting 
+                                    Access to a Web Page</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-23</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-23.htm">Forwarding 
+                                    Your Email to Another Address</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-27</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-27.htm">Running 
+                                    OpenOffice on Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="12%">7-28</td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/7-28.htm">Printing 
+                                    from Linux</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/printfromlinux.htm">Using SSCC Network  Printers from Personal Linux Computers</a></td>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top"> </td>
+<td valign="top"><a href="https://ssc.wisc.edu/sscc/pubs/diskfromlinux.htm">Using SSCC Network  Disk Space from Personal Linux Computers</a></td>
+</tr>
+</table>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Articles on Applications</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>This page lists articles relating to specific applications. Note 
+		that <a href="https://ssc.wisc.edu/sscc/pubs/stat.htm">statistical software</a> and <a href="https://ssc.wisc.edu/sscc/pubs/email.htm">email</a> have their own pages.</p>
+<h2>Windows</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/nvivo.htm">Using NVivo on Winstat</a><a href="https://ssc.wisc.edu/sscc/pubs/bookmarks.htm"><br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/softwarecenter.htm">Installing New Software using Software Center</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/bookmarks.htm">Importing Bookmarks/Favorites into Chrome</a><a href="https://ssc.wisc.edu/sscc/pubs/5-13.htm"><br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/wp_word.htm">Opening WordPerfect Documents using Word</a><br/>
+</p>
+<h2> Linux</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/7-10.htm">Using Emacs</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-15.pdf">Using	PICO on UNIX</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-17.pdf">Using nu/TPU on UNIX</a></p>
+<h2>General</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/researchdrive.htm">Using ResearchDrive</a><br/>
+</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

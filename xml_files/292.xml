@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Connecting to Your Office Computer Using Screen Sharing (Mac)</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Screen Sharing allows you to connect to your office Mac using another Mac from home or another remote location. The result is similar to logging in to Winstat, though Winstat will generally give you better performance and stability. However, if you have software on your office computer that is not available on Winstat, Screen Sharing will allow you to use that software from home. Connecting to your office computer using Screen Sharing is also a great back-up plan in case you can't log in to Winstat, and we suggest all SSCC Mac users learn how to do so.</p>
+<p>If your office computer runs Windows, you can connect to it from a Mac using <a href="https://ssc.wisc.edu/sscc/pubs/remote_desktop.htm">Remote Desktop</a>.</p>
+<h2>Setting Up Your Office Computer to Allow Screen Sharing</h2>
+<p>The first step is to set up your office computer so it will share its screen. Go to <span class="MenuOutput">Apple</span>, <span class="MenuOutput">System Preferences</span>, <span class="MenuOutput">Sharing</span> and check <span class="MenuOutput">Screen Sharing</span>. While you're here, note the address you'll use to connect to your Mac (it will start with <span class="InputCode">vnc://</span>).</p>
+<h2>Connecting to your Office Computer</h2>
+<p>In order to connect to an SSCC computer using Screen Sharing, you must first establish a VPN 
+              connection to the SSCC network. Otherwise your attempts to connect 
+              will be blocked by the SSCC's firewall. <a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">Connecting 
+              to the SSCC Network via VPN</a> has full instructions. </p>
+<p>Once VPN is set up, start the VPN connection. Then open the <span class="MenuOutput">Finder</span> and click <span class="MenuOutput">Go</span>, <span class="MenuOutput">Connect to Server</span> (or <kbd>⌘ command</kbd>+<kbd>K</kbd>). In the <span class="MenuOutput">Server Address</span> box, type the address of your office Mac and click <span class="MenuOutput">Connect</span>. Click the plus sign (<span class="MenuOutput">+</span>) to save the connection in your <span class="MenuOutput">Favorite Servers</span>.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

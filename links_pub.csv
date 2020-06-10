@@ -34,48 +34,48 @@ Index,Current URL,Title,Batch
 32,https://ssc.wisc.edu/sscc/policies/usage.htm,SSCC Usage Policy,
 33,https://ssc.wisc.edu/sscc/policies/webpublish.htm,Web Publishing Policy,
 34,https://ssc.wisc.edu/sscc/policies/winstat_session_limits.htm,Winstat Session Limits,
-35,https://ssc.wisc.edu/sscc/pubs/1-11.htm,Using SFTP ,35~77.xml
-36,https://ssc.wisc.edu/sscc/pubs/1-13.htm,Connecting to SSCC Computers Using a WinTerm,35~77.xml
-37,https://ssc.wisc.edu/sscc/pubs/1-14.htm,Virus Protection at the SSCC,35~77.xml
-38,https://ssc.wisc.edu/sscc/pubs/1-15.htm,How to Change Your SSCC Passwords,35~77.xml
-39,https://ssc.wisc.edu/sscc/pubs/1-21.htm,Getting SSCC Announcements via RSS,35~77.xml
-40,https://ssc.wisc.edu/sscc/pubs/1-4.htm,Publishing a Web Site on the SSCC's Web Server,35~77.xml
-41,https://ssc.wisc.edu/sscc/pubs/4-11.htm,Using Compressed Data in SAS,35~77.xml
-42,https://ssc.wisc.edu/sscc/pubs/4-12.htm,Creating SAS Transport Files,35~77.xml
+35,https://ssc.wisc.edu/sscc/pubs/1-11.htm,Using SFTP ,35-40.xml
+36,https://ssc.wisc.edu/sscc/pubs/1-13.htm,Connecting to SSCC Computers Using a WinTerm,35-40.xml
+37,https://ssc.wisc.edu/sscc/pubs/1-14.htm,Virus Protection at the SSCC,35-40.xml
+38,https://ssc.wisc.edu/sscc/pubs/1-15.htm,How to Change Your SSCC Passwords,35-40.xml
+39,https://ssc.wisc.edu/sscc/pubs/1-21.htm,Getting SSCC Announcements via RSS,35-40.xml
+40,https://ssc.wisc.edu/sscc/pubs/1-4.htm,Publishing a Web Site on the SSCC's Web Server,35-40.xml
+41,https://ssc.wisc.edu/sscc/pubs/4-11.htm,Using Compressed Data in SAS,41-42.xml
+42,https://ssc.wisc.edu/sscc/pubs/4-12.htm,Creating SAS Transport Files,41-42.xml
 43,https://ssc.wisc.edu/sscc/pubs/4-13.htm,Programming in Color,35~77.xml
-44,https://ssc.wisc.edu/sscc/pubs/4-16.htm,Finding and Installing User-Written Stata Programs,35~77.xml
-45,https://ssc.wisc.edu/sscc/pubs/4-17.htm,Using Stat/Transfer,35~77.xml
-46,https://ssc.wisc.edu/sscc/pubs/4-18.htm,An Introduction to SAS Data Steps,35~77.xml
-47,https://ssc.wisc.edu/sscc/pubs/4-19.htm,Storing SAS Formats,35~77.xml
-48,https://ssc.wisc.edu/sscc/pubs/4-20.htm,Saving SAS Graphs For Printing or Other Uses,35~77.xml
-49,https://ssc.wisc.edu/sscc/pubs/4-21.htm,A Simple Procedure for Producing Publication-Quality Graphs using SAS,35~77.xml
-50,https://ssc.wisc.edu/sscc/pubs/4-22.htm,Making Predictions with Counter-Factual Data in Stata,35~77.xml
-51,https://ssc.wisc.edu/sscc/pubs/4-23.htm,Using Stata Graphs in Documents ,35~77.xml
-52,https://ssc.wisc.edu/sscc/pubs/4-24.htm,An Introduction to Stata Graphics,35~77.xml
-53,https://ssc.wisc.edu/sscc/pubs/4-25.htm,Including Calculated Results In Stata Graphs ,35~77.xml
-54,https://ssc.wisc.edu/sscc/pubs/4-26.htm,An Introduction to Mata ,35~77.xml
-55,https://ssc.wisc.edu/sscc/pubs/4-27.htm,Bootstrapping in Stata ,35~77.xml
-56,https://ssc.wisc.edu/sscc/pubs/4-28.htm, Using Reshape to Manage Hierarchical Data,35~77.xml
-57,https://ssc.wisc.edu/sscc/pubs/4-8.htm,Redirecting and Customizing Tabular Output in SAS,35~77.xml
-58,https://ssc.wisc.edu/sscc/pubs/5-12.htm,Keeping Your PC Secure,35~77.xml
-59,https://ssc.wisc.edu/sscc/pubs/5-13.htm,Writing a CD Using Ahead Nero,35~77.xml
-60,https://ssc.wisc.edu/sscc/pubs/5-15.htm,Printing on Special Paper,35~77.xml
-61,https://ssc.wisc.edu/sscc/pubs/5-17.htm,Creating Web Pages Using Dreamweaver,35~77.xml
-62,https://ssc.wisc.edu/sscc/pubs/5-2.htm,Connecting to SSCC Linux Computers using X-Win32,35~77.xml
-63,https://ssc.wisc.edu/sscc/pubs/5-22.htm,Cleaning Out Your Email,35~77.xml
-64,https://ssc.wisc.edu/sscc/pubs/5-24.htm,Setting Up Network Printers in Windows,35~77.xml
-65,https://ssc.wisc.edu/sscc/pubs/5-26.htm,Mapping a Drive to a Network Share in Windows,35~77.xml
-66,https://ssc.wisc.edu/sscc/pubs/5-29.htm,Formatting Your Dissertation in Word,35~77.xml
-67,https://ssc.wisc.edu/sscc/pubs/5-31.htm,Removing Hidden Data from Documents ,35~77.xml
-68,https://ssc.wisc.edu/sscc/pubs/5-35.htm,Transferring Files Using SecureFX,35~77.xml
+44,https://ssc.wisc.edu/sscc/pubs/4-16.htm,Finding and Installing User-Written Stata Programs,44-56.xml
+45,https://ssc.wisc.edu/sscc/pubs/4-17.htm,Using Stat/Transfer,44-56.xml
+46,https://ssc.wisc.edu/sscc/pubs/4-18.htm,An Introduction to SAS Data Steps,44-56.xml
+47,https://ssc.wisc.edu/sscc/pubs/4-19.htm,Storing SAS Formats,44-56.xml
+48,https://ssc.wisc.edu/sscc/pubs/4-20.htm,Saving SAS Graphs For Printing or Other Uses,44-56.xml
+49,https://ssc.wisc.edu/sscc/pubs/4-21.htm,A Simple Procedure for Producing Publication-Quality Graphs using SAS,44-56.xml
+50,https://ssc.wisc.edu/sscc/pubs/4-22.htm,Making Predictions with Counter-Factual Data in Stata,44-56.xml
+51,https://ssc.wisc.edu/sscc/pubs/4-23.htm,Using Stata Graphs in Documents ,44-56.xml
+52,https://ssc.wisc.edu/sscc/pubs/4-24.htm,An Introduction to Stata Graphics,44-56.xml
+53,https://ssc.wisc.edu/sscc/pubs/4-25.htm,Including Calculated Results In Stata Graphs ,44-56.xml
+54,https://ssc.wisc.edu/sscc/pubs/4-26.htm,An Introduction to Mata ,44-56.xml
+55,https://ssc.wisc.edu/sscc/pubs/4-27.htm,Bootstrapping in Stata ,44-56.xml
+56,https://ssc.wisc.edu/sscc/pubs/4-28.htm, Using Reshape to Manage Hierarchical Data,44-56.xml
+57,https://ssc.wisc.edu/sscc/pubs/4-8.htm,Redirecting and Customizing Tabular Output in SAS,57.xml
+58,https://ssc.wisc.edu/sscc/pubs/5-12.htm,Keeping Your PC Secure,58-68.xml
+59,https://ssc.wisc.edu/sscc/pubs/5-13.htm,Writing a CD Using Ahead Nero,58-68.xml
+60,https://ssc.wisc.edu/sscc/pubs/5-15.htm,Printing on Special Paper,58-68.xml
+61,https://ssc.wisc.edu/sscc/pubs/5-17.htm,Creating Web Pages Using Dreamweaver,58-68.xml
+62,https://ssc.wisc.edu/sscc/pubs/5-2.htm,Connecting to SSCC Linux Computers using X-Win32,58-68.xml
+63,https://ssc.wisc.edu/sscc/pubs/5-22.htm,Cleaning Out Your Email,58-68.xml
+64,https://ssc.wisc.edu/sscc/pubs/5-24.htm,Setting Up Network Printers in Windows,58-68.xml
+65,https://ssc.wisc.edu/sscc/pubs/5-26.htm,Mapping a Drive to a Network Share in Windows,58-68.xml
+66,https://ssc.wisc.edu/sscc/pubs/5-29.htm,Formatting Your Dissertation in Word,58-68.xml
+67,https://ssc.wisc.edu/sscc/pubs/5-31.htm,Removing Hidden Data from Documents ,58-68.xml
+68,https://ssc.wisc.edu/sscc/pubs/5-35.htm,Transferring Files Using SecureFX,58-68.xml
 69,https://ssc.wisc.edu/sscc/pubs/7-1.htm,An Introduction to Condor,35~77.xml
 70,https://ssc.wisc.edu/sscc/pubs/7-10.htm,Using Emacs,35~77.xml
 71,https://ssc.wisc.edu/sscc/pubs/7-12.htm,Using Stata on Linux,35~77.xml
-72,https://ssc.wisc.edu/sscc/pubs/7-20.htm,Limiting Access to a Web Page,35~77.xml
-73,https://ssc.wisc.edu/sscc/pubs/7-23.htm,Forwarding Your Email to Another Address,35~77.xml
-74,https://ssc.wisc.edu/sscc/pubs/7-27.htm,Running OpenOffice on Linux,35~77.xml
-75,https://ssc.wisc.edu/sscc/pubs/7-28.htm,Printing from Linux,35~77.xml
-76,https://ssc.wisc.edu/sscc/pubs/7-4.htm,Running SAS on Linux,35~77.xml
+72,https://ssc.wisc.edu/sscc/pubs/7-20.htm,Limiting Access to a Web Page,72-75.xml
+73,https://ssc.wisc.edu/sscc/pubs/7-23.htm,Forwarding Your Email to Another Address,72-75.xml
+74,https://ssc.wisc.edu/sscc/pubs/7-27.htm,Running OpenOffice on Linux,72-75.xml
+75,https://ssc.wisc.edu/sscc/pubs/7-28.htm,Printing from Linux,72-75.xml
+76,https://ssc.wisc.edu/sscc/pubs/7-4.htm,Running SAS on Linux,76.xml
 77,https://ssc.wisc.edu/sscc/pubs/7-8.htm,Using Compressed Data in Linux,35~77.xml
 78,https://ssc.wisc.edu/sscc/pubs/DWE/book/0-1-organization-of-the-book-and-chapters.html,0.1 Organization of the book and chapters | Data Wrangling Essentials,
 79,https://ssc.wisc.edu/sscc/pubs/DWE/book/0-2-who-will-benefit-from-this-book.html,0.2 Who will benefit from this book | Data Wrangling Essentials,
@@ -152,37 +152,37 @@ Index,Current URL,Title,Batch
 150,https://ssc.wisc.edu/sscc/pubs/DWE/solutions_Python/6-3-aggregating-data.html,6.3 Aggregating data | Data Wrangling Essentials - Exercise Solutions in Python,
 151,https://ssc.wisc.edu/sscc/pubs/DWE/solutions_Python/6-transforming-variables-1.html,6 Transforming variables | Data Wrangling Essentials - Exercise Solutions in Python,
 152,https://ssc.wisc.edu/sscc/pubs/DWE/solutions_Python/preface.html,Data Wrangling Essentials - Exercise Solutions in Python,
-153,https://ssc.wisc.edu/sscc/pubs/GitBrief/GitBriefIntro.html,Git - Brief Introduction,153~153.xml
-154,https://ssc.wisc.edu/sscc/pubs/MM/MM_DiagInfer.html,Mixed Models: Diagnostics and Inference,154~161.xml
-155,https://ssc.wisc.edu/sscc/pubs/MM/MM_DiagInfer_Sol.html,Mixed Models: Diagnostics and Inference solutions,154~161.xml
-156,https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html,Mixed Models: Introduction,154~161.xml
-157,https://ssc.wisc.edu/sscc/pubs/MM/MM_Models.html,Mixed Models: Models,154~161.xml
-158,https://ssc.wisc.edu/sscc/pubs/MM/MM_Models_Sol.html,Mixed Models: Models solutions,154~161.xml
-159,https://ssc.wisc.edu/sscc/pubs/MM/MM_MultRand.html,Mixed Models: Multiple Random Parameters,154~161.xml
-160,https://ssc.wisc.edu/sscc/pubs/MM/MM_TestEffects.html,Mixed Models: Testing Significance of Effects,154~161.xml
-161,https://ssc.wisc.edu/sscc/pubs/MM/MM_TestEffects_Sol.html,Mixed Models: Testing Significance of Effects solutions,154~161.xml
-162,https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntro.html,R - A Brief Introduction,162~163.xml
-163,https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntroReg.html,R - A Brief Introduction to Regression,162~163.xml
-164,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataExpl.html,R for Researchers: Data exploration,164~183.xml
-165,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataExpl_Sol.html,R for Researchers: Data exploration solutions,164~183.xml
-166,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPrep.html,R for Researchers: Data preparation,164~183.xml
-167,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPrep_Sol.html,R for Researchers: Data preparation solutions,164~183.xml
-168,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPres.html,R for researchers: Data presentation,164~183.xml
-169,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPres_SalDoc.html,R for researchers: Final SalDoc,164~183.xml
-170,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Diagnostics.html,R for researchers: Diagnostics,164~183.xml
-171,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Diagnostics_Sol.html,R for Researchers: Diagnostic solutions,164~183.xml
-172,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Introduction.html,R for Researchers: Introduction,164~183.xml
-173,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Projects.html,R for Researchers: Projects,164~183.xml
-174,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RMarkdown.html,R for Researchers: R Markdown,164~183.xml
-175,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RMarkdown_Sol.html,R for Researchers: R Markdown solutions,164~183.xml
-176,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RScript.html,R for Researchers: R Scripts,164~183.xml
-177,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RScript_Sol.html,R for Researchers: R Scripts solutions,164~183.xml
-178,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegInference.html,R for researchers: Regression inference,164~183.xml
-179,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegInference_Sol.html,R for Researchers: Regression inference solutions,164~183.xml
-180,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Regression.html,R For Researchers: Regression (OLS),164~183.xml
-181,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegressionGLM.html,R for researchers: Regression (GLM),164~183.xml
-182,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegressionGLM_Sol.html,R for Researchers: Regression (GLM) solutions,164~183.xml
-183,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Regression_Sol.html,R for Researchers: Regression (OLS) solutions,164~183.xml
+153,https://ssc.wisc.edu/sscc/pubs/GitBrief/GitBriefIntro.html,Git - Brief Introduction,153.xml
+154,https://ssc.wisc.edu/sscc/pubs/MM/MM_DiagInfer.html,Mixed Models: Diagnostics and Inference,154-182.xml
+155,https://ssc.wisc.edu/sscc/pubs/MM/MM_DiagInfer_Sol.html,Mixed Models: Diagnostics and Inference solutions,154-182.xml
+156,https://ssc.wisc.edu/sscc/pubs/MM/MM_Introduction.html,Mixed Models: Introduction,154-182.xml
+157,https://ssc.wisc.edu/sscc/pubs/MM/MM_Models.html,Mixed Models: Models,154-182.xml
+158,https://ssc.wisc.edu/sscc/pubs/MM/MM_Models_Sol.html,Mixed Models: Models solutions,154-182.xml
+159,https://ssc.wisc.edu/sscc/pubs/MM/MM_MultRand.html,Mixed Models: Multiple Random Parameters,154-182.xml
+160,https://ssc.wisc.edu/sscc/pubs/MM/MM_TestEffects.html,Mixed Models: Testing Significance of Effects,154-182.xml
+161,https://ssc.wisc.edu/sscc/pubs/MM/MM_TestEffects_Sol.html,Mixed Models: Testing Significance of Effects solutions,154-182.xml
+162,https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntro.html,R - A Brief Introduction,154-182.xml
+163,https://ssc.wisc.edu/sscc/pubs/RBrief/R_BriefIntroReg.html,R - A Brief Introduction to Regression,154-182.xml
+164,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataExpl.html,R for Researchers: Data exploration,154-182.xml
+165,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataExpl_Sol.html,R for Researchers: Data exploration solutions,154-182.xml
+166,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPrep.html,R for Researchers: Data preparation,154-182.xml
+167,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPrep_Sol.html,R for Researchers: Data preparation solutions,154-182.xml
+168,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPres.html,R for researchers: Data presentation,154-182.xml
+169,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_DataPres_SalDoc.html,R for researchers: Final SalDoc,154-182.xml
+170,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Diagnostics.html,R for researchers: Diagnostics,154-182.xml
+171,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Diagnostics_Sol.html,R for Researchers: Diagnostic solutions,154-182.xml
+172,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Introduction.html,R for Researchers: Introduction,154-182.xml
+173,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Projects.html,R for Researchers: Projects,154-182.xml
+174,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RMarkdown.html,R for Researchers: R Markdown,154-182.xml
+175,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RMarkdown_Sol.html,R for Researchers: R Markdown solutions,154-182.xml
+176,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RScript.html,R for Researchers: R Scripts,154-182.xml
+177,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RScript_Sol.html,R for Researchers: R Scripts solutions,154-182.xml
+178,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegInference.html,R for researchers: Regression inference,154-182.xml
+179,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegInference_Sol.html,R for Researchers: Regression inference solutions,154-182.xml
+180,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Regression.html,R For Researchers: Regression (OLS),154-182.xml
+181,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegressionGLM.html,R for researchers: Regression (GLM),154-182.xml
+182,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_RegressionGLM_Sol.html,R for Researchers: Regression (GLM) solutions,154-182.xml
+183,https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Regression_Sol.html,R for Researchers: Regression (OLS) solutions,183.xml
 184,https://ssc.wisc.edu/sscc/pubs/R_intro/book/1-1-overview.html,1.1 Overview | R Introduction to Selected Topics,
 185,https://ssc.wisc.edu/sscc/pubs/R_intro/book/1-10-paths-and-working-directories.html,1.10 Paths and working directories | R Introduction to Selected Topics,
 186,https://ssc.wisc.edu/sscc/pubs/R_intro/book/1-11-packages.html,1.11 Packages | R Introduction to Selected Topics,
@@ -230,180 +230,180 @@ Index,Current URL,Title,Batch
 228,https://ssc.wisc.edu/sscc/pubs/R_intro/book/4-regression.html,4 Regression | R Introduction to Selected Topics,
 229,https://ssc.wisc.edu/sscc/pubs/R_intro/book/preface.html,R Introduction to Selected Topics,
 230,https://ssc.wisc.edu/sscc/pubs/RegressionDiagnostics.html,Regression Diagnostics,
-231,https://ssc.wisc.edu/sscc/pubs/allpubs.htm,All SSCC Knowledge Base Articles,230~240.xml
-232,https://ssc.wisc.edu/sscc/pubs/apps.htm,Articles on Applications,230~240.xml
-233,https://ssc.wisc.edu/sscc/pubs/bigsas.htm,Running Large SAS Jobs on Linstat,230~240.xml
-234,https://ssc.wisc.edu/sscc/pubs/bookmarks.htm,Importing Bookmarks/Favorites into Chrome,230~240.xml
-235,https://ssc.wisc.edu/sscc/pubs/computing_resources.htm,Computing Resources at the SSCC,230~240.xml
-236,https://ssc.wisc.edu/sscc/pubs/convert_sas_formats.htm,Converting SAS Formats from 32-Bit to 64-Bit,230~240.xml
-237,https://ssc.wisc.edu/sscc/pubs/data_entry_excel.htm,Using Excel for Data Entry,230~240.xml
-238,https://ssc.wisc.edu/sscc/pubs/disk.htm,Network Disk Space at the SSCC ,230~240.xml
-239,https://ssc.wisc.edu/sscc/pubs/diskfromlinux.htm,Using SSCC Network Disk Space from Personal Linux Computers,230~240.xml
-240,https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm,Using SSCC Network Disk Space from a Mac,230~240.xml
-241,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm,Data Wrangling in Stata: Review,241~249.xml
-242,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata2.htm,Data Wrangling in Stata: Reading in Data,241~249.xml
-243,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata3.htm,Data Wrangling in Stata: First Steps With Your Data,241~249.xml
-244,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata4.htm,Data Wrangling in Stata: Variable Transformations,241~249.xml
-245,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata5.htm,Data Wrangling in Stata: Hierarchical Data,241~249.xml
-246,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata6.htm,Data Wrangling in Stata: Restructuring Data Sets,241~249.xml
-247,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata7.htm,Data Wrangling in Stata: Combining Data Sets,241~249.xml
-248,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata8.htm,Data Wrangling in Stata: Project Management,241~249.xml
-249,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata9.htm,Data Wrangling in Stata: Learning More,241~249.xml
-250,https://ssc.wisc.edu/sscc/pubs/email.htm,Articles on E-mail and Email Lists,250~254.xml
+231,https://ssc.wisc.edu/sscc/pubs/allpubs.htm,All SSCC Knowledge Base Articles,231-232.xml
+232,https://ssc.wisc.edu/sscc/pubs/apps.htm,Articles on Applications,231-232.xml
+233,https://ssc.wisc.edu/sscc/pubs/bigsas.htm,Running Large SAS Jobs on Linstat,233.xml
+234,https://ssc.wisc.edu/sscc/pubs/bookmarks.htm,Importing Bookmarks/Favorites into Chrome,234.xml
+235,https://ssc.wisc.edu/sscc/pubs/computing_resources.htm,Computing Resources at the SSCC,235-237.xml
+236,https://ssc.wisc.edu/sscc/pubs/convert_sas_formats.htm,Converting SAS Formats from 32-Bit to 64-Bit,235-237.xml
+237,https://ssc.wisc.edu/sscc/pubs/data_entry_excel.htm,Using Excel for Data Entry,235-237.xml
+238,https://ssc.wisc.edu/sscc/pubs/disk.htm,Network Disk Space at the SSCC ,238-240.xml
+239,https://ssc.wisc.edu/sscc/pubs/diskfromlinux.htm,Using SSCC Network Disk Space from Personal Linux Computers,238-240.xml
+240,https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm,Using SSCC Network Disk Space from a Mac,238-240.xml
+241,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata1.htm,Data Wrangling in Stata: Review,241-249.xml
+242,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata2.htm,Data Wrangling in Stata: Reading in Data,241-249.xml
+243,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata3.htm,Data Wrangling in Stata: First Steps With Your Data,241-249.xml
+244,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata4.htm,Data Wrangling in Stata: Variable Transformations,241-249.xml
+245,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata5.htm,Data Wrangling in Stata: Hierarchical Data,241-249.xml
+246,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata6.htm,Data Wrangling in Stata: Restructuring Data Sets,241-249.xml
+247,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata7.htm,Data Wrangling in Stata: Combining Data Sets,241-249.xml
+248,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata8.htm,Data Wrangling in Stata: Project Management,241-249.xml
+249,https://ssc.wisc.edu/sscc/pubs/dws/data_wrangling_stata9.htm,Data Wrangling in Stata: Learning More,241-249.xml
+250,https://ssc.wisc.edu/sscc/pubs/email.htm,Articles on E-mail and Email Lists,250-251.xml
 251,https://ssc.wisc.edu/sscc/pubs/files/HTMLSample.htm,HTML Sample,
 252,https://ssc.wisc.edu/sscc/pubs/flash.htm,Using SSCC's HPC cluster,250~254.xml
-253,https://ssc.wisc.edu/sscc/pubs/goprint.htm,Paying for Printing in the SSCC Labs,250~254.xml
-254,https://ssc.wisc.edu/sscc/pubs/home.htm,SSCC Knowledge Base,250~254.xml
-255,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata1.htm,Introduction to Stata: Using Stata,255~260.xml
-256,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata2.htm,Introduction to Stata: Structure of a Data Set,255~260.xml
-257,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata3.htm,Introduction to Stata: Elements of Stata Syntax,255~260.xml
-258,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata4.htm,Introduction to Stata: Do Files,255~260.xml
-259,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata5.htm,Introduction to Stata: Statistics,255~260.xml
-260,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata6.htm,Introduction to Stata: Creating and Changing Variables,255~260.xml
-261,https://ssc.wisc.edu/sscc/pubs/linstat.htm,Using Linstat,261~409.xml
-262,https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm,Connecting to Linstat from a Mac,261~409.xml
-263,https://ssc.wisc.edu/sscc/pubs/linstat_google_auth.htm,Configuring Google Authenticator to Log in to Linstat,261~409.xml
-264,https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm,Managing Jobs on Linstat,261~409.xml
-265,https://ssc.wisc.edu/sscc/pubs/linstat_outside_us.htm,Connecting to Linstat from Outside the Madison Area,261~409.xml
-266,https://ssc.wisc.edu/sscc/pubs/linstat_public_key.htm,Configuring a Public/Private Key Pair to Log into Linstat,261~409.xml
-267,https://ssc.wisc.edu/sscc/pubs/linux.htm,Articles on Using Linux,261~409.xml
-268,https://ssc.wisc.edu/sscc/pubs/linux_disk_space.htm,Managing Disk Space in Linux,261~409.xml
-269,https://ssc.wisc.edu/sscc/pubs/linuxos.htm,Getting Started in Linux,261~409.xml
-270,https://ssc.wisc.edu/sscc/pubs/mac.htm,Articles on Using OS X,261~409.xml
-271,https://ssc.wisc.edu/sscc/pubs/mplus_linstat.htm,Running Mplus Jobs on Linstat,261~409.xml
-272,https://ssc.wisc.edu/sscc/pubs/newusers.htm,Articles for New Users,261~409.xml
-273,https://ssc.wisc.edu/sscc/pubs/nvivo.htm,Using NVivo on Winstat,261~409.xml
-274,https://ssc.wisc.edu/sscc/pubs/office2013.htm,Upgrading to Office 2013 using SSCC's Software Center,261~409.xml
-275,https://ssc.wisc.edu/sscc/pubs/pbnm/pbnmInstall.html,Installing the pbnm Package,261~409.xml
-276,https://ssc.wisc.edu/sscc/pubs/pc_sec.htm,SSCC - Social Science Computing Cooperative,261~409.xml
-277,https://ssc.wisc.edu/sscc/pubs/print.htm,Articles on Printing,261~409.xml
-278,https://ssc.wisc.edu/sscc/pubs/printfromlinux.htm,Using SSCC Network Printers from Personal Linux Computers,261~409.xml
-279,https://ssc.wisc.edu/sscc/pubs/printfrommac.htm,Using SSCC Printers from Macs,261~409.xml
-280,https://ssc.wisc.edu/sscc/pubs/python_linstat.htm,Running Python on Linstat,261~409.xml
-281,https://ssc.wisc.edu/sscc/pubs/python_packages_winstat.htm,Installing Python Packages on Winstat,261~409.xml
-282,https://ssc.wisc.edu/sscc/pubs/r-install.htm,Installing R on Your Personal Computer,261~409.xml
-283,https://ssc.wisc.edu/sscc/pubs/r-packages.htm,Using R Packages on SSCC Linux Servers,261~409.xml
-284,https://ssc.wisc.edu/sscc/pubs/readhtml.htm,Stata Tools for Reading Data from Web Page,261~409.xml
-285,https://ssc.wisc.edu/sscc/pubs/records.htm,Open Records and SSCC Email,261~409.xml
-286,https://ssc.wisc.edu/sscc/pubs/remote.htm,Articles on Remote Computing,261~409.xml
-287,https://ssc.wisc.edu/sscc/pubs/remote_desktop.htm,Connecting to Your Office Computer Using Remote Desktop (Windows),261~409.xml
-288,https://ssc.wisc.edu/sscc/pubs/researchdrive.htm,Using ResearchDrive,261~409.xml
-289,https://ssc.wisc.edu/sscc/pubs/sas_excel.htm,SAS and Excel Files on Winstat,261~409.xml
-290,https://ssc.wisc.edu/sscc/pubs/sas_launch.htm,Launching SAS Files from Windows Explorer,261~409.xml
-291,https://ssc.wisc.edu/sscc/pubs/sas_output.htm,Managing Output in SAS 9.3,261~409.xml
-292,https://ssc.wisc.edu/sscc/pubs/screen_sharing.htm,Connecting to Your Office Computer Using Screen Sharing (Mac),261~409.xml
-293,https://ssc.wisc.edu/sscc/pubs/sfr-combine.htm,Stata for Researchers: Combining Data Sets ,261~409.xml
-294,https://ssc.wisc.edu/sscc/pubs/sfr-data.htm,Stata for Researchers: Working With Data,261~409.xml
-295,https://ssc.wisc.edu/sscc/pubs/sfr-do.htm,Stata for Researchers: Do Files,261~409.xml
-296,https://ssc.wisc.edu/sscc/pubs/sfr-graphics.htm,SSCC - Social Science Computing Cooperative,261~409.xml
-297,https://ssc.wisc.edu/sscc/pubs/sfr-groups.htm,Stata for Researchers: Working with Groups,261~409.xml
-298,https://ssc.wisc.edu/sscc/pubs/sfr-hier.htm,Stata for Researchers: Hierarchical Data,261~409.xml
-299,https://ssc.wisc.edu/sscc/pubs/sfr-intro.htm,Stata for Researchers: Introduction,261~409.xml
-300,https://ssc.wisc.edu/sscc/pubs/sfr-learning.htm,Stata for Researchers: Learning More,261~409.xml
-301,https://ssc.wisc.edu/sscc/pubs/sfr-projects.htm,Stata for Researchers: Do Files and Project Management,261~409.xml
-302,https://ssc.wisc.edu/sscc/pubs/sfr-stats.htm,Stata for Researchers: Statistics,261~409.xml
-303,https://ssc.wisc.edu/sscc/pubs/sfr-syntax.htm,Stata for Researchers: Usage and Syntax,261~409.xml
-304,https://ssc.wisc.edu/sscc/pubs/sfr/soln_combine1.htm,Solution,261~409.xml
-305,https://ssc.wisc.edu/sscc/pubs/sfr/soln_combine2.htm,Solution,261~409.xml
-306,https://ssc.wisc.edu/sscc/pubs/sfr/soln_combine3.htm,Solution,261~409.xml
-307,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data1.htm,Solution,261~409.xml
-308,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data2.htm,Solution,261~409.xml
-309,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data3.htm,Solution,261~409.xml
-310,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data4.htm,Solution,261~409.xml
-311,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data5.htm,Solution,261~409.xml
-312,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_by1.htm,Solution,261~409.xml
-313,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_by2.htm,Solution,261~409.xml
-314,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_by3.htm,Solution,261~409.xml
-315,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_checks1.htm,Solution,261~409.xml
-316,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_checks2.htm,Solution,261~409.xml
-317,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_spell1.htm,Solution,261~409.xml
-318,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_spell2.htm,Solution,261~409.xml
-319,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_spell3.htm,Solution,261~409.xml
-320,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_subscripts1.htm,Solution,261~409.xml
-321,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_subscripts2.htm,Solution,261~409.xml
-322,https://ssc.wisc.edu/sscc/pubs/sfr/soln_hier2.htm,Solution,261~409.xml
-323,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_cat1.htm,Solution,261~409.xml
-324,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_cat2.htm,Solution,261~409.xml
-325,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_desc1.htm,Solution,261~409.xml
-326,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_desc3.htm,Solution,261~409.xml
-327,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_reg1.htm,Solution,261~409.xml
-328,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_res1.htm,Solution,261~409.xml
-329,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_by.htm,Solution,261~409.xml
-330,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_if_1.htm,Solution,261~409.xml
-331,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_if_2.htm,Solution,261~409.xml
-332,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_if_3.htm,Solution,261~409.xml
-333,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_varlists_1.htm,Solution,261~409.xml
-334,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_varlists_2.htm,Solution,261~409.xml
-335,https://ssc.wisc.edu/sscc/pubs/sfs/home.htm,Stata for Students,261~409.xml
-336,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-bargraph.htm,Stata for Students: Bar Graphs,261~409.xml
-337,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ci.htm,Stata for Students: Means and Confidence Intervals,261~409.xml
-338,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-comments.htm,Comments and Other Readability Tools for Do Files,261~409.xml
-339,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-cor.htm,Stata for Students: Correlations,261~409.xml
-340,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-data.htm,Stata for Students: Stata Data Sets,261~409.xml
-341,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-describe.htm,Stata for Students: Describe,261~409.xml
-342,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-descriptives.htm,Stata for Students: tabulate,261~409.xml
-343,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-do_files.htm,Stata for Students: Doing Your Work Using Do Files,261~409.xml
-344,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-econ310.htm,Stata for Students: Economics 310,261~409.xml
-345,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-econ410.htm,Stata for Students: Economics 310,261~409.xml
-346,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-files.htm,Stata for Students: Managing Stata Files,261~409.xml
-347,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-graphs.htm,Stata for Students: Using Graphs,261~409.xml
-348,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-hist.htm,Stata for Students: Histograms,261~409.xml
-349,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-import.htm,Stata for Students: Reading Data from a Spreadsheet or Text File,261~409.xml
-350,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-prtest.htm,Stata for Students: Proportion Tests,261~409.xml
-351,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-qualtrics.htm,Downloading Data from Qualtrics and Importing it into Stata,261~409.xml
-352,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-scatter.htm,Stata for Students: Scatterplots,261~409.xml
-353,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-soc357.htm,Stata for Students: Sociology 357,261~409.xml
-354,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-soc360.htm,Stata for Students: Sociology 357,261~409.xml
-355,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-syntax.htm,Stata for Students: How Stata Commands Work,261~409.xml
-356,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ttest.htm,Stata for Students: t-tests,261~409.xml
-357,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ui.htm,Stata for Students: Stata's User Interface,261~409.xml
-358,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-vars.htm,Stata for Students: Creating Variables and Labels,261~409.xml
-359,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-where.htm,Stata for Students: Running Stata,261~409.xml
-360,https://ssc.wisc.edu/sscc/pubs/silo.htm,Using Silo,261~409.xml
-361,https://ssc.wisc.edu/sscc/pubs/softwarecenter.htm,Installing New Software using Software Center,261~409.xml
-362,https://ssc.wisc.edu/sscc/pubs/spss/Linux/7-18.html,Running SPSS Jobs on Linux,261~409.xml
+253,https://ssc.wisc.edu/sscc/pubs/goprint.htm,Paying for Printing in the SSCC Labs,253-254.xml
+254,https://ssc.wisc.edu/sscc/pubs/home.htm,SSCC Knowledge Base,253-254.xml
+255,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata1.htm,Introduction to Stata: Using Stata,255-260.xml
+256,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata2.htm,Introduction to Stata: Structure of a Data Set,255-260.xml
+257,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata3.htm,Introduction to Stata: Elements of Stata Syntax,255-260.xml
+258,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata4.htm,Introduction to Stata: Do Files,255-260.xml
+259,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata5.htm,Introduction to Stata: Statistics,255-260.xml
+260,https://ssc.wisc.edu/sscc/pubs/intro_stata/intro_stata6.htm,Introduction to Stata: Creating and Changing Variables,255-260.xml
+261,https://ssc.wisc.edu/sscc/pubs/linstat.htm,Using Linstat,261-273.xml
+262,https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm,Connecting to Linstat from a Mac,261-273.xml
+263,https://ssc.wisc.edu/sscc/pubs/linstat_google_auth.htm,Configuring Google Authenticator to Log in to Linstat,261-273.xml
+264,https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm,Managing Jobs on Linstat,261-273.xml
+265,https://ssc.wisc.edu/sscc/pubs/linstat_outside_us.htm,Connecting to Linstat from Outside the Madison Area,261-273.xml
+266,https://ssc.wisc.edu/sscc/pubs/linstat_public_key.htm,Configuring a Public/Private Key Pair to Log into Linstat,261-273.xml
+267,https://ssc.wisc.edu/sscc/pubs/linux.htm,Articles on Using Linux,261-273.xml
+268,https://ssc.wisc.edu/sscc/pubs/linux_disk_space.htm,Managing Disk Space in Linux,261-273.xml
+269,https://ssc.wisc.edu/sscc/pubs/linuxos.htm,Getting Started in Linux,261-273.xml
+270,https://ssc.wisc.edu/sscc/pubs/mac.htm,Articles on Using OS X,261-273.xml
+271,https://ssc.wisc.edu/sscc/pubs/mplus_linstat.htm,Running Mplus Jobs on Linstat,261-273.xml
+272,https://ssc.wisc.edu/sscc/pubs/newusers.htm,Articles for New Users,261-273.xml
+273,https://ssc.wisc.edu/sscc/pubs/nvivo.htm,Using NVivo on Winstat,273.xml
+274,https://ssc.wisc.edu/sscc/pubs/office2013.htm,Upgrading to Office 2013 using SSCC's Software Center,274-279.xml
+275,https://ssc.wisc.edu/sscc/pubs/pbnm/pbnmInstall.html,Installing the pbnm Package,274-279.xml
+276,https://ssc.wisc.edu/sscc/pubs/pc_sec.htm,SSCC - Social Science Computing Cooperative,274-279.xml
+277,https://ssc.wisc.edu/sscc/pubs/print.htm,Articles on Printing,274-279.xml
+278,https://ssc.wisc.edu/sscc/pubs/printfromlinux.htm,Using SSCC Network Printers from Personal Linux Computers,274-279.xml
+279,https://ssc.wisc.edu/sscc/pubs/printfrommac.htm,Using SSCC Printers from Macs,274-279.xml
+280,https://ssc.wisc.edu/sscc/pubs/python_linstat.htm,Running Python on Linstat,280-281.xml
+281,https://ssc.wisc.edu/sscc/pubs/python_packages_winstat.htm,Installing Python Packages on Winstat,280-281.xml
+282,https://ssc.wisc.edu/sscc/pubs/r-install.htm,Installing R on Your Personal Computer,282-284.xml
+283,https://ssc.wisc.edu/sscc/pubs/r-packages.htm,Using R Packages on SSCC Linux Servers,282-284.xml
+284,https://ssc.wisc.edu/sscc/pubs/readhtml.htm,Stata Tools for Reading Data from Web Page,282-284.xml
+285,https://ssc.wisc.edu/sscc/pubs/records.htm,Open Records and SSCC Email,285-288.xml
+286,https://ssc.wisc.edu/sscc/pubs/remote.htm,Articles on Remote Computing,285-288.xml
+287,https://ssc.wisc.edu/sscc/pubs/remote_desktop.htm,Connecting to Your Office Computer Using Remote Desktop (Windows),285-288.xml
+288,https://ssc.wisc.edu/sscc/pubs/researchdrive.htm,Using ResearchDrive,285-288.xml
+289,https://ssc.wisc.edu/sscc/pubs/sas_excel.htm,SAS and Excel Files on Winstat,289-291.xml
+290,https://ssc.wisc.edu/sscc/pubs/sas_launch.htm,Launching SAS Files from Windows Explorer,289-291.xml
+291,https://ssc.wisc.edu/sscc/pubs/sas_output.htm,Managing Output in SAS 9.3,289-291.xml
+292,https://ssc.wisc.edu/sscc/pubs/screen_sharing.htm,Connecting to Your Office Computer Using Screen Sharing (Mac),292.xml
+293,https://ssc.wisc.edu/sscc/pubs/sfr-combine.htm,Stata for Researchers: Combining Data Sets ,293-359.xml
+294,https://ssc.wisc.edu/sscc/pubs/sfr-data.htm,Stata for Researchers: Working With Data,293-359.xml
+295,https://ssc.wisc.edu/sscc/pubs/sfr-do.htm,Stata for Researchers: Do Files,293-359.xml
+296,https://ssc.wisc.edu/sscc/pubs/sfr-graphics.htm,Stata for Researchers: Do Graphics,293-359.xml
+297,https://ssc.wisc.edu/sscc/pubs/sfr-groups.htm,Stata for Researchers: Working with Groups,293-359.xml
+298,https://ssc.wisc.edu/sscc/pubs/sfr-hier.htm,Stata for Researchers: Hierarchical Data,293-359.xml
+299,https://ssc.wisc.edu/sscc/pubs/sfr-intro.htm,Stata for Researchers: Introduction,293-359.xml
+300,https://ssc.wisc.edu/sscc/pubs/sfr-learning.htm,Stata for Researchers: Learning More,293-359.xml
+301,https://ssc.wisc.edu/sscc/pubs/sfr-projects.htm,Stata for Researchers: Do Files and Project Management,293-359.xml
+302,https://ssc.wisc.edu/sscc/pubs/sfr-stats.htm,Stata for Researchers: Statistics,293-359.xml
+303,https://ssc.wisc.edu/sscc/pubs/sfr-syntax.htm,Stata for Researchers: Usage and Syntax,293-359.xml
+304,https://ssc.wisc.edu/sscc/pubs/sfr/soln_combine1.htm,Solution,293-359.xml
+305,https://ssc.wisc.edu/sscc/pubs/sfr/soln_combine2.htm,Solution,293-359.xml
+306,https://ssc.wisc.edu/sscc/pubs/sfr/soln_combine3.htm,Solution,293-359.xml
+307,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data1.htm,Solution,293-359.xml
+308,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data2.htm,Solution,293-359.xml
+309,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data3.htm,Solution,293-359.xml
+310,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data4.htm,Solution,293-359.xml
+311,https://ssc.wisc.edu/sscc/pubs/sfr/soln_data5.htm,Solution,293-359.xml
+312,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_by1.htm,Solution,293-359.xml
+313,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_by2.htm,Solution,293-359.xml
+314,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_by3.htm,Solution,293-359.xml
+315,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_checks1.htm,Solution,293-359.xml
+316,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_checks2.htm,Solution,293-359.xml
+317,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_spell1.htm,Solution,293-359.xml
+318,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_spell2.htm,Solution,293-359.xml
+319,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_spell3.htm,Solution,293-359.xml
+320,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_subscripts1.htm,Solution,293-359.xml
+321,https://ssc.wisc.edu/sscc/pubs/sfr/soln_groups_subscripts2.htm,Solution,293-359.xml
+322,https://ssc.wisc.edu/sscc/pubs/sfr/soln_hier2.htm,Solution,293-359.xml
+323,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_cat1.htm,Solution,293-359.xml
+324,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_cat2.htm,Solution,293-359.xml
+325,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_desc1.htm,Solution,293-359.xml
+326,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_desc3.htm,Solution,293-359.xml
+327,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_reg1.htm,Solution,293-359.xml
+328,https://ssc.wisc.edu/sscc/pubs/sfr/soln_stats_res1.htm,Solution,293-359.xml
+329,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_by.htm,Solution,293-359.xml
+330,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_if_1.htm,Solution,293-359.xml
+331,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_if_2.htm,Solution,293-359.xml
+332,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_if_3.htm,Solution,293-359.xml
+333,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_varlists_1.htm,Solution,293-359.xml
+334,https://ssc.wisc.edu/sscc/pubs/sfr/soln_syntax_varlists_2.htm,Solution,293-359.xml
+335,https://ssc.wisc.edu/sscc/pubs/sfs/home.htm,Stata for Students,293-359.xml
+336,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-bargraph.htm,Stata for Students: Bar Graphs,293-359.xml
+337,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ci.htm,Stata for Students: Means and Confidence Intervals,293-359.xml
+338,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-comments.htm,Comments and Other Readability Tools for Do Files,293-359.xml
+339,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-cor.htm,Stata for Students: Correlations,293-359.xml
+340,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-data.htm,Stata for Students: Stata Data Sets,293-359.xml
+341,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-describe.htm,Stata for Students: Describe,293-359.xml
+342,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-descriptives.htm,Stata for Students: tabulate,293-359.xml
+343,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-do_files.htm,Stata for Students: Doing Your Work Using Do Files,293-359.xml
+344,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-econ310.htm,Stata for Students: Economics 310,293-359.xml
+345,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-econ410.htm,Stata for Students: Economics 310,293-359.xml
+346,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-files.htm,Stata for Students: Managing Stata Files,293-359.xml
+347,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-graphs.htm,Stata for Students: Using Graphs,293-359.xml
+348,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-hist.htm,Stata for Students: Histograms,293-359.xml
+349,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-import.htm,Stata for Students: Reading Data from a Spreadsheet or Text File,293-359.xml
+350,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-prtest.htm,Stata for Students: Proportion Tests,293-359.xml
+351,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-qualtrics.htm,Downloading Data from Qualtrics and Importing it into Stata,293-359.xml
+352,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-scatter.htm,Stata for Students: Scatterplots,293-359.xml
+353,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-soc357.htm,Stata for Students: Sociology 357,293-359.xml
+354,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-soc360.htm,Stata for Students: Sociology 357,293-359.xml
+355,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-syntax.htm,Stata for Students: How Stata Commands Work,293-359.xml
+356,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ttest.htm,Stata for Students: t-tests,293-359.xml
+357,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-ui.htm,Stata for Students: Stata's User Interface,293-359.xml
+358,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-vars.htm,Stata for Students: Creating Variables and Labels,293-359.xml
+359,https://ssc.wisc.edu/sscc/pubs/sfs/sfs-where.htm,Stata for Students: Running Stata,293-359.xml
+360,https://ssc.wisc.edu/sscc/pubs/silo.htm,Using Silo,360-362.xml
+361,https://ssc.wisc.edu/sscc/pubs/softwarecenter.htm,Installing New Software using Software Center,360-362.xml
+362,https://ssc.wisc.edu/sscc/pubs/spss/Linux/7-18.html,Running SPSS Jobs on Linux,360-362.xml
 363,https://ssc.wisc.edu/sscc/pubs/spss/Linux/carlinux.html,carlinux.html,
-364,https://ssc.wisc.edu/sscc/pubs/spss/Windows/Extension_bundles.html,SPSS Extension Bundles in the SSCC,261~409.xml
-365,https://ssc.wisc.edu/sscc/pubs/spss/Windows/SPSS_Syntax.html,SPSS Syntax,261~409.xml
-366,https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html,SPSS for the Classroom: the Basics,261~409.xml
-367,https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students2.html,SPSS for the Classroom: Statistics and Graphs,261~409.xml
-368,https://ssc.wisc.edu/sscc/pubs/stat.htm,Articles on Statistical Computing,261~409.xml
-369,https://ssc.wisc.edu/sscc/pubs/stata_bar_graphs.htm,Bar Graphs in Stata,261~409.xml
-370,https://ssc.wisc.edu/sscc/pubs/stata_dates.htm,Working with Dates in Stata,261~409.xml
-371,https://ssc.wisc.edu/sscc/pubs/stata_margins.htm,Exploring Regression Results using Margins,261~409.xml
-372,https://ssc.wisc.edu/sscc/pubs/stata_memory.htm,Reducing Stata's Memory Usage,261~409.xml
-373,https://ssc.wisc.edu/sscc/pubs/stata_mi_condor.htm,Speeding up Multiple Imputation in Stata using Parallel Processing,261~409.xml
-374,https://ssc.wisc.edu/sscc/pubs/stata_mi_decide.htm,Multiple Imputation in Stata:,261~409.xml
-375,https://ssc.wisc.edu/sscc/pubs/stata_mi_estimate.htm,Multiple Imputation in Stata: Estimating,261~409.xml
-376,https://ssc.wisc.edu/sscc/pubs/stata_mi_ex.htm,Multiple Imputation Examples,261~409.xml
-377,https://ssc.wisc.edu/sscc/pubs/stata_mi_impute.htm,Multiple Imputation in Stata: Imputing,261~409.xml
-378,https://ssc.wisc.edu/sscc/pubs/stata_mi_impute_log.htm,Multiple Imputation in Stata: Imputation Log File,261~409.xml
-379,https://ssc.wisc.edu/sscc/pubs/stata_mi_intro.htm,Multiple Imputation in Stata,261~409.xml
-380,https://ssc.wisc.edu/sscc/pubs/stata_mi_manage.htm,Multiple Imputation in Stata: Managing Multiply Imputed Data,261~409.xml
-381,https://ssc.wisc.edu/sscc/pubs/stata_mi_models.htm,Multiple Imputation in Stata,261~409.xml
-382,https://ssc.wisc.edu/sscc/pubs/stata_mi_readings.htm,Multiple Imputation in Stata: Recommended Readings,261~409.xml
-383,https://ssc.wisc.edu/sscc/pubs/stata_mp.htm,Running Stata MP at the SSCC,261~409.xml
-384,https://ssc.wisc.edu/sscc/pubs/stata_panel.htm,Stata Programming Techniques for Panel Data in Stata,261~409.xml
-385,https://ssc.wisc.edu/sscc/pubs/stata_prog1.htm,Stata Programming Essentials,261~409.xml
-386,https://ssc.wisc.edu/sscc/pubs/stata_prog2.htm,Stata Programming Tools,261~409.xml
-387,https://ssc.wisc.edu/sscc/pubs/stata_psmatch.htm,Propensity Score Matching in Stata using teffects,261~409.xml
-388,https://ssc.wisc.edu/sscc/pubs/stata_tables.htm,Creating Publication-Quality Tables in Stata,261~409.xml
-389,https://ssc.wisc.edu/sscc/pubs/statahelp.htm,Search Stata's Online Help,261~409.xml
-390,https://ssc.wisc.edu/sscc/pubs/termserv.htm,Articles on Using Winstat,261~409.xml
-391,https://ssc.wisc.edu/sscc/pubs/vpn.htm,Connecting to the SSCC Network via VPN,261~409.xml
-392,https://ssc.wisc.edu/sscc/pubs/web.htm,Publications about the Web,261~409.xml
-393,https://ssc.wisc.edu/sscc/pubs/welcome.htm,Welcome to the SSCC!,261~409.xml
-394,https://ssc.wisc.edu/sscc/pubs/welcomelab.htm,Welcome to the SSCC!,261~409.xml
-395,https://ssc.wisc.edu/sscc/pubs/windows.htm,Articles on Using Windows,261~409.xml
-396,https://ssc.wisc.edu/sscc/pubs/winstat.htm,Using Winstat,261~409.xml
-397,https://ssc.wisc.edu/sscc/pubs/winstat_chrome.htm,Connecting to Winstat using Chrome,261~409.xml
-398,https://ssc.wisc.edu/sscc/pubs/winstat_firefox.htm,Winstat Solutions: Connecting Using Firefox,261~409.xml
-399,https://ssc.wisc.edu/sscc/pubs/winstat_fonts.htm,SSCC - Social Science Computing Cooperative,261~409.xml
-400,https://ssc.wisc.edu/sscc/pubs/wisclist.htm,Using WiscList,261~409.xml
-401,https://ssc.wisc.edu/sscc/pubs/wordpress.htm,Getting Started with WordPress,261~409.xml
-402,https://ssc.wisc.edu/sscc/pubs/working_from_home.htm,Working From Home or Elsewhere Off-Campus,261~409.xml
-403,https://ssc.wisc.edu/sscc/pubs/wp_word.htm,Opening WordPerfect Documents using Word,261~409.xml
-404,https://ssc.wisc.edu/sscc/pubs/writencite.htm,SSCC - Social Science Computing Cooperative,261~409.xml
+364,https://ssc.wisc.edu/sscc/pubs/spss/Windows/Extension_bundles.html,SPSS Extension Bundles in the SSCC,362-389.xml
+365,https://ssc.wisc.edu/sscc/pubs/spss/Windows/SPSS_Syntax.html,SPSS Syntax,362-389.xml
+366,https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html,SPSS for the Classroom: the Basics,362-389.xml
+367,https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students2.html,SPSS for the Classroom: Statistics and Graphs,362-389.xml
+368,https://ssc.wisc.edu/sscc/pubs/stat.htm,Articles on Statistical Computing,362-389.xml
+369,https://ssc.wisc.edu/sscc/pubs/stata_bar_graphs.htm,Bar Graphs in Stata,362-389.xml
+370,https://ssc.wisc.edu/sscc/pubs/stata_dates.htm,Working with Dates in Stata,362-389.xml
+371,https://ssc.wisc.edu/sscc/pubs/stata_margins.htm,Exploring Regression Results using Margins,362-389.xml
+372,https://ssc.wisc.edu/sscc/pubs/stata_memory.htm,Reducing Stata's Memory Usage,362-389.xml
+373,https://ssc.wisc.edu/sscc/pubs/stata_mi_condor.htm,Speeding up Multiple Imputation in Stata using Parallel Processing,362-389.xml
+374,https://ssc.wisc.edu/sscc/pubs/stata_mi_decide.htm,Multiple Imputation in Stata:,362-389.xml
+375,https://ssc.wisc.edu/sscc/pubs/stata_mi_estimate.htm,Multiple Imputation in Stata: Estimating,362-389.xml
+376,https://ssc.wisc.edu/sscc/pubs/stata_mi_ex.htm,Multiple Imputation Examples,362-389.xml
+377,https://ssc.wisc.edu/sscc/pubs/stata_mi_impute.htm,Multiple Imputation in Stata: Imputing,362-389.xml
+378,https://ssc.wisc.edu/sscc/pubs/stata_mi_impute_log.htm,Multiple Imputation in Stata: Imputation Log File,362-389.xml
+379,https://ssc.wisc.edu/sscc/pubs/stata_mi_intro.htm,Multiple Imputation in Stata,362-389.xml
+380,https://ssc.wisc.edu/sscc/pubs/stata_mi_manage.htm,Multiple Imputation in Stata: Managing Multiply Imputed Data,362-389.xml
+381,https://ssc.wisc.edu/sscc/pubs/stata_mi_models.htm,Multiple Imputation in Stata,362-389.xml
+382,https://ssc.wisc.edu/sscc/pubs/stata_mi_readings.htm,Multiple Imputation in Stata: Recommended Readings,362-389.xml
+383,https://ssc.wisc.edu/sscc/pubs/stata_mp.htm,Running Stata MP at the SSCC,362-389.xml
+384,https://ssc.wisc.edu/sscc/pubs/stata_panel.htm,Stata Programming Techniques for Panel Data in Stata,362-389.xml
+385,https://ssc.wisc.edu/sscc/pubs/stata_prog1.htm,Stata Programming Essentials,362-389.xml
+386,https://ssc.wisc.edu/sscc/pubs/stata_prog2.htm,Stata Programming Tools,362-389.xml
+387,https://ssc.wisc.edu/sscc/pubs/stata_psmatch.htm,Propensity Score Matching in Stata using teffects,362-389.xml
+388,https://ssc.wisc.edu/sscc/pubs/stata_tables.htm,Creating Publication-Quality Tables in Stata,362-389.xml
+389,https://ssc.wisc.edu/sscc/pubs/statahelp.htm,Search Stata's Online Help,362-389.xml
+390,https://ssc.wisc.edu/sscc/pubs/termserv.htm,Articles on Using Winstat,390-404.xml
+391,https://ssc.wisc.edu/sscc/pubs/vpn.htm,Connecting to the SSCC Network via VPN,390-404.xml
+392,https://ssc.wisc.edu/sscc/pubs/web.htm,Publications about the Web,390-404.xml
+393,https://ssc.wisc.edu/sscc/pubs/welcome.htm,Welcome to the SSCC!,390-404.xml
+394,https://ssc.wisc.edu/sscc/pubs/welcomelab.htm,Welcome to the SSCC!,390-404.xml
+395,https://ssc.wisc.edu/sscc/pubs/windows.htm,Articles on Using Windows,390-404.xml
+396,https://ssc.wisc.edu/sscc/pubs/winstat.htm,Using Winstat,390-404.xml
+397,https://ssc.wisc.edu/sscc/pubs/winstat_chrome.htm,Connecting to Winstat using Chrome,390-404.xml
+398,https://ssc.wisc.edu/sscc/pubs/winstat_firefox.htm,Winstat Solutions: Connecting Using Firefox,390-404.xml
+399,https://ssc.wisc.edu/sscc/pubs/winstat_fonts.htm,SSCC - Social Science Computing Cooperative,390-404.xml
+400,https://ssc.wisc.edu/sscc/pubs/wisclist.htm,Using WiscList,390-404.xml
+401,https://ssc.wisc.edu/sscc/pubs/wordpress.htm,Getting Started with WordPress,390-404.xml
+402,https://ssc.wisc.edu/sscc/pubs/working_from_home.htm,Working From Home or Elsewhere Off-Campus,390-404.xml
+403,https://ssc.wisc.edu/sscc/pubs/wp_word.htm,Opening WordPerfect Documents using Word,390-404.xml
+404,https://ssc.wisc.edu/sscc/pubs/writencite.htm,SSCC - Social Science Computing Cooperative,390-404.xml
 405,https://ssc.wisc.edu/sscc/resources.htm,Resources,261~409.xml
 406,https://ssc.wisc.edu/sscc/resources/members.htm,Resources for SSCC Members,261~409.xml
 407,https://ssc.wisc.edu/sscc/resources/newmembers.htm,Resources for New Members,261~409.xml

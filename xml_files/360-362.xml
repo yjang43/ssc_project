@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Using Silo</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Silo is the SSCC's secure computing enclave. It consists of secure  servers and data storage for working with data covered by HIPAA and other sensitive data. Silo contains Windows-based servers (WinSilo), Linux based servers (LinSilo and LinSiloBig) and an HTCondor pool (CondorSilo). WinSilo acts as the gateway to all of Silo: when you log in, you'll start on WinSilo and can log into the other servers from there.</p>
+<p>Keep reading to learn how to access Silo and use the Windows servers in the Silo environment. Or you can skip ahead for information on:</p>
+<ul>
+<li><a href="#data">Silo's file system and getting data in and out of Silo</a></li>
+<li><a href="#Linux">Linux servers in Silo</a></li>
+<li><a href="#CondorSilo">Silo's HTCondor pool</a></li>
+</ul>
+<h2>Getting Access</h2>
+<p>If you are interested in using Silo, please contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a>. Depending on the nature of your data you may need to get approval from your IRB, the UW-Madison Office of Cybersecurity, or other relevant authorities. Using Silo will expedite that process because it has already had a formal risk assessment by the Office of Cybersecurity and was found to be low risk, and many of the relevant authorities are already familiar with it.</p>
+<p>Connecting to Silo requires multifactor authentication using Duo, the same system used for your UW-Madison NetID. Most people use the Duo app on their smartphone, but you can also use  a separate hardware token. When you contact the Help Desk about using Silo please mention which method you prefer. Instructions for obtaining and using a hardware token can be found <a href="#token">here</a>.                </p>
+<h2>Installing the Citrix Workspace App</h2>
+<p>To use Silo you'll need to have the Citrix Workspace App installed on your computer. Just click on the appropriate link below and then run the installer after it finishes downloading. If you've already installed the Citrix Workspace App on your computer in order to use Winstat you do not need to install it again.</p>
+<ul>
+<li><a href="https://ssc.wisc.edu/sscc/receiver/CitrixWorkspaceApp.exe">Citrix Workspace App for Windows</a></li>
+<li><a href="https://ssc.wisc.edu/sscc/receiver/Citrix WorkspaceApp-SSCC.dmg">Citrix Workspace App for Mac</a></li>
+</ul>
+<p>See <a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat</a> for more information about using the Citrix Workspace App.                </p>
+<h2>Logging In</h2>
+<p>To log in to Silo, you will need go to the web site <a href="https://silo.ssc.wisc.edu">silo.ssc.wisc.edu</a>. If you're asked to give permission for programs to run, do so.</p>
+<img alt="silo login screen" class="CenterImage" height="334" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silo/silo1.png" width="750"/>
+<p>At the login screen, first give your SSCC username and password as usual. If it is your first time logging into Silo, you'll be prompted to follow the instructions on the screen to set up Duo on your smartphone. You'll be able to use the same Duo app for both Silo and your NetID.</p>
+<h2 id="data">The Silo File System</h2>
+<p>Silo has an isolated file system that is separate from SSCC's primary file system, but they have similar structures. All files are available using either Windows or Linux. The key locations are:</p>
+<table align="center" border="1" cellpadding="5">
+<tr>
+<th scope="col"> </th>
+<th scope="col">Linux Name</th>
+<th scope="col">Windows Name</th>
+</tr>
+<tr>
+<td>Home Directory (Private Space) </td>
+<td><span class="InputCode">~</span></td>
+<td><span class="MenuOutput">Z:</span> Drive</td>
+</tr>
+<tr>
+<td>Project Directories (Shared Space) </td>
+<td class="InputCode">/project</td>
+<td><span class="MenuOutput">V:</span> Drive </td>
+</tr>
+<tr>
+<td>SMPH Project Directories (Shared Space)</td>
+<td class="InputCode">/smph</td>
+<td><span class="MenuOutput">S:</span> Drive</td>
+</tr>
+</table>
+<p>Home directories are primarily meant for configuration files, installed packages, and other small files. They have a quota of 20GB, which can be expanded on request to 40GB. Research data should be stored in Project directories, which have no quotas and are shared with the other members of your research group. SMPH researchers will be given project space on the S: drive, which is SMPH's space in DoIT's RestrictedDrive service. </p>
+<h2 id="MovingDataToandFromSilo">Moving Data To and From Silo</h2>
+<p>To move sensitive data into Silo, contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a> and we'll work with you to find the most convenient way to transfer your data. We are working with popular data providers to try to automate this process.</p>
+<p>To move non-sensitive files into Silo and  to get results out you'll use SSCC's primary file system as a staging area. The easy way to access SSCC's primary file system is to log into Winstat, which you'll see when you log into Silo. Winstat is very similar to WinSilo but, not being a high-security server, it can communicate with the local hard drive of your computer. After logging into Winstat, you'll see a drive called <span class="InputCode">Local Disk (C: on </span><span class="Parameter">{your computer}</span><span class="InputCode">)</span>. You can drag files to and from this drive to move them between your computer and SSCC's primary file system. You're also welcome access SSCC's primary file system by mapping a drive to it (<a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">Windows</a>/<a href="https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm">MacOS</a>) or using <a href="https://ssc.wisc.edu/sscc/pubs/1-11.htm">FTP</a>.</p>
+<p>To move non-sensitive files into Silo,  put them in a folder on your Z: drive in the primary SSCC file system and then contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a> and ask that that folder be copied to Silo.                </p>
+<p>Moving data off of Silo's file system is simpler. We have created a folder called <span class="InputCode">silosync</span> in the Z: drive of each Silo user. Every five minutes, an automated script copies anything placed in this folder to a corresponding folder in your Z: drive on  SSCC's primary file system.  You can then access it using Winstat. Similar folders can be created within projects. (<span class="InputCode">silosync</span> does not automatically copy files from the primary SSCC file system to Silo.) It is your responsibility to ensure any data you place in the <span class="InputCode">silosync</span> folder can be appropriately stored on the SSCC's primary file system and do not require the additional security Silo provides.</p>
+<h2>Using WinSilo</h2>
+<p>Once you've logged in, WinSilo behaves just like a regular Windows server, with a few important exceptions:</p>
+<ul>
+<li>Silo cannot access the Internet. This can affect programs in unexpected ways: for example, Stata's <span class="InputCode">findit</span> command takes much longer to run than usual and then only gives partial results, because it tries to reach Stata's web server and does not display any results until that attempt times out. Fortunately the results it does give are the ones you're most likely to need.</li>
+<li>You can install R packages from CRAN and Bioconductor, Stata packages from SSC, and Python packages from PyPI. If you need to install packages from other sources contact the Help Desk.</li>
+<li>You cannot copy and paste between Silo and your own computer.</li>
+<li>Silo cannot access disk space on your computer.</li>
+<li>You cannot print from Silo.</li>
+</ul>
+<h2>Silo Downtime </h2>
+<p>Silo has a downtime from 7:00am-9:00am the first Wednesday of the month for security updates. </p>
+<p>If you don't anticipate using Silo's Linux servers, you can stop reading at this point. Welcome to Silo!</p>
+<h2 id="Linux">Silo Linux Servers</h2>
+<p>Silo has three kinds of Linux servers. To use them, first sign into the Silo environment, which will put you on WinSilo, and then you can log into them from there.</p>
+<p><strong>LinSilo</strong> is a cluster of three servers (<span class="InputCode">linsilo001</span>, <span class="InputCode">linsilo002</span>, <span class="InputCode">linsilo003</span>) with 44 cores and 384GB of memory each. When you log into LinSilo, you'll be automatically directed to the least busy server. If you start a long job on a server, you'll need to go back to the same server to manage it. You can switch to a different server with the <span class="InputCode">ssh</span> command; e.g. to get to <span class="InputCode">linsilo001</span> type:</p>
+<p class="InputCode"> ssh linsilo001</p>
+<p><strong>LinSiloBig</strong> is a cluster of two servers (<span class="InputCode">linsilobig001</span>, <span class="InputCode">linsilobig002</span>) with 80 cores and 768GB of memory each. Again, when you log into LinSiloBig you'll be the directed to the least busy server, but you can switch with <span class="InputCode">ssh</span>. In fact, using LinSiloBig is so similar to using LinSilo that you can assume instructions for using LinSilo apply to LinSiloBig unless we say otherwise.</p>
+<p>Jobs that cannot run without the additional memory LinSiloBig provides should have first priority on LinSiloBig. Jobs that can take full advantage of the additional cores it provides are second priority. Please do not use LinSiloBig for jobs that could run just as well on LinSilo or CondorSilo.</p>
+<p><strong>CondorSilo</strong> is a cluster of nine servers with 44 cores and 384GB of RAM each. It runs jobs submitted via HTCondor.</p>
+<p>The Linux servers in the Silo environment were funded by SMPH. Other researchers are welcome to use them, but SMPH researchers have priority.</p>
+<h2>Logging into LinSilo</h2>
+<p>To log into LinSilo, click on the Windows logo button and find the LinSilo folder in the programs list. Then click on the LinSilo or LinSiloBig icon. This will start a program called X-Win32. The first thing you'll see is a utility window that you can ignore (but don't close it or it will close the entire program—minimize it instead). The login prompt will come up shortly thereafter, and then a terminal window once you log in.</p>
+<p>If you'll use these frequently, you can right-click on them and pin them so that they'll come up as soon as you click the Windows logo button.</p>
+<p>If you don't need graphics, you can also log into LinSilo using SecureCRT.</p>
+<h2></h2>
+<h2>Running Programs on LinSilo</h2>
+<p>LinSilo has a wide variety of software installed, including both general-purpose statistical software and specialized software for biomedical research.</p>
+<p>SSCC has used <span class="InputCode">tcsh</span> as its default Linux shell for more than 20 years, but <span class="InputCode">bash</span> has become more popular. (If you google how to do something in Linux the solution you find will probably be written for <span class="InputCode">bash</span>, but most of the time it will work in <span class="InputCode">tcsh</span> too since they're not that different.) Many SMPH researchers have a great deal of experience using <span class="InputCode">bash</span>, so we have made it the default shell for members from SMPH. If you'd like to switch shells (in either direction) contact the<a href="https://ssc.wisc.edu/sscc/helpdesk.htm"> Help Desk</a>.</p>
+<p> Here are the commands to run a few selected programs on LinSilo. In the "Command to run a long job" column, the command  is given in the form needed by <span class="InputCode">bash</span>. <span class="InputCode">tcsh</span> users should omit the <span class="InputCode">nohup</span> at the beginning of the command.</p>
+<table border="1" width="100%">
+<tbody>
+<tr>
+<th>Program</th>
+<th>Command to run it interactively</th>
+<th>Command to run a long job that will continue after you log out (<span class="InputCode">bash</span> version)</th>
+</tr>
+<tr>
+<td>R</td>
+<td class="InputCode">R</td>
+<td class="InputCode">nohup R CMD BATCH myprogram.R &amp;</td>
+</tr>
+<tr>
+<td>Python 3.7 (command line)</td>
+<td class="InputCode">python</td>
+<td class="InputCode">nohup python myprogram.py &amp;</td>
+</tr>
+<tr>
+<td>Python 2.7 (command line)</td>
+<td class="InputCode">python2</td>
+<td class="InputCode">nohup python2 myprogram.py &amp;</td>
+</tr>
+<tr>
+<td>Spyder (Python IDE)</td>
+<td class="InputCode">spyder</td>
+<td class="InputCode"> </td>
+</tr>
+<tr>
+<td>Jupyter Notebook</td>
+<td class="InputCode">jupyter notebook</td>
+<td class="InputCode"> </td>
+</tr>
+<tr>
+<td>Stata</td>
+<td class="InputCode">xstata</td>
+<td class="InputCode">nohup stata -b do mydofile &amp;</td>
+</tr>
+<tr>
+<td>SAS</td>
+<td class="InputCode">sas</td>
+<td class="InputCode">nohup sas myprogram.sas &amp;</td>
+</tr>
+</tbody>
+</table>
+<p>Of course there are many ways to run these programs, and many more programs!</p>
+<p>LinSilo is very similar to Linstat, SSCC's general-purpose Linux cluster, so you may find <a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a> and <a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a> helpful.</p>
+<h2>Running RStudio on LinSilo</h2>
+<p>To run RStudio on LinSilo, go to the LinSilo folder in the programs list and double-click on the <span class="MenuOutput">LinSilo RStudio Server</span> or <span class="MenuOutput">LinSiloBig RStudio Server </span>icon. (Again, if you'll use these frequently you can pin them.) This will open a web browser on the Windows server containing an RStudio interface that connects to R running on LinSilo or LinSiloBig. Jobs run in RStudio will continue to run even if you log out.</p>
+<h2 id="CondorSilo">CondorSilo  </h2>
+<p>CondorSilo runs HTCondor, developed by the UW-Madison Computer Science Department. HTCondor is designed to let you run multiple jobs on multiple servers efficiently: when you submit jobs to an HTCondor queue, HTCondor will find available servers to run them. <a href="https://research.cs.wisc.edu/htcondor/manual/">General documentation for using HTCondor can be found here</a>. CondorSilo differs from a standard HTCondor installation in three important ways:</p>
+<ol>
+<li>It shares the Silo file system with the other Silo servers, so there's no need to transfer the files needed by CondorSilo jobs to the CondorSilo servers.</li>
+<li>It does not checkpoint or terminate jobs.</li>
+<li>It cannot send you email when a job finishes because it is in the isolated Silo environment. You'll have to check the status of your jobs.</li>
+</ol>
+<p>CondorSilo does not have the simple scripts for submitting jobs that SSCC's primary Condor flock has (this is something of an experiment). Instead, you will need to create a submit file for each job, telling CondorSilo how to run it. This will give you more control over how the job is run and allow CondorSilo to allocate jobs more efficiently. We'll provide some examples you can copy shortly.</p>
+<p>A submit file will specify the program to run and the arguments needed to run it, but also tell CondorSilo how many cores and how much memory it needs. The core requirement is used in deciding where to run a job, but does not limit the number of cores the job can actually use. For example, if your submit file tells CondorSilo your job needs 30 cores (i.e. the submit file includes <span class="InputCode">request_cpus = 30</span>) and CondorSilo sees that a server is only running one job which requires a single core, it may put your job on that server. However, your job can try to use 44 cores and it will get 43 of them, and that's fine. If the single-core job finishes, your job will then use all of the 44 cores in the server. But if your submit file said the job required 44 cores, CondorSilo would not assign it to that server until after the single-core job finished. Meanwhile, if someone else submits a job that requires 30 cores, CondorSilo will not assign it to your server until your job is finished. You might think that it would be nicer to share the server, but a server running two jobs that can use all of its cores will take longer to finish both jobs than if they were run sequentially. If your job can take advantage of all of a server's cores, the best way to share the server with others is for your job to get done as quickly as possible and get out of the way. We thus suggest that if your job can take advantage of many cores, you tell CondorSilo you need 30.</p>
+<p>Memory is different from cores, in that a job can only use as much memory as was requested in the submit file. Be sure to request as much as you need! For most statistical software, start by seeing how big your data set is, then estimate how big it's going to be by the time you're done, then add a 25-50% safety margin to that. Even better, run a single instance of the job <span class="InputCode"></span> on LinSilo and monitor its memory usage with <span class="InputCode">top</span>. If you don't specify how much memory you need, you'll get a fraction of the server's memory equal to the fraction of the server's cores you requested, roughly  8.8GB/core.</p>
+<h2>Submitting Jobs to CondorSilo</h2>
+<p>To submit a job to CondorSilo, create a submit file, and then run:</p>
+<p class="InputCode">condor_submit <span class="Parameter">my_submit_file</span></p>
+<p>where  <span class="Parameter">my_submit_file</span> should be replaced by the actual name of your submit file.</p>
+<p>A submit file is just a text file. However, it must use Linux line endings (&lt;Line Feed&gt;), not Windows line endings (&lt;Carriage Return&gt; &lt;Line Feed&gt;) or Mac line endings (&lt;Carriage Return&gt;). If you use a Linux text editor like emacs or xemacs to write submit files that won't be an issue. You can use a Windows text editor like Notepad++, which is available on WinSilo, but you may need to change the line endings by clicking <span class="MenuOutput">Edit</span>, <span class="MenuOutput">EOL Conversion</span>. Regular Notepad will not work.</p>
+<p>Creating a submit file for a given program often takes some close reading of the program's documentation and some trial and error. HTCondor jobs run in the background with no user interface ("headless")  and the documentation for your program is likely to have instructions for how to do that. Often it will refer to running jobs in batch mode.</p>
+<p>The most common components of a submit file are listed below. Some of them will always be needed, like <span class="InputCode">executable</span>; others should be used when needed.</p>
+<p class="InputCode">universe = vanilla</p>
+<p>This tells HTCondor what context to run your job in. It's unlikely you'll need anything other than <span class="InputCode">vanilla</span>.</p>
+<p class="InputCode">executable = <span class="Parameter">program to run</span></p>
+<p>Replace <span class="Parameter">program to run</span> with actual program to run, including the path to find it. You can identify the path  to a program with <span class="InputCode">which</span>. For example, running <span class="InputCode">which R</span> will return <span class="InputCode">/software/R/bin/R</span>. To submit an R job to CondorSilo, you would put <span class="InputCode">executable = /software/R/bin/R</span> in your submit file.</p>
+<p class="InputCode">arguments = <span class="Parameter">arguments for your program</span></p>
+<p>Replace <span class="Parameter">arguments for your program</span> with the arguments (things you type after the command) for your program. For many programs, the arguments will tell the program what script to run as well as how to run it. For example, to submit an R script called <span class="InputCode">example.R</span> and save the output to <span class="InputCode">example.out</span>, use <span class="InputCode">arguments = CMD BATCH example.R example.out</span>. This corresponds to running <span class="InputCode">R CMD BATCH example.R example.out</span> at the command line, a standard way to run an R job in batch mode.</p>
+<p class="InputCode">input = <span class="Parameter">input file</span></p>
+<p class="InputCode">output = <span class="Parameter">output file</span></p>
+<p class="InputCode">error = <span class="Parameter">error file</span></p>
+<p>Linux has standard places for programs to get input and send output and error messages, called <span class="InputCode">stdin</span>, <span class="InputCode">stdout</span>, and <span class="InputCode">stderr</span>. These optional lines tell CondorSilo to use files for these purposes. Not all programs use them but  Matlab, for example, will run scripts sent to <span class="InputCode">stdin</span>, so you can run a Matlab script called <span class="InputCode">example.m</span> with <span class="InputCode">input = example.m</span>.</p>
+<p class="InputCode">request_cpus = <span class="Parameter">number of cores</span><br/>
+                request_memory = <span class="Parameter">amount of RAM</span> GB</p>
+<p>Replace <span class="Parameter">number of cores</span> and <span class="InputCode"><span class="Parameter">amount of RAM</span></span> with what you need. As discussed above, for cores you're just setting the minimum your job will accept, while for memory you're also setting the maximum your job will be able to use.</p>
+<p class="InputCode">environment = "name=value"</p>
+<p>The environment line allows you to set system environment variables for your job. For example, Python jobs need <span class="InputCode">PYTHONHOME</span> to be set to the location where Python is installed, so you need to include <span class="InputCode">environment = "PYTHONHOME=/software/anaconda37"</span>. Note that there can be no spaces between the name and value.<span class="InputCode"></span></p>
+<p class="InputCode">accounting_group = smph</p>
+<p>SMPH researchers have priority on CondorSilo (since SMPH funded the servers), and the <span class="InputCode">accounting_group</span> line tells CondorSilo this is an SMPH job. Non-SMPH researchers should omit the <span class="InputCode">accounting_group</span> line.</p>
+<p class="InputCode">queue</p>
+<p>The queue line goes at the end and tells CondorSilo to actually put the job in the queue. You can put multiple jobs in queue with one submit file: <span class="InputCode">queue 10</span> will put ten jobs in the queue, for example. Each job will have a process number (ten jobs would be numbered 0 through 9), and you can use <span class="InputCode">$(Process)</span> elsewhere in the submit file to refer to that number. For example, to queue ten Matlab scripts called <span class="InputCode">example0.m</span> through <span class="InputCode">example9.m</span> you'd use <span class="InputCode">input = example$(Process).m</span>, or to pass the process number  to a Stata do file as an argument it can use internally you'd use <span class="InputCode">arguments = -b do example.do $(Process)</span>.</p>
+<h2>Example Submit Files</h2>
+<p>The following are example submit files for popular statistical software. Because the COVID-19 pandemic has put hiring on hold, SSCC has not yet been able to hire the Biomedical Research Computing Facilitator who will be able to provide similar examples for biomedical research software. But we'll help you develop them as best we can, and will be very happy to add working submit files to our library of examples.</p>
+<p>R, Python, and Matlab will only use multiple cores if you are using code that's been written to do so. If you are, we suggest you tell your program to ask for 44 cores but put in your submit file that you'll accept 30 (<span class="InputCode">request_cpus = 30</span>).</p>
+<p>If you only request one core you'll get about 8.8GB of memory. If you needed 50GB, for example, you'd request it with <span class="InputCode">request_memory = 50 GB</span></p>
+<h3>R</h3>
+<p class="InputCode">universe = vanilla<br/>
+  executable = /software/R/bin/R<br/>
+  arguments = CMD BATCH exmaple.R example.output<br/>
+  error = example.error<br/>
+  request_cpus = 1<br/>
+  queue </p>
+<h3>Python</h3>
+<p class="InputCode">universe = vanilla<br/>
+  environment = "PYTHONHOME=/software/anaconda37"<br/>
+  executable = /software/anaconda37/bin/python3<br/>
+  arguments = example.py<br/>
+  output = example.output<br/>
+  error = example.error<br/>
+  request_cpus = 1<br/>
+  queue
+</p>
+<h3>Matlab</h3>
+<p class="InputCode">universe = vanilla<br/>
+executable = /software/matlab/bin/matlab<br/>
+arguments = -nodisplay -nojvm<br/>
+input = test.m<br/>
+output = test.output<br/>
+error = test.error<br/>
+request_cpus = 1<br/>
+queue </p>
+<h3>Stata</h3>
+<p class="InputCode">universe = vanilla<br/>
+  executable = /software/stata/stata<br/>
+  arguments = -b do example.do<br/>
+  request_cpus = 32<br/>
+  queue </p>
+<p>CondorSilo runs Stata MP, licensed for 32 cores. Note that if you tell Stata to run <span class="InputCode">example.do</span> in batch mode it will put all output and error messages in <span class="InputCode">example.log</span> regardless of what you specify in <span class="InputCode">output =</span> or <span class="InputCode">error =</span> lines.</p>
+<h2>Logging in to Silo Using a Hardware Token                </h2>
+<p>If you would like to use a token to log into Silo and have one already, please contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> and include the serial number printed on the back of your token in your email. The token must be black and white colored, with the words "OTP c100" printed on the front - we cannot use the blue and green tokens that say "Duo" on the front. If you do not have a token, please let us know and we will issue you one.</p><img alt="Silo token types" class="CenterImage" height="190" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silo/tokens.png" width="500"/>
+<p>Log in by going to <a href="https://silo.ssc.wisc.edu">silo.ssc.wisc.edu</a> and giving your SSCC username and password as usual. Then click <span class="MenuOutput">Enter a Passcode</span> and press the button on your token. Enter the 6-digit number from your token and click <span class="MenuOutput">Log In</span>.</p><img alt="" class="CenterImage" height="334" src="https://ssc.wisc.edu/sscc/pubs/screenshots/silo/silo2.png" width="750"/>
+<p>If later you wish to add a smartphone app to your Silo account so you can authenticate with either the app or a token, click <span class="MenuOutput">Add a new device</span> under the SSCC logo and follow the onscreen instructions.</p>
+<p>If you have any questions about using Silo, feel free to contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>.</p>
+<div></div>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/silo/silo1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/silo/tokens.png, https://ssc.wisc.edu/sscc/pubs/screenshots/silo/silo2.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Installing New Software using Software Center</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>If you use a Windows PC that logs into the SSCC's PRIMO domain, you can use Software Center to easily install new software on your PC. This article will show you how.</p>
+<p>Click in the search box next to the Windows logo button, start typing <span class="InputCode">software</span>, and Software Center will appear. Alternatively, click on the Windows logo button, <span class="MenuOutput">All Programs</span>, <span class="MenuOutput">Microsoft System Center</span>, and then <span class="MenuOutput">Software Center</span>. (If <span class="MenuOutput">Software Center</span> does not appear contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>.)</p>
+<p>You'll be shown a list of software that is available:</p>
+<img alt="" class="CenterImage" height="645" src="https://ssc.wisc.edu/sscc/pubs/screenshots/software_center/software_center_2019.PNG" width="750"/>
+<p>Click on the program you wish to install, then click the <span class="MenuOutput">Install</span> button. Software Center will install your new software automatically. If the installation process requires rebooting your computer, Software Center will prompt you to do so. Once the <span class="MenuOutput">Status</span> of the program changes to <span class="MenuOutput">Installed </span>you can close Software Center and use the program. If you have to reboot, the program will be ready for use after rebooting.                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/software_center/software_center_2019.PNG</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Running SPSS Jobs on Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<div id="TOC">
+<ul>
+<li><a href="#overview-and-documentation">Overview and Documentation</a></li>
+<li><a href="#running-spss-jobs">Running SPSS Jobs</a></li>
+<li><a href="#some-spss-details">Some SPSS Details</a><ul>
+<li><a href="#output-format">Output Format</a></li>
+<li><a href="#data-format">Data Format</a></li>
+</ul></li>
+<li><a href="#linux-details">Linux Details</a></li>
+<li><a href="#an-example">An Example</a></li>
+</ul>
+</div>
+<div class="section level2" id="overview-and-documentation">
+<h2>Overview and Documentation</h2>
+<p>SPSS for Linux does not include a graphical user interface like the Windows version, but has most of the same capabilities. Instead, SPSS runs syntax with a command from the linux prompt, which SPSS refers to as "batch facility" processing.</p>
+<p><a href="http://public.dhe.ibm.com/software/analytics/spss/support/Stats/Docs/19.0/Server/User_Manuals/English/IBM_SPSS_Statistics_Batch_Facility_Users_Guide.pdf">Batch Facility User's Guide</a></p>
+<p><a href="http://ssc.wisc.edu/sscc_jsp/spssdocs.jsp">Full documentation of SPSS 19 for Linux</a> is available on our web server. If you are in the SSCC's domain (e.g. in the Social Science building) you will be able to access it. If you need to access it remotely, you should use VPN to connect to SSCC.</p>
+</div>
+<div class="section level2" id="running-spss-jobs">
+<h2>Running SPSS Jobs</h2>
+<p>The basic linux syntax for running an SPSS job is:</p>
+<pre><code>&gt; spssb -f filename.sps -out filename.log</code></pre>
+<p>where <em>filename</em> is the name of your SPSS syntax file. The file extensions (.sps, .log) don't matter, but it is a good idea to be consistent.</p>
+</div>
+<div class="section level2" id="some-spss-details">
+<h2>Some SPSS Details</h2>
+<div class="section level3" id="output-format">
+<h3>Output Format</h3>
+<p>By default, <strong>spssb</strong> gives you output in text ("draft") format. Not only is this ugly to work with, but you will not be able to produce graphs. Html output (web output) is easier to work with, and you can produce it by using the <strong>-type</strong> option</p>
+<pre><code>&gt; spssb -f filename.sps -type html -out filename.html</code></pre>
+</div>
+<div class="section level3" id="data-format">
+<h3>Data Format</h3>
+<p>You can use the same *.sav data files in both linux and Windows.</p>
+</div>
+</div>
+<div class="section level2" id="linux-details">
+<h2>Linux Details</h2>
+<p>The usual job management tools work just fine with SPSS jobs, such as putting them in the background, terminating them, etc.</p>
+<p>To run SPSS batch facility jobs in linux batch mode, use</p>
+<pre><code>&gt; spssb -f filename.sps -type html -out filename.html &amp;</code></pre>
+<p>See <a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a> for more information.</p>
+</div>
+<div class="section level2" id="an-example">
+<h2>An Example</h2>
+<p>Given a short syntax file, <a class="uri" href="https://ssc.wisc.edu/sscc/pubs/spss/Linux/carlinux.sps">carlinux.sps</a> process it with the SPSS batch facility with the linux command</p>
+<pre><code>&gt; spssb -f carlinux.sps -out carlinux.log &amp;</code></pre>
+<p>and you get the default text output, <a class="uri" href="https://ssc.wisc.edu/sscc/pubs/spss/Linux/carlinux.log">carlinux.log</a>.</p>
+<p>For nicer output, change <strong>-type</strong> to html</p>
+<pre><code>&gt; spssb -f carlinux.sps -type html -out carlinux.log &amp;</code></pre>
+<p>and you get output, <a class="uri" href="https://ssc.wisc.edu/sscc/pubs/spss/Linux/carlinux.html">carlinux.html</a>, suitable for the web or use in Word.</p>
+<p>Last Revised: 7/29/2016</p>
+</div>
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

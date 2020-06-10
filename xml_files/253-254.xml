@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Paying for Printing in the SSCC Labs</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p><em><a href="#PayingforPersonalPrintingasanSSCCMember">Note for SSCC Members</a></em></p>
+<p>While printing on SSCC printers is free for full members of the Cooperative, lab users can print in the SSCC computer labs by paying for it through GoPrint. To use GoPrint you will need a valid UW NetID and money on your WisCard account. To add money to your account or for more information on WisCard, please go to <a href="http://wiscard.wisc.edu">http://wiscard.wisc.edu</a>.</p>
+<p>You will be charged a $2.50 processing fee to add to your balance online.You can add money to your WisCard for free at the Memorial Union WisCard Office.</p>
+<p>To print using GoPrint, you'll need to choose the correct printer. Your choices are:</p>
+<table align="center" border="1" cellpadding="3">
+<tr>
+<th>Room</th>
+<th>Printer Name</th>
+</tr>
+<tr>
+<td align="center">4218</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC4218</td>
+</tr>
+<tr>
+<td align="center">3218</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC3218</td>
+</tr>
+<tr>
+<td align="center">2470</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC2470</td>
+</tr>
+<tr>
+<td align="center">4218 with PostScript Driver</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC4218_PS</td>
+</tr>
+<tr>
+<td align="center">3218 with PostScript Driver</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC3218_PS</td>
+</tr>
+<tr>
+<td align="center">2470 with PostScript Driver</td>
+<td align="center" class="InputCode">\\goprint.doit.wisc.edu\SSCC2470_PS</td>
+</tr>
+</table>
+<table border="0" cellpadding="3" class="noBorder" width="100%">
+<tr>
+<td align="center"><span class="vmid"><img alt="Choosing a GoPrint printer" height="262" src="https://ssc.wisc.edu/sscc/pubs/screenshots/goprint_1.png" width="282"/></span></td>
+</tr>
+</table>
+<p>Use the PostScript drivers if you're having trouble printing a particular document—usually a complex journal article.</p>
+<p>Note that you can only print to GoPrint using one of the SSCC lab computers or a computer that logs into SSCC's PRIMO domain. You cannot print to it from personal computers.</p>
+<p>Once you have chosen the correct printer, you’ll be prompted to sign in to GoPrint with your UW NetID and password, then select your print jobs and choose <span class="MenuOutput">Pay and Print</span>.</p>
+<p>Printing costs  $.07 per page (i.e. per side of a sheet of paper). If you need to print a single page, set the printer to print it single-sided or you'll be charged for both sides.</p>
+<h2>Refunds for Printing Problems</h2>
+<p>If a problem with GoPrint prevents your job from actually printing, you can request a refund at <a href="https://it.wisc.edu/printing-problem-refunds/">https://it.wisc.edu/printing-problem-refunds/</a>. Refund requests are reviewed by both DoIT staff and SSCC staff.</p>
+<h2><a id="PayingforPersonalPrintingasanSSCCMember" name="PayingforPersonalPrintingasanSSCCMember"></a>Paying for Personal Printing as an SSCC Member</h2>
+<p>If you are an SSCC member, your printing is paid for by your sponsoring department or  agency. This is intended for printing related to University business (i.e. research and instruction, though some departments ask you to avoid using the SSCC printers for instructional printing). If you need to do some printing for personal purposes, you should pay for it using GoPrint as described above. However, you'll need to contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> first and ask to be added to the group of SSCC members who have access to GoPrint. Printing for commercial or political purposes is strictly forbidden no matter how it is paid for.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/goprint_1.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>SSCC Knowledge Base</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>The SSCC
+                Knowledge Base  is your primary source of information about using SSCC resources and statistical computing in general.</p>
+<dl>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/newusers.htm">New Users</a></dt>
+<dd>Articles of particular interest for new users or others seeking
+        		basic information. </dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/stat.htm">Statistical Computing</a></dt>
+<dd>Articles related to specific statistical software packages and
+        		doing statistical work in general.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/remote.htm">Remote Computing</a></dt>
+<dd>Articles related to computing from home or anywhere other than
+        		the UW campus.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/email.htm">Email</a></dt>
+<dd>Articles on sending and receiving email, email lists.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/web.htm"></a></dt>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/linux.htm">Using Linux</a></dt>
+<dd>Articles on using the Linux operating system and basic utilities.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/termserv.htm">Using Winstat </a></dt>
+<dd>Articles on using Winstat, the SSCC's Windows Terminal Server
+          Farm.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/web.htm"></a></dt>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/windows.htm">Using Windows</a></dt>
+<dd>Articles on using the Windows operating system and SSCC resources.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/mac.htm">Using OS X</a></dt>
+<dd>Articles on using OS X and SSCC resources</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/web.htm">The Web</a></dt>
+<dd>Articles about publishing material on the World Wide Web.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/apps.htm">Applications</a></dt>
+<dd>Articles on the use of particular applications
+        		 (other than statistical software and email programs).</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/print.htm">Printing</a></dt>
+<dd>Articles on printing.</dd>
+<dt><a href="https://ssc.wisc.edu/sscc/pubs/allpubs.htm">All SSCC Knowledge Base articles</a></dt>
+<dd>A list of all SSCC Knowledge Base articles by Publication Number.</dd>
+</dl>
+<p>This list is organized by topic. The page for each topic lists articles 
+		that have information relevant to that topic, and many articles fall 
+		under multiple topics. The page <a href="https://ssc.wisc.edu/sscc/pubs/allpubs.htm">All SSCC articles</a> 
+		is organized by Publication Number if you already know the Publication 
+		Number you are looking for.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

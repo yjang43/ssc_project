@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Using SFTP </kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>FTP, or File Transfer Protocol, has been moving files from computer 
+              to computer since the earliest days of the Internet. To cope with 
+              today's more dangerous Internet FTP has added encryption, becoming 
+              Secure FTP or SFTP. But the commands remain the same.</p>
+<p>There are a wide variety of SFTP clients that will take care of 
+              all the actual commands for you, giving you a drag-and-drop interface 
+              similar to Windows. For Windows we suggest <a href="https://ssc.wisc.edu/sscc/pubs/5-35.htm">SecureFX</a>. 
+              But SFTP is not difficult to use. In fact, if you're comfortable 
+              with Linux you'll find that you only need to learn a few extra commands.</p>
+<p>To run SFTP from one of the SSCC Linux servers, type</p>
+<p class="InputCode">&gt; sftp <span class="Parameter">server</span></p>
+<p>Where <span class="Parameter"><span class="InputCode">server</span></span> 
+              should be replace by the name of the server you wish to connect 
+              to.</p>
+<p>The SSCC maintains two FTP servers: <span class="InputCode">ftp.ssc.wisc.edu</span> 
+              connects to the Linux file system; <span class="InputCode">ntftp.ssc.wisc.edu</span> 
+              connects to the Windows network. In both cases once you log in your 
+              remote directory will start out as your home directory.</p>
+<table align="center" border="1" summary="SSCC FTP Server Addresses" width="50%">
+<caption align="top">
+              SSCC FTP Server Addresses 
+              </caption>
+<tr>
+<th scope="row" width="40%">Linux</th>
+<td align="center" class="InputCode">ftp.ssc.wisc.edu</td>
+</tr>
+<tr>
+<th scope="row">Windows</th>
+<td align="center" class="InputCode">ntftp.ssc.wisc.edu</td>
+</tr>
+</table>
+<p>Note that Linstat does not 
+              accept FTP connections. Use <span class="InputCode">ftp.ssc.wisc.edu</span> 
+              instead.</p>
+<h2><a id="FTPCommands" name="FTPCommands"></a>FTP Commands</h2>
+<p>The following basic commands are probably all you'll need to use 
+              SFTP. </p>
+<dl>
+<p class="InputCode"> <span class="InputCode">cd <span class="Parameter">directory</span></span></p>
+<p>Changes the remote directory to the the directory you enter. 
+                Note that Windows servers will generally allow you to use the 
+                Linux style slash in path names (<span class="InputCode">directory/subdirectory</span>), 
+                but Linux servers will not allow you to use the Windows style 
+                backslash (<span class="InputCode">directory\subdirectory</span>).</p>
+<p class="InputCode"><span class="InputCode">lcd <span class="Parameter">directory</span></span></p>
+<p>Changes the local directory to the directory you enter.</p>
+<p class="InputCode"><span class="InputCode">ls</span></p>
+<p>Lists the tables of the remote directory</p>
+<p class="InputCode"><span class="InputCode">binary</span></p>
+<p>Changes the transfer mode to binary. In these days of proprietary 
+                formats for essentially everything, you almost always want to 
+                be in binary mode. Many FTP implementations now default to binary 
+                mode, but some don't. If you're not in binary mode most files 
+                will be garbled in transit, so always check.</p>
+<p class="InputCode"><span class="InputCode">get <span class="Parameter">filename</span></span></p>
+<p>Copies a file from the remote directory to the local directory. 
+                Along with <span class="InputCode">put</span>, this is FTP's <span class="italic" lang="fr" xml:lang="fr">raison 
+                d'etre</span>. Note that if you already have a file with the same 
+                name it will be overwritten without warning, so be careful!</p>
+<p class="InputCode"><span class="InputCode">put <span class="Parameter">filename</span></span></p>
+<p>Copies a file from the local directory to the remote directory. 
+                The same warning applies.</p>
+<p class="InputCode"><span class="InputCode">mget <span class="Parameter">filename</span></span></p>
+<p>Works like <span class="InputCode">get</span>, except that you 
+                can use wildcards (*, etc.) to specify multiple files.</p>
+<p class="InputCode"><span class="InputCode">mput <span class="Parameter">filename</span></span></p>
+<p>Works like <span class="InputCode">put</span>, except that you 
+                can use wildcards (*, etc.) to specify multiple files.</p>
+<p class="InputCode"><span class="InputCode"></span>help</p>
+<p>Lists all the commands available in FTP, but doesn't explain 
+                them. Thus it's mostly useful as a reminder.</p>
+<p class="InputCode"><span class="InputCode">quit</span></p>
+<p>Quits FTP (<span class="InputCode">exit</span> or <span class="InputCode">logout</span> 
+                won't work).</p>
+</dl>
+<h2><a id="AnonymousFTP" name="AnonymousFTP"></a>Anonymous FTP</h2>
+<p>Anonymous FTP allows anyone to use an FTP server, but with many 
+              restrictions. It is commonly used for distributing files. When you 
+              are asked for a login name just enter <span class="InputCode">anonymous</span>. 
+              You will be asked to give your email address as a password, though 
+              this is not always enforced.</p>
+<p>You can use anonymous FTP to transfer files back and forth between 
+              yourself and people who do not have SSCC accounts. However, it is 
+              insecure by definition since anyone can use it. Realistically it's 
+              unlikely anyone will be prowling our FTP site just to see if anything 
+              looks interesting, nevertheless, anonymous FTP should never be used 
+              for confidential data.</p>
+<h3><a id="MakingaFileAvailablebyAnonymousFTP" name="MakingaFileAvailablebyAnonymousFTP"></a>Making a File Available by Anonymous FTP</h3>
+<p>The SSCC allows anonymous FTP only to our Linux FTP server (<span class="InputCode">ftp.ssc.wisc.edu</span>). 
+              To give someone access to a file by anonymous FTP, log in to Linux, 
+              create a directory for yourself under <span class="InputCode">/usr/ftp/pub</span> 
+              (for example <span class="InputCode">/usr/ftp/pub/rdimond</span>) 
+              and place the file in that directory. The permissions must be set 
+              such that others can read the file and both read and execute the 
+              directory. The following Linux commands will make a file currently 
+              stored in your home directory accessible by anonymous FTP:</p>
+<p class="InputCode">&gt; cd /usr/ftp/pub<br/>
+              &gt; mkdir <span class="Parameter">username</span><br/>
+              &gt; cp ~/<span class="Parameter">filename</span> ./<span class="Parameter">username</span><br/>
+              &gt; chmod -R o+r <span class="Parameter">username</span><br/>
+              &gt; chmod o+x <span class="Parameter">username</span></p>
+<p>To get the file, after starting FTP and logging in as <span class="InputCode">anonymous</span>, 
+              one would type at the <span class="InputCode">ftp&gt;</span> prompt:</p>
+<p class="InputCode">ftp&gt; binary<br/>
+              ftp&gt; cd pub/<span class="Parameter">username</span><br/>
+              ftp&gt; get <span class="Parameter">filename</span></p>
+<p>Note that literally anyone could get the file in this way; you 
+              cannot limit access to anonymous FTP.</p>
+<h3><a id="ReceivingFilesbyAnonymousFTP" name="ReceivingFilesbyAnonymousFTP"></a>Receiving Files by Anonymous FTP</h3>
+<p>You can also have people outside the SSCC log in as <span class="InputCode">anonymous</span> 
+              in order to send you files. Once logged in they need to do the following:</p>
+<p class="InputCode">ftp&gt; binary<br/>
+              ftp&gt; cd incoming<br/>
+              ftp&gt; put <span class="Parameter">filename</span></p>
+<p>The file will be stored in <span class="InputCode">/usr/ftp/incoming</span>. 
+              Note that all files in the incoming directory are deleted every 
+              few days to prevent abuse. You can copy the file to your home directory 
+              by typing the following at the Linuxprompt:</p>
+<p class="InputCode">&gt; cp /usr/ftp/incoming/<span class="Parameter">filename</span> 
+              ~ </p>
+<p> Of course anyone with an SSCC account could do the same. You cannot 
+              delete the original file after you have copied it, but it will be 
+              deleted in the course of normal maintenance.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Connecting to SSCC Computers Using a WinTerm</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>WinTerms provide easy access to all of the SSCC's servers. To log on to a
+  server,  double click on the server's name in the Neoware Connection Manager
+  dialog box.</p>
+<p>Note that the telnet client used to connect to Linux servers does not have
+	the ability to display graphics. If you need to display Linux graphics, connect
+	to Winstat and then use <a href="https://ssc.wisc.edu/sscc/pubs/5-2.htm">X-Win32</a>  to
+	connect to a Linux server.</p>
+<h2>Managing Connections</h2>
+<p>Once you have made a connection to a server, that connection will fill the 
+	entire screen and it will not be obvious how to work with anything else. However, 
+	you can make new connections or switch between existing connections using 
+	the keyboard.</p>
+<p>To switch to the<span class="MenuOutput"> Connection Manager</span>, press 
+	<span class="InputCode">CTRL-ALT-END</span>. This will allow you to connect 
+	to additional servers.</p>
+<p>To cycle between existing connections, press <span class="InputCode">CTRL-ALT-&lt;Up 
+	Arrow&gt;</span> or <span class="InputCode">CTRL-ALT-&lt;Down Arrow&gt;</span>. 
+</p>
+<h2>Copy and Paste Between Connections</h2>
+<p>You can easily copy and paste information between different connections, even 
+  between Windows and Linux. In Windows, just use the normal copy and paste commands. 
+  In Linux, select text by clicking the left mouse button and dragging over the 
+  text you want. Then click the right button to copy it. To paste, hold down the 
+  <span class="InputCode">SHIFT</span> key, right click, and the tables of the 
+  clipboard will be pasted at the current location of the cursor (not the mouse 
+  pointer).</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Virus Protection at the SSCC</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>Computer viruses, worms and other malicious software have become a serious
+   and very public issue. SSCC staff have taken several steps to avoid being
+  affected by viruses, and these have been generally quite successful. Most viruses,
+  including  the recent highly publicized ones, are dealt with before our users
+  are even  aware of them. We will continue to take whatever steps are needed
+  to keep our  systems secure. This article will describe the measures we
+  have taken to  stop viruses, and some steps you can take to further reduce
+  your exposure.</p>
+<p>Rest assured that SSCC staff monitor the bulletins of anti-virus software
+  makers and others who work on detecting and eradicating viruses. We will be
+  aware of threats before they are published in the mainstream media. Much as
+  we appreciate your awareness and concern, there's no need to forward warnings
+  you may have received to us. In addition, a substantial fraction of virus warnings
+  are in fact hoaxes. </p>
+<h2><a id="ServerSideFiltering" name="ServerSideFiltering"></a>Server-Side Filtering</h2>
+<p>Our email server automatically checks incoming email attachments. If the software 
+  determines an attachment is dangerous, then the message is rejected and a warning 
+  is sent to our Linux system administrator. Attachments which are merely suspicious 
+  are "defanged" (see below) to prevent them from being run casually 
+  or even inadvertently.</p>
+<p>Files that are known to be viruses are immediately rejected. In addition the
+	 file types are examined and those which experience has shown are far more
+	likely to be viruses than legitimate are rejected. These include most program
+	files (.exe, .com, .pif, .bat, .dll, etc.), Visual Basic script and JavaScript
+	files (.vbs, .vbe, .js) and screen savers (.scr), among others. Another common
+	trick is to use two different extensions to disguise a virus, for example <span class="InputCode">paper.doc.exe</span>,
+	  because on many PC's the final extension is hidden. Thus the file appears
+	 to  be <span class="InputCode">paper.doc</span>, a harmless Word document rather
+	  than a malicious program. Our server rejects all files with two extensions.
+	  If you need to send someone a file which would be rejected, there are many
+	 alternatives  to email (SFTP, etc.), or you can rename the file temporarily.
+	 Contact the <a href="mailto:helpdesk@ssc.wisc.edu">Help Desk</a> 
+  for assistance.</p>
+<p>Finally, certain file types are "defanged." This simply means that 
+  some numbers and the word "DEFANGED" are added to the file name so 
+  that Windows can't recognize the file type. Thus you can't run it by just double-clicking 
+  on it. If you are confident that the attachment is indeed safe, save the file 
+  to a convenient location and then rename it, removing "#####DEFANGED-" from 
+  the name. Then it will run as usual.</p>
+<p>This server-side filtering is our first line of defense against viruses, and 
+  is quite effective. It is particularly useful against new viruses before they 
+  are handled by anti-virus software (and often before anyone knows they exist). 
+  For example the Magistr virus spread for two days before it could be detected 
+  by anti-virus software. However, it spread by sending itself as an attachment 
+  with one of four different endings. We defanged all files with those endings, 
+  and this was enough to prevent it from spreading to anyone using our email.</p>
+<p>Note that all of this only applies if you are using SSCC email (your email
+		 address is <span class="InputCode"><span class="Parameter">user</span>@ssc.wisc.edu</span>).
+		  DoIT email (<span class="InputCode"><span class="italic">user</span>@wisc.edu</span>)
+   does limited filtering, though they are working on making their email system
+  
+  more secure.</p>
+<h2><a id="ProtectingUniversityPCs" name="ProtectingUniversityPCs"></a>Protecting University PC's</h2>
+<p>Each PC installed by SSCC staff includes Symantec Antivirus.
+   This powerful and flexible software has two main components. Real-time protection
+   constantly monitors your PC to prevent viruses from installing themselves,
+  and  scanning checks your PC for the presence of viruses. Real-time protection
+  will  always be running, you can start a scan any time you feel the need. With
+  real-time  protection running (in addition to our server-side filtering) the
+  chances of  a virus successfully attacking your PC are quite low. But if you
+  are suspicious,  simply scan your PC.</p>
+<p>You know that Symantec Antivirus is running if you see the yellow logo in
+  the lower right corner of the screen, on the system tray:</p>
+<p><img alt="Norton Antivirus Logo in the System Tray" height="36" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-14/1-14_1.png" width="174"/></p>
+<p>Right click on this icon and open Symantec Antivirus  if
+  you want to perform a scan.</p>
+<p>New viruses are constantly being created, and anti-virus software must be
+  kept  up to date to be effective. Symantec Antivirus  checks
+  for updates whenever you log in to PRIMO, the SSCC's Windows network domain.</p>
+<h2><a id="ProtectingHomePCs" name="ProtectingHomePCs"></a>Protecting Home PC's</h2>
+<p>Home computers need to be protected from viruses as well. Symantec Antivirus
+   is available free to UW faculty, staff and students, and we encourage everyone
+   to take advantage of it. It must also be kept up-to-date to be effective.
+  Please  see  <a href="https://ssc.wisc.edu/sscc/pubs/5-12.htm">Keeping Your PC Secure</a> for
+  detailed  instructions.</p>
+<h2><a id="VirusHoaxes" name="VirusHoaxes"></a>Virus Hoaxes</h2>
+<p>Hoaxes about viruses are almost as common as viruses themselves. Typically 
+  these will come as an email warning with great urgency of the incredible damage 
+  the virus can do if not stopped. Often it will give a well known computer-related 
+  company as a source, but with no link to a page on the company's web site containing 
+  the information. Were it a real virus, such a page would exist. The message 
+  will always contain an exhortation to forward it to everyone you know; that's 
+  the author's goal. Think of these messages as just another form of email virus, 
+  one which dupes well-meaning computer users into spreading it rather than doing 
+  the work itself. If you are not sure whether a given message is a legitimate 
+  warning or a hoax, you can check <a href="http://www.symantec.com/avcenter/hoax.html">Symantec's 
+  Hoax Page</a>. You can find reliable, up-to-date information on real virus threats 
+  on <a href="http://www.symantec.com/avcenter">Symantec's web site</a>, or <a href="http://www.networkassociates.com">Network 
+  Associate's web site</a>.</p>
+<p>While not exactly a hoax, another common source of misinformation about viruses
+		is automatic messages saying a virus was detected in an email you sent.
+		Actual viruses almost always forge the from address in the messages
+		they send, but some servers still respond to that address when they detect
+		a	virus. These messages can be ignored.</p>
+<h2><a id="MoreStepsYouCanTaketoAvoidViruses" name="MoreStepsYouCanTaketoAvoidViruses"></a>More Steps You Can Take to 
+  Avoid Viruses</h2>
+<p>Messages created by viruses often stand out if you know what to look for.
+  Warning signs include subjects or text that are simply gibberish or are out
+  of character for the purported sender ("love letters" from coworkers
+  for example), or receiving identical messages from several different people
+  (a sign they all got the same virus). If you suspect a message may contain
+  a virus, contact the sender to see if they intended to send you the message
+  in question, or simply delete it. Reading the message is usually (but not always)
+  safe; never open suspicious attachments.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/1-14/1-14_1.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>How to Change Your SSCC Passwords</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p> You can quickly and easily change your SSCC password using
+		our <a href="https://www.ssc.wisc.edu/sscc_jsp/password">web page for password
+		changes</a>.</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Untitled Document</title>
+</head>
+<body>
+<h2><a id="PasswordRequirements" name="PasswordRequirements"></a>Password Requirements</h2>
+<p>All computers are now subject to regular attempts to gain unauthorized access,
+	and the first line of defense is strong passwords. </p>
+<ul>
+<li><strong>Never give your SSCC password to anyone, even SSCC staff.</strong></li>
+<li><strong>Never use your SSCC password for any other account or site. </strong>The only exception is that you may use your UW NetID password as your SSCC password if you so desire.</li>
+</ul>
+<p>All passwords must comply
+  with the University's <a href="http://www.cio.wisc.edu/policies-password.aspx">Baseline
+    Password Standard</a>, which includes the following:</p>
+<p> Passwords chosen <em>must</em></p>
+<ul>
+<li> be a minimum of eight (8) characters in length [14 characters for Silo users]</li>
+<li> be memorized; if a password is written down it must be secure </li>
+<li> contain at least one (1) character from three (3) of the following categories: </li>
+<ul>
+<li> Uppercase letter (A-Z) </li>
+<li> Lowercase letter (a-z) </li>
+<li> Digit (0-9) </li>
+<li> Special character (~`!@#$%^&amp;*()+=_-{}[]\|:;”’?/&lt;&gt;,.) </li>
+</ul>
+<li> be private </li>
+</ul>
+<p> Passwords chosen <em>must not</em></p>
+<ul>
+<li> contain a common proper name, login ID, email address, initials, first,
+		middle or last name</li>
+<li>be the same as your previous three passwords</li>
+</ul>
+<p>Passwords also should not consist of a single word, or a single word followed
+	by a number. Consider using a password which combines multiple words, or "passphrase."</p>
+</body>
+</html>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Getting SSCC Announcements via RSS</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>The SSCC makes important announcements available through our Broadcast message, which appears when you log in to our Windows domain or our Linux servers. This includes information about downtime, hardware and software upgrades, any problems with SSCC services, and anything else SSCC users need to know. However, you will only see Broadcast when you first log in, not when it changes--and if you don't log in to the SSCC you won't see it at all.</p>
+<p>Thus we also make these announcements available as an RSS feed. With RSS you can get the information that's currently in Broadcast at any time and from any place, and get updates as situations change.</p>
+<h2><a id="WhatisRSS" name="WhatisRSS"></a>What is RSS?</h2>
+<p>RSS stands for Really Simple Syndication. At the technical level, an RSS feed is simply a file that a web server sends out when asked, not that different from a web page. However,  the file has a standard structure which allows an RSS reader to pick out the various items in the feed and display them in any way it wants to. Thunderbird, for example, will display the items in an RSS feed as if they were email messages, while Firefox turns them into a set of bookmarks leading to small web pages. RSS readers check on the RSS feeds you are interested in on a regular basis and let you know when new items are available.</p>
+<p>There are many different RSS readers available, and  Thunderbird, Firefox and Internet Explorer have RSS readers built into them. The <a href="https://www.google.com/reader/">Google Reader</a> (a web-based service) is also quite popular.</p>
+<h2><a id="SettingUpanRSSReader" name="SettingUpanRSSReader"></a>Setting Up an RSS Reader</h2>
+<p>You are welcome to use any RSS reader you prefer. Once you have one installed and configured, the only information you'll need in order for it to get the SSCC's RSS feed is the feed's location: <a href="https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</a>. However, this article will step you through the process of setting up Thunderbird, Firefox and Internet Explorer to read the SSCC's RSS feed.</p>
+<h3><a id="Thunderbird" name="Thunderbird"></a>Thunderbird</h3>
+<p>If you've never used Thunderbird as an RSS reader before, you first need to add an RSS reader account. Click <span class="MenuOutput">Tools</span>, <span class="MenuOutput">Account Settings</span>, <span class="MenuOutput">Add Account</span>.</p>
+<p><img alt="Adding an Account" height="575" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_1.png" width="612"/></p>
+<p>Then for the type of account choose <span class="MenuOutput">RSS News &amp; Blogs</span> and click <span class="MenuOutput">Next</span>.</p>
+<p><img alt="Choose RSS" height="443" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_2.png" width="447"/></p>
+<p>Now tell Thunderbird how you want to refer to this account. The default <span class="MenuOutput">News &amp; Blogs</span> is probably fine. Click <span class="MenuOutput">Next</span> when you're done.</p>
+<p><img alt="Name the account" height="443" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_3.png" width="447"/></p>
+<p>Finally review what you've entered and click <span class="MenuOutput">Finish</span>. Thunderbird is now ready to read RSS feeds, but you haven't told it what feeds you are interested in. To do so select your RSS account and click <span class="MenuOutput">Manage Subscriptions</span>.</p>
+<p><img alt="Manage Subscriptions" height="575" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_4.png" width="612"/></p>
+<p>Next click <span class="MenuOutput">Add</span>.</p>
+<p><img alt="Add a feed" height="290" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_5.png" width="494"/></p>
+<p>Now all you have to do is type or paste in the address of the RSS feed you want to add, which for the SSCC's feed is <span class="InputCode">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</span>. Then click <span class="MenuOutput">Ok</span> and close the <span class="MenuOutput">RSS Subscriptions</span> window.</p>
+<p><img alt="Type the feed address" height="158" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_6.png" width="370"/></p>
+<p>This will put you back at the main window for your RSS account. While you're there, you may want to set how often it checks for new articles to something smaller (say, every 15 minutes) and have it check automatically when you start Thunderbird.</p>
+<p>Once you close the <span class="MenuOutput">Account Settings</span> window, you'll see your new RSS account underneath your main email account. Remember it may take a while before it checks the server for items.</p>
+<h3><a id="Firefox" name="Firefox"></a>Firefox</h3>
+<p>To set up an RSS feed in Firefox, you must first open Firefox and go to <a href="http://ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">its location</a>. You can do so by clicking on the previous link, clicking on the orange RSS icon (<img alt="RSS Icon" height="15" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1_21_13.png" width="14"/>) you'll see in the address bar of your browser whenever you visit an SSCC web page, or by typing <a href="https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</a> in the address bar.</p>
+<p>You'll get a page which allows you to subscribe to the feed using one of several methods (it will also give you the current tables of the feed). If you want to use Firefox itself, choose <span class="MenuOutput">Live Bookmarks</span> and click <span class="MenuOutput">Subscribe Now</span>.</p>
+<p>(Note that while this page will give you the option to subscribe using Thunderbird, it doesn't actually work. To use Thunderbird as your RSS reader use the method described <a href="#Thunderbird">above</a>.)</p>
+<p><img alt="Subscribing using Live Bookmarks" height="455" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_7.png" width="666"/></p>
+<p>You'll then be asked where to put this bookmark. The default, the <span class="MenuOutput">Bookmarks Toolbar Folder</span>, allows you to make the feed available on a toolbar, but it doesn't really matter where you put it.</p>
+<p><img alt="Adding a live bookmark" height="142" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_8.png" width="326"/></p>
+<p>To see the feed, click on the folder you put it in, then the feed itself. Each item will show up as a bookmark. Click on the bookmark to see the tables of the item.</p>
+<p><img alt="Using a live bookmark" height="387" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_9.png" width="642"/></p>
+<h3><a id="InternetExplorer" name="InternetExplorer"></a>Internet Explorer</h3>
+<p>To set up an RSS feed in Internet Explorer, you must first open Internet Explorer and go to <a href="http://ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">its location</a>. You can do so by clicking on the previous link, clicking on the orange RSS icon (<img alt="RSS Icon" height="15" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1_21_13.png" width="14"/>) you'll see in the address bar of your browser whenever you visit an SSCC web page, or by typing <a href="https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12">https://www.ssc.wisc.edu/sscc/wp/?feed=rss2&amp;cat=-12</a> in the address bar.</p>
+<p>You'll get a page which allows you to subscribe to the feed using Google tools if you have the Google toolbar installed, or using Internet Exporer itself. To do the latter click <span class="MenuOutput">Subscribe to this feed</span>.</p>
+<p><img alt="Subscribing" height="338" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_10.png" width="642"/></p>
+<p>You'll then be asked where to create the feed. The default location (<span class="MenuOutput">Feeds</span>) will probably be fine, so just click <span class="MenuOutput">Subscribe</span>.</p>
+<p><img alt="Storing the feed" height="253" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_11.png" width="369"/></p>
+<p>To access the feed, click on Favorites (the star) and then the <span class="MenuOutput">Feeds</span> button. You can then click on the name of the feed to view its tables.</p>
+<p><img alt="Accessing the feed" height="408" src="https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_12.png" width="642"/></p>
+<h2><a id="WebBasedReaders" name="WebBasedReaders"></a>Web-Based Readers</h2>
+<p>Web-based RSS readers have the advantage of being available anywhere. Thus you wouldn't need to set up the SSCC RSS feed on both your office computer and your home computer, for example. However, they do not check for new table very often and can go up to two hours between updates. Thus they're less useful for time-sensitive information, such as finding out when we've fixed a problem.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_3.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_4.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_5.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_6.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1_21_13.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_7.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_8.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_9.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1_21_13.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_10.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_11.png, https://ssc.wisc.edu/sscc/pubs/screenshots/1-21/1-21_12.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Publishing a Web Site on the SSCC's Web Server</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>SSCC members are welcome to create personal web sites on the
+          		SSCC's web server. Web sites on the SSCC web server must be focused
+          		on University business and comply with  <a href="http://www.cio.wisc.edu/policies/">University
+          		computing policies</a>, including the <a href="http://www.cio.wisc.edu/policies/appropriateuse.aspx">Guidelines
+          		for Appropriate Use</a> and the <a href="http://www.wisc.edu/policy/wwwap.php">Policy
+          		Governing World Wide Web Accessibility</a>, and with the SSCC's <a href="https://ssc.wisc.edu/sscc/policies/webpublish.htm">Web
+          		Publishing Policy</a>. Commercial or political use is strictly prohibited.</p>
+<p>If you are creating a brand new web site, we recommend you use <a href="https://ssc.wisc.edu/sscc/pubs/wordpress.htm">WordPress</a>, especially if you've never made a web site before. </p>
+<p>This article will teach you how to put existing files on the
+          		SSCC's web server.</p>
+<h2>Putting Files on the Web</h2>
+<p>The SSCC's web server will publish any files it finds in the <span class="MenuOutput">PUBLIC_web</span>          		directory
+          		inside your Linux home directory. If you are using Windows, your
+          		Linux home directory is mapped as the <span class="MenuOutput">Z:</span> drive,
+          		so your web site will go in <span class="MenuOutput">Z:\PUBLIC_web</span>.
+          		If you want to use SFTP (Secure FTP), the SSCC's Linux FTP server is <span class="InputCode">ftp.ssc.wisc.edu</span>.
+          		Your FTP program may allow you to tell it to start in <span class="MenuOutput">PUBLIC_web</span>          		automatically,
+          		or you may need to change to that directory each time you log
+          		in. </p>
+<p>This directory starts out empty, but you can put files in it
+          		at any time just like any other directory.</p>
+<h2>Your Web Address</h2>
+<p>Once you put files in your PUBLIC_web directory, they will be available
+          		on the web at <span class="InputCode">http://ssc.wisc.edu/~<span class="Parameter">username</span>/<span class="Parameter">filename</span></span> where
+          		<span class="Parameter"><span class="InputCode">username</span> </span>should
+          		be replaced by your SSCC username (e.g. <span class="InputCode">rdimond</span>)
+          		and <span class="InputCode"><span class="Parameter">filename</span></span>          		should
+          		be replaced by the name of the file you're trying to access (e.g.
+          		<span class="InputCode">econ101.htm</span>). If you create a web
+          		page named <span class="InputCode">home.htm</span>, <span class="InputCode">home.html</span>, <span class="InputCode">index.htm</span>,
+          		<span class="InputCode">index.html</span> or one of the other common
+          		home page names, the web server will present it if someone asks
+          		for just <span class="InputCode">http://ssc.wisc.edu/~<span class="Parameter">username</span></span>.</p>
+<h2>Making Files Available Without Creating a Web Page</h2>
+<p>The web server will be happy to distribute files that are not web
+          		pages, such as PDF files or Word documents (just make sure your
+          		intended audience has or can get the proper software for reading
+          		them). However, if you don't make a home page people will need
+          		to know the name of each file they want to download. It is possible
+          		to have the web server automatically generate a home page of
+          		sorts just listing the files in your <span class="MenuOutput">PUBLIC_web</span> directory
+          		so people can get one by clicking on its name. If you'd
+          		like us to enable this for your web site, please <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">contact
+          		the Help Desk</a>. </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

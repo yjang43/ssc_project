@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Limiting Access to a Web Page</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>The Internet is a wonderful way to disseminate information broadly, but every 
+  now and then it is a bit too broad. This document will discuss how to limit 
+  access to a web page on the SSCC's web server.</p>
+<p>Please note that this process requires you to log into one of the SSCC's Linux servers. If you're not familiar with Linux, please contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">SSCC Help Desk</a> and we'll be happy to do it for you.</p>
+<p>Security is actually set for directories, not 
+  individual web pages. Of course you could set up a separate directory for each 
+  page if you so desired. When the web server receives a request to view a web 
+  page, the server will first see if there is a file called <span class="InputCode">.htaccess</span> 
+  in the same directory. If there is, this file determines what kind of access 
+  the server will give.</p>
+<h2><a id="SettingupaSingleUsernameandPassword" name="SettingupaSingleUsernameandPassword"></a>Setting up a Single Username 
+  and Password</h2>
+<p>In many cases it will be enough to have a single user name and password that 
+  many people can share. For example, you could give an entire class one user 
+  name and password to access the course web site.</p>
+<h3>Creating the .htaccess File</h3>
+<p> The first step is to create the <span class="InputCode">.htaccess</span> file. 
+  It must contain the following text:</p>
+<p class="InputCode">AuthUserFile {<span class="Parameter">full path name to
+		page(s) to be protected</span>}/.htpasswd<br/>
+  AuthName "{<span class="Parameter">description of the protected pages</span>}"<br/>
+  AuthType Basic<br/>&lt;Limit GET POST&gt;<br/>
+  require valid-user<br/>
+  &lt;/Limit&gt;</p>
+<p>You can <a href="https://ssc.wisc.edu/sscc/pubs/files/htaccess.txt">download a template</a> of this<span class="InputCode">.htaccess 
+  </span>file (if your browser opens it rather than saving it when you click on 
+  the link, right click instead and select <span class="MenuOutput">Save Target 
+  as </span>or<span class="MenuOutput"> Save Link as</span>). Place this template 
+  in the directory you want to protect and then rename it<span class="InputCode"> 
+  .htaccess</span>. Open it in your favorite editor and replace everything in 
+  curly brackets {} with what applies to your site. For example, if I wanted to 
+  protect the pages for an Econ 101 class that were in a directory called <span class="InputCode">econ101</span> 
+  in my web site, the <span class="InputCode">.htaccess</span> file would look 
+  like this:</p>
+<p class="InputCode">AuthUserFile /home/r/rdimond/PUBLIC_web/econ101/.htpasswd<br/>
+  AuthName "Econ 101 web site"<br/>
+  AuthType Basic<br/>&lt;Limit GET POST&gt;<br/>
+  require valid-user<br/>
+  &lt;/Limit&gt;</p>
+<p>(Note that if you copy this example you need to change <span class="InputCode">/home/r/rdimond</span> to <span class="InputCode">/home/</span><span class="Parameter">{first letter of your username}</span><span class="InputCode">/</span><span class="Parameter">{your username}</span>.)</p>
+<p>Another example, if I wanted to protect the pages for an Soc 101 class that 
+  were in a directory called <span class="InputCode">soc101</span> in Sociology's 
+  web site, the <span class="InputCode">.htaccess</span> file would look like 
+  this:</p>
+<p class="InputCode">AuthUserFile /usr/global/web/soc/class/soc101/.htpasswd<br/>
+  AuthName "Soc 101 web site"<br/>
+  AuthType Basic<br/>&lt;Limit GET POST&gt;<br/>
+  require valid-user<br/>
+  &lt;/Limit&gt;</p>
+<h3>Setting the Username and Password</h3>
+<p>Once the <span class="InputCode">.htaccess</span> file is created, you need
+		 to set the username and password. Log in to Linux (if you haven't already)
+		and	make the	current directory is the one you want to protect.
+		Then type</p>
+<p class="InputCode"> /usr/bin/htpasswd -c .htpasswd <span class="Parameter">username</span></p>
+<p>Where <span class="Parameter"><span class="InputCode">username</span></span> 
+  should be replaced by the username you want to give the users of the web page. 
+  You will be prompted to enter and confirm a password. This will create a file 
+  called <span class="InputCode">.htpasswd</span>. The <span class="InputCode">.htaccess</span> 
+  file tells the server to only allow people to view the pages in this directory 
+  if they enter the username and password combination that appears in <span class="InputCode">.htpasswd</span>.</p>
+<p>Note that if you open <span class="InputCode">.htpasswd</span>, it lists the 
+  valid usernames, but the passwords are encrypted. If you forget the password 
+  you chose you will create it again.</p>
+<h2><a id="CreatingMultipleUsernames" name="CreatingMultipleUsernames"></a>Creating Multiple Usernames</h2>
+<p>If you want more than one username, there is a simple program that automates
+	 the entire process. Of course the price of automation is lack of flexibility;
+	 in particular you cannot choose the usernames and passwords. In the directory
+	 you want protected simply type</p>
+<p class="InputCode">mkhtpass n</p>
+<p>where <span class="InputCode">n </span>is the number of separate usernames 
+  you desire. The program will then prompt you to enter a description of the site. 
+  It will create the <span class="InputCode">.htaccess</span> and<span class="InputCode"> 
+  .htpasswd</span> files, along with a file called <span class="InputCode">password.txt</span>. 
+  This contains the usernames and passwords in plain text (so you will want to 
+  delete it or move it to a non-public location). Note that the usernames are 
+  simply numbers: 00001, 00002 etc., and the passwords are completely random.</p>
+<h2 class="PageBreak"><a id="LimitingAccessbyDomain" name="LimitingAccessbyDomain"></a>Limiting Access by 
+  Domain</h2>
+<p>One easy way to limit access is by domain. For example, you could allow access 
+  only to those who are currently in the <span class="InputCode">wisc.edu</span> 
+  domain. Thus anyone using a University computer or dialing in to DoIT's modem 
+  pool would be able to access your web pages. Keep in mind that anyone using 
+  a different Internet Service Provider would not be able to access them, so this 
+  may not be ideal for a course web site. As before you need to have a <span class="InputCode">.htaccess</span> 
+  file, but this time it just needs to contain:</p>
+<p class="InputCode"> allow from wisc.edu<br/>
+  deny from all</p>
+<p>No <span class="InputCode">.htpasswd</span> file is needed. You could replace 
+  <span class="InputCode">wisc.edu</span> with any other domain (even <span class="InputCode">ssc.wisc.edu</span>), 
+  but keep in mind that this kind of restriction depends on where the user is, 
+  not who they are (for example someone dialing in to DoIT's modem pool from home 
+  is not in the <span class="InputCode">ssc.wisc.edu</span> domain even if they 
+  have an SSCC account). Here is a <a href="https://ssc.wisc.edu/sscc/pubs/files/htaccess2.txt">template</a> 
+  for this kind of access.</p>
+<h2><a id="Caveats" name="Caveats"></a>Caveats</h2>
+<p>The steps described here are simple and fairly effective, but not state of 
+  the art. In particular, the user names and passwords are sent in plain text, 
+  and in principle could be intercepted and read. Thus it would be wise to use 
+  a different user name and password for web pages than for your SSCC account 
+  or any other account. In addition, this would not be appropriate for highly 
+  sensitive data, which probably does not belong on the web, period.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Forwarding Your Email to Another Address</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>When you were given your SSCC account, an email address was automatically created 
+  for you (<span class="Parameter">username</span>@ssc.wisc.edu). 
+  However, you can easily instruct our mail server to automatically forward your 
+  SSCC mail to any address you choose. 	Just go to our <a href="https://www.ssc.wisc.edu/sscc_jsp/email/forward.jsp">Email
+		Forwarding</a> page.</p>
+<p>All mail is scanned before being forwarded, and viruses and obvious spam will be discarded. If your SSCC email is being forwarded at the time your SSCC account is closed, we will continue to forward your mail for one year.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Running OpenOffice on Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>OpenOffice is an open source alternative to Microsoft Office that runs on Linux. 
+  This includes programs similar to Word, Excel, PowerPoint, and Front Page. Since 
+  SSCC staff have little experience or expertise with this program, we can offer 
+  only minimal support (for details about what minimal support means, please see 
+  our <a href="https://ssc.wisc.edu/sscc/policies/softsup.htm">Software Support Policy</a>). Documentation 
+  is available on the <a href="http://www.openoffice.org">OpenOffice web site</a>.</p>
+<p>OpenOffice will attempt to read documents created with Microsoft Office, and 
+  with simple files it may be successful. You can convert documents by simply 
+  opening them, or convert whole dirctories at a time using the <span class="MenuOutput">File 
+  Converter</span> under <span class="MenuOutput">AutoPilot</span>. We do not 
+  recommend trying to switch back and forth between Office and OpenOffice, because 
+  fixing the problems created by the conversion process may take a great deal 
+  of time. However, OpenOffice does provide a way for dedicated Linux users to 
+  run Office style applications without having to use any Microsoft products.</p>
+<h2>Running OpenOffice</h2>
+<p>Before you can use OpenOffice, you must have X-Win32 running (or another program
+   that displays X windows). If you need help using X-Win32, please see <a href="https://www.ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting
+  to SSCC Linux Computers using X-Win32</a>.</p>
+<p>Start OpenOffice by typing:</p>
+<p class="InputCode">&gt; ooffice</p>
+<p>If you want to be able to use your Linux session at the same time, add an
+  ampersand (<span class="InputCode">&amp;</span>) to the end of the command
+  so OpenOffice runs in the background. Once OpenOffice starts, you can then
+  use whatever component you need by clicking <span class="MenuOutput">File</span>, <span class="MenuOutput">New</span> 
+  and then creating a new spreadsheet, presentation, etc. </p>
+<p>In general you'll find that OpenOffice is is very similar to Microsoft Office, 
+  and if you're comfortable with Office you'll feel right at home.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Printing from Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>The SSCC's Linux servers all have access to the SSCC's network printers. This
+		 allows all SSCC users to print to 2470, 3218, and 4218 Social
+  Science. These rooms are open when a student lab monitor is on duty Monday
+  - Friday, 8:00 a.m. - 7:30 p.m. In
+  order to get into these rooms after hours, you will need a PIN to use along
+  with your UW ID. You can <a href="https://www.ssc.wisc.edu/sscc_jsp/account/lab.jsp">request
+		a PIN</a> online. Note
+		 that you cannot print to personal printers from Linux.</p>
+<p>SSCC printing costs are  substantial, to both the SSCC's budget and the environment.
+  We do not charge SSCC members for printing, but we do track printer usage and
+  report it to our member agencies. This then becomes one of the factors in determining
+  how much each agency contribues to the SSCC budget.</p>
+<p> We urge you to look for ways to conserve on printing whenever possible. This 
+  would include printing double-sided, printing more than one page per sheet if 
+  possible, and only printing what you really need. Instructions for doing all 
+  of these are included in this article.</p>
+<h2><a id="TheenscriptCommand" name="TheenscriptCommand"></a>The <span class="InputCode">enscript</span> 
+  Command</h2>
+<p>You can submit jobs to be printed using the <span class="InputCode">enscript</span> 
+  command. This replaces the <span class="InputCode">lpr</span> command which 
+  often does not work with the newer printers. The basic syntax is:</p>
+<p class="InputCode">enscript <span class="Parameter">options</span> <span class="Parameter">file</span></p>
+<p>Here <span class="Parameter"><span class="InputCode">file</span></span> should 
+  be replaced by the name of the file you want to print. It is possible to use 
+  wildcards, but do not do so unless you are certain you will only print the files 
+  you need.</p>
+<h2><a id="PrintQueues" name="PrintQueues"></a>Print Queues</h2>
+<p>One of the most important options is the print queue. Each printer has two 
+  queues (one for double sided printing and one for single), and you select the 
+  one you want to use with the <span class="InputCode">-P</span> option followed 
+  by the queue name. Always use the double-sided queues if at all possible. If 
+  you do not specify a printer it will go to the default, which is <span class="InputCode">user4double</span>. 
+  The following table lists the available print queues:</p>
+<p></p>
+<table align="center" border="1" cellpadding="3" width="85%">
+<tr>
+<th scope="row">Output Location</th>
+<th scope="row">Queue Name</th>
+<th scope="row">Notes</th>
+</tr>
+<tr>
+<td rowspan="2">Computer Lab (4218)</td>
+<td class="InputCode">user4double (u4)</td>
+<td>Prints on both sides of the paper. Self-service printer. <b>This is the 
+	  default printer if no queue is specified.</b></td>
+</tr>
+<tr>
+<td class="InputCode">user4single (u4s)</td>
+<td>Prints on one side of the paper only. Self-service printer. </td>
+</tr>
+<tr>
+<td rowspan="2">Computer Lab (3218)</td>
+<td class="InputCode">user3double</td>
+<td>Prints on both sides of the paper. Self-service printer.</td>
+</tr>
+<tr>
+<td class="InputCode">user3single </td>
+<td>Prints on one side of the paper only. Self-service printer.</td>
+</tr>
+<tr>
+<td rowspan="2">Computer Lab (2470)</td>
+<td class="InputCode">user2double (u2)</td>
+<td>Prints on both sides of the paper. Self-service printer.</td>
+</tr>
+<tr>
+<td class="InputCode">user2single (u2s)</td>
+<td>Prints on one side of the paper only. Self-service printer.</td>
+</tr>
+</table>
+<p>The names in parentheses are shortcut aliases for the actual queue names--you 
+  may find them convenient.</p>
+<p class="InputCode">enscript <span class="Parameter">file</span></p>
+<p>will print your file double sided in the 4218, while</p>
+<p class="InputCode">enscript -P u2s <span class="Parameter">file</span></p>
+<p>will print your file in 2470, and on just one side of each page.</p>
+<p>Note that the printers in 4218 are the newest, fastest, and least likely to 
+  have problems with large or complex files (like articles in PDF format).</p>
+<h2><a id="PrintingOptions" name="PrintingOptions"></a>Printing Options</h2>
+<p>Many other options allow you to control the way your document will be printed. 
+  One we ask that you use as often as possible is <span class="InputCode">-U<span class="Parameter">x</span></span> 
+  which allows you to print <span class="Parameter"><span class="InputCode">x</span></span> 
+  pages per side of the paper. Thus</p>
+<p class="InputCode">enscript -U2 -P u4 <span class="Parameter">file</span></p>
+<p>will print four pages of your file per sheet of paper (two on the front and 
+  two on the back). Of course the printing will be smaller, but this may be acceptable 
+  for codebooks, logs, or other long documents. </p>
+<p> You can print your file in landscape format with the <span class="InputCode">-r</span> 
+  option, e.g.</p>
+<p class="InputCode">enscript -r <span class="Parameter">file</span></p>
+<p>Think of this as rotating your file 90 degrees, hence the <span class="InputCode">-r</span>. 
+  Note that by default SAS assumes you are printing in portrait format. If you 
+  include the following line in your SAS program any output after that point will 
+  be formatted nicely for landscape printing:</p>
+<p class="InputCode">OPTIONS LINESIZE=122 PAGESIZE=47;</p>
+<p>You can also specify which pages you want printed with the <span class="InputCode">-a</span> 
+  option, The baisc syntax is <span class="InputCode">-a <span class="Parameter">x</span>-<span class="Parameter">y</span></span>, 
+  where <span class="Parameter"><span class="InputCode">x</span></span> specifies 
+  the starting page and <span class="Parameter"><span class="InputCode">y</span></span> 
+  the ending page. A single number will print just that page. If you give a single 
+  number with a dash, <span class="InputCode">enscript</span> will treat the missing 
+  number as either the beginning or the end of the file. Thus</p>
+<p class="InputCode">enscript -a 3-5 <span class="Parameter">file</span></p>
+<p>will print pages three through five,</p>
+<p class="InputCode">enscript -a 4 <span class="Parameter">file</span></p>
+<p>will print just page four,</p>
+<p class="InputCode">enscript -4 <span class="Parameter">file</span></p>
+<p>will print from the beginning to page four, and </p>
+<p class="InputCode">enscript 4- <span class="Parameter">file</span> </p>
+<p>will print from page four to the end.</p>
+<p>There are many more options. Type <span class="InputCode">man enscript</span> 
+  to see them all.</p>
+<h2><a id="PrintingPostscriptFiles" name="PrintingPostscriptFiles"></a>Printing Postscript Files</h2>
+<p>The <span class="InputCode">enscript</span> command converts files to postscript 
+  format before printing, which normally works quite well. However if a file is 
+  already in postscript format, the output will be useless. Normally postscript 
+  files end with the extension <span class="InputCode">.ps</span>. To print postscript 
+  files use <span class="InputCode">lpr</span>. The syntax for choosing a printer 
+  with <span class="InputCode">lpr</span> is identical to <span class="InputCode">enscript</span>. 
+  For example:</p>
+<p class="InputCode">lpr -P u2d <span class="Parameter">postscriptfile.ps</span></p>
+<p>If you need to use other options please type <span class="InputCode">man lpr</span>.</p>
+<p>The <span class="InputCode">lpr</span> command does not allow for printing 
+  multiple pages per sheet. However you can pipe to output of a postscript command 
+  to <span class="InputCode">lpr</span>:</p>
+<p class="InputCode">psnup -n 2 <span class="Parameter">postscriptfile.ps</span> 
+  | lpr</p>
+<p>This will print <span class="Parameter"><span class="InputCode">postscriptfile.ps</span></span> 
+  to the 4218 printers with two pages per sheet.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

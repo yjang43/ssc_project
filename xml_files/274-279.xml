@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Upgrading to Office 2013 using SSCC's Software Center</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>If your University-owned  PC running Windows 7 or 8 logs in to the SSCC's domain (PRIMO), you can upgrade to Office 2013 very easily using Software Center. This article will show you how.</p>
+<p>Click on the Windows logo or <span class="MenuOutput">Start</span> button, <span class="MenuOutput">All Programs</span>, <span class="MenuOutput">Microsoft System Center 2012 R2</span>, <span class="MenuOutput">Configuration Manager</span>, and then <span class="MenuOutput">Software Center</span>. (If Software Center is not available then you cannot use this method.) This will give you a list of software you can install using Software Center. Check the box next to <span class="MenuOutput">Microsoft Office 2013 x86</span> and  click <span class="MenuOutput">Install Selected</span>.</p>
+<p><img alt="Software Center" height="418" src="https://ssc.wisc.edu/sscc/pubs/screenshots/office2013/office2013_1.png" width="600"/></p>
+<p>Software Center will then install the new version—feel free to use other programs while it does. When the <span class="MenuOutput">STATUS</span> of Office 2013 changes to <span class="MenuOutput">Installed</span> you can close Software Center.</p>
+<p>The first time you use Office 2013 you will be asked to activate it. Just choose to activate over the Internet and the process will be completed automatically.</p>
+<p>If you have the 64-bit version of Office 2010 (or any 64-bit components) Software Center will not be able to remove them automatically. You can uninstall Office 2010 yourself and then restart Software Center (you may have to press F5 to refresh the list of available programs), or contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> to have SSCC staff install it for you.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/office2013/office2013_1.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Installing the pbnm Package</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<div id="TOC">
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#source-install-from-x-drive">Source install from X drive</a></li>
+<li><a href="#source-install-from-internet">Source install from Internet</a></li>
+</ul>
+</div>
+<div class="section level2" id="overview">
+<h2>Overview</h2>
+<p>The pbnm package is an R package which contains functions to perform a parametric bootstrap. The package supports bootstraps on the coefficients from models constructed using lm, glm, lmer, or glmer functions.</p>
+<p>The pbnm package is available as a source package on the SSCC's website. The install procedure for a source package is different than installing a package from CRAN. This article describes how to install the pbnm package.</p>
+</div>
+<div class="section level2" id="source-install-from-x-drive">
+<h2>Source install from X drive</h2>
+<p>If you have access to the X drive on the SSCC network, use the following instructions to install pbnm.</p>
+<ul>
+<li><p>Open a new file explorer window.</p></li>
+<li><p>Navigate to the X:\SSCC Tutorials\pbnm\downloads folder.</p></li>
+<li><p>Find the most recent version of the .tar.gz file.</p></li>
+<li><p>Open R or RStudio.</p></li>
+<li><p>Enter the following command in the console window. You will need to replace "pbnm_0.3.0.9001" with the name of the most recent .tar.gz file found in the pbnm\downloads folder.</p>
+<p>install.packages("X:/SSCC Tutorials/pbnm/downloads/pbnm_0.3.0.9001.tar.gz", repos=NULL,type="source")</p></li>
+<li><p>The pbnm package is finished installing when the following is displayed in the console.</p>
+<pre><code>* DONE (pbnm)</code></pre></li>
+</ul>
+</div>
+<div class="section level2" id="source-install-from-internet">
+<h2>Source install from Internet</h2>
+<p>If you do not have access to the X drive on the SSCC network, use the following instructions to install pbnm.</p>
+<ul>
+<li><p>Open a browser.</p></li>
+<li><p>Navigate to the <a class="uri" href="https://www.ssc.wisc.edu/sscc/pubs/pbnm/downloads/">https://www.ssc.wisc.edu/sscc/pubs/pbnm/downloads/</a>.</p></li>
+<li><p>Find the most recent version of the .tar.gz file.</p></li>
+<li><p>Click on the file and select the Save File option. Click the Ok button to save the file Save the file to a known folder. On a windows machine this can be your download folder.</p></li>
+<li><p>Open R or RStudio.</p></li>
+<li><p>Enter the following command in the console window. You will need to replace "pbnm_0.3.0.9001" with the name of the most recent .tar.gz file found in the pbnm\downloads folder. You will need to replace path with the path to the folder that you saved the .tar.gz file to.</p>
+<p>install.packages("path/pbnm_0.3.0.9001.tar.gz", repos=NULL,type="source")</p></li>
+<li><p>The pbnm package is finished installing when the following is displayed in the console.</p>
+<pre><code>* DONE (pbnm)</code></pre></li>
+</ul>
+<p>Last Revised: 6/24/2016</p>
+</div>
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>SSCC - Social Science Computing Cooperative</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Malicious software or "malware" is now a profitable business and today's computers face a wide variety of threats. This article will help you secure your Windows PC against some of the most common threats we're seeing in the summer of 2010. Unfortunately, the threat environment is constantly changing and other steps will no doubt be necessary in the future.</p>
+<p>Computers in the Sewell Social Science Building that connect to the SSCC's Windows Domain (PRIMO) are kept secure by SSCC staff. You do not need to update them. However, you should reboot your office PC regularly so the patches we install can be applied. You are responsible for securing your laptop and/or home PC, but SSCC staff will be happy to assist you if you run into problems.</p>
+<p>Computers running Mac OS are currently less vulnerable, primarily because it is more profitiable to find ways to compromise Windows PCs. Mac owners should still run <a href="#InstallSymantecEndPointProtection">anti-virus software</a> and keep it and their operating system up-to-date, and take other basic precautions.</p>
+<h2><a id="AvoidThreatsontheWeb" name="AvoidThreatsontheWeb"></a>Avoid Threats on the Web</h2>
+<p>Some of the most common threats today involve placing malicious code in a Flash file or other media displayed by a browser plugin. The file can be placed on a web site controlled by the hacker, or in a web advertisement to be run on completely legitimate web sites. When the file is viewed, the malicious code takes advantage of flaws in the player to infect the computer.                </p>
+<h3>Update Plugins</h3>
+<p>Many of these flaws have been fixed, but you need to download and install the latest version of the plugin to be protected. You can check whether you have the latest versions of your plugins by visting Mozilla's <a href="http://www.mozilla.com/en-US/plugincheck/">Plugin Check</a>. This works for all the major web browsers, not just Firefox. If you need to update some of your plugins it will direct you to the appropriate web site.</p>
+<h3>Consider Blocking Flash</h3>
+<p>Flash is the most frequent vector for plugin-based attacks, and unfortunately it's not unusual for there to be malicious Flash files on the web exploiting flaws that have not yet been corrected. If  you use Mozilla Firefox, you can greatly reduce your exposure to such attacks by installing an Add-on called FlashBlock. It replaces all Flash objects with a "Play" button and only shows the Flash if you click the button. Some people find it makes browsing the web more pleasant as well as more secure.</p>
+<p> To install FlashBlock, click <span class="MenuOutput">Tools</span>, <span class="MenuOutput">Add-ons</span>, <span class="MenuOutput">Get Add-ons</span> and then search for FlashBlock.</p>
+<h3>Avoid Dubious Web Sites and Downloads</h3>
+<p>Hackers often set up web sites offering pirated movies, pornography or other inducements. The real purpose is to infect the computers of visitors. Sometimes you get what you pay for.</p>
+<p>Be even more cautious about downloading and installing free programs you find on the web. There are many legitimate and useful free programs available on the web (R comes to mind), but there are others that act as "trojan horses" to install malware.  Searching the web for reviews of any programs you're considering installing is a wise precaution.</p>
+<h2><a id="UpdateWindows" name="UpdateWindows"></a>Update Windows</h2>
+<p>Malware continues to take advantage of flaws in Windows itself. Thus it's still vital that you keep Windows up-to-date. Windows mostly updates itself now, but you should verify that it is doing so successfully. It's also important to reboot your computer on a regular basis (ideally at the end of each day) so that patches can be applied. Even computers the SSCC secures need to be rebooted so the patches we install can take effect.</p>
+<p>To check that Windows is being updated, go to <a href="http://windowsupdate.microsoft.com">windowsupdate.microsoft.com</a> and run the <span class="MenuOutput">Express</span> update. It should not find any "High Priority" updates to install (they should have been installed for you automatically). It should also say <span class="MenuOutput">Automatic Updates: Turned ON</span>.</p>
+<p>Windows 7 is significantly more secure than Windows XP. If your computer can run Windows 7, consider upgrading. You can purchase Windows 7 from the <a href="http://wiscsoftware.wisc.edu/wisc/">WISC catalog</a>.</p>
+<h2><a id="InstallSymantecEndPointProtection" name="InstallSymantecEndPointProtection"></a>Install Symantec Endpoint Protection</h2>
+<p>Anti-virus software is not as effective as it once was, but it is still an important part of keeping your PC secure. The University has purchased a site license for Symantec Endpoint Protection so it is free for all UW faculty, staff and students to install on their computers. You can download it from the <a href="http://www.cio.wisc.edu/security/antivirus.aspx">UW CIO's Security</a> web site.</p>
+<h2><a id="ScanYourPC" name="ScanYourPC"></a>Scan Your PC</h2>
+<p>There are  many free programs for detecting malware on your PC (plus a few that pretend they will and then actually install malware). Which is best changes rapidly because malware authors find ways to avoid the most popular detection programs.</p>
+<p>Right now we suggest using <a href="http://www.malwarebytes.org/">Malwarebytes</a> to scan your PC. It is free and easy to install and use.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Articles on Printing</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>This page lists articles regarding printing.</p>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/5-24.htm">Setting Up Network Printers	in Windows</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/printfrommac.htm">Using SSCC Printers from Macs</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-28.htm">Printing	from Linux</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/printfromlinux.htm">Using SSCC Network  Printers from Personal Linux Computers</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/goprint.htm">Paying for Printing in the SSCC Labs</a> <br/>
+</p>
+<p> </p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using SSCC Network Printers from Personal Linux Computers</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>This article will show you how to use the SSCC's network printers from your personal computer running Linux. The details and pictures apply to Ubuntu 10.4, but the general procedure should work on any desktop-oriented Linux distribution.                </p>
+<p>Go to <span class="MenuOutput">System</span> -&gt; <span class="MenuOutput">Administration</span> -&gt; <span class="MenuOutput">Printing</span>. Click <span class="MenuOutput">Add</span> to add a new printer.</p>
+<p><img alt="Printing screen" height="250" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux1.png" width="450"/></p>
+<p> Next expand <span class="MenuOutput">Network Printer</span> and  select <span class="MenuOutput">Windows Printer via Samba</span>.</p>
+<p><img alt="Select Device" height="519" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux2.png" width="600"/></p>
+<p>Type the name of the printer you want to use in the box under <span class="MenuOutput">SMB Printer</span>.</p>
+<table align="center" border="1" cellpadding="3">
+<caption align="top">
+<a id="Names" name="Names"></a>SSCC Network Printers
+                  </caption>
+<tr>
+<th scope="col">Room</th>
+<th scope="col">Printer Name</th>
+</tr>
+<tr>
+<td align="center">4218</td>
+<td align="center" class="InputCode">primo/print/sscc4218</td>
+</tr>
+<tr>
+<td align="center">3218</td>
+<td align="center" class="InputCode">primo/print/sscc3218</td>
+</tr>
+<tr>
+<td align="center">2470</td>
+<td align="center" class="InputCode">primo/print/sscc2470</td>
+</tr>
+</table>
+<p>Select <span class="MenuOutput">Set authentication details now</span> and type your SSCC username and password. If your password contains any special characters (<span class="InputCode">&amp;</span>, <span class="InputCode">@</span>, etc.) type a backslash (<span class="InputCode">\</span>) before that character.</p>
+<p><img alt="Enter printer information" height="519" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux3.png" width="600"/></p>
+<p>Click <span class="MenuOutput">Verify</span> and your computer will confirm that it can connect with the printer. Then click <span class="MenuOutput">Forward</span> and your computer will search for appropriate printer drivers but fail. Instead type <span class="InputCode">lexmark</span> in the <span class="MenuOutput">Make and model</span> box and click <span class="MenuOutput">Forward</span>.</p>
+<p><img alt="Download printer driver by name" height="430" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux6v2.png" width="650"/></p>
+<p>Select <span class="MenuOutput">Postscript-Lexmark</span> under <span class="MenuOutput">Downloadable Drivers</span> and and click <span class="MenuOutput">Forward</span> to download and install it.</p>
+<p><img alt="Download drivers" height="430" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux6_5.png" width="650"/></p>
+<p>Next it will ask you which options to use. Set <span class="MenuOutput">Trays</span> to <span class="MenuOutput">Tray1+2+3</span>. (If you leave it at the default it will only be able to use tray 1, which is the colored paper used for cover sheets.)</p>
+<p><img alt="Installable Options" height="434" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux7.png" width="650"/></p>
+<p>Give the printer a short name and optional description and location and click <span class="MenuOutput">Apply</span>. Do not print a test page at this time.</p>
+<p><img alt="Name the printer" height="434" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux8.png" width="650"/></p>
+<p>Before actually using the printer, you need to tell it to use tray 3 rather than tray 1 (which contains colored paper). Right-click on the printer and choose <span class="MenuOutput">Properties</span>, then click <span class="MenuOutput">Printer Options</span> on the left and set  <span class="MenuOutput">Media source</span> to <span class="MenuOutput">Tray 3</span>.</p>
+<p><img alt="Printer Properties" height="350" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux10.png" width="629"/></p>
+<p>Click <span class="MenuOutput">OK</span> and you're ready to print to the SSCC's printers.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux3.png, https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux6v2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux6_5.png, https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux7.png, https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux8.png, https://ssc.wisc.edu/sscc/pubs/screenshots/printfromlinux/printfromlinux10.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using SSCC Printers from Macs</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>This article will show you how to use the SSCC's network printers from your  computer running OS X. </p>
+<ol>
+<li>If you are not plugged into the wired network in the Sewell Social Science Building, you first need to establish a <a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">VPN connection</a> to the SSCC network.</li>
+<li>You'll next need to know the name of the printer you are connecting to. Please see the <a href="https://ssc.wisc.edu/sscc/downloads/download-printer-list.php" target="new" title="List of Printer Names on SSCC">list of printer names</a> to find your printer info. If you need help gathering this information,  speak with the department that hosts the printer or SSCC staff. </li>
+<li>Open the <span class="MenuOutput">System Preferences</span> by clicking the Apple icon in the upper left of the screen and choosing <span class="MenuOutput">System Preferences</span></li>
+<li>Click <span class="MenuOutput">Printers &amp; Scanners</span></li>
+<li>Click the <span class="MenuOutput">+ </span>button on the lower left to add a printer.</li>
+<li>If you see an <span class="MenuOutput">Advanced</span> button, skip to step 7. Otherwise, Control-click on the box just above <span class="MenuOutput">More Printers</span>, choose <span class="MenuOutput">Customize Toolbar</span>, drag the <span class="MenuOutput">Advanced</span> icon from this box onto the toolbar and click <span class="MenuOutput">Done</span>.</li>
+<img alt="" class="CenterImage" height="482" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfrommac/10_9_1B_new.jpg" width="547"/>
+<li>Click <span class="MenuOutput">Advanced</span></li>
+<li>Change the <span class="MenuOutput">Type</span> of the printer to <span class="MenuOutput">Windows</span></li>
+<li>Type the <span class="MenuOutput">URL</span>, <span class="MenuOutput">Name </span>and <span class="MenuOutput">Location</span> of the printer you want to use.  The info for the printers in the SSCC labs is as follows:  
+                    <table border="1" cellpadding="3">
+<tr>
+<th>Name</th>
+<th>Location</th>
+<th>URL</th>
+</tr>
+<tr>
+<td>SSCC4218</td>
+<td>Room 4218</td>
+<td>smb://print.ads.ssc.wisc.edu/sscc4218</td>
+</tr>
+<tr>
+<td>SSCC3218</td>
+<td>Room 3218</td>
+<td>smb://print.ads.ssc.wisc.edu/sscc3218</td>
+</tr>
+<tr>
+<td>SSCC2470</td>
+<td>Room 2470</td>
+<td>smb://print.ads.ssc.wisc.edu/sscc2470 </td>
+</tr>
+</table>
+<img alt="" height="485" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfrommac/10_9_2B.jpg" width="547"/> <br/>
+</li>
+<li>Click on<strong>  Choose a Driver...</strong> and then select<strong> Generic PCL Driver</strong>. The generic driver is sufficient for most printers, but if you need access to special features please contact the SSCC Help Desk for assistance in installing drivers specific to your printer. <br/>
+</li>
+<li>Click <span class="MenuOutput">Add</span>. You may be asked to configure additional available options for your printer, including duplexing and paper handling. </li>
+</ol>
+<p>The first time you print to the printer you'll be asked for your username and password. Set <span class="MenuOutput">Connect as: </span>to <span class="MenuOutput">Registered User</span>, for your <span class="MenuOutput">Name</span> type your SSCC username and give your SSCC password.  Check <span class="MenuOutput">Remember this password in my keychain</span> and you won't be asked to give it again when you print in the future.</p>
+<p><img alt="Giving your username and password" class="CenterImage" height="394" src="https://ssc.wisc.edu/sscc/pubs/screenshots/printfrommac/10_9_3B.jpg" width="576"/></p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/printfrommac/10_9_1B_new.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/printfrommac/10_9_2B.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/printfrommac/10_9_3B.jpg</img_base_url>
+</kb_document>
+</kb_documents>

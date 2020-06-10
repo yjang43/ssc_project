@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Network Disk Space at the SSCC </kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>This article is your guide to the
+          		disk space provided by the SSCC. Topics include:</p>
+<ul>
+<li><a href="#KeyLocationsataGlance">Key Locations at a Glance</a></li>
+<li><a href="#WindowsandLinux">Windows, Linux, and Silo</a></li>
+<li><a href="#PrivateSpace">Private Space</a></li>
+<li><a href="#ProjectSpace">Project (shared) Space</a></li>
+<li><a href="#TemporarySpace">Temporary Space</a></li>
+<li><a href="#BackupsandRestores">Backups and Restores</a></li>
+<li><a href="#ManagingyourSpace">Managing your Space</a></li>
+<li><a href="#WebDirectories">Web Directories</a> </li>
+</ul>
+<h2><a id="KeyLocationsataGlance" name="KeyLocationsataGlance"></a>Key Locations at a Glance</h2>
+<table align="center" border="1" cellpadding="5">
+<tr>
+<th scope="col"> </th>
+<th scope="col">Windows</th>
+<th scope="col">Linux</th>
+<th scope="col">Linux  Space Accessed From Windows </th>
+</tr>
+<tr>
+<td>Home Directory (Private Space) </td>
+<td><span class="MenuOutput">U:</span> Drive </td>
+<td><span class="InputCode">~</span></td>
+<td><span class="MenuOutput">Z:</span> Drive</td>
+</tr>
+<tr>
+<td>Project Directories (Shared Space) </td>
+<td><span class="MenuOutput">X:</span> Drive </td>
+<td class="InputCode">/project</td>
+<td><span class="MenuOutput">V:</span> Drive </td>
+</tr>
+<tr>
+<td>Temporary Space </td>
+<td><span class="MenuOutput">Y:</span> Drive </td>
+<td class="InputCode">/temp30days</td>
+<td><span class="MenuOutput">\\sscunix.ssc.wisc.edu\temp30days</span> (must be <a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">mapped</a>) </td>
+</tr>
+</table>
+<h2><a id="WindowsandLinux" name="WindowsandLinux"></a>Windows, Linux, and Silo</h2>
+<p>The SSCC has two parallel file systems: one for Windows and one
+          		for Linux. Thus you have two home directories, there are two
+          		project directories, etc. A program called Samba makes the Linux
+          		file system available to Windows, but not the other way around.
+          		This can be a big help to Windows users who are learning Linux,
+          		but if you're only using Windows programs Windows disk space
+          		will give slightly better performance.</p>
+<p>The Silo environment has a separate secure file system. It is Linux-based system, and thus has only Z: and V: drives, not U: and X:. It also has an S: drive, or <span class="InputCode">/smph</span>, containing project directories for SMPH researchers.</p>
+<h2><a id="PrivateSpace" name="PrivateSpace"></a>Private Space</h2>
+<p>Private disk space is provided in "home directories."
+          		In Windows, your home directory is the <span class="MenuOutput">U:</span> drive.
+          		In Linux your home directory is ~, or <span class="InputCode">/home/{<span class="Parameter">first
+          		letter of your user name</span>}/{<span class="Parameter">your user
+          		name</span>}</span> (e.g. <span class="InputCode">/home/r/rdimond</span>).
+          		 You can access your Linux home directory
+          		from Windows as the <span class="MenuOutput">Z:</span>          		drive.</p>
+<p>Each home directory starts with 20 gigabytes of space. If you
+          		need more space, we will increase either quota (or both) to 40 gigabytes
+          		on request.   If you need more than this, consider
+          		requesting a project directory. You can <a href="https://ssc.wisc.edu/sscc_jsp/account/space/">request
+          		additional space</a> in your home directory by filling out a web
+          		form. To check how much space you're using in Windows right-click
+          		on your <span class="MenuOutput">U:</span> drive and choose <span class="MenuOutput">Properties</span>; in Linux type <span class="InputCode">quota</span>. </p>
+<p>Home directories are private: other SSCC users cannot access files
+          		in your home directory. </p>
+<h2><a id="ProjectSpace" name="ProjectSpace"></a>Project Space</h2>
+<p>Project space is mainly for groups working together on a common
+          		project, though if you need more space than can be provided in
+          		your home directory it's possible to request a project directory
+          		for one person. Project directories can be as large as needed,
+          		but keep in mind that disk space is costly (see <a href="#ManagingyourSpace">Managing
+          		your Space</a>).</p>
+<p>Windows project folders can be found on the <span class="MenuOutput">X:</span> drive.
+          		Linux project directories can be found under <span class="InputCode">/project</span>.
+          		Linux project directories are available from Windows on the <span class="MenuOutput">V:</span>          		drive. SMPH projects in Silo are found under <span class="InputCode">/smph</span>, available from Windows as the <span class="MenuOutput">S:</span> drive.</p>
+<p>Each project directory has an associated group of users who can
+          		access the directory. Other users cannot. If you need access
+          		to a particular project directory, the owner of that directory
+          		must <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">contact the SSCC Help Desk</a> and
+          		ask that you be added to the group.</p>
+<p>You can <a href="https://www.ssc.wisc.edu/sscc_jsp/account/project/">request a project directory</a> by filling out a web form.</p>
+<p>Normally project directories should be created in the same operating
+          		system (Windows or Linux) as the programs you'll be using. However,
+          		if you'll be using both Windows and Linux programs the directory
+          		should be created in Linux.</p>
+<h2><a id="TemporarySpace" name="TemporarySpace"></a>Temporary Space</h2>
+<p>Both Windows and Linux have space where you can store
+          		 files temporarily. Files placed in these spaces will be deleted after 30 days.</p>
+<p>In Windows, temporary space is available on the <span class="MenuOutput">Y:</span> (Temp30days)
+          		drive.
+          		If you wish to use it, make a folder for your files (e.g. <span class="InputCode">Y:\rdimond</span>). The <span class="MenuOutput">Y:</span> drive is completely public:
+          		any SSCC user can read, change, or delete any file on the <span class="MenuOutput">Y:</span> drive.
+          		This makes it a convenient place for sharing files with others,
+          		however, it should never be used for confidential data (or for
+          		any serious research data, really).</p>
+<p>In Linux, temporary space is available in <span class="InputCode">/temp30days</span>.
+          		If you wish to  use it, make a subdirectory for your files
+          		 (e.g. <span class="InputCode">/temp30days/rdimond</span>).
+          		Directories under <span class="InputCode">/temp30days</span> are private by default, but if you're familiar with setting Linux permissions you can make them public if you so desire.</p>
+<p>If you need to access the Linux temporary space from Windows, you'll
+          		need to <a href="https://ssc.wisc.edu/sscc/pubs/5-26.htm">map a drive</a> to it. </p>
+<p>Note that <strong>temporary space is not backed up</strong> in
+          		either Linux or Windows. <strong>Temporary space is not intended for
+          		long-term storage of important files.</strong></p>
+<h2><a id="BackupsandRestores" name="BackupsandRestores"></a>Backups and Restores</h2>
+<p>Home  and project directories, and system directories such
+          		as web sites, are backed up  three times a day: see the <a href="https://ssc.wisc.edu/sscc/policies/backup.htm">SSCC
+          		Data Integrity Policy</a> for details. Files on local hard drives (<span class="MenuOutput">C:</span> or <span class="MenuOutput">D:</span>)
+          		are not backed up. We  hate to see anyone lose data, so
+          		please <strong>store all important files on the network
+          		where they are backed up</strong>.</p>
+<p>If you need a file restored,   <a href="mailto:helpdesk@ssc.wisc.edu">send
+          			the Help Desk an email</a> with the following information: </p>
+<ul>
+<li>The operating system the file was stored on (Windows or Linux) </li>
+<li>The name of the file</li>
+<li>The full location of the file (e.g. <span class="InputCode">U:\dissertation\absolutely
+          			critical data</span> or <span class="InputCode">~/dissertation/absolutelyCriticalData</span>)</li>
+<li>The date as of which you want it recovered (e.g. "the most recent
+          			backup") </li>
+</ul>
+<p>If the file has been deleted and you don't know some of this
+          		information, just do your best and we can usually find it.</p>
+<p>Please keep in mind that restoring files from backup takes a significant
+          		amount of staff time. </p>
+<h2><a id="ManagingyourSpace" name="ManagingyourSpace"></a>Managing your Space</h2>
+<p>The SSCC uses Storage Attached Network (SAN) devices to provide
+          		disk storage that is extremely fast and reliable. However, this
+          		storage space is much more expensive than a regular PC hard drive—in
+          		fact disk space is a major component of the capital SSCC's budget. We're
+          		pleased to provide all the disk space our members need without
+          		charging individuals or projects, but please help keep costs
+          		down by using disk space wisely:</p>
+<ul>
+<li>Compress large files that are not in active use.</li>
+<li>Share large data files among researchers rather than everyone making their own copy</li>
+<li>Delete intermediate data files that can be reproduced at will, keeping just the raw data and the version of the data you're currently working on (along with all the code that gets you from one to the other)</li>
+<li>Delete data files that are no longer needed (but only if you're sure they're no longer needed)</li>
+</ul>
+<p>Also see <a href="https://ssc.wisc.edu/sscc/pubs/linux_disk_space.htm">Managing
+          		Disk Space in Linux</a>, and <a href="https://ssc.wisc.edu/sscc/pubs/7-8.htm">Using Compressed Data
+          		in Linux</a>.          	</p>
+<h2><a id="WebDirectories" name="WebDirectories"></a>Web Directories</h2>
+<p>In your Linux home directory you will find a directory called <span class="InputCode">PUBLIC_web</span>          		(<span class="MenuOutput">Z:\PUBLIC_web</span> from
+          		Windows). This directory can be used for a personal web site
+          		(though it must be focused on University business). The Linux
+          		directory <span class="InputCode">/usr/global/web</span>,
+          		available from Windows as <span class="MenuOutput">\\sscunix.ssc.wisc.edu\web</span>,
+          		contains departmental and agency web sites. <span class="InputCode">/usr/global/cgi</span> is
+          		used for web scripts. See <a href="https://ssc.wisc.edu/sscc/pubs/1-4.htm">Publishing a Web Site
+          		on the SSCC's Web Server</a> for more information.</p>
+<p>All of these directories are automatically read by the web server,
+          		and files and folders placed in them will be available on the
+          		web. </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using SSCC Network Disk Space from Personal Linux Computers</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>This article will show you how to use the SSCC's network disk space from your personal computer running Linux. The details and pictures apply to Ubuntu 10.4, but the general procedure should work on any desktop-oriented Linux distribution.</p>
+<p>Click on <span class="MenuOutput">Places</span>, then <span class="MenuOutput">Connect to Server</span>. Set the <span class="MenuOutput">Service type</span> to <span class="MenuOutput">Windows share</span>. The <span class="MenuOutput">Server</span>, <span class="MenuOutput">Share</span> and <span class="MenuOutput">Folder</span> will depend on what you want to connect to--see the pictures for some of the most common choices or consult the <a href="#locs">table below</a> for more options. Enter your SSCC username in <span class="MenuOutput">User Name</span> and <span class="InputCode">primo</span> in <span class="MenuOutput">Domain</span>.</p>
+<table border="0" cellpadding="3" class="noBorder" width="100%">
+<tr>
+<td align="center"><strong>Windows Project Space</strong><br/>
+<img alt="Connecting to Windows Project Space" height="351" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux1.png" width="339"/></td>
+<td align="center"><strong>Windows Home Directory<br/>
+<img alt="Connecting to your Windows Home Directory" height="351" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux2.png" width="339"/></strong></td></tr><tr>
+<td align="center" colspan="2"><strong>Linux Project Space</strong><br/>
+<img alt="Connecting to Linux Project Space" height="351" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux4.png" width="339"/></td>
+</tr>
+</table>
+<p>Click <span class="MenuOutput">Connect</span> and you'll be asked for your SSCC password. If your password contains any special characters (<span class="InputCode">&amp;</span>, <span class="InputCode">@</span>, etc.) type a backslash (<span class="InputCode">\</span>) before that character. You can choose whether to save the password or not.</p>
+<p><img alt="Password request" height="211" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux3.png" width="399"/></p>
+<h2><a id="locs" name="locs"></a>SSCC Disk Space Locations</h2>
+<table align="center" border="1" cellpadding="3">
+<tr>
+<th scope="col">Location</th>
+<th scope="col">Server</th>
+<th scope="col">Share</th>
+<th scope="col">Folder</th>
+<th scope="col">Notes</th>
+</tr>
+<tr>
+<td>Windows Home Directory </td>
+<td class="InputCode">sscwin</td>
+<td class="InputCode">dfsroot</td>
+<td class="InputCode">users/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">U:</span> drive</td>
+</tr>
+<tr>
+<td>Linux Home Directory </td>
+<td class="InputCode">sscunix</td>
+<td class="Parameter">username</td>
+<td class="InputCode"> </td>
+<td><span class="MenuOutput">Z: </span>drive</td>
+</tr>
+<tr>
+<td>Windows Project Directories </td>
+<td class="InputCode">sscwin</td>
+<td class="InputCode">dfsroot</td>
+<td class="InputCode">project or project/<span class="Parameter">directory</span></td>
+<td><span class="MenuOutput">X:</span> drive</td>
+</tr>
+<tr>
+<td>Linux Project Directories </td>
+<td class="InputCode">sscunix</td>
+<td class="InputCode">project</td>
+<td class="InputCode">optional <span class="Parameter">directory</span></td>
+<td><span class="MenuOutput">V:</span> drive</td>
+</tr>
+<tr>
+<td>Windows Temporary Space </td>
+<td class="InputCode">sscwin</td>
+<td class="InputCode">dfsroot</td>
+<td class="InputCode">Temp30days or Temp30days/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">Y:</span> drive. All files  deleted after 30 days </td>
+</tr>
+<tr>
+<td> Linux Temporary Space </td>
+<td class="InputCode">sscunix</td>
+<td class="InputCode">temp30days</td>
+<td class="InputCode">optional <span class="Parameter">username</span></td>
+<td>All files  deleted after 30 days </td>
+</tr>
+<tr>
+<td>Web sites of SSCC member agencies </td>
+<td class="InputCode">sscunix</td>
+<td class="InputCode">web</td>
+<td class="InputCode">optional <span class="Parameter">website</span></td>
+<td> </td>
+</tr>
+</table>
+<p>If you only use one project directory, you can connect to it directly by putting its full name in the <span class="MenuOutput">Folder</span> box. If you use more than one, do not specify a directory and you'll be able to see all of them. If you use temporary space you should be putting your files in a folder with your username, and you can connect to it directly by adding that to the <span class="MenuOutput">Folder</span> box as well.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux4.png, https://ssc.wisc.edu/sscc/pubs/screenshots/diskfromlinux/diskfromlinux3.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Using SSCC Network Disk Space from a Mac</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>This article will show you how to use the SSCC's network disk space from your  Mac.</p>
+<ol>
+<li>If you are not plugged into the wired network in the Sewell Social Science Building, you first need to establish a <a href="https://www.ssc.wisc.edu/sscc/pubs/vpn.htm#MacOS">VPN connection</a> to the SSCC network.</li>
+<li>Open the <span class="MenuOutput">Finder</span>, then click <span class="MenuOutput">Go</span>, <span class="MenuOutput">Connect to Server</span> or <kbd>⌘ command</kbd>+<kbd>K</kbd></li>
+<li>In the <span class="MenuOutput">Server Address</span> box, type the URL of the disk space you'd like to connect to from the <a href="#locs">table below</a>.<br/>
+<img alt="Adding a server" height="227" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfrommac/diskfrommac_1.jpg" width="489"/> </li>
+<li>Click the plus sign (<span class="MenuOutput">+</span>) to save the server in your <span class="MenuOutput">Favorite Servers</span>.</li>
+<li>When prompted, enter your SSCC username and password.  If your password contains any special characters (<span class="InputCode">&amp;</span>, <span class="InputCode">@</span>, etc.) type a backslash (<span class="InputCode">\</span>) before that character. Check <span class="MenuOutput">Remember this password in my keychain</span> and you won't be asked to give it again  in the future.<br/>
+<img alt="Giving your username and password" height="292" src="https://ssc.wisc.edu/sscc/pubs/screenshots/diskfrommac/diskfrommac_2.jpg" width="428"/></li>
+<li>If you'd like this location to appear in your dock, hold down the alt/option key and drag it to the dock.</li>
+</ol>
+<h2><a id="locs" name="locs"></a>SSCC Disk Space Locations</h2>
+<table align="center" border="1" cellpadding="3">
+<tr>
+<th scope="col" width="111">Location</th>
+<th scope="col" width="529">URL</th>
+<th scope="col" width="118">Notes</th>
+</tr>
+<tr>
+<td>Windows Home  </td>
+<td class="InputCode" nowrap="nowrap">smb://sscwin.ads.ssc.wisc.edu/dfsroot/users/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">U:</span> drive</td>
+</tr>
+<tr>
+<td>Windows Home for Lab Users </td>
+<td class="InputCode" nowrap="nowrap">smb://sscwin.ads.ssc.wisc.edu/dfsroot/labusers/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">U:</span> drive </td>
+</tr>
+<tr>
+<td>Linux Home  </td>
+<td class="InputCode" nowrap="nowrap">smb://sscunix.ssc.wisc.edu/<span class="Parameter">username</span></td>
+<td><span class="MenuOutput">Z: </span>drive</td>
+</tr>
+<tr>
+<td>Windows Projects  </td>
+<td class="InputCode" nowrap="nowrap">smb://sscwin.ads.ssc.wisc.edu/dfsroot/project </td>
+<td><span class="MenuOutput">X:</span> drive</td>
+</tr>
+<tr>
+<td>Linux Projects  </td>
+<td class="InputCode" nowrap="nowrap">smb://sscunix.ssc.wisc.edu/project</td>
+<td><span class="MenuOutput">V:</span> drive</td>
+</tr>
+<tr>
+<td>Windows Temp Space </td>
+<td nowrap="nowrap"><span class="InputCode">smb://sscwin.ads.ssc.wisc.edu/dfsroot/temp30days</span></td>
+<td><span class="MenuOutput">Y:</span> drive.
+Files  deleted after 30 days </td>
+</tr>
+<tr>
+<td> Linux Temp Space </td>
+<td class="InputCode" nowrap="nowrap">smb://sscunix.ssc.wisc.edu/temp30days</td>
+<td>Files  deleted after 30 days </td>
+</tr>
+<tr>
+<td>Web sites of SSCC member agencies </td>
+<td class="InputCode" nowrap="nowrap">smb://sscunix.ssc.wisc.edu/web</td>
+<td> </td>
+</tr>
+</table>
+<p>If you only use one project directory, you can connect to it directly by putting its  name after <span class="InputCode">project</span> (e.g. <span class="InputCode">smb://sscwin.ads.ssc.wisc.edu/dfsroot/project/AddHealth</span> or <span class="InputCode">smb://sscunix.ssc.wisc.edu/project/assess)</span>. If you use more than one, do not specify a directory and you'll be able to see all of them. If you use temporary space you should be putting your files in a folder with your username, and you can connect to it directly by adding your username after<span class="InputCode"> temp30days</span>.</p>
+<p>If you use OS X 10.6 or earlier: you must add 'primo' before your username (e.g. primo\jdoe) and use the following server names instead for Windows home and Windows project directories:</p>
+<ul>
+<li> <span class="InputCode">smb://sscdfs2.ssc.wisc.edu:139/users$/<span class="Parameter">username</span></span> for your Windows Home Directory</li>
+<li><span class="InputCode">smb://sscdfs1.ssc.wisc.edu:139/project$ </span>for Windows Project Directories.</li>
+</ul>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/diskfrommac/diskfrommac_1.jpg, https://ssc.wisc.edu/sscc/pubs/screenshots/diskfrommac/diskfrommac_2.jpg</img_base_url>
+</kb_document>
+</kb_documents>

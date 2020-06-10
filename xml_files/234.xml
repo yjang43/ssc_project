@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Importing Bookmarks/Favorites into Chrome</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Chrome makes it very easy to import bookmarks and settings from other web browsers.</p>
+<p>If you're just starting with Chrome, you'll see an <span class="MenuOutput">Import bookmarks now</span> link at the top. If not, click on the "wrench" button in the upper-right corner, then <span class="MenuOutput">Bookmarks</span>, <span class="MenuOutput">Import Bookmarks and Settings</span>. </p>
+<p>Select the browser whose bookmarks you want to import. If there are any settings from that browser you do not want to import, uncheck the appropriate box. Then click <span class="MenuOutput">Import</span> and you're done.</p>
+<p>By default, Chrome will put the imported bookmarks in a separate folder. You may want to click on <span class="MenuOutput">Bookmarks</span>, <span class="MenuOutput">Bookmark manager</span> and rearrange them for quicker access.                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>

@@ -1,0 +1,2046 @@
+<?xml version="1.0"?>
+<kb_documents>
+<kb_document>
+<kb_title>Using Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Linstat is the SSCC's primary Linux computing cluster. Linstat combines familiar statistical software like Stata, SAS, R, and Matlab with the power of Linux, making it ideal for jobs that require more memory or computing time than Winstat can provide. Linstat also gives you access to the SSCC's HTCondor flock, where you can run  multiple jobs at the same time.</p>
+<p>Learning to run jobs on a Linux server is probably easier than you think. If you're new to Linux, be sure to read the section  <a href="#GettingStartedonLinstat">Getting Started on Linstat</a>. Veteran Linux users can probably stop reading when they reach that point, but should be sure to read the sections before that which describe some of the unique features of Linstat.</p>
+<p>To log in to Linstat you'll use your SSCC username (typed in lower case) and password. If you've forgotten your password, you can <a href="https://www.ssc.wisc.edu/sscc_jsp/password/reset.jsp">reset it here</a>.</p>
+<p><strong>If you are outside the United States please read <a href="https://ssc.wisc.edu/sscc/pubs/linstat_outside_us.htm">Connecting to Linstat from Outside the United States</a>.</strong></p>
+<h2><a id="ConnectingtoLinstat" name="ConnectingtoLinstat"></a>Connecting to Linstat</h2>
+<p>How you'll connect to Linstat depends on what kind of computer you're connecting from:</p>
+<h3>Windows PCs or Winstat</h3>
+<p>If your computer runs Windows, we suggest you connect using a program called X-Win32 (though there are many fine alternatives). X-Win32 is already installed and configured on Winstat, so one option is to log in to Winstat and run X-Win32 there. Alternatively, you can download and install a pre-configured version of X-Win32 from the SSCC web site. Simply download the installation file and then double-click on it.</p>
+<p><a href="https://ssc.wisc.edu/sscc/downloads/download-xwin32.php">Download X-Win32 from the SSCC</a></p>
+<p>You'll be asked to log in because X-Win32 is only licensed for UW faculy, staff, and students. Just give your usual SSCC username and password. To use it you'll need to first connect to the SSCC network using <a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">VPN</a>.</p>
+<p>When you run X-Win32 it will place an icon in the lower right corner of your screen: <img alt="The X-Win32 Icon" height="30" src="https://ssc.wisc.edu/sscc/pubs/screenshots/5-2c/5-2_3.png" width="111"/></p>
+<p>Click on the icon once and choose Linstat.                </p>
+<p>For more details, including how to set up a connection to a particular Linstat server, see <a href="https://ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting to SSCC Linux Computers using X-Win32</a>.</p>
+<p><strong>If you are not on the UW-Madison campus you must establish a <a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">VPN connection</a> to campus before using X-Win32.</strong></p>
+<h3>Macs or Computers running Linux</h3>
+<p>Macs and Linux computers have client programs for connecting to Linux servers installed by default. Simply start a Terminal program (on a Mac it will be found under <span class="MenuOutput">Applications</span>, <span class="MenuOutput">Utilities</span>) and then type:</p>
+<p class="InputCode">ssh -Y <span class="Parameter">username</span>@linstat.ssc.wisc.edu</p>
+<p><span class="Parameter">username</span> should be replaced by your SSCC username. If your username on your computer is the same as your SSCC username, you can leave it out (<span class="InputCode">ssh -Y linstat.ssc.wisc.edu</span>). If you are plugged into the wired network in the Sewell Social Sciences Building you can leave out the domain (<span class="InputCode">ssh -Y linstat</span>).</p>
+<p>For more details, including how to  connect to a particular Linstat server, see <a href="https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm">Connecting to Linstat from a Mac</a>.</p>
+<p>In order to display Linux graphics, including graphical user interfaces for Stata, Matlab, and other programs, Macs need to have an X windows program like <a href="https://www.xquartz.org/">XQuartz</a> installed.</p>
+<h2><a id="Cluster" name="Cluster"></a>The Linstat Cluster</h2>
+<p>When you connect to Linstat, you'll  be directed to the least busy of the four Linstat servers (<span class="InputCode">linstat1</span>, <span class="InputCode">linstat2</span>, <span class="InputCode">linstat3</span>, and <span class="InputCode">linstat4</span>) automatically. This will spread users among the four servers and help avoid situations where one server is much busier than another.</p>
+<p> If you are running a long job and need to connect to the same server again to monitor it, log in to Linstat and then type <span class="InputCode">ssh <span class="Parameter">server</span></span>, where <span class="Parameter">server</span> should be replaced by the name of the server where you started the job. Be sure to note which server you're on when you start a long job. Most people have the server name in their prompt, but if you don't you can find out which server you're using by typing <span class="InputCode">printenv HOST</span>. It's also possible to connect to a specific server directly—the links in the previous section have instructions.</p>
+<h2 id="BatchMode">Batch Mode</h2>
+<p>If you run a program in batch mode, you can log out and the program will continue to run. Putting an ampersand (<span class="InputCode">&amp;</span>) at the end of a command will put it in batch mode. However, many programs need additional settings to work in batch mode, such as not starting a graphical user interface. These program-specific settings are described below when we talk about running programs.</p>
+<h2><a id="ramdisk" name="ramdisk"></a>/ramdisk</h2>
+<p><span class="InputCode">/ramdisk</span> is a special "directory" that is actually stored in RAM, making it extremely fast. The maximum size of <span class="InputCode">/ramdisk</span> is 32GB, and any files that are not in use will be deleted after one hour. The <span class="InputCode">/ramdisk</span> directory can be very helpful for programs that spend a lot of time reading and writing temporary files.</p>
+<h2 id="stata">Stata</h2>
+<p>We have a small number of Stata MP32 licenses, which are ideal for running computationally intensive do files. Do files run using the <span class="InputCode">stata</span> and <span class="InputCode">condor_stata</span> commands will be run using Stata MP32, though some HTCondor servers only have 8 cores and Stata MP32 will automatically adapt accordingly.</p>
+<h2><a id="SAS" name="SAS"></a>SAS</h2>
+<p>On Linstat, the default directory where SAS stores temporary data sets (the WORK library) is <span class="InputCode">/ramdisk</span>. This increases the speed of data-intensive programs significantly. It also prevents them from slowing down the entire server due to disk I/O bottlenecks.</p>
+<p>If you need more than 32GB of temporary space, change the WORK directory to <span class="InputCode">/tmp</span>. You can do so by adding the <span class="InputCode">-work</span> option to your SAS command:</p>
+<p class="InputCode">sas -work /tmp myprogram</p>
+<p>You'll then be able to use  up to 243GB of space (or as much of it as is available at the time). For more details see <a href="https://ssc.wisc.edu/sscc/pubs/bigsas.htm">Running Large SAS Jobs on Linstat</a>.</p>
+<h2><a id="Condor" name="Condor"></a>HTCondor
+                </h2>
+<p>The SSCC's HTCondor flock contains 136 CPUs and is ideal for  running multiple jobs at the same time. HTCondor can run Stata, SAS, Matlab, and R jobs as well as user-written programs. We've written scripts that make submitting jobs to HTCondor very easy—see <a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">An Introduction to HTCondor</a> for instructions. (You can also <a href="https://ssc.wisc.edu/sscc_jsp/condor/">submit Stata jobs to  HTCondor</a> flock via the web.)</p>
+<h2>Mplus</h2>
+<p>Due to licensing restrictions, Mplus is only installed on Linstat1, Linstat2, and Linstat3, and may only run one job at a time on each server. Because of the unusual way Mplus launches additional terminal sessions you'll need to stay logged in the entire time the program is running. <a href="https://ssc.wisc.edu/sscc/pubs/mplus_linstat.htm">Running Mplus on Linstat</a> has more details.</p>
+<h2><a id="GettingStartedonLinstat" name="GettingStartedonLinstat"></a>Getting Started on Linstat</h2>
+<p>Linux can be intimidating because it just waits for you to type commands without giving you any menus or icons to suggest what you can do. But if all you want to do is run jobs, you can get by with just a couple of Linux commands. Here's how:</p>
+<h3>Get your job ready using your computer</h3>
+<p>If you're on Winstat or a Windows PC that logs into the SSCC's PRIMO domain, your Linux home directory is available as the Z: drive, and Linux project directories are the V: drive. They're also available from Macs—see <a href="https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm">Using SSCC Network Disk Space from Macs</a>. This means you can write your program, manage your files, etc. using the tools you're familiar with and still put the programs and related files on the Linux file system so Linstat can run them.</p>
+<p>Put all the files relating to a given project in a single folder (or directory in Linux terminology), then write your programs on the assumption that that folder will be your working directory (i.e. a Stata program should say <span class="InputCode">use datafile</span>, not <span class="InputCode">use z:\research\datafile</span>). If you're only working on a single project then just declare <span class="MenuOutput">Z:</span> itself that project's "directory."</p>
+<h3>Command #1: cd</h3>
+<p>When you log into Linux, your "working directory" (where you "are" in the file system) starts out as your home directory—what Windows calls <span class="MenuOutput">Z:</span>. If that's where your project's files are, you can skip directly to running your job. Otherwise you'll need to go to your project's directory using the <span class="InputCode">cd</span> ("change directory") command. If your project's directory is on your Z: drive, type:</p>
+<p class="InputCode">cd <span class="Parameter">myProject</span></p>
+<p>Where <span class="InputCode"><span class="Parameter">myProject</span></span> should be replaced by the name you gave your project's directory.</p>
+<p>If your project's directory is inside an official Linux project directory on the <span class="MenuOutput">V:</span> drive, type:</p>
+<p class="InputCode">cd /project/<span class="Parameter">projectName</span>/<span class="Parameter">myProject</span></p>
+<p></p>
+<p>A few more points on the Linux file system:</p>
+<ul>
+<li>Directories are separated using the forward slash (/) rather than the backslash
+                    (\).</li>
+<li>There are no drives or drive letters in Linux. All directories are part of a single tree
+                    structure with the "root" of the tree denoted by a slash (/).</li>
+<li>If a directory path starts with a slash (/), it starts from the root (it is an "absolute" path). Thus <span class="InputCode">cd /project</span> means "go to the root directory, then to <span class="InputCode">project</span> underneath that"</li>
+<li>If a directory path does not start with a slash, it is assumed to start with the current directory and go from there (it is a "relative" path). Thus <span class="InputCode">cd myProject</span> means "go to the <span class="InputCode">myProject</span> directory under the current directory."</li>
+<li>Linux does not like spaces in file or directory names (you have to put the
+                    whole path in quotes if it includes a space)</li>
+<li> Unlike Windows, Linux is case-sensitive. <span class="InputCode">File</span> and <span class="InputCode">file</span> are two
+                    different files.</li>
+</ul>
+<h3>Command #2: Run Your Program</h3>
+<p>The command to run your program will depend on the program you want to use. Here are some of the most popular:</p>
+<h4>Stata</h4>
+<p>You can start Stata's graphical user interface by typing <span class="InputCode">xstata</span>.  You can also run a do file called <span class="InputCode">mydofile.do</span> in batch mode by typing:</p>
+<p class="InputCode"> stata -b do mydofile &amp;</p>
+<p> Alternatively you can submit it to HTCondor with:</p>
+<p class="InputCode"> condor_stata mydofile &amp;</p>
+<p> If you run <span class="InputCode">mydofile.do</span> in batch mode or on HTCondor, Stata will automatically log its output in <span class="InputCode">mydofile.log</span>.</p>
+<h4>SAS</h4>
+<p>You can start SAS's graphical user interface by typing <span class="InputCode">sas</span>, though it's somewhat clunkier than the Windows version. You can also run  a program called <span class="InputCode">myprogram.sas</span> in batch mode by typing:</p>
+<p class="InputCode"> sas myprogram &amp;</p>
+<h4>R</h4>
+<p>To run R, simply type <span class="InputCode">R</span>. It does not have a graphical user interface but the commands are the same as in Windows R or RStudio. </p>
+<p>To run an R program in batch mode, type:</p>
+<p class="InputCode">R &lt; <span class="Parameter">myprogram</span>.R &gt; <span class="Parameter">myprogram</span>.log --no-save &amp;</p>
+<p>To submit <span class="InputCode">myprogram.R</span> to HTCondor and save the output to <span class="InputCode">myprogram.log</span>, type:</p>
+<p class="InputCode">condor_R <span class="Parameter">my program</span>.R <span class="Parameter">myprogram</span>.log</p>
+<p>If your job uses multiple processors, type:</p>
+<p class="InputCode">condormp_R program.R program.log &amp;</p>
+<h3></h3>
+<h4>Matlab</h4>
+<p>You can start Matlab's graphical user interface by typing <span class="InputCode">matlab</span>. To run a Matlab program <span class="intro">myprogram.m</span> in the background and save its output in <span class="InputCode">myprogram.log</span>, type:</p>
+<p class="InputCode">matlab -nodisplay -nojvm &lt; mprogram.m &gt; myprogram.log &amp;</p>
+<p>To submit <span class="InputCode">myprogram.m</span> to HTCondor and save its output in <span class="InputCode">myprogram.log</span>, type:</p>
+<p class="InputCode">condor_matlab myprogram.m myprogram.log &amp;</p>
+<p>If your job uses multiple processors, type:</p>
+<p class="InputCode">condormp_matlab <span class="Parameter">program</span>.m <span class="Parameter">program</span>.log &amp;</p>
+<h3></h3>
+<h4>Mplus</h4>
+<p wrap="">To run an Mplus job, log into Linstat1, Linstat2, or Linstat3, and type:</p>
+<p class="InputCode" wrap="">mplus <span class="Parameter">myprogram</span>.inp &amp;</p>
+<p>where <span class="Parameter">myprogram.inp</span> should be replaced by the name of the Mplus program (the .inp file) you want to run.                </p>
+<p>Linstat has many other programs available (see our <a href="https://ssc.wisc.edu/sscc_jsp/software/">software database</a>). See the documentation of the program you're interested in for details on how to run it.</p>
+<h4 id="Mplus"></h4>
+<h3>Learning More</h3>
+<p>While this will get you started, there are several other SSCC Knowledge Base articles you can read to become a more flexible and efficient Linstat user.  <a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a> will teach you how to monitor and manage jobs while they run. <a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">An Introduction to HTCondor</a> will teach you more about the SSCC's HTCondor flock and how to use it. Finally, if you really want to make yourself at home in Linux, read the SSCC's <a href="https://www.ssc.wisc.edu/sscc/pubs/linuxos.htm">Getting Started in Linux</a><a href="https://ssc.wisc.edu/sscc/pubs/linuxos.htm"></a>. For a full list of articles, visit the <a href="https://ssc.wisc.edu/sscc/pubs/linux.htm">Linux section</a> of our <a href="https://ssc.wisc.edu/sscc/pubs/home.htm">Knowledge Base</a>. SSCC staff will also be happy to answer any questions you have about using Linstat and help you solve any problems you run into—just contact the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a>.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/5-2c/5-2_3.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Connecting to Linstat from a Mac</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Macs have all the software needed to connect to Linux servers installed by default, so connecting is very easy:</p>
+<ol>
+<li>Start the <span class="MenuOutput">Terminal</span> program (found in <span class="MenuOutput">Applications</span>, <span class="MenuOutput">Utilities</span>)</li>
+<li>Type <span class="InputCode">ssh -Y </span><span class="Parameter">username</span><span class="InputCode">@linstat.ssc.wisc.edu</span></li>
+</ol>
+<p><span class="Parameter">username</span> should be replaced by your SSCC username. If your username on your Mac is the same as your SSCC username, you can leave it out (<span class="InputCode">ssh -Y linstat.ssc.wisc.edu</span>). If you are plugged into the wired network in the Sewell Social Sciences Building you can leave out the domain (<span class="InputCode">ssh -Y linstat</span>).</p>
+<p>If you need to connect to a particular Linstat machine,  for example to monitor a long-running job, replace <span class="InputCode">linstat</span> with the name of the machine you need to connect to (<span class="InputCode">linstat1</span>, <span class="InputCode">linstat2</span>, <span class="InputCode">linstat3</span>, or <span class="InputCode">linstat4</span>).                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Configuring Google Authenticator to Log in to Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Google Authenticator is an app that runs on your smartphone. Once configured, when you try to log in to Linstat from outside the United States the app will generate a code which you must enter before giving your password. Using Google Authenticator takes some configuration, but does not send all your network traffic through an intermediary like VPN or Winstat. This makes it a good choice for Linstat users outside the United States who are concerned about the performance of their interactive sessions. (How you connect has no bearing on how quickly jobs run.)</p>
+<p>Configuring Google Authenticator requires a connection to Linstat. If you will be traveling we suggest configuring it before you leave the United States; otherwise you'll need to connect using VPN or Winstat once to set up Google Authenticator. Keep in mind that as long as you're in the United States you won't be asked to use Google Authenticator even if you have it configured.</p>
+<h2>Installing Google Authenticator</h2>
+<p>The Google Authenticator smartphone app can be installed for free by searching the application marketplace for your smartphone, or from these links:</p>
+<ul>
+<li><a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8">iPhone</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Android</a></li>
+<li><a href="http://www.windowsphone.com/en-us/store/app/authenticator/021dd79f-0598-e011-986b-78e7d1fa76f8">Windows Phone</a></li>
+<li>BlackBerry: Go to <a href="http://m.google.com/authenticator">http://m.google.com/authenticator</a> on your phone to download and install the application. </li>
+</ul>
+<h2>Configuration on Linstat</h2>
+<p>Once the application is installed, log into Linstat and type <span class="InputCode">google-authenticator</span>. Answer <span class="InputCode">y</span> to all the questions it asks. The result will look similar to the following:</p>
+<pre class="InputCode">linstat1.ssc.wisc.edu&gt; google-authenticator
+Do you want authentication tokens to be time-based (y/n) y
+https://www.google.com/chart?chs=200x200&amp;chld=M|0&amp;cht=qr&amp;chl=otpauth://totp/example@linstat1.ssc.wisc.edu%3Fsecret%3DLNP6YAQQSXZ7TFN5
+Your new secret key is: LNP6YAQQSXZ7TFN5
+Your verification code is 007939
+Your emergency scratch codes are:
+  52302031
+  85960129
+  70252895
+  88603301
+  62022909
+Do you want me to update your "/home/d/dtest/.google_authenticator" file (y/n) y
+Do you want to disallow multiple uses of the same authentication
+token? This restricts you to one login about every 30s, but it increases
+your chances to notice or even prevent man-in-the-middle attacks (y/n) y
+By default, tokens are good for 30 seconds and in order to compensate for
+possible time-skew between the client and the server, we allow an extra
+token before and after the current time. If you experience problems with poor
+time synchronization, you can increase the window from its default
+size of 1:30min to about 4min. Do you want to do so (y/n) y
+If the computer that you are logging into isn't hardened against brute-force
+login attempts, you can enable rate-limiting for the authentication module.
+By default, this limits attackers to no more than 3 login attempts every 30s.
+Do you want to enable rate-limiting (y/n) y
+</pre>
+<h2>Configuration on Your Phone</h2>
+<p>Open the Google Authenticator app on your phone, and tap the icon to add a new account (the pencil in the upper right on iPhone, the three dots in the upper right on Android, the + in a circle at the bottom on Windows Phone). You can either select <span class="MenuOutput">Scan Barcode</span> or <span class="MenuOutput">Manual Entry</span> to enter the needed settings.</p>
+<h3>Scan Barcode</h3>
+<p>Copy the URL that the Linux <span class="InputCode">google-authenticator</span> command produced. It will be similar to:</p>
+<p class="InputCode">https://www.google.com/chart?chs=200x200&amp;chld=M|0&amp;cht=qr&amp;chl=otpauth://totp/example@linstat1.ssc.wisc.edu%3Fsecret%3DLNP6YAQQSXZ7TFN5</p>
+<p>Paste it into a web browser on your PC or Mac and it should produce a square (QR) barcode. Align your phone's camera with the code on your monitor—you may need to adjust the distance between your phone and the screen before the phone will recognize it. The app should automatically add a code on the main screen. The app will call it <span class="Parameter">username</span><span class="InputCode">@linstat1.ssc.wisc.edu</span> (or whichever Linstat you were logged into) but it will work for the entire Linstat cluster.</p>
+<h3>Manual Entry</h3>
+<p>The code you want is also produced by the <span class="InputCode">google-authenticator</span> command; it's listed on this line of output:</p>
+<p class="InputCode">Your new secret key is: LNP6YAQQSXZ7TFN5</p>
+<p>Give the account a name like <span class="InputCode">Linstat</span> and enter the code where it says <span class="MenuOutput">Key</span>. Make sure <span class="MenuOutput">Time Based</span> is checked.</p>
+<h2>Configuration in SecureCRT</h2>
+<p>If you connect to Linstat from a   Mac or Linux computer, or from a Windows computer using PuTTY, no further configuration is needed. However, SecureCRT does need to be configured to ask for the verification code.</p>
+<p> (Recall that if you're connecting remotely and not using VPN you cannot use X-Win32. <a href="http://software.wisc.edu">SecureCRT</a> and <a href="http://www.putty.org/">PuTTY</a> are good alternatives, though neither of them can display graphics without forwarding them to a  
+                separate program like X-Win32 or <a href="http://sourceforge.net/projects/xming/">Xming</a>.)</p>
+<p>Open the Properties for your Linstat session.</p>
+<p><img alt="Open the Properties of your Linstat session" height="453" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_google_auth/linstat_google_auth_2.png" width="512"/></p>
+<p>Under <span class="MenuOutput">Category</span> on the left, click <span class="MenuOutput">Connection</span> and then <span class="MenuOutput">SSH2</span>. In the <span class="MenuOutput">Authentication</span> section, select <span class="MenuOutput">Keyboard Interactive</span> and click the up arrow until it is the top choice.</p>
+<p><img alt="Under connection, SSH2, make Keyboard Interactive the top Authentication method" height="511" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_google_auth/linstat_google_auth_3.png" width="553"/></p>
+<p>Save the session, and from now on when you connect you'll be prompted for your verification code before your password.</p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_google_auth/linstat_google_auth_2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_google_auth/linstat_google_auth_3.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Managing Jobs on Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>One of the main reasons for using Linstat is that it can run very long jobs. This article will teach you how to manage such jobs on Linstat.</p>
+<h2><a id="ForegroundandBackgroundJobs" name="ForegroundandBackgroundJobs"></a>Foreground and Background Jobs</h2>
+<p>Normally when you type a command, it is processed and you see the results (if 
+  any) before the cursor returns and you can type a new command. These jobs are 
+  said to be running in the foreground. If you put a job in the background, 
+  the cursor returns immediately and you can keep giving commands and doing other 
+  work while the your job is running. When the job finishes a message will appear 
+  on your screen.</p>
+<p>If a job is  running in the background it will keep running even if you log out, so you can start a long job before you leave in the evening, log out, 
+  and get the results the next morning (or next week, or next month—though such jobs are good candidates for <a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">Condor</a>). Just keep track of which Linstat server you are using when you start a job, because if you need to manage that job you'll need to return to that server.</p>
+<p>What you should not do when you have a job running in the background is start another CPU-intensive job—see the <a href="https://ssc.wisc.edu/sscc/policies/server_usage.htm">SSCC's Server Usage Policy</a>.</p>
+<p>To run a job in the background,  add an ampersand (<span class="InputCode">&amp;</span>) at the end 
+  of the command. For example, if you type:</p>
+<p class="InputCode">stata -b do myprogram</p>
+<p> Stata will start and run <span class="InputCode">myprogram.do</span> in the 
+  foreground. Thus your session will be unavailable until the job is done. On the 
+  other hand:</p>
+<p class="InputCode">stata -b do myprogram &amp;</p>
+<p>runs Stata in the background. The cursor returns immediately and you can do other things while Stata is running your program. When it is done you'll see a message like:
+</p>
+<pre class="InputCode">[1]    Done                          stata -b do myprogram</pre>
+<p>A job which creates a separate window (<span class="InputCode">xstata</span>, for example) will be 
+  completely functional in the background (in fact <span class="InputCode">xstata</span> puts itself in the background by default).</p>
+<h3><a id="SwitchingBetweenForegroundandBackground" name="SwitchingBetweenForegroundandBackground"></a>Switching Between Foreground 
+  and Background</h3>
+<p>If you have a job running in the foreground and want to put it in the background, 
+   press <span class="InputCode">CTRL-z</span> (if the  
+  job has opened a separate window, you must return to your main Linstat window before 
+  pressing <span class="InputCode">CTRL-z</span>). The current job will be suspended 
+  and you will get your cursor back. Then type <span class="InputCode">bg</span> to put it in the 
+  background—it will not run while suspended. You can also type <span class="InputCode">fg</span> to move it back 
+  to the foreground, either from being suspended or from the background.</p>
+<h2><a id="ManagingBackgroundJobs" name="ManagingBackgroundJobs"></a>Monitoring  Jobs</h2>
+<p>The <span class="InputCode">ps</span> 
+  command (think processes) gives you a list of processes you are running on the server. The output will be similar to the following:</p>
+<pre class="InputCode">PID TTY          TIME CMD<br/>29413 pts/30   00:00:00 tcsh<br/> 1601 pts/30   00:00:00 emacs<br/> 1602 pts/30   00:00:00 emacs<br/> 1605 pts/30   00:00:00 ps</pre>
+<p> <span class="InputCode">PID</span> is short for Process IDentifier, and is used when you need to specify a particular job. Keep in mind that Linstat is a cluster of four servers, and <span class="InputCode">ps</span> will only show you the jobs you are running on the server you're logged into. See <a href="#SwitchingBetweenLinstatServers">Switching Between Linstat Servers</a> to learn how to get back to the Linstat server where you started your job.</p>
+<p>Unfortunately, the default <span class="InputCode">ps</span> output will only show jobs you started in your current session. To see all your jobs from any session, type:</p>
+<p class="InputCode">ps aux | grep <span class="Parameter">username</span></p>
+<p>where <span class="Parameter">username</span> should be replaced by your SSCC username (e.g. <span class="InputCode">ps aux | grep rdimond</span>). This lists all jobs on the server, then filters it to only show yours.</p>
+<p>Another useful command for monitoring jobs is <span class="InputCode">top</span>. This will tell you the "top" jobs (in terms of resources used) currently running on the server. With it you can verify that your job is actually doing work by checking that its <span class="InputCode">%CPU</span> is greater than zero, though jobs can easily get stuck in a state where they use CPU without doing anything productive.</p>
+<p> <span class="InputCode">top</span> also gives you a sense of how busy the server is. The Linstat servers have sixteen CPUs, so if <span class="InputCode">%CPU</span> adds up to more than 1600% programs will have to share the available CPU time. If the Linstat you're on has less CPU time available than your program is capable of using, consider switching to a different Linstat.</p>
+<p>Unfortunately <span class="InputCode">top</span> does not monitor all the resources a server needs to run jobs. For example, SAS jobs occasionally generate enough disk traffic to slow down a server without anything unusual appearing in <span class="InputCode">top</span>.</p>
+<h2><a id="KillingaJob" name="KillingaJob"></a>Killing a Job</h2>
+<p>If you need to stop a running job, use the <span class="InputCode">kill</span> command. Simply type <span class="InputCode">kill</span> and then the  PID of the job you want to kill. For example:</p>
+<p class="InputCode"> kill 1602</p>
+<p>This doesn't actually stop the job, it merely requests that it shut down, giving 
+  the program an opportunity to clean up temporary files and such. Unfortunately 
+  both SAS and SPSS will not do so, so if you kill one of these jobs, please go 
+  to the <span class="InputCode">/tmp</span> directory and manually delete any 
+  files and directories belonging to you. On the other hand, adding the <span class="InputCode">-9</span> 
+  switch to the <span class="InputCode">kill</span> command will kill a program 
+  immediately with or without its consent. Thus:</p>
+<p class="InputCode"> kill -9 1602</p>
+<p><strong>will</strong> kill process 1602.</p>
+<h2><a id="SwitchingBetweenLinstatServers" name="SwitchingBetweenLinstatServers"></a>Switching Between Linstat Servers</h2>
+<p>Linstat is actually a cluster of four servers. When you log in you're assigned to a server randomly to try to balance the load between them. However, you can choose to connect to a specific server to monitor a job you started previously or if the server you're assigned to turns out to be particularly busy.</p>
+<p>To switch to a different server, type:</p>
+<p class="InputCode"> ssh <span class="Parameter">server</span></p>
+<p>where <span class="Parameter">server</span> can be <span class="InputCode">linstat1</span>, <span class="InputCode">linstat2</span>, <span class="InputCode">linstat3</span>, or <span class="InputCode">linstat4</span>. Alternatively you can set up your client program to log in to one of those four servers directly.</p>
+<p>Be sure to note which server you're on when you start a long job. If the server name is not in your prompt, you can identify it by typing:</p>
+<p class="InputCode">printenv HOST</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Connecting to Linstat from Outside the Madison Area</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>While all computers are subject to regular attacks today, Linux servers draw particular attention. Most attacks originate outside the United States, while most SSCC members are in the United States. SSCC therefore blocks standard Secure Shell (ssh) connections to Linstat from outside the United States. This reduces the number of attacks Linstat is subjected to, but SSCC members can still connect to Linstat from anywhere in the world using  one of the following easy methods:</p>
+<ul>
+<li><strong><a href="https://ssc.wisc.edu/sscc/pubs/vpn.htm">Connect to the SSCC network using VPN before logging into Linstat.</a></strong> This is perhaps the simplest method. Recall that you must connect to the SSCC network to run X-Win32 anyway.</li>
+<li><strong><a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">First log into Winstat and then connect to Linstat from within your Winstat session.</a></strong> This is also very simple, and also gives you access to all the software on Winstat. However it uses one of our Winstat licenses, so if you only need Linstat we suggest using VPN instead.</li>
+<li><strong><a href="https://ssc.wisc.edu/sscc/pubs/linstat_google_auth.htm">Use the Google Authenticator app on your smartphone to obtain a code you then enter while logging in.</a></strong> This method requires more configuration, but may give somewhat better performance.</li>
+<li><strong><a href="https://ssc.wisc.edu/sscc/pubs/linstat_public_key.htm">Create a pair of encryption keys that are stored on Linstat and your computer which can then be used to connect to Linstat from that specific computer.</a></strong> This method also requires more configuration but may give somewhat better performance.</li>
+</ul>
+<p>You only need to use one of these four methods. Note that the Google Authenticator and key pair methods must be set up while you are connected to Linstat. If you will be traveling and want to use these methods, we suggest configuring them before you leave. Otherwise you'll need to connect using VPN or Winstat once to set them up.                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Configuring a Public/Private Key Pair to Log into Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Public key authentication uses two files to prove who you are rather than a password: a public key on the server and a private key on your local computer. Once configured, you'll be asked for the password associated with the key rather than your SSCC password whenever you log into Linstat from that computer. Using a key pair takes some configuration, but does not send all your network traffic through an intermediary like VPN or Winstat. This makes it a good choice for Linstat users outside the United States who are concerned about the performance of their interactive sessions. (How you connect has no bearing on how quickly jobs run.)</p>
+<p>Configuring a key pair requires a connection to Linstat. If you will be traveling we suggest configuring it before you leave the United States; otherwise you'll need to connect using VPN or Winstat once to set up the key pair.</p>
+<p>No matter how you connect to Linstat, the process of creating a key pair is very much the same:</p>
+<ol>
+<li>
+<p>Generate a public/private key pair on your local computer</p>
+</li>
+<li>
+<p>Add the key to <span class="InputCode">.ssh/authorized_keys</span> in your Linstat home directory</p>
+</li>
+<li>Configure the client program to use key authentication rather than passwords</li>
+</ol>
+<p>This article 
+                has instructions for <a href="#SecureCRT">SecureCRT</a>, <a href="#PuTTY">PuTTY</a>, and <a href="#Mac_Linux">Mac/Linux</a>. (Recall that if you're connecting remotely and not using VPN you cannot use X-Win32. <a href="http://software.wisc.edu">SecureCRT</a> and <a href="http://www.putty.org/">PuTTY</a> are good alternatives, though neither of them can display graphics without forwarding them to a  
+                separate program like X-Win32 or <a href="http://sourceforge.net/projects/xming/">Xming</a>.)</p>
+<h2 id="SecureCRT">SecureCRT</h2>
+<p>In SecureCRT, click <span class="MenuOutput">Tools</span>,  <span class="MenuOutput">Create Public Key</span>.</p>
+<p><img alt="Key Generation Wizard" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_1.png" width="505"/></p>
+<p>Set the <span class="MenuOutput">Key type</span> to <span class="MenuOutput">DSA</span>.</p>
+<p><img alt="Set Key type to DSA" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_2.png" width="505"/></p>
+<p>Enter a password for the key or, even better, a <a href="http://xkcd.com/936/">passphrase</a>, along with a comment. The comment could be used to remind you of the password, but must not allow others to guess it.</p>
+<p><img alt="Choose a passphrase and comment" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_3.png" width="505"/></p>
+<p>Set the <span class="MenuOutput">Key length in bits</span> to <span class="InputCode">1024</span>.</p>
+<p><img alt="Set key length to 1024" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_5.png" width="505"/></p>
+<p>Select the <span class="MenuOutput">OpenSSH Key</span> format, and then save the keys in a convenient location on your local hard drive (the default location is probably OK).</p>
+<p><img alt="Choose the key format and location to save it" height="336" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_6.png" width="505"/></p>
+<p>Click <span class="MenuOutput">Yes</span> when asked if you want to use this as your global public key.</p>
+<p><img alt="" height="161" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_6.5.png" width="405"/></p>
+<p>Now that the key has been generated it, use Notepad, TextPad or your favorite text editor and open <span class="InputCode">Identity.pub.</span> (The <span class="InputCode">.pub</span> extension indicates that this is the <em>public</em> key, to be shared with the server, rather than the <em>private</em> key which remains on your computer.)</p>
+<p><img alt="Open the key in a text editor and copy the contents" height="207" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_7.png" width="577"/></p>
+<p>If you are currently on the SSCC network  save the file as <span class="InputCode">z:\.ssh\authorized_keys</span>. The <span class="InputCode">.ssh</span> folder is hidden by default, so you'll need to type its name rather than clicking on it.</p>
+<p>If not, copy the entire contents of the file, log in to Linstat, then open <span class="InputCode">.ssh/authorized_keys</span> using your preferred Linux text editor (<span class="InputCode">pico</span>, <span class="InputCode">emacs</span>, <span class="InputCode">vi</span>, etc.).</p>
+<p><img alt="Log into Linstat and edit your authorized key file" height="208" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_8.png" width="646"/></p>
+<p>Paste in the contents of the key, making sure it is all on one line, and save the file.</p>
+<p><img alt="Paste in the key contents" height="191" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_9.png" width="655"/></p>
+<p>If you haven't already, log into Linstat. Then run the following command:</p>
+<p class="InputCode">chmod g-w ~/.ssh/authorized_keys</p>
+<p>(SSCC uses "user private groups" to make it easy to share files in project directories while keeping files in home directories private. Unfortunately the program that manages key pair connections doesn't understand user private groups and insists keys must not have group write permissions for security reasons.)</p>
+<p>Next, open the session properties for your Linstat connection.</p>
+<p><img alt="Open properties for your Linstat session" height="189" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_10.png" width="625"/></p>
+<p>Under <span class="MenuOutput">Category</span> on the left, click <span class="MenuOutput">Connection</span>, <span class="MenuOutput">SSH2</span>. Then select <span class="MenuOutput">PublicKey</span> in the <span class="MenuOutput">Authentication</span> section and click the up arrow until it is the top choice.</p>
+<p><img alt="Make PublicKey the top Auth method" height="511" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_11.png" width="553"/></p>
+<p>Click <span class="MenuOutput">OK</span>, and from now on when you log in to Linstat, you'll be prompted for your key passphrase rather than your SSCC password.</p>
+<h2 id="PuTTY">PuTTY</h2>
+<p>To create a public/private key pair in PuTTY, you need to run PuTTYgen. You can find it by searching or by clicking <span class="MenuOutput">Start</span>, <span class="MenuOutput">All Programs</span>, <span class="MenuOutput">PuTTY</span>, <span class="MenuOutput">PuTTYgen</span>.</p>
+<p>Set the type to <span class="MenuOutput">SSH-2 DSA</span> and click <span class="MenuOutput">Generate</span>. </p>
+<p><img alt="Generate a key" height="477" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_12.png" width="493"/></p>
+<p>You will be asked to generate randomness by moving your mouse around. Once the generation finishes, enter a password for the key or, even better, a <a href="http://xkcd.com/936/">passphrase</a>, along with a comment. The comment could be used to remind you of the password, but must not allow others to guess it. Save both the public key and the private key in a convenient location on your local hard drive by clicking <span class="MenuOutput">Save public key</span> and <span class="MenuOutput">Save private key</span>. Then copy everything contained in the box <span class="MenuOutput">Public key for pasting into Open SSH authorized_keys file</span>.</p>
+<p><img alt="Set a passphrase and then save. Copy the key itself." height="477" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_13.png" width="493"/></p>
+<p>If you are on the SSCC network, open Notepad, TextPad, or your favorite text editor, paste in the key and save it as  <span class="InputCode">z:\.ssh\authorized_keys</span>. The <span class="InputCode">.ssh</span> folder is hidden by default, so you'll need to type its name rather than clicking on it.</p>
+<p> If you are not on the SSCC network,  log in to Linstat, then open <span class="InputCode">.ssh/authorized_keys</span> using your preferred Linux text editor (<span class="InputCode">pico</span>, <span class="InputCode">emacs</span>, <span class="InputCode">vi</span>, etc.), paste in the key, and save it. Either way, make sure the entire key is pasted onto one line.</p>
+<p><img alt="Edit .ssh/authorized_keys" height="125" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_14.png" width="675"/></p>
+<p>If you haven't already, log into Linstat. Then run the following command:</p>
+<p class="InputCode">chmod g-w ~/.ssh/authorized_keys</p>
+<p>(SSCC uses "user private groups" to make it easy to share files in project directories while keeping files in home directories private. Unfortunately the program that manages key pair connections doesn't understand user private groups and insists keys must not have group write permissions for security reasons.)</p>
+<p>Run PuTTY and load your previously saved Linstat profile.</p>
+<p><img alt="Open your Linstat profile" height="448" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_15.png" width="466"/></p>
+<p>Under <span class="MenuOutput">Category</span> on the left choose <span class="MenuOutput">Connection</span>, <span class="MenuOutput">SSH</span>, <span class="MenuOutput">Auth</span>. Then click <span class="MenuOutput">Browse</span> and find the private key you generated and saved.</p>
+<p><img alt="Set Auth to the private key you generated" height="448" src="https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_16.png" width="466"/></p>
+<p>Go back to <span class="MenuOutput">Session</span> to save the profile, then click <span class="MenuOutput">Open</span>. You'll be prompted for your key passphrase rather than your SSCC password.</p>
+<h2 id="Mac_Linux">Mac or Linux</h2>
+<p>On a Mac or Linux computer, open a terminal and run <span class="InputCode">ssh-keygen</span>. When it asks where to save the file press enter for the default location. Choose a password or, even better, a <a href="http://xkcd.com/936/">passphrase.</a></p>
+<p>Then open the file <span class="InputCode">id_dsa.pub</span> using your favorite text editor and copy the contents. (The <span class="InputCode">.pub</span> extension indicates that this is the <em>public </em>key, to be shared with the server, rather than the <em>private</em> key which remains on your computer.)</p>
+<p>Log in to Linstat, then open <span class="InputCode">.ssh/authorized_keys</span> using your preferred Linux text editor (<span class="InputCode">pico</span>, <span class="InputCode">emacs</span>, <span class="InputCode">vi</span>, etc.), paste in the key, and save it. Make sure the entire key is pasted onto one line.</p>
+<p>Next run the following command:</p>
+<p class="InputCode">chmod g-w ~/.ssh/authorized_keys</p>
+<p>(SSCC uses "user private groups" to make it easy to share files in project directories while keeping files in home directories private. Unfortunately the program that manages key pair connections doesn't understand user private groups and insists keys must not have group write permissions for security reasons.)</p>
+<p> The next time you connect you'll be prompted for the key passphrase, not your SSCC password. </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url>https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_1.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_2.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_3.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_5.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_6.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_6.5.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_7.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_8.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_9.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_10.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_11.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_12.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_13.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_14.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_15.png, https://ssc.wisc.edu/sscc/pubs/screenshots/linstat_public_key/linstat_public_key_16.png</img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Articles on Using Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>This page lists articles on using the Linux 
+                                operating system.</p>
+<h2>Basics</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/silo.htm">
+									  Using Silo</a>
+<br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-1.htm">An Introduction to Condor</a><a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm"> </a><br/>
+<a href="https://www.ssc.wisc.edu/sscc/pubs/linuxos.htm">Getting Started in Linux</a><a href="https://ssc.wisc.edu/sscc/pubs/linuxos.htm"></a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/computing_resources.htm">Computing Resources at the SSCC</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/disk.htm">Network Disk Space at the SSCC</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linux_disk_space.htm">Managing Disk Space in Linux</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/1-15.htm">How to Change Your SSCC Passwords</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-28.htm">Printing from Linux</a><a href="https://ssc.wisc.edu/sscc/pubs/1-15.htm"> </a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/printfromlinux.htm">Using SSCC Network  Printers from Personal Linux Computers</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/diskfromlinux.htm">Using SSCC Network  Disk Space from Personal Linux Computers</a></p>
+<h2> Connecting to Linux Servers</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting to SSCC Linux Computers using X-Win32</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm">Connecting to Linstat from a Mac</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat_outside_us.htm">Connecting to Linstat from Outside the US</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat_google_auth.htm">Configuring Google Authenticator to Log in to Linstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat_public_key.htm">Configuring a Public/Private Key Pair to Log into Linstat</a><br/>
+</p>
+<h2>Tools</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/1-11.htm">Using SFTP</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-10.htm">Using Emacs</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-15.pdf">Using PICO on UNIX</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-17.pdf">Using nu/TPU on UNIX</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-8.htm">Using Compressed Data in Linux</a></p>
+<h2> Advanced Topics</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/7-9.pdf">Configuring Your Login Session</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/7-14.pdf">Using the Revision Control System</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/flash.htm">Using the SSCC's High Performance Computing Cluster</a>
+<br/>
+</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Managing Disk Space in Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<p>Data storage is a major expense for the SSCC, as the performance and reliability required for research data makes "enterprise level" storage much more expensive than the hard drive of your average PC. Individual members can help reduce these costs by managing the files in their 
+              home and project directories. This article	
+              will discuss Linux tools for managing your disk space.</p>
+<h2>Viewing Your Large Files</h2>
+<p>Most files are so small (or rather, disk storage today is so large) that even large numbers of them take up trivial amounts of space. We don't want our members to spend their valuable time deciding what small files they can delete. Thus the first task is to identify your large files.</p>
+<p>You can use the good old <span class="InputCode">ls -l</span> command, aliased as <span class="InputCode">ll</span> 
+              for most people, but <span class="InputCode">du</span> (disk usage) is better at it, especially when combined with other tools.</p>
+<p class="InputCode">du <span class="Parameter">directory</span> -ha</p>
+<p>where <span class="Parameter"><span class="InputCode">directory</span></span> 
+              should be replaced by the name of the directory you want to examine, 
+              will give you a list of all files and subdirectories in that directory 
+              and their sizes. Sizes will be given in appropriate units for easy reading by humans. Note that this list includes 
+              all the contents of all the subdirectories of the directory you specify, so running this command on a high 
+              level directory will probably give you more text than you can 
+              use.</p>
+<p>To view just the biggest files, you can send these results to the 
+              <span class="InputCode">sort</span> program and then list only the 
+              top results using <span class="InputCode">head</span>. The disadvantage 
+              is that <span class="InputCode">sort</span> can't understand different units, so tell <span class="InputCode">du</span> to list all the file sizes in 
+              megabytes.</p>
+<p class="InputCode">du <span class="Parameter">directory</span> -ma 
+              | sort -n -r | head -n20</p>
+<p>This will show the twenty biggest files and directories underneath 
+              the starting directory (you can choose how many to view by changing 
+              the number after <span class="InputCode">-n</span>). These are the 
+              files you should focus on.</p>
+<h2>Options for Large Files</h2>
+<p>Once you've identified the files worth paying attention to, then the question becomes what to do with them:</p>
+<ul>
+<li>Compress large files that are not in active use. <a href="https://ssc.wisc.edu/sscc/pubs/7-8.htm">Using Compressed Data in Linux</a> has instructions.</li>
+<li>Share large data files among researchers rather than everyone making their own copy</li>
+<li>Delete intermediate data files that can be reproduced at will, keeping just the raw data and the version of the data you're currently working on (along with all the code that gets you from one to the other)</li>
+<li>Delete data files that are no longer needed (but only if you're sure it's no longer needed)</li>
+</ul>
+<h2>Using Temporary Space</h2>
+<p>One easy way to make sure you don't forget to delete a file when 
+              you're done with it is to put it in temporary space. In Linux, files 
+              stored in <span class="InputCode">/temp30days</span> are deleted 
+              after thirty days, but you are welcome to use as much space as you 
+              need during that time—just make yourself a directory there. If 
+              you store files you'll only need briefly in <span class="InputCode">/temp30days</span>, 
+              you'll never have you worry about going back to delete them. Keep 
+              in mind that <span class="InputCode">/temp30days</span> is not 
+              backed up.</p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Getting Started in Linux</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- #BeginEditable "Text" -->
+<h2>Table of Contents</h2>
+<ol class="TOC">
+<li><a href="#xtocid215400">Introduction</a></li>
+<li><a href="#xtocid274591">SSCC Linux Computers</a>
+<ul>
+<li><a href="#xtocid274592">Connecting to a Linux computer, 
+                    logging in, logging out</a></li>
+</ul>
+</li>
+<li><a href="#xtocid274590">The Linux operating system</a>
+<ul>
+<li><a href="#xtocid274594">How to Formulate a Linux Command</a></li>
+<li><a href="#xtocid274595">A Few Simple Useful Utilities</a></li>
+<li><a href="#xtocid274596">How Linux Stores Files: The Linux 
+                    File System</a></li>
+<li><a href="#xtocid274597">File Names under Linux</a></li>
+<li><a href="#xtocid274598">Home Directories and the Present 
+                    Working Directory</a></li>
+<li><a href="#xtocid274599">Manipulating The File System</a>
+<ul>
+<li><a href="#xtocid2745910">Changing Your Present Working 
+                        Directory</a></li>
+<li><a href="#xtocid2745911">Listing directories</a></li>
+<li><a href="#xtocid2745912">Making and Removing Directories</a></li>
+<li><a href="#xtocid2745913">Copying, Moving, Renaming, 
+                        and Removing Files</a></li>
+</ul>
+</li>
+<li><a href="#xtocid2745914">Viewing The Contents of Files</a></li>
+<li><a href="#xtocid2745915">Using Pipes to View The Output 
+                    of Commands</a></li>
+<li><a href="#xtocid2745916">Using Pipes to Print the Output 
+                    of Commands</a></li>
+<li><a href="#xtocid2745924">Command Shortcuts</a>
+<ul>
+<li><a href="#xtocid2745925">Wildcard Characters</a></li>
+<li><a href="#xtocid2745926">Home Directory Abbreviation: 
+                        The Tilde (~)</a></li>
+<li><a href="#xtocid2745931">Path Abbreviations: The . and 
+                        ..</a></li>
+<li><a href="#xtocid2745928">Rerunning Commands and Editing 
+                        the Command Line</a></li>
+</ul>
+</li>
+<li><a href="#xtocid2745929">Getting Help</a></li>
+<li><a href="#xtocid2745930">In Case of Emergency: What to Try 
+                    When Things Go Wrong</a></li>
+</ul>
+</li>
+<li><a href="#xtocid2154024">Managing Disk Space</a>
+<ul>
+<li><a href="#xtocid2154025">Categories of Disk Space</a></li>
+<li><a href="#xtocid2154026">Determining How Much Disk Space 
+                    You are Using</a></li>
+<li><a href="#xtocid2154027">Compressing Large Files</a></li>
+</ul>
+</li>
+<li><a href="#xtocid215401">Choosing the Proper Linux Computer</a>
+<ul>
+<li><a href="#xtocid215403">Condor</a></li>
+<li><a href="#flash">High Performance Computing Cluster</a></li>
+<li><a href="#xtocid215405">Software</a></li>
+<li><a href="#xtocid215406">CPU Power</a></li>
+<li><a href="#xtocid215407">System Load</a></li>
+</ul>
+</li>
+<li><a href="#xtocid215409">Running Jobs</a>
+<ul>
+<li><a href="#xtocid2154010">Command Input and Output in Linux</a>
+<ul>
+<li><a href="#xtocid2154012">Redirection of Standard Output</a></li>
+<li><a href="#xtocid2154014">Redirection of Standard Input</a></li>
+<li><a href="#xtocid2154015">Pipes</a></li>
+</ul>
+</li>
+<li><a href="#xtocid2154016">Running Jobs in the Foreground 
+                    and Background</a></li>
+<li><a href="#xtocid2154017">Switching Between Foreground and 
+                    Background</a></li>
+<li><a href="#xtocid2154018">Managing Background Jobs</a></li>
+<li><a href="#xtocid2154019">Killing jobs</a></li>
+<li><a href="#xtocid2154021">Running Multiple Jobs</a></li>
+<li><a href="#xtocid2154022">Condor</a></li>
+<li><a href="#xtocid2154023">Scripts</a></li>
+<li><a href="#xtocid2154030">Running a Job Later</a></li>
+</ul>
+</li>
+<li><a href="#xtocid215432">Summary of Commands</a></li>
+<li><a href="#xtocid215433">Other Sources of Information</a></li>
+</ol>
+<h2><a id="xtocid215400" name="xtocid215400"></a>1. Introduction</h2>
+<p>This handbook will introduce you to the Linux operating system, with a focus on using SSCC's Linstat servers. It is intended for those who want to use Linux for more than just a way to run statistical jobs. If your goal is just to run jobs on Linstat, <a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a> and <a href="https://ssc.wisc.edu/sscc/pubs/linstat_jobs.htm">Managing Jobs on Linstat</a> will probably teach you everything you need to know.</p>
+<h2><a id="xtocid274591" name="xtocid274591">2. SSCC Linux Computers</a></h2>
+<p>Linstat is the SSCC's cluster of  servers running Linux. When you connect to Linstat, you'll  be directed to one of the three Linstat servers (linstat1, linstat2 and linstat3)   automatically. This will spread users among the three servers and help   avoid situations where one server is much busier than another.</p>
+<h3><a id="xtocid274592" name="xtocid274592"> Connecting to a Linux computer, logging 
+              in, logging out </a></h3>
+<p>Linux is designed for remote logins and can be used very successfully
+            	 from anywhere in the world. To connect to a Linux server you
+            	will need a client program capable of using a secure protocol,
+            	ideally SSH. X-Win32 is our suggestion for 
+              PC's. For details on downloading and using X-Win32,
+              see <a href="https://www.ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting
+              to SSCC Linux Computers using X-Win32</a>.
+              For other options see the Connecting to Linstat section of <a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm#ConnectingtoLinstat">Using Linstat</a>.</p>
+<p>When you are finished with your login session, be sure to log off by typing <span class="InputCode">exit</span> at the Linux 
+              prompt.</p>
+<h2><a id="xtocid274590" name="xtocid274590"></a>3. The Linux Operating 
+              System</h2>
+<p align="left">Linux is a very powerful, flexible operating system.
+              In a few minutes, it is possible to learn enough to get into the
+              system, run statistical programs like Stata, and get out
+              again. On the other extreme, those who have worked on Linux for
+              years are still learning every day. This reflects both the power
+              and the complexity of the operating system.</p>
+<h3 align="left"><a id="xtocid274594" name="xtocid274594"> How to Formulate a Linux 
+              Command</a></h3>
+<p>When you log in to a Linux computer, a prompt will appear on the 
+              screen, waiting for you to enter a command. At this point you can 
+              enter any valid Linux command and the computer will run it.</p>
+<p>The syntax of a Linux command is very simple: first, enter the 
+              command name, followed by any options and any other parameters. 
+              Spaces separate the command name from the options and the options 
+              from the parameters. Once the command has been completely formed, 
+              press Enter. When you press Enter, the command is executed.</p>
+<p>For instance, if you want to know the current date and time, use 
+              the <span class="InputCode">date</span> command. Then press Enter. 
+              The current date and time will appear, followed by another prompt. 
+              Your login session will look like this:</p>
+<p class="InputCode">linstat2.ssc.wisc.edu&gt; date<br/>
+              Mon Feb 18 10:52:55 CST 2008<br/>
+            linstat2.ssc.wisc.edu&gt;</p>
+<p>When the prompt appears (the prompt here is <span class="InputCode">linstat2.ssc.wisc.edu&gt;)</span>, 
+              the computer is ready for you to enter another command. </p>
+<p>Note that the prompt will vary depending on the machine on which 
+              you are working. You can also customize the prompt to be anything 
+              you like.</p>
+<p>Unlike some other operating systems, Linux is case sensitive. The 
+              command <span class="InputCode">date</span> is not the same as the 
+              command <span class="InputCode">DATE</span>. You must always use 
+              the proper case when running Linux commands. Fortunately, this is 
+              simple, as virtually all Linux commands are lower case.</p>
+<h3><a id="xtocid274595" name="xtocid274595"> A Few Simple Useful Utilities</a></h3>
+<p>Below are some simple, useful commands that you can run right away. 
+              Try these:</p>
+<p class="InputCode">&gt; cal</p>
+<p>displays the calendar for the current month. To see a calendar 
+              for the whole year, try:</p>
+<p class="InputCode">&gt; cal 1997</p>
+<p>In this example, "1997" is a parameter to the command 
+              cal: it is telling <span class="InputCode">cal</span> to give information for all of 1997, instead 
+              of giving the default information for the current month. Be sure 
+              to use the "19" or <span class="InputCode">cal</span> 
+              will display the calendar for the year 97, not the year 1997.</p>
+<p class="InputCode">&gt; cal 12 1997</p>
+<p>displays the calendar for the month of December, 1997. Here, <span class="InputCode">cal</span> 
+              is taking two parameters. The first parameter is the month and the 
+              second parameter is the year.</p>
+<p class="InputCode">&gt; who</p>
+<p>displays a list of users currently logged into that computer, also 
+              giving the time that the user logged in.</p>
+<p class="InputCode">&gt; uptime</p>
+<p>This extremely useful command tells the current time, how long 
+              the computer has been up, how many users are currently logged on, 
+              and how busy the computer has been for the last one, five, and 15 
+              minutes. This is the "load average", the average number 
+              of jobs that were waiting to run in that time increment. To understand 
+              how to interpret the load average, see the <a href="#xtocid215407">System 
+              Load </a> section later in this handbook.</p>
+<p class="InputCode">&gt; hostname</p>
+<p>displays the name of the computer on which you are working.</p>
+<p class="InputCode">&gt; clear</p>
+<p>clears your screen and puts a prompt on the top line of the screen.</p>
+<p class="InputCode">&gt; lookup Gary Sandefur</p>
+<p>The <span class="InputCode">lookup</span> command looks into the
+               UW-Madison student, faculty, and staff information database and
+               displays information about the person you are looking up. In the
+               command above, information about UW-Madison Dean of the College of Letters and Science, Gary Sandefur, will be displayed, as well as information
+              about any other person on campus with these names. </p>
+<p>Most of the above commands were simple commands to run. Only one 
+              of them required parameters (lookup) and none required options. 
+              Later, commands will be introduced that require options to provide 
+              important information. The critical point about these commands can 
+              be seen from these examples: the command comes first; spaces separates 
+              parameters from the command and parameters from each other.</p>
+<h3><a id="xtocid274596" name="xtocid274596"> How Linux Stores Files: The Linux File 
+              System</a></h3>
+<p>All computers store files in some type of file system. These file 
+              systems largely resemble each other: individual files are referenced 
+              through folders or directories, terms that can be used interchangeably. 
+              The term "directory" is preferred by Linux users.</p>
+<p>Two features distinguish the Linux file system from Windows:</p>
+<p>1. Linux uses a forward slash, instead of a backslash to indicate 
+              the existence of a directory. For example, Windows might refer to 
+              a file as:</p>
+<p class="InputCode"> F:\home\r\rdimond\saswork\data</p>
+<p>but Linux would refer to a file as:</p>
+<p class="InputCode"> /home/r/rdimond/saswork/data</p>
+<p>The items "home", "r", "rdimond", 
+              and "saswork" are all directories, but the names are separated 
+              by forward slashes in Linux, not backslashes, as in Windows.</p>
+<p>2. Linux does not start a file name with the name of a disk. On 
+              a Windows machine, the start of any file name is a disk name, such 
+              as C: for the main hard disk or A: for the floppy. Linux attempts 
+              to hide disks from the user. For instance, a directory might be 
+              called:</p>
+<p class="InputCode"> /home/r/rdimond</p>
+<p>This path name refers to a directory called rdimond. The rdimond 
+              directory is in the directory called r; the r directory is in the 
+              directory called home; the home directory is in the directory called 
+              root, and displayed as a preceding forward slash, the "/" 
+              at the beginning of the name. The root directory is the starting 
+              directory on Linux, from which all other files and directories are 
+              descended. All files and directories on Linux exist at some place 
+              relative to the root directory. The full path name of a file always 
+              begins with a forward slash, with a reference to the root.</p>
+<h3><a id="xtocid274597" name="xtocid274597">File Names under Linux</a></h3>
+<p>File and directory names under Linux are quite freeform. (In this 
+              section, we will use the expression "file names" to mean 
+              "file or directory names".) All numbers and letters of 
+              the alphabet are allowed in file names, as are several special characters 
+              such as "." (dot) and "_" (underscore). Linux 
+              has no naming regulations, such as the requirement that a dot appear 
+              in the name. However, despite having few formal rules, the following 
+              guidelines will assist you in working with files.</p>
+<ul>
+<li>The first character of a file name should be a letter of the 
+                alphabet or a number. Do not use a special character, such as 
+                a dot, a plus sign or a minus sign. Any of these could lead to 
+                difficulties when attempting to manipulate the file or directory.</li>
+<li>Do not use spaces or tabs in file names.</li>
+<li>File names with multiple periods such as filename.ext.ext are 
+                valid.</li>
+<li>Keep in mind that Linux is case sensitive: the names outfile,
+                Outfile and OutFile represent three different files. However,
+                it is not wise to create files in which the only difference among
+                names is the case, as this can confuse PCs if you ever map your
+                Linux home directory as a network drive on a PC. </li>
+<li>Although virtually all file names are legal, there are a few 
+                names that should be avoided: core and .rhosts. The system uses 
+                the name core for a dump of certain data when a command fails. 
+                (If you ever see one of these files in one of your directories, 
+                the file can be safely removed.) If you create a file called .rhosts 
+                you may unintentionally permit others to access your home directory. 
+                Of course, this is an uncommon name, and one that you are not 
+                likely to create accidentally.</li>
+<li>Filenames starting with a period are special files called "hidden 
+                files" and will only be displayed in a directory listing 
+                if you use <span class="InputCode">ls</span> with the <span class="InputCode">-f</span> 
+                or <span class="InputCode">-a</span> option.</li>
+</ul>
+<p>File naming conventions are only conventions and are not used to 
+              distinguish file type. Some commonly-used conventions are:</p>
+<p>             </p>
+<table align="center" border="0" width="75%">
+<tr>
+<td>.do (Stata command files)<br/>
+                  .dta (data files stored in Stata format) <br/>
+                  .gif (graphics file)<br/>
+                  .gz (compressed file)<br/>
+                  .htm (Web page)<br/>
+                  .html (Web page)<br/>
+                  .jpg (graphics file)<br/>
+                  .jpeg (graphics file)<br/>
+                  .log (SAS or Stata log file)<br/>
+                .lst (SAS listing)<br/> </td>
+<td>pdf (Adobe pdf file)<br/>
+                  .ps (PostScript file)<br/>
+                  .sas (SAS source file)<br/>
+                  .sas7bdat (data files stored in SAS format)<br/>
+                  .sps (SPSS source file)<br/>
+                  .tar (archive file)<br/>
+                  .tex (TeX file)<br/>
+                  .zip (compressed file)<br/>
+                .Z (compressed file)</td>
+</tr>
+</table>
+<h3><a id="xtocid274598" name="xtocid274598"> Home Directories and the Present Working 
+              Directory</a></h3>
+<p>All user accounts have a part of the file system that is their 
+              own. This is called their home directory. When you first log in, 
+              Linux makes your home directory your present working directory. 
+              Your present working directory is the directory where files and 
+              directories will be listed, created, changed, or removed by default, 
+              unless you instruct the computer to perform the action in another 
+              location (examples to follow, below).</p>
+<p>Home directories are located in a subdirectory of the directory 
+              called /home. /home consists of a series of directories, one for 
+              each letter of the alphabet. Home directories are under the letter 
+              of the alphabet corresponding to the first letter of your login 
+              name. For instance, the home directory of the user account named 
+              swald is at /home/s/swald and the home directory of the user account 
+              named mcdermot is at /home/m/mcdermot.</p>
+<p>Home directories are the place for you to put your files. You can 
+              control access permissions for files in your home directory, allowing 
+              others to see files, or to change files, or denying them these privileges.</p>
+<h3><a id="xtocid274599" name="xtocid274599"> Manipulating The File System</a></h3>
+<p>The Linux tools used most often by users are the commands that 
+              allow users to manipulate files and directories. These commands 
+              include:</p>
+<table align="center" border="0" width="75%">
+<tr>
+<td width="23%">ls</td>
+<td width="77%">display the tables of a directory</td>
+</tr>
+<tr> </tr>
+<tr>
+<td width="23%">pwd</td>
+<td width="77%">display the full path name of the present working 
+                  directory</td>
+</tr>
+<tr>
+<td width="23%">cd</td>
+<td width="77%">change present working directory</td>
+</tr>
+<tr>
+<td width="23%">mkdir</td>
+<td width="77%">create a new directory</td>
+</tr>
+<tr>
+<td width="23%">rmdir</td>
+<td width="77%">remove a directory</td>
+</tr>
+<tr>
+<td width="23%">cp</td>
+<td width="77%">copy a file</td>
+</tr>
+<tr>
+<td width="23%">mv</td>
+<td width="77%">move or rename a file</td>
+</tr>
+<tr>
+<td width="23%">rm</td>
+<td width="77%">remove a file</td>
+</tr>
+</table>
+<p>             </p>
+<h4><a id="xtocid2745910" name="xtocid2745910">Changing Your Present Working Directory 
+              </a></h4>
+<p>To determine your present working directory, use the <span class="InputCode">pwd</span> 
+              command:</p>
+<p class="InputCode">&gt; pwd<br/>
+              /home/r/rdimond</p>
+<p>To change your present working directory, use the <span class="InputCode">cd</span> 
+              command. For example, to change to the /tmp directory (the system 
+              directory for temporary files):</p>
+<p class="InputCode">&gt; cd /tmp</p>
+<p>Remember that a space separates the command (<span class="InputCode">cd</span>) 
+              from the parameter (<span class="InputCode">/tmp</span>). If the 
+              command is successful, it will not display any information; it will 
+              simply return a command prompt. To confirm that you really did change 
+              to the /tmp directory, issue the <span class="InputCode">pwd</span> 
+              command. For instance:</p>
+<p class="InputCode">&gt; cd /tmp<br/>
+              &gt; pwd<br/>
+              /tmp</p>
+<p>To return back to your home directory from any other directory, 
+              enter the <span class="InputCode">cd </span>command without a parameter. 
+              For instance: </p>
+<p class="InputCode">&gt; cd<br/>
+              &gt; pwd<br/>
+              /home/r/rdimond</p>
+<h4><a id="xtocid2745911" name="xtocid2745911">Listing directories</a></h4>
+<p>Once you change directories, one of the first things you will want 
+              to do is look at the tables of the directory. To do this, use 
+              the <span class="InputCode">ls</span> command. For instance:</p>
+<p class="InputCode">&gt; ls<br/>
+              bin README            </p>
+<p>There are two items in the present working directory, called 
+              bin and README.  To determine if these items are files or directories,
+              you must ask for a long listing. To do this, use the <span class="InputCode">-l</span> 
+              option (long listing) to the <span class="InputCode">ls</span> command.
+               Options in Linux begin with minus signs and are usually one letter
+               long. For instance:</p>
+<pre>
+&gt; ls -l
+total 52<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:09 bin<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:13 README
+</pre>
+<p>The dash "-" in the first column of the README line indicates 
+              that this is a file. The "d" in the first column of the 
+              bin line indicates that this is a directory. The "total" 
+              line indicates how many blocks are taken up by items in this directory. 
+              It is not usually useful and can be safely ignored.</p>
+<p>Let's look at the long listing of the README file more closely:</p>
+<pre>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:13 README
+1  2        3   4       5       6     7           8
+</pre>
+<p>The long listing provides a lot of information about the file in 
+              a single line. As stated, the first character is the file type (labeled 
+              1 above). Generally, this will either be a dash or a d, indicating 
+              that it is an ordinary file or a directory. Following the file type 
+              are nine characters (labeled 2 above) indicating the file permissions 
+              (file permissions will be discussed in a later <a href="#xtocid2154036">section</a>). 
+              The number following this (labeled 3 above) can be ignored; it is 
+              for use by advanced Linux users. The next two fields (labeled 4 
+              and 5 above) are the owner of the file and the group affiliation 
+              of the file. All files on the Linux file system are owned by someone 
+              and have some group affiliation. Next is the size of the file in 
+              bytes (labeled 6 above). A byte is the equivalent of a single character. 
+              Next comes the date and time that the file was modified (labeled 
+              7 above). Finally comes the file name (labeled 8 above).</p>
+<p>You can also list the tables of a directory without changing 
+              to it. To do this, give the directory name that you want listed 
+              as a parameter to the <span class="InputCode">ls</span> command. 
+              For instance:</p>
+<pre>&gt; ls -l /tmp
+total 629
+-rw-------   1 rdimond  system    147456 Aug  6 22:16 Ex25804
+-rw-------   1 rdimond  system     81920 Aug  6 22:15 Rx25804
+-rw-r--r--   1 root     system        59 Aug  6 13:34 lpq.00125519
+-rw-------   1 flory    system    825012 Aug  5 11:54 ng5chi.dat
+-rw-r--r--   1 tpan     system      3086 Aug  6 10:43 rrn.16443
+-rw-r--r--   1 tpan     system    355337 Aug  6 10:43 rrnact.16443
+drwxr-xr-x   2 pkovatch system       512 Aug  1 04:20 spss_125
+</pre>
+<p>Other useful options for the <span class="InputCode">ls</span> 
+              command are listed below:</p>
+<table align="center" border="0" width="75%">
+<tr>
+<td class="InputCode" width="17%">ls -a</td>
+<td width="83%">(all) Include "dot" files, those beginning 
+                  with a dot</td>
+</tr>
+<tr>
+<td class="InputCode" width="17%">ls -F</td>
+<td width="83%">(File types) Identify file types with codes;
+                  / for directories, * for executables, and @ for symbolic links</td>
+</tr>
+<tr>
+<td class="InputCode" width="17%">ls -R</td>
+<td width="83%">(Recursive) Recursively list all subdirectories</td>
+</tr>
+<tr>
+<td class="InputCode" width="17%">ls -r</td>
+<td width="83%">(reverse) Sort in reverse order</td>
+</tr>
+<tr>
+<td class="InputCode" width="17%">ls -s</td>
+<td width="83%">(size) Display the size in kilobytes</td>
+</tr>
+<tr>
+<td class="InputCode" width="17%">ls -t</td>
+<td width="83%">(time) Sort by time modified</td>
+</tr>
+<tr>
+<td class="InputCode" width="17%">ls -u</td>
+<td width="83%">(used) Show time of last access</td>
+</tr>
+</table>
+<br/>
+<h4><a id="xtocid2745912" name="xtocid2745912">Making and Removing Directories</a></h4>
+<p>Within your home directory, you have the ability to organize your 
+              files as you please. This means that you can create subdirectories 
+              within your home directory. To do this, use the <span class="InputCode">mkdir</span> 
+              command. For instance:</p>
+<pre>&gt; ls -l<br/>total 52<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:09 bin<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:13 README<br/>&gt; mkdir homework<br/>&gt; ls -l<br/>total 56<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:09 bin<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:24 homework<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:13 README</pre>
+<p>In this example, a new directory was created called "homework". 
+              Use <span class="InputCode">cd</span> to change to the homework 
+              directory. For instance:</p>
+<pre>&gt; pwd
+/home/g/guest12
+&gt; cd homework
+&gt; pwd
+/home/g/guest12/homework
+</pre>
+<p>If you decided that this directory was not needed after all, you 
+              could remove the directory using the <span class="InputCode">rmdir</span> 
+              command. For instance:</p>
+<pre>&gt; ls -l<br/>total 56<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:09 bin<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:24 homework<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:13 README<br/>&gt; rmdir homework<br/>&gt; ls -l<br/>total 52<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:09 bin<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:13 README</pre>
+<p>The homework directory is now gone. This only works if the directory 
+              is empty, that is, it has no files or directories within it.</p>
+<h4><a id="xtocid2745913" name="xtocid2745913">Copying, Moving, Renaming, and Removing 
+              Files</a></h4>
+<p>Files are created in a number of ways. You can use an editor,
+              such  as EMACS or PICO to create a file; statistical programs,
+              such as  SAS or SPSS create files; you might create files using
+              a PC application like TextPad,  with your Linux home directory
+              as a network drive. In any case, once files are created, it is
+              often necessary to copy, move, rename, or remove them.</p>
+<p>To copy a file, use the <span class="InputCode">cp</span> command. 
+              For instance, if you have a file called README and you wish to copy 
+              it to readme.new, you would do this:</p>
+<pre>&gt; cp README readme.new<br/>&gt; ls -l<br/>total 92<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:09 bin<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:13 README<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:32 readme.new</pre>
+<p>The original file has not been changed in any way, but a new file 
+              has been created. This new file is a copy of the original, with 
+              a different name. Also, because Linux is case sensitive, the file 
+              names were specified with the appropriate cases. The new file name 
+              has a dot in the name, and a suffix. As stated earlier, suffixes 
+              to Linux are entirely unimportant (although they may be important 
+              to particular applications!). There may be as many letters before 
+              or after the dot as desired. Finally, note that the last modification 
+              date on the new file is different from the last modification date 
+              on the old file. The new file's modification date is the creation 
+              date.</p>
+<p>Now, let's create a directory called Documentation and move the 
+              new file to that directory using the <span class="InputCode">mv</span> 
+              command:</p>
+<pre>&gt; mkdir Documentation<br/>&gt; mv readme.new Documentation<br/>&gt; ls -l Documentation<br/>total 40<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:32 readme.new</pre>
+<p>The readme.new file is now in the Documentation directory (again, 
+              notice that the D in Documentation is capitalized).</p>
+<p>The <span class="InputCode">cp</span> command can also be used 
+              to make a copy of a file, using the same file name as the original, 
+              but placing it in a different directory. For instance:</p>
+<pre>&gt; cp README Documentation<br/>&gt; ls -l Documentation<br/>total 80<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:35 README<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:32 readme.new</pre>
+<p>In this example, the file called README is copied to the directory 
+              called Documentation, the name not changing.</p>
+<p>The <span class="InputCode">mv</span> command can be used to rename 
+              a file. For instance:</p>
+<pre>&gt; mv readme.new oldreadme<br/>&gt; ls -l<br/>total 80<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:32 oldreadme<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:35 README</pre>
+<p>A note of caution about using the <span class="InputCode">cp</span> 
+              and <span class="InputCode">mv</span> commands: If you copy or move 
+              a file to a file name that already exists, the existing file will 
+              be overwritten without notice. </p>
+<p>Now the Documentation directory has two copies of the same file 
+              with two different names. You can remove a file using the <span class="InputCode">rm</span> 
+              command. For instance:</p>
+<pre>&gt; cd Documentation<br/>&gt; rm oldreadme<br/>&gt; ls -l<br/>total 40<br/>-rw-r-----  1 guest12 guest12 38331 Feb 18 11:35 README
+            </pre>
+<p>You can also remove the Documentation directory and all of its 
+              tables, but you cannot use the <span class="InputCode">rmdir</span> 
+              command, which is only for removing empty directories. To remove 
+              a directory, including all of its tables, use the <span class="InputCode">-r</span> 
+              option to the <span class="InputCode">rm</span> command. For example:</p>
+<pre>&gt; cd<br/>&gt; rm -r Documentation<br/>&gt; ls -l<br/>total 52<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:09 bin
+            </pre>
+<p>This will remove the Documentation directory and all of its tables 
+              with no questions asked. This is somewhat dangerous. A better way 
+              to use <span class="InputCode">rm</span> is to use the <span class="InputCode">-i</span> 
+              option also, which forces you to confirm that you really want to 
+              remove each file or directory. For example:</p>
+<pre>
+&gt; cd
+&gt; rm -r -i Documentation
+rm: remove Documentation/README? y
+rm: remove Documentation? y
+&gt; ls -l
+total 52<br/>drwxrwx---  2 guest12 guest12  4096 Feb 18 11:09 bin
+            </pre>
+<p>The <span class="InputCode">rm</span> command now asks you to confirm 
+              that you really want to remove each item. You can answer y or Y 
+              (or any other answer that begins with a y or Y, such as yes, yep 
+              or yessireebob) and the item will be removed. Any other answer and 
+              the item will not be removed.</p>
+<p>One warning about removing Linux files: once a file is removed, 
+              it may be gone forever. When a user accidentally removes a file, 
+              SSCC staff can sometimes restore the file from the nightly backups, 
+              but this is not always possible. Use the <span class="InputCode">-i</span> 
+              option when using the <span class="InputCode">rm</span> command 
+              to protect your data.</p>
+<h3><a id="xtocid2745914" name="xtocid2745914"> Viewing The Contents of Files</a></h3>
+<p>To view the tables of a file, you can use the <span class="InputCode">more</span> 
+              command:</p>
+<p class="InputCode">&gt; more filename</p>
+<p> Replace "filename" with the name of the file you wish 
+              to view. The file will be displayed one screenful at a time. There 
+              are many subcommands within <span class="InputCode">more</span>, 
+              but the following are the most useful:</p>
+<table align="center" border="0" width="75%">
+<tr>
+<td width="13%">space</td>
+<td width="87%">scroll down a full screen</td>
+</tr>
+<tr>
+<td width="13%">Enter</td>
+<td width="87%">scroll down a single line</td>
+</tr>
+<tr>
+<td width="13%">b</td>
+<td width="87%">scroll up a full screen</td>
+</tr>
+<tr>
+<td width="13%">q</td>
+<td width="87%">quit out of <span class="InputCode">more</span> and return to the command line</td>
+</tr>
+</table>
+<p>To use a subcommand, simply type in the command when the system 
+              pauses after displaying a screen of information.</p>
+<h3><a id="xtocid2745915" name="xtocid2745915">Using Pipes to View The Output of Commands</a></h3>
+<p>Very often, the information scrolling across the screen is not 
+              the tables of a file, but other information, such as the long 
+              listing of a directory. You can still use the <span class="InputCode">more</span> 
+              command to view the output, but you use it through a special Linux 
+              feature called a pipe. To use a pipe, type the command as you usually 
+              would, but after the command, instead of pressing Enter, place the 
+              pipe symbol "|", depicted on your keyboard as a solid 
+              or broken line and then type the <span class="InputCode">more</span> 
+              command. This will take the output of the <span class="InputCode">ls</span> 
+              command and place it in the <span class="InputCode">more</span> 
+              command. For instance:</p>
+<p class="InputCode">&gt; ls -l /tmp | more</p>
+<p>This can be used with any command that displays more than a screen 
+              full of information. For example:</p>
+<p class="InputCode">&gt; cal 1997 | more</p>
+<p>This command would display the calendar for 1997, but it would 
+              be displayed within the <span class="InputCode">more</span> command, 
+              allowing you to scroll up or down, as desired.</p>
+<p>Pipes are one of the most powerful features of Linux.</p>
+<h3><a id="xtocid2745916" name="xtocid2745916"> Using Pipes to Print the Output of Commands</a></h3>
+<p> Linux pipes give the user the ability to print any data 
+              that can be displayed on the screen. For instance, if you wish to 
+              print out a listing of your home directory, do the following:</p>
+<p class="InputCode">&gt; ls -l | enscript</p>
+<p>In this example, no listing is printed to the screen; the computer 
+              returns a prompt to you without showing you the listing. The output 
+              of the <span class="InputCode">ls</span> command is sent to the 
+              default printer. </p>
+<h3><a id="xtocid2745924" name="xtocid2745924"> Command Shortcuts</a></h3>
+<p>Once users begin to use Linux commands with some regularity, they 
+              rapidly start to desire certain shortcuts for some operations. Linux 
+              provides shortcuts and alternative methods for performing actions 
+              in abundance. This section introduces some relatively simple shortcuts 
+              that are not necessary for users to perform their work, but may 
+              be useful to beginning level students.</p>
+<h4><a id="xtocid2745925" name="xtocid2745925"></a>Wildcard Characters</h4>
+<p>Wildcard characters allow you to specify many files at once, or 
+              to specify a single file concisely. The wildcard characters are 
+              the asterisk (*), the question mark (?), and the square brackets 
+              ([]). You can use wildcard characters with commands like<span class="InputCode"> 
+              ls</span>, <span class="InputCode">cp</span>, <span class="InputCode">mv</span> 
+              and <span class="InputCode">rm</span> to perform an action on several 
+              files. Below are examples of the use of wildcard characters with 
+              the <span class="InputCode">ls</span> command:            </p>
+<p class="InputCode">&gt; ls R*<br/>
+              README<br/>
+              README.old</p>
+<p>The asterisk means "zero or more of any character." In 
+              this example, the <span class="InputCode">ls</span> command listed 
+              two files beginning with an R.</p>
+<p><span class="InputCode">&gt; ls *.old<br/>
+              hmwork1.old <br/>
+              README.old</span><br/>
+<br/>
+              Wild card characters can appear anywhere in a file name: in the 
+              beginning, middle, or end. In this example, the <span class="InputCode">ls</span> 
+              command listed two files ending with .old.</p>
+<p class="InputCode">&gt; ls *old*
+              <br/>
+              hmwork1.old <br/>
+              oldnotes <br/>
+              README.old</p>
+<p>Multiple wild card characters can be used. In this example, the 
+              <span class="InputCode">ls</span> command listed three files that 
+              had old somewhere within the file name.</p>
+<p class="InputCode">&gt; ls hmwork?<br/>
+              hmwork1<br/>
+              hmwork2<br/>
+              hmwork3<br/>
+              hmwork4</p>
+<p>A question mark stands for one character within the list or range 
+              shown. In this example, the <span class="InputCode">ls</span> command 
+              listed four files that started with hmwork and then had a single 
+              character following.</p>
+<p class="InputCode">&gt; ls hmwork[2-4]<br/>
+              hmwork2<br/>
+              hmwork3<br/>
+              hmwork4</p>
+<p>The <span class="InputCode">ls</span> command listed three files 
+              that started with hmwork and then had a single character following 
+              in the range of 2 to 4. This range might have been a to z (including 
+              all lower case letters), or N to m (including the second half of 
+              capitalized letters and the first half of lower case letters).</p>
+<p>Any of these wild card characters can be used multiple times, and 
+              in combination with each other.</p>
+<h4><a id="xtocid2745926" name="xtocid2745926">Home Directory Abbreviation: The Tilde 
+              (~)</a></h4>
+<p>As configured for new SSCC users, Linux allows you to use the
+              tilde (~) as an abbreviation for your home directory. In any command
+              where  you want to specify your home directory, you may use the
+              tilde instead.  For example:</p>
+<p class="InputCode">&gt; cd ~/data <br/>
+              &gt; ls ~</p>
+<p>The user changes to the data subdirectory of her home directory 
+              and then listed the tables of her home directory.</p>
+<p>The tilde followed immediately by a user's login name is an abbreviation 
+              for that user's login directory. For example:</p>
+<p class="InputCode">&gt; ls ~smith <br/>
+              &gt; cd ~jones/sas</p>
+<p>This will list the directory called /home/s/smith and then change
+               to the directory called /home/j/jones/sas provided the proper
+              permissions are set on the directories. </p>
+<h4><a id="xtocid2745931" name="xtocid2745931"></a>Path Abbreviations: The . and ..</h4>
+<p>Two other abbreviations, the .. and the . are shortcuts that can 
+              save you keystrokes. .., also called dot-dot, can be used to refer 
+              to the directory up one level from the current directory. For example:</p>
+<pre>&gt; pwd
+/home/g/guest12/homework
+&gt; cd ..
+&gt; pwd
+/home/g/guest12
+&gt; cd ..
+&gt; pwd
+/home/g
+&gt; cd
+&gt; pwd
+/home/g/guest12 </pre>
+<p>Each <span class="InputCode">cd ..</span> command moved the present 
+              working directory up one level. The <span class="InputCode">cd</span> 
+              command without a parameter moved the present working directory 
+              back to the home directory, as we saw before. </p>
+<p>., also called dot, is a shortcut used to refer to the current
+              directory.  For example:</p>
+<pre>&gt; mv /project/sandefur/wave9/ameier/2003/readme.new .</pre>
+<p>moves the file readme.new from the location specified to the users 
+              current working directory. </p>
+<h4><a id="xtocid2745928" name="xtocid2745928">Rerunning Commands and Editing the Command 
+              Line</a></h4>
+<p>As configured for new SSCC users, Linux allows users to edit the 
+              command line. This can be as simple as rerunning the previous command 
+              to making modifications in the command currently on the screen. 
+              This is performed using the arrow keys. Use the up arrow to display 
+              previous commands. Each strike of the up arrow key will step backwards 
+              through the list of previous commands. When you find the command 
+              that you want to rerun, simply press Enter. If you go past the command, 
+              use the down arrow to step forward through commands.</p>
+<p>If you find a command that you want to rerun, but it is slightly 
+              off, use the left and right arrows to move across the command line, 
+              use the backspace key to remove a character, and add any character 
+              you wish. When the command is properly displayed, press Enter to 
+              execute the command.</p>
+<p>The exclamation point can also run a previous command. Type an 
+              exclamation point followed by the first letters of a command and 
+              the last command that began with those letters will be rerun. For 
+              example:</p>
+<p class="InputCode">&gt; !emacs</p>
+<p>This will run the last <span class="InputCode">emacs</span> command. 
+              This might be quite useful if, for instance, the last <span class="InputCode">emacs</span> 
+              command was something like:</p>
+<p class="InputCode">&gt; emacs ~jones/progs/oldstuff/dissert.dat</p>
+<h3><a id="xtocid2745929" name="xtocid2745929"> Getting Help</a></h3>
+<p>On-line help is available on Linux through the command called <span class="InputCode">man</span>,
+               which is short for manual pages. The <span class="InputCode">man</span> 
+              command displays reference pages on the screen. These pages can
+               be written obscurely. If you do not understand a reference page,
+               contact SSCC's help desk for assistance.</p>
+<p>If you don't know exactly what command you need to use, you can 
+              find a command using the <span class="InputCode">-k</span> option 
+              to the <span class="InputCode">man</span> command. The <span class="InputCode">-k</span> 
+              option searches for key words in the NAME section of the man page. 
+              For example:</p>
+<p class="InputCode">&gt; man -k compare </p>
+<p>will list on the screen Linux commands that can be used to compare 
+              files. </p>
+<h3><a id="xtocid2745930" name="xtocid2745930"> In Case of Emergency: What to Try When 
+              Things Go Wrong</a></h3>
+<p>Sometimes the system just stops working properly for no reason 
+              apparent to the new user. When this happens, here are a few keystrokes 
+              that might help you.</p>
+<p>The <b>&lt;<span class="InputCode">Ctrl-C</span>&gt;</b> keystroke 
+              is the interrupt command. It should cancel the current operation 
+              and return the prompt to the screen.</p>
+<p>The <b>&lt;<span class="InputCode">Ctrl-S</span>&gt;</b> keystroke 
+              stops items from displaying on the screen temporarily. This is not 
+              useful to a beginning Linux user, but users may accidentally type 
+              this, perhaps when intending to type an upper case S. The <b>&lt;<span class="InputCode">Ctrl-Q</span>&gt;</b> 
+              keystroke will override the &lt;<span class="InputCode">Ctrl-S</span>&gt; 
+              keystroke, allowing the screen to begin displaying again.</p>
+<p>Some times, the computer is taking input and waiting for the end 
+              of the input. A <b>&lt;<span class="InputCode">Ctrl-D</span>&gt;</b> 
+              is the end of file (or end of input) character. Type this keystroke 
+              if the system is awaiting input from you and you have given it all 
+              the input. This may happen when, for instance, you use the <span class="InputCode">cat</span> 
+              command, but forget to give the file name. The system will wait 
+              for you to type in what you want printed to the screen. It will 
+              take as many characters as you can type, including returns and will 
+              not return the prompt to you until it gets the end of file character, 
+              the &lt;<span class="InputCode">Ctrl-D</span>&gt;.<br/>
+</p>
+<h2><a id="xtocid2154024" name="xtocid2154024">4. Managing Disk Space </a></h2>
+<p>In this section you will learn about the disk space available to 
+              you at SSCC and how to manage it.</p>
+<h3><a id="xtocid2154025" name="xtocid2154025"> Categories of Disk Space</a></h3>
+<p>SSCC provides two categories of storage space for individual users:
+            	home directory space and short term disk
+            	space. Both types of individual disk space are described in the SSCC's <a href="https://www.ssc.wisc.edu/sscc/pubs/intro.htm#xtocid2714138">Member Handbook</a> including quotas and backup policies.</p>
+<p>If you are working on a research project with a group of people,                 we can provide you with separate storage space on Windows or Linux                that you can all share.  If you'd like project space you may <a href="https://www.ssc.wisc.edu/sscc_jsp/account/project">fill out the online form</a>. If you need your account added to a research  project space, ask the person who set up the project (usually a faculty  member) to contact SSCC's Help Desk on your behalf.</p>
+<p>Please help keep costs down by using disk space wisely:</p>
+<ul>
+<li>Compress large files.<br/>
+</li>
+<li>Remove unneeded files.<br/>
+</li>
+<li>Move files to project disks, if appropriate.<br/>
+</li>
+<li>Do not make copies of standard data files archived by CDE or 
+                other agencies or individuals.</li>
+</ul>
+<h3><a id="xtocid2154026" name="xtocid2154026">Determining How Much Disk Space You are 
+              Using </a></h3>
+<p>To determine how much disk space you are using, use the <span class="InputCode">quota</span> 
+              command. For example</p>
+<pre>&gt; quota  <br/>Disk quotas for user rdimond (uid 1931):  <br/>     Filesystem  blocks   quota   limit   grace   files   quota   limit     grace  <br/>griffon:/home/t  936904  1024000 1024000            8119       0       0     <br/></pre>
+<p>In the column labeled "Used" is the amount of disk space 
+              you are using, in kilobytes. The quota column tells what your current 
+              disk quota is. </p>
+<p>Often, this is not sufficient information. You want to know specifically 
+              which directories are using the disk space. To determine this, use 
+              the <span class="InputCode">du</span> command, which will tell you 
+              how many kilobytes are in each of your subdirectories. For example:            </p>
+<pre>&gt; du -k ~
+29414 /home/s/somerset/data
+8 /home/s/somerset/News
+240 /home/s/somerset/Stuff
+224 /home/s/somerset/Personal/gifs
+77 /home/s/somerset/Personal/letters
+2329 /home/s/somerset/Personal
+164 /home/s/somerset/docs/reqs
+703 /home/s/somerset/docs/faqs
+13 /home/s/somerset/docs/tmp
+42 /home/s/somerset/docs/soc361
+1569 /home/s/somerset/docs/soc365
+339 /home/s/somerset/docs/olddocs/homework
+19878 /home/s/somerset/docs/olddocs
+9049 /home/s/somerset/docs/travel
+35343 /home/s/somerset/docs
+202 /home/s/somerset/jobsearch/apps/old
+221 /home/s/somerset/jobsearch/apps
+238 /home/s/somerset/jobsearch
+8336 /home/s/somerset/saslib
+155 /home/s/somerset/practice
+80024 /home/s/somerset</pre>
+<p>This user is using 80 MB of disk space. Most of the disk space 
+              usage is in the docs subdirectory, particularly in the olddocs subdirectory 
+              of the docs directory. Also, a lot of disk space is being used by 
+              the data directory. </p>
+<p>You can also get a complete listing of the sizes of all files using 
+              the <span class="InputCode">-a </span>option to the <span class="InputCode">du</span> 
+              command. For example, below might be the output of the <span class="InputCode">du 
+              -ak</span> command, after the output has been sorted (numerically, 
+              and in descending order) and the first ten lines requested (the 
+              <span class="InputCode">head</span> command): </p>
+<pre>&gt; du -ak ~ | sort -n -r | head
+80024 /home/s/somerset
+35343 /home/s/somerset/docs
+29414 /home/s/somerset/data
+19878 /home/s/somerset/docs/olddocs
+11088 /home/s/somerset/docs/olddocs/thesis
+9049 /home/s/somerset/docs/travel
+8336 /home/s/somerset/saslib
+7712 /home/s/somerset/data/brazil
+6208 /home/s/somerset/saslib/course.ssd04
+5264 /home/s/somerset/docs/olddocs/diagrams</pre>
+<p>This output includes both files and directories. A comparison with 
+              the output from the <span class="InputCode">du -k</span>, above, 
+              shows that the largest files are ~somerset/docs/olddocs/thesis, 
+              ~somerset/data/brazil, ~somerset/saslib/course.ssd04, and ~somerset/docs/olddocs/diagrams. 
+              In the interest of conserving disk space, user somerset may want 
+              to delete or compress some of these files. </p>
+<p>To determine the amount of disk space available on a project disk, 
+              use the <span class="InputCode">df</span> command. For example, 
+              if you own a directory called /project/irp/bozeman, you can determine 
+              the total amount of free space by running this <span class="InputCode">df</span> 
+              command:</p>
+<p class="InputCode">&gt; df -k /project/irp/bozeman<br/>
+              Filesystem 1024-blocks Used Available Capacity Mounted on<br/>
+              irp1#irp 8220960 1692974 6507568 21% /project/irp</p>
+<p>In this example, about 6.5 GB of disk space is available. Again, 
+              the units are kilobytes, which was requested when the <span class="InputCode">-k</span> 
+              flag was used.</p>
+<h3><a id="xtocid2154027" name="xtocid2154027"> Compressing Large Files </a></h3>
+<p>A good way to save disk space is to compress files. A compression
+               savings rate of 75% is typical and even 95% is achievable, particularly
+               for ordinary data files. </p>
+<p>Two compression programs are commonly used on Linux: <span class="InputCode">compress</span> 
+              and <span class="InputCode">gzip</span>. The syntax for both is 
+              basically the same: issue the command, followed by the name of the 
+              file you wish to compress. The <span class="InputCode">-v</span> 
+              option is useful, as the compression commands will tell you the 
+              percentage of file space you saved by compressing the file. For 
+              example: </p>
+<p class="InputCode">&gt; compress -v vt20.alpha.tar<br/>
+              vt20.alpha.tar:Compression:74.18% - replaced with vt20.alpha.tar.Z</p>
+<p>or </p>
+<p class="InputCode">&gt; gzip -v vt20.alpha.tar <br/>
+              vt20.alpha.tar: 89.2% -- replaced with vt20.alpha.tar.gz </p>
+<p>The compression commands will change the names of the files, the 
+              <span class="InputCode">compress</span> command adding a ".Z" 
+              suffix, and the <span class="InputCode">gzip</span> command adding 
+              a ".gz" suffix. </p>
+<p>To uncompress files, use the commands <span class="InputCode">uncompress</span> 
+              or <span class="InputCode">gunzip</span>: </p>
+<p class="InputCode">&gt; uncompress vt20.alpha.tar.Z</p>
+<p>or </p>
+<p class="InputCode">&gt; gunzip vt20.alpha.tar.gz</p>
+<p>The compressed file will be replaced by an uncompressed file without 
+              the suffix. </p>
+<p>Once compressed, files can be uncompressed and then used. However, 
+              it is inefficient, both with respect to SSCC computing resources 
+              and your time, to constantly uncompress and then recompress files, 
+              particularly large data files. There are two ways to use compressed 
+              files without uncompressing them. First, some data analysis programs 
+              allow you to read in compressed data. Second, some programs that 
+              cannot use compressed data can read data from a special type of 
+              file called a named pipe. </p>
+<p>Programs such as SAS, SPSS, and STATA allow data to be read from 
+              the output of commands. Using the <span class="InputCode">zcat</span> 
+              command or the <span class="InputCode">gunzip -c</span> command, 
+              the compressed file can be printed to standard output so that software 
+              programs can read the files. For instructions on how to use compressed 
+              data with commercial software programs, see SSCC Knowledge Base articles on 
+              the use of these programs available on SSCC's web site.</p>
+<h2><a id="xtocid215401" name="xtocid215401">5. Choosing the Proper Linux Computer </a></h2>
+<p>In addition to the three Linstat servers, SSCC also has a Condor Flock and High Performance Computing cluster for running large jobs. When selecting a Linux computer on which to run a job, you must                 consider which machines have the software that you want to use and                 which machines have the computing resources necessary for your project. Visit our <a href="https://www.ssc.wisc.edu/sscc/pubs/computing_resources.htm">Computing Resources at the SSCC web page</a>               for details.</p>
+<h3><a id="xtocid215403" name="xtocid215403">Condor </a></h3>
+<p>SSCC has a cluster of Linux servers for running large STATA,
+               SAS, R, MatLab, Fortran, and C/C++ programs. This cluster has a powerful
+              batch pooling utility installed called Condor which was developed
+              at UW-Madison's Computer Science Department. For more information
+              on Condor, refer  to the SSCC Knowledge Base article, <a href="https://www.ssc.wisc.edu/sscc/pubs/7-1.htm">An
+               Introduction to Condor</a>.</p>
+<h3><a id="flash" name="flash">High Performance Computing  Cluster</a></h3>
+<p>The SSCC has a High Performance Computing cluster called FLASH.    See <a href="https://www.ssc.wisc.edu/sscc/pubs/flash.htm">Using the SSCC's High Performance Computing Cluster</a> for instructions on using these machines. If                 you have parallelized C/C++, Fortran, or R programs you'd like                 to run on this cluster, please contact <a href="mailto:rhorrisb@ssc.wisc.edu">Ryan                   Horrisberger</a>. </p>
+<h3><a id="xtocid215405" name="xtocid215405"> Software </a></h3>
+<p>Almost all the software installed on Linstat is installed on all three   Linstat servers. The two exceptions (due to licensing restrictions) are   SPSS and Stat/Transfer. They are installed on Linstat1. If you run SPSS   or Stat/Transfer on another Linstat server they will automatically   connect to Linstat1 and run your job there, but if you need to manage   that job later you'll need to log in to Linstat1 to do so. </p>
+<p>Software availability information for all of SSCC's computers can  be found on <a href="https://www.ssc.wisc.edu/sscc_jsp/software/">SSCC's 
+              Software Availability web page</a>.</p>
+<h3><a id="xtocid215406" name="xtocid215406">CPU Power</a></h3>
+<p> The three Linstat servers have very
+              similar processors. However, for large jobs that will take more than a
+              few minutes to run, Condor is ideal. Please see <a href="https://www.ssc.wisc.edu/sscc/pubs/7-1.htm">An
+               Introduction to Condor</a>.</p>
+<h3><a id="xtocid215407" name="xtocid215407">System Load</a></h3>
+<p>If you are going to use the computer intensively, for a STATA
+              program,  for example, then you should look for a machine that
+              is not busy.  There are several ways to determine if a machine
+              is busy, and, if  it is busy, what it is doing. Going to <a href="https://www.ssc.wisc.edu/sscc_jsp/status.jsp">SSCC's
+               Server Status web page</a>               is the easiest way to get a quick snapshot of how busy a system
+              is.            </p>
+<p>The Linux operating system provides its own set of commands to 
+              get the same information. For example: </p>
+<pre>&gt; uptime
+13:33  up 1 day,  2:34,  4 users,  load average: 3.36, 3.31, 3.47
+</pre>
+<p>The <span class="InputCode">uptime</span> command tells the current 
+              time, the length of time the computer has been running (in this 
+              example, one day, two hours, 34 minutes), how many users are currently 
+              logged onto the system and the load average for the past one, five, 
+              and 15 minutes. The load average is the average number of jobs waiting 
+              to run over the particular time increment. The higher the number, 
+              the busier the system. A Linstat server is busy if its load 
+              average exceeds four and is very busy if their load average exceeds 
+              six. </p>
+<p>To find out how busy Condor is, use the <span class="InputCode">condor_status</span> 
+              command. </p>
+<p>Another excellent command for monitoring system activity is the 
+              <span class="InputCode">top</span> command. The <span class="InputCode">top</span> 
+              command lists jobs currently running, ordered by CPU usage, with 
+              the command using the greatest amount of CPU time on top of the 
+              list. The output of the <span class="InputCode">top</span> command 
+              looks like this: </p>
+<pre> load averages:   0.16,  0.24,  0.23                       15:33:03
+94 processes:  1 running, 1 waiting, 15 sleeping, 75 idle,2stopped
+Cpu states: 10.0% user,  0.0% nice,  7.9% system, 82.0% idle
+Memory:Real:471M/767M act/tot Virtual:16M/2243M use/tot Free: 181M
+
+  PID USERNAME PRI NICE  SIZE   RES STATE   TIME    CPU COMMAND
+ 9124 esimpson  42    0 8192K 1327K WAIT    4:27 10.50% sas
+10235 odrucker  42    0 7736K 4128K sleep   0:03  1.80% stata<pine>
+ 9387 mcdermot  44    0 2504K  393K run     0:00  0.40% top
+  896 root      44    0 1704K  229K sleep   0:01  0.10% telnetd
+   77 root      42    0 1600K   57K sleep  19:30  0.00% update
+  488 root      44    0 1728K  122K sleep   0:38  0.00% snmpd
+  365 root      44    0 2032K  335K sleep   0:22  0.00% rpc.lockd
+  561 root      44    0 1992K  106K sleep   0:17  0.00% httpd
+ 8463 swald     42    0 4488K  180K sleep   0:12  0.00% xterm
+  484 root      44    0 2432K  204K sleep   0:11  0.00% os_mibs
+    1 root      44    0  440K   40K sleep   0:07  0.00% init
+32490 root      44    0 1704K   40K sleep   0:05  0.00% telnetd
+  150 root      44    0 1656K  122K sleep   0:02  0.00% syslogd
+  452 root      32  -12 2072K  270K sleep   0:02  0.00% xntpd
+ 8459 mcdermot  44    0 4464K  729K sleep   0:01  0.00% xterm
+</pine></pre>
+<p>The listing is updated every few seconds. The load averages are 
+              on the first line. Next is a list of how many processes are currently 
+              running (94 in this example). The third line shows the percent of 
+              time the CPU is spending in various modes. The most important item 
+              in this line is the idle percentage. If the idle percentage is non-zero, 
+              then the computer is not busy at all. The fourth line shows how 
+              much memory is in use. </p>
+<p>The table at the bottom is the most interesting part of <span class="InputCode">top</span> 
+              output. It lists jobs that are currently running. In this snapshot, 
+              user esimpson is running SAS, using about 10% of CPU time. User 
+              odrucker is running Stata. He is taking about 2% of the 
+              CPU time. The <span class="InputCode">top</span> command is taking 
+              about half a percent and other commands are taking trivial amounts.            </p>
+<p>Because the Linstat servers have multiple CPUs, the percent of 
+              CPU used may total as much as 800%. Enter <span class="InputCode">q</span> 
+              to exit the <span class="InputCode">top</span> command.</p>
+<h2><a id="xtocid215409" name="xtocid215409">6. Running Jobs </a></h2>
+<p>Any time you give Linux something to do, you've created a job. 
+              Of course many Linux commands execute almost instantly (<span class="InputCode">cd</span>, 
+              <span class="InputCode">ls</span>, etc.), but others may run for 
+              hours, days, or even longer. In these cases, how a job is run will 
+              impact both what you can do and how the system performs for all 
+              other users. The SSCC's Linux servers are a shared resource, and 
+              it is up to each member to share nicely.            </p>
+<h3><a id="xtocid2154010" name="xtocid2154010"> Command Input and Output in Linux </a></h3>
+<p>Linux was designed to have many tools that do specialized tasks. 
+              In the Linux model, data flows from one command to another command, 
+              each command doing what it does best. To implement this model, every 
+              Linux command has three files associated with it. These files are 
+              called: </p>
+<ul>
+<li>standard input </li>
+<li>standard output </li>
+<li>standard error </li>
+</ul>
+<p>Standard input is the place from which commands get their data. 
+              By default, this is the keyboard. Standard output is the place that 
+              commands put their output. By default, this is the screen. Standard 
+              error is the place that commands put their error messages. By default, 
+              this is the screen, also. But it is important to note that standard 
+              output and standard error are not the same thing. It just happens 
+              that, by default, they send data to the same place. Collectively, 
+              these are called standard input and output, or standard I/O, abbreviated 
+              stdio. <br/>
+</p>
+<table align="center" border="1" width="75%">
+<tr>
+<td><b>Stdio Elements</b></td>
+<td><b>Default</b></td>
+<td><b>Abbreviation</b></td>
+</tr>
+<tr>
+<td>standard input</td>
+<td>keyboard</td>
+<td>stdin</td>
+</tr>
+<tr>
+<td>standard output</td>
+<td>screen</td>
+<td>stdout</td>
+</tr>
+<tr>
+<td>standard error</td>
+<td>screen</td>
+<td>stderr</td>
+</tr>
+</table>
+<p>Standard I/O can be redirected so that it comes from, or goes to, 
+              any place. Standard input can come from the keyboard, or from a 
+              file, or from another command. Standard output can be sent to the 
+              screen, or to a file, or into another command (as standard input 
+              to that command). This is the power of the standard I/O system.            </p>
+<p>The symbols used to redirect output are: <br/>
+</p>
+<table align="center" border="0" width="75%">
+<tr>
+<td width="11%">&gt; </td>
+<td width="89%">redirect stdout from command to a file</td>
+</tr>
+<tr>
+<td width="11%">&gt;&gt; </td>
+<td width="89%">redirect stdout from command to a file, appending</td>
+</tr>
+<tr>
+<td width="11%">&gt;&amp; </td>
+<td width="89%">redirect stdout and stderr from command to a file</td>
+</tr>
+<tr>
+<td width="11%">&gt;&gt;&amp; </td>
+<td width="89%">redirect stdout and stderr from command to a file, 
+                  appending</td>
+</tr>
+<tr>
+<td width="11%">&lt; </td>
+<td width="89%">redirect stdin from file to a command</td>
+</tr>
+<tr>
+<td width="11%">|</td>
+<td width="89%"> pipe the stdout of one command into the stdin 
+                  of another command</td>
+</tr>
+</table>
+<p>             </p>
+<h4><a id="xtocid2154012" name="xtocid2154012">Redirection of Standard Output </a></h4>
+<p>One of the most common ways to manipulate standard I/O is to redirect 
+              standard output from a command into a file. For example, if you 
+              want to save a long listing of one of your directories, you can 
+              do this: </p>
+<p class="InputCode">% ls -l Documentation &gt; doc.list</p>
+<p>The "greater than" sign (&gt;) redirects data from the 
+              <span class="InputCode">ls</span> command to a file called doc.list. 
+              Without the redirection, the listing would appear on the screen, 
+              but with the redirection, the command only returns the prompt, with 
+              no listing. If the file doc.list already exists, then it will be 
+              overwritten by the data from the <span class="InputCode">ls</span> 
+              command. To append data to the file, instead of overwriting the 
+              current data, use two "greater than" signs: </p>
+<p class="InputCode">% ls -l Documentation &gt; doc.list<br/>
+              % ls -l Programs &gt;&gt; doc.list</p>
+<p>In this example, the first command redirected the listing of the 
+              Documentation directory into the file called doc.list, creating 
+              a new file or overwriting an existing file. Then, the second command 
+              appended the listing of the Programs directory into the doc.list 
+              file. The doc.list file contains listings for both directories, 
+              now. </p>
+<h4><a id="xtocid2154014" name="xtocid2154014">Redirection of Standard Input </a></h4>
+<p>Some commands can take information from sources other than the 
+              keyboard. They use standard input. For instance, if you wanted to 
+              mail the doc.list file to someone, you could use the <span class="InputCode">Mail</span> 
+              command to do so, instead of invoking pine or another mailer: </p>
+<p class="InputCode">% Mail -s "Documentation Listing" odrucker 
+              &lt; doc.list</p>
+<p>In this example, the <span class="InputCode">Mail</span> command 
+              is used. Mail is sent to odrucker with the subject line "Documentation 
+              Listing" (the parameter to the <span class="InputCode">-s</span> 
+              option) and the tables of the mail message is the doc.list file.            </p>
+<h4><a id="xtocid2154015" name="xtocid2154015">Pipes </a></h4>
+<p>The most common use of redirection of standard I/O is with pipes,
+              which take the output of one command and give it to the input of
+              another command. Some common uses are exemplified below: </p>
+<p class="InputCode">% ls -l Documentation | enscript</p>
+<p>In this example, the listing of the Documentation directory is 
+              sent directly to the <span class="InputCode">enscript</span> command 
+              so that the file can be printed. The listing is never saved on disk 
+              or displayed on the screen. </p>
+<p class="InputCode">% ls -lR | more</p>
+<p>The <span class="InputCode">-R</span> option to ls instructs <span class="InputCode">ls</span> 
+              to recursively list all directories and subdirectories. This could 
+              lead to a very long list. In this example, the output of the <span class="InputCode">ls</span> 
+              command is piped through the <span class="InputCode">more</span> 
+              command, allowing you to read the listing one screen at a time.            </p>
+<h3><a id="xtocid2154016" name="xtocid2154016">Running Jobs in the Foreground and Background 
+              </a></h3>
+<p>Normally when you type a command, it is processed and you see the 
+              results (if any) before the cursor returns and you can type a new 
+              command. These jobs are said to be running in the foreground, and 
+              that may be exactly what you want if your job will run very quickly 
+              or you cannot proceed until you have your results. But you can tell 
+              Linux not to wait. When you put a job in the background, the cursor 
+              returns immediately and you can keep giving commands and doing other 
+              work while the your job is running. When it finishes, a message 
+              will appear on your screen.</p>
+<p>To run a job in the background, simply add an ampersand (&amp;) 
+              at the end of the command line. For example:</p>
+<p class="InputCode">&gt; stata -b do myprogram</p>
+<p> Stata will start and run <span class="InputCode">myprogram.do</span> 
+              in the foreground. Thus the session will be unavailable until the 
+              job is done. On the other hand,</p>
+<p class="InputCode">&gt; stata -b do myprogram &amp;</p>
+<p>will start Stata in the background. The cursor returns immediately,
+              and the user can  edit other programs, organize files, etc. while
+              waiting for the job to finish. When it is done you will see: </p>
+<pre class="InputCode">[1]    Done                          stata -b do myprogram</pre>
+<p>Note that a job which creates a separate window (emacs, for example) 
+              will be completely functional in the background. What makes it a 
+              background process is that your shell (the main session window) 
+              is ready for more commands. On the other hand if a program without 
+              a window is running in the background and needs input from you (for 
+              example if SAS runs out of resources), it will halt until you put 
+              in the foreground and give it the input it needs.</p>
+<p>Note that a job running in the background will keep running even 
+              if you log out, so it is quite possible to start a long job before 
+              you leave in the evening, log out, and get the results the next 
+              morning. Remember that Linstat is actually a cluster of three servers and when you log in   you're assigned to a server randomly (to try to balance the load between   them). However, you can choose to connect to a specific server to monitor   a job you started previously or if the server you're assigned to turns   out to be particularly busy.</p>
+<p>To switch to a different server, type:</p>
+<p> ssh server</p>
+<p>where server can be linstat1, linstat2 or linstat3. Alternatively you can set up your client program to log in to one of those three servers directly.</p>
+<h3 class="PageBreak"><a id="xtocid2154017" name="xtocid2154017"></a>Switching Between 
+              Foreground and Background</h3>
+<p>If you have a job running in the foreground and you want to do 
+              something else, simply press <span class="InputCode">CTRL-z</span> 
+              (note that if the current job has opened a window of some sort, 
+              you must return to your shell window before pressing <span class="InputCode">CTRL-z</span>). 
+              The current job will be suspended and you will get your cursor back. 
+              If you want the job to run while you are doing other things, type 
+              <span class="InputCode">bg</span> to put it in the background. You 
+              can also type <span class="InputCode">fg</span> to move it back 
+              to the foreground, either from being suspended or from the background.</p>
+<h3><a id="xtocid2154018" name="xtocid2154018"></a>Managing Background Jobs</h3>
+<p>It can be very easy to lose track of jobs you have running in the 
+              background, but there are several commands that can tell you about 
+              them.</p>
+<p><span class="InputCode">jobs</span> will list all the jobs you 
+              started this session that are not yet complete. For example:</p>
+<pre class="InputCode">&gt; jobs<br/>[1]  - Running                       emacs<br/>[2]  + Suspended                     emacs</pre>
+<p>The number in brackets is the job number, and you can use that 
+              number preceded by a percent sign (%) to refer to the job. Naming 
+              a job will move it to the foreground, so in this case <span class="InputCode">%2</span> 
+              is similar to <span class="InputCode">fg</span> (except you don't 
+              have to keep track of which job is considered the "current" 
+              job). Adding an ampersand moves it to the background, so <span class="InputCode">%2 
+              &amp;</span> is similar to <span class="InputCode">bg</span>.</p>
+<p>You can list jobs started in a previou session using the <span class="InputCode">ps</span> 
+              command (think processes). The syntax is <span class="InputCode">ps x
+              -u <span class="Parameter">username</span></span>. For example:</p>
+<pre>&gt; ps -u rdimond<br/>  PID TTY          TIME CMD<br/>29413 pts/30   00:00:00 tcsh<br/> 1601 pts/30   00:00:00 emacs<br/> 1602 pts/30   00:00:00 emacs<br/> 1605 pts/30   00:00:00 ps</pre>
+<p>Note how the bracketed numbers have been replaced by the PID (Process 
+              IDentification) and the list is more complete, including your shell 
+              (in this case the <span class="InputCode">tcsh</span> shell), and 
+              the <span class="InputCode">ps</span> command itself. Note that 
+              PID's cannot be used to move things from foreground to background. 
+              On the other hand this is the only way to check on jobs from previous 
+              sessions.</p>
+<h3><a id="xtocid2154019" name="xtocid2154019"></a>Killing a Job</h3>
+<p>Sometimes you will change your mind about a job, and occasionally 
+              things even go wrong. In these cases, the <span class="InputCode">kill</span> 
+              command can be invaluable. Simply type <span class="InputCode">kill</span> 
+              and then the job number or PID. For example:</p>
+<p class="InputCode">&gt; kill %2</p>
+<p>or </p>
+<p class="InputCode">&gt; kill 1602</p>
+<p>This doesn't actually stop the job, it merely requests that it 
+              shut down, giving the program an opportunity to clean up temporary 
+              files and such. Unfortunately both SAS and SPSS will not do so, 
+              so if you kill one of these jobs, please go to the <span class="InputCode">/tmp</span> 
+              directory and manually delete all files and directories belonging 
+              to you. On the other hand, adding the <span class="InputCode">-9</span> 
+              signal to the <span class="InputCode">kill</span> command will kill 
+              a program immediately with or without its consent. Thus:</p>
+<p class="InputCode">&gt; kill -9 1602</p>
+<p><strong>will</strong> kill process 1602.</p>
+<h3><a id="xtocid2154021" name="xtocid2154021"></a>Running Multiple Jobs</h3>
+<p>Linux will allow you to put as many jobs as you want in the background, 
+              and it will try to work on them all at once. This means it is quite 
+              possible for a single user to run so many jobs that everyone else 
+              is "crowded out." If necessary SSCC staff will intervene 
+              to stop this. On the other hand, Condor handles multiple jobs very 
+              efficiently and has plenty of available capacity. So if you are 
+              planning on doing any resource intensive computing, you really should 
+              check out Condor.</p>
+<p>The general rule on the interactive (non-Condor) Linstat servers is that
+               you should only have one major job running at a time on each server.
+              Text editors, email, etc. are not a problem, but Stata, SAS, SPSS,
+              and most user-written programs are resource intensive and will
+              affect others. Keep in mind that Linux will split the available
+              CPU time among all the running jobs. So if you run three jobs simultaneously,
+              they will  each take three times as long to run, saving you no
+              time but making  much less CPU time available for others (the one
+              exception to this  would be if the server has an idle CPU, but
+              you shouldn't count  on this).</p>
+<p>If you have multiple jobs to run, please read <a href="https://www.ssc.wisc.edu/sscc/policies/server_usage.htm">SSCC's
+              CPU Usage Policy</a>. </p>
+<h3><a id="xtocid2154022" name="xtocid2154022"></a>Condor</h3>
+<p>Condor is designed to process large numbers of jobs. For full details 
+              please see <a href="https://www.ssc.wisc.edu/sscc/pubs/7-1.htm">An 
+              Introduction to Condor</a>, 
+              but the essence of Condor is that we have a pool of Linux servers 
+              which only run jobs submitted to them through the Condor program. 
+              Unlike standard Linux jobs, Condor jobs never interfere with each 
+              other, since each job gets exclusive use of a CPU. Thus if you submit 
+              your jobs to Condor, they will not slow down the server for anyone 
+              else (or be slowed down by anyone else).</p>
+<p>The price is that it takes about 30 seconds for Condor to process
+               a job and assign it to a machine. Thus if you are running a 20
+              second  job and will be waiting for the results, it would be counterproductive
+               to use Condor. But if you have many jobs to run, or a single big
+               job, Condor is a great tool. It's not quite a panacea since it
+              can  only be used for Stata, R, MatLab, and most user-written C/C++
+              and FORTRAN code, but that covers the bulk of the computing done
+              at the SSCC.            </p>
+<p>We have written several scripts which make submitting Stata jobs 
+              to Condor almost identical to running them as usual. The standard 
+              command for running a Stata do file in batch mode is stata -b do 
+              dofile (where dofile would be replaced by the name of the do file 
+              you want to run. To submit the job to Condor instead, simply replace 
+              stata with one of the following:</p>
+<p class="InputCode">&gt; condor_stata -b do dofile</p>
+<p>condor_stata is the command you'll normally use. It will send your 
+              job to a multi-processor machine if one is available, but if not 
+              it will send your job to the first available machine. </p>
+<p>If you want to run programs other than Stata using Condor, or want 
+              to submit many jobs at once, please see <a href="https://www.ssc.wisc.edu/sscc/pubs/7-1.htm">An 
+              Introduction to Condor</a>.</p>
+<h3><a id="xtocid2154023" name="xtocid2154023"></a>Scripts</h3>
+<p>Consider the following two scripts. Both run three SAS jobs. The 
+              one on the left will tie up the server it is run on, the one on 
+              the right will not. And it will execute in about the same amount 
+              of time:</p>
+<table align="center" border="1" cellpadding="5">
+<tr>
+<th nowrap="nowrap" scope="col">Bad Script</th>
+<th nowrap="nowrap" scope="col">Good Script</th>
+</tr>
+<tr>
+<td nowrap="nowrap" valign="top" width="50%"> <p class="InputCode">sas 
+                    prog1 &amp;<br/>
+                    sas prog2 &amp;<br/>
+                    sas prog3 &amp;</p></td>
+<td nowrap="nowrap" valign="top" width="50%"> <p class="InputCode">sas 
+                    prog1<br/>
+                    sas prog2<br/>
+                sas prog3</p></td>
+</tr>
+</table>
+<p>The bad script places all three jobs in the background, so they 
+              all run at the same time and compete for resources. The good script 
+              runs them in the foreground, so they will run one at a time. However 
+              you do not need to wait for them: simply run the script itself in 
+              the background and your shell will be available for other work.            </p>
+<p>Of course if you could use Condor those three SAS programs would 
+              be run on three different CPUs and thus execute in one third the 
+              time.</p>
+<h3><a id="xtocid2154030" name="xtocid2154030"></a>Running a Job Later</h3>
+<p>The <span class="InputCode">at</span> command allows you to run 
+              a job at a time you specify. For example, you could run a big, resource 
+              intensive job at 1:00 AM when no one is likely to be on. There are 
+              several ways to use <span class="InputCode">at</span>.</p>
+<p>If you want to just type in the job you want to run later, type</p>
+<p class="InputCode">&gt; at <span class="Parameter">time</span></p>
+<p>and you can then enter the command(s) at the prompt (<span class="InputCode">at&gt;</span>). 
+              When you are done, press <span class="InputCode">CTRL-D</span>. 
+              The time parameter will understand just about any reasonable format, 
+              including <span class="InputCode">at 1:00</span>, <span class="InputCode">at 
+              1:00am</span>, <span class="InputCode">at 1am</span>, <span class="InputCode">at 
+              13:00</span> (1:00pm), <span class="InputCode">at noon</span>, <span class="InputCode">at 
+              midnight</span>, or <span class="InputCode">at teatime</span> (4:00pm). 
+              Note that if you do not specify <span class="InputCode">am</span> 
+              or <span class="InputCode">pm</span>, it is assumed you are using 
+              24-hour time.</p>
+<p>You can also put the commands you want executed in a file. To do 
+              this type:</p>
+<p class="InputCode">&gt; at time -f <span class="Parameter">file</span></p>
+<p>To list the jobs currently waiting to run, type:</p>
+<p class="InputCode"> &gt; atq</p>
+<p>To remove a job, type:</p>
+<p class="InputCode">&gt; atrm <span class="Parameter">job</span></p>
+<p> where <span class="Parameter"><span class="InputCode">job</span></span> 
+              is an ID obtained by listing your jobs. </p>
+<p>Note that if you submit your jobs to Condor, they will not affect 
+              other users and will get plenty of resources no matter when you 
+              run them.</p>
+<h2><a id="xtocid215432" name="xtocid215432">7. Summary of Commands</a></h2>
+<p>The table below is a quick reference for the most common Linux 
+              commands. Following the link will take you to a more in-depth explanation 
+              of the command.</p>
+<table align="center" border="1" width="80%">
+<tr>
+<td width="30%"><b>Command Name</b></td>
+<td width="100%"><b>Command Description</b></td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2154030">at</a></td>
+<td width="100%">run a job at a specified time</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745910">cd</a></td>
+<td width="100%">change directory</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid274595">clear</a></td>
+<td width="100%">clear the terminal screen</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2154027">compress, uncompress</a></td>
+<td width="100%">compress and expand file</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid215407">condor_status</a></td>
+<td width="100%">lists state of SSCC's Condor flock</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745913">cp</a></td>
+<td width="100%">copy files and directories</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2154026">df</a></td>
+<td width="100%">report file system disk space usage</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2154026">du</a></td>
+<td width="100%">estimate file space usage</td>
+</tr>
+<tr>
+<td width="30%"><a href="https://www.ssc.wisc.edu/sscc/pubs/intro.htm#xtocid2714129">enscript</a></td>
+<td width="100%">print file(s)</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid274592">exit</a></td>
+<td width="100%">log off</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2154027">gzip, gunzip</a></td>
+<td width="100%">compress and expand file</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid274595">hostname</a></td>
+<td width="100%">display name of computer logged into</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2154018">jobs</a></td>
+<td width="100%">display status of jobs in the current session</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2154019">kill</a></td>
+<td width="100%">terminate a job</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid274595">lookup</a></td>
+<td width="100%">display information about UW employees and students</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745911">ls</a></td>
+<td width="100%">list directory tables</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745929">man</a></td>
+<td width="100%">display the on-line help pages</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745912">mkdir</a></td>
+<td width="100%">create a directory</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745914">more</a></td>
+<td width="100%">display a file one screenful at a time</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745913">mv</a> </td>
+<td width="100%">move or rename files</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2154018">ps</a></td>
+<td width="100%">display job status</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745910">pwd</a></td>
+<td width="100%">display present working directory</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2154026">quota</a></td>
+<td width="100%">display disk usage and limits</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745913">rm</a></td>
+<td width="100%">remove (delete) files or directories</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid2745912">rmdir</a></td>
+<td width="100%">remove (delete) directories</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid215405">soft</a></td>
+<td width="100%">list SSCC software availability</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid274592">ssh</a></td>
+<td width="100%">remote login and remote execution of commands</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid215407">top</a></td>
+<td width="100%">display top CPU processes</td>
+</tr>
+<tr>
+<td width="30%"><a href="#xtocid215407">uptime</a></td>
+<td width="100%">tell how busy the system is</td>
+</tr>
+</table>
+<h2><a id="xtocid215433" name="xtocid215433">Other Sources of Information</a></h2>
+<p>Many resources are available to learn about the Linux operating
+               system, both at SSCC and at your local book store. SSCC staff
+              maintain  numerous on-line Knowledge Base articles on Linux topics including
+              the use  of editors, such as EMACS and PICO, and use of statistical
+              software  like SAS, STATA, and SPSS. All of SSCC's Knowledge Base articles
+              are available  online at <a href="https://www.ssc.wisc.edu/sscc/pubs">https://www.ssc.wisc.edu/sscc/pubs</a>.</p>
+<p>SSCC also teaches mini-courses, ranging from one-hour courses,
+               to classes that meet for half a day, or for an hour a week for
+              several  weeks. See BROADCAST, SSCCNEWS, or <a href="https://www.ssc.wisc.edu/sscc_jsp/training/index.jsp">SSCC's
+               training web pages</a>               for registration and other information about these courses.</p>
+<p> </p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Articles on Using OS X</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- InstanceBeginEditable name="Content" -->
+<p>This page lists articles on using OS X
+                    operating system with SSCC resources.</p>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/printfrommac.htm">Using SSCC Printers from Macs</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm">Using SSCC Network Disk Space from Macs</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm">Connecting to Linstat from a Mac</a><br/>
+<span class="news"><a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat</a></span><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/working_from_home.htm">Working From Home and Other Remote Locations</a> <br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/screen_sharing.htm">Connecting to Your Office Computer Using Screen Sharing (Mac)</a> </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Running Mplus Jobs on Linstat</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+
+<!-- InstanceBeginEditable name="Text" -->
+<p>Mplus is now available on Linstat, the SSCC's Linux computing cluster, where it can use up to 16 cores and much more memory than on Winstat. This can make large Mplus jobs run much more quickly. Running jobs on Linstat is probably easier than you think. If you've never used Linstat before, start by reading <a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a>.                </p>
+<p></p>
+<p>Linstat is a cluster of of Linux servers. If you log in to "Linstat" you could be assigned to any of the individual servers, which helps spread the load among them. However, our Mplus license only allows us to install it on three servers, Linstat1, Linstat2, and Linstat3. Thus if your goal is to run Mplus you should log in directly to one of these servers rather than just Linstat. <a href="https://ssc.wisc.edu/sscc/pubs/5-2.htm">Connecting to SSCC Linux Computers using X-Win32</a> and <a href="https://ssc.wisc.edu/sscc/pubs/linstat_from_mac.htm">Connecting to Linstat from a Mac</a> have instructions.</p>
+<p>We are also only allowed to have one Mplus job running on each server at a time. If you are told it is currently in use on all three servers we're afraid you'll have to wait. (If this happens to you a lot, let the <a href="https://ssc.wisc.edu/sscc/helpdesk.htm">Help Desk</a> know and we'll look into transferring more licenses from Winstat to Linstat.)</p>
+<p>Any files you want to use on Linstat need to be stored on the SSCC's Linux file system. If you're using a Windows computer on the SSCC network, the Z:\ drive is your Linux home directory and the V:\ drive is Linux project space. The Mplus editor is not available for Linux, but you can write your input files using Mplus on Winstat and then save them on Z:\ or V:\. <a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm#GettingStartedonLinstat">Getting Started On Linstat</a> will teach you how to organize your files for easy use in Linux programs.</p>
+<p>Once everything is set up, running an Mplus program is very easy. Just type:</p>
+<p class="InputCode">mplus <span class="Parameter">myinputfile</span>.inp</p>
+<p>where <span class="Parameter">myinputfile</span><span class="InputCode">.inp</span> should be replaced by the actual name of your input file.</p>
+<p>You'll see Mplus open several terminal windows. The way Mplus uses multiple cores is unusual in that rather than having the program start additional processes directly, it launches additional terminal sessions that then start additional processes. Unfortunately this means that you need to stay logged in to Linstat the entire time the program is running. Mplus will also continue to write output to your original Linux terminal, so there's no point in running it in the background. Create a new Linstat session if you want to do additional work, but keep in mind you won't be able to start another Mplus job.                </p>
+<!-- InstanceEndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+<kb_document>
+<kb_title>Articles for New Users</kb_title>
+<kb_keywords>.</kb_keywords>
+<kb_summary>.</kb_summary>
+<kb_body>
+<!-- #BeginEditable "Content" -->
+<p>This page lists articles of particular interest to new SSCC users.
+	  			While there is no "required reading" <i>per se</i>, a little
+	  			 time spent perusing this section could save you a lot of confusion
+	  			down	
+		the road. It could also be useful for those seeking basic information
+	  			about using SSCC resources.</p>
+<h2>Welcome!</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/welcome.htm">Welcome to the SSCC! (For SSCC Members)</a><span class="news"><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/welcomelab.htm">Welcome to the SSCC! (For Lab Users)</a></span><br/>
+</p>
+<h2>What the SSCC Provides</h2>
+<p><a href="https://ssc.wisc.edu/sscc/statconsult.htm">Statistical Consulting</a><br/>
+<a href="https://ssc.wisc.edu/sscc_jsp/software/">SSCC Software</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/computing_resources.htm">Computing Resources at the SSCC<br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/disk.htm">Network Disk Space at the SSCC</a></p>
+<h2>Your Account</h2>
+<p><a href="https://ssc.wisc.edu/sscc_jsp/password/">Change Your Password</a><br/>
+<a href="https://ssc.wisc.edu/sscc_jsp/password/reset.jsp">Reset Your Password </a><br/>
+<a href="https://ssc.wisc.edu/sscc_jsp/software/"></a> </p>
+<h2>Using SSCC Servers</h2>
+<p><span class="news"><a href="https://ssc.wisc.edu/sscc/pubs/winstat.htm">Using Winstat </a></span><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/linstat.htm">Using Linstat</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/silo.htm">Using Silo</a></p>
+<h2>Setting Up Your Computer</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/5-24.htm">Setting Up Network Printers in Windows</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/softwarecenter.htm">Installing New Software using Software Center<br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/printfrommac.htm">Using SSCC Printers from Macs</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/diskfrommac.htm">Using SSCC Network Disk Space from Macs</a></p>
+<h2>Remote Access</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/working_from_home.htm">Working From Home and Other Remote Locations<br/>
+</a></p>
+<h2>Statistical Software</h2>
+<p><a href="https://ssc.wisc.edu/sscc/pubs/sfr-intro.htm">Stata for Researchers</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/RFR/RFR_Introduction.html">R for Researchers</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/sfs/">Stata for Students<br/>
+</a><a href="https://ssc.wisc.edu/sscc/pubs/spss/classintro/spss_students1.html">SPSS  for the Classroom</a><br/>
+<a href="https://ssc.wisc.edu/sscc/pubs/4-17.htm">Using	Stat/Transfer</a> </p>
+<h2>Policies</h2>
+<p>See our <a href="https://ssc.wisc.edu/sscc/policies/home.htm">policies page</a> for a full list, but these are some some of the most
+	  		important:</p>
+<p><a href="https://ssc.wisc.edu/sscc/policies/desktopsupp.htm">Desktop Support Policy</a><br/>
+<a href="https://ssc.wisc.edu/sscc/policies/server_usage.htm">Server Usage Policy</a><br/>
+<a href="https://ssc.wisc.edu/sscc/policies/backup.htm">SSCC Data Integrity</a><br/>
+<a href="https://ssc.wisc.edu/sscc/policies/privacy.pdf">Privacy Standards for SSCC Staff</a></p>
+<!-- #EndEditable -->
+
+</kb_body>
+<img_base_url></img_base_url>
+</kb_document>
+</kb_documents>
