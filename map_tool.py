@@ -92,6 +92,9 @@ class ChangeDialog(QDialog):
         # address in ssc network
         if netloc == 'www.ssc.wisc.edu' or netloc == 'ssc.wisc.edu':
             target = self.parent.df[self.parent.df['Current URL'].str.contains(path)]
+            print(link)
+            if target.empty:
+                return link
             if not pd.isna(target.iloc[0, 3]):
                 doc_id = str(target.iloc[0, 3])
                 kb_path = 'sscc/' + doc_id
