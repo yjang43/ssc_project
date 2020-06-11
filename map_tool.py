@@ -95,7 +95,7 @@ class ChangeDialog(QDialog):
             if not pd.isna(target.iloc[0, 3]):
                 doc_id = str(target.iloc[0, 3])
                 kb_path = 'sscc/' + doc_id
-                kb_link = urlunparse(('https://', 'kb.wisc.edu', kb_path, param, query, fragment))
+                kb_link = urlunparse(('https', 'kb.wisc.edu', kb_path, param, query, fragment))
                 # kb_link = urljoin(kb_path, doc_id)
             else:
                 # kb_link = 'n/a'
