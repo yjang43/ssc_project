@@ -1,5 +1,5 @@
 import sys
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin, urlparse, urlunparse
 
 import pandas as pd
 import numpy as np
@@ -87,16 +87,19 @@ class ChangeDialog(QDialog):
 
     def _map_to_kb_link(self, link: str):
         kb_path = 'https://kb.wisc.edu/sscc/'
-        _, netloc, path, _, _, fragment = urlparse(link)
+        _, netloc, path, param, query, fragment = urlparse(link)
 
         # address in ssc network
         if netloc == 'www.ssc.wisc.edu' or netloc == 'ssc.wisc.edu':
             target = self.parent.df[self.parent.df['Current URL'].str.contains(path)]
             if not pd.isna(target.iloc[0, 3]):
                 doc_id = str(target.iloc[0, 3])
-                kb_link = urljoin(kb_path, doc_id)
+                kb_path = 'sscc/' + doc_id
+                kb_link = urlunparse(('https://', 'kb.wisc.edu', kb_path, param, query, fragment))
+                # kb_link = urljoin(kb_path, doc_id)
             else:
-                kb_link = 'n/a'
+                # kb_link = 'n/a'
+                kb_link = link
         else:
             kb_link = link
         return kb_link
